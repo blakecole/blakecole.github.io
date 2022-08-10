@@ -5,7 +5,7 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description></description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 08 Aug 2022 08:18:13 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 08 Aug 2022 13:09:10 -0400</lastBuildDate>
     <image>
       <url>img/bluesea-512.png</url>
       <title></title>
@@ -15,7 +15,7 @@
     <item>
       <title>Posts</title>
       <link>/post/</link>
-      <pubDate>Mon, 08 Aug 2022 08:18:13 -0400</pubDate>
+      <pubDate>Mon, 08 Aug 2022 13:09:10 -0400</pubDate>
       <guid>/post/</guid>
       <description></description>
     </item>
