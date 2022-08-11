@@ -195,18 +195,28 @@
 &lt;p&gt;Enjoy!&lt;/p&gt;
 &lt;h4 id=&#34;constant-145circ-heading&#34;&gt;Constant $145^{\circ}$ Heading&lt;/h4&gt;
 &lt;p&gt;
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://player.vimeo.com/video/737636662&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+
+&lt;div style=&#34;padding:79.41% 0 0 0;position:relative;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/737636662?h=5d956f822a&amp;portrait=0#t=0m0s&#34; style=&#34;position:absolute;top:0;left:0;width:100%;height:100%;&#34; frameborder=&#34;0&#34; allow=&#34;autoplay; fullscreen; picture-in-picture&#34; allowfullscreen&gt;
+  &lt;/iframe&gt;
 &lt;/div&gt;
+
+&lt;script src=&#34;https://player.vimeo.com/api/player.js&#34;&gt;&lt;/script&gt;
 
 &lt;br&gt;
 Initially, I was curious to see whether there existed a &lt;strong&gt;simple, constant-heading solution&lt;/strong&gt; that would deliver a swimmer moving at a constant pace to a desired destination (e.g. Lake Tashmoo).  So I ran a few simulations, and found that a swimmer departing Nobska Beach at 6:18a on the morning of July 30th, 2022, who was able to hold an average 2:00/100yd pace, and a constant heading of 145 degrees, would have quite a pleasant, efficient swim.  At nearly all points throughout the journey, the swimmer&amp;rsquo;s thrust vector is either perpendicular to, or somewhat aligned with, the tidal current vector (non-negative scalar product).  This is ideal, as it means the swimmer is not &amp;ldquo;fighting&amp;rdquo; the current.&lt;/p&gt;
 &lt;p&gt;Unfortunately, this strategy places the swimmer directly in the Steamship Authority&amp;rsquo;s ferry lane for much of the journey across Vineyard Sound.  Efficiency is a delightful thing, but truly nothing compares to the joy and satisfaction one feels when not being run over by a 154 ft ferry capable of producing 9,400 HP thrust, moving at 35 knots.  We needed a different strategy.&lt;/p&gt;
 &lt;h4 id=&#34;forced-transit-through-predefined-waypoints&#34;&gt;Forced Transit Through Predefined Waypoints&lt;/h4&gt;
 &lt;p&gt;
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://player.vimeo.com/video/737637856&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+
+&lt;div style=&#34;padding:79.41% 0 0 0;position:relative;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/737637856?h=5d956f822a&amp;portrait=0#t=0&#34; style=&#34;position:absolute;top:0;left:0;width:100%;height:100%;&#34; frameborder=&#34;0&#34; allow=&#34;autoplay; fullscreen; picture-in-picture&#34; allowfullscreen&gt;
+  &lt;/iframe&gt;
 &lt;/div&gt;
+
+&lt;script src=&#34;https://player.vimeo.com/api/player.js&#34;&gt;&lt;/script&gt;
 
 &lt;br&gt;
 Realizing that we needed to first cut southwest across the ferry lane (again, to avoid being run over), before pivoting southeast toward Martha&amp;rsquo;s Vineyard, we selected a set of waypoints that seemed like they would deliver us to our destination.  Unfortunately, this resulted in a much longer swim, both in terms of distance and time.  Following this strategy would also force the swimmers to fight hard against the current over Middle Ground, toward the end of the swim.  Back to the drawing board!&lt;/p&gt;
@@ -217,9 +227,14 @@ Realizing that we needed to first cut southwest across the ferry lane (again, to
 &lt;p&gt;Here are the resulting six simulations:&lt;/p&gt;
 &lt;h5 id=&#34;600a-departure--140100yd-pace&#34;&gt;6:00a Departure | 1:40/100yd Pace&lt;/h5&gt;
 &lt;p&gt;
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://player.vimeo.com/video/737626385&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+
+&lt;div style=&#34;padding:79.41% 0 0 0;position:relative;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/737626385?h=5d956f822a&amp;portrait=0#t=0&#34; style=&#34;position:absolute;top:0;left:0;width:100%;height:100%;&#34; frameborder=&#34;0&#34; allow=&#34;autoplay; fullscreen; picture-in-picture&#34; allowfullscreen&gt;
+  &lt;/iframe&gt;
 &lt;/div&gt;
+
+&lt;script src=&#34;https://player.vimeo.com/api/player.js&#34;&gt;&lt;/script&gt;
 
 
 
@@ -249,33 +264,58 @@ Realizing that we needed to first cut southwest across the ferry lane (again, to
 &lt;/p&gt;
 &lt;h5 id=&#34;600a-departure--200100yd-pace&#34;&gt;6:00a Departure | 2:00/100yd Pace&lt;/h5&gt;
 
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://player.vimeo.com/video/737624155&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+
+&lt;div style=&#34;padding:79.41% 0 0 0;position:relative;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/737624155?h=5d956f822a&amp;portrait=0#t=0&#34; style=&#34;position:absolute;top:0;left:0;width:100%;height:100%;&#34; frameborder=&#34;0&#34; allow=&#34;autoplay; fullscreen; picture-in-picture&#34; allowfullscreen&gt;
+  &lt;/iframe&gt;
 &lt;/div&gt;
+
+&lt;script src=&#34;https://player.vimeo.com/api/player.js&#34;&gt;&lt;/script&gt;
 
 &lt;h5 id=&#34;618a-departure--140100yd-pace&#34;&gt;6:18a Departure | 1:40/100yd Pace&lt;/h5&gt;
 
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://player.vimeo.com/video/737634275&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+
+&lt;div style=&#34;padding:79.41% 0 0 0;position:relative;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/737634275?h=5d956f822a&amp;portrait=0#t=0&#34; style=&#34;position:absolute;top:0;left:0;width:100%;height:100%;&#34; frameborder=&#34;0&#34; allow=&#34;autoplay; fullscreen; picture-in-picture&#34; allowfullscreen&gt;
+  &lt;/iframe&gt;
 &lt;/div&gt;
+
+&lt;script src=&#34;https://player.vimeo.com/api/player.js&#34;&gt;&lt;/script&gt;
 
 &lt;h5 id=&#34;618a-departure--200100yd-pace&#34;&gt;6:18a Departure | 2:00/100yd Pace&lt;/h5&gt;
 
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://player.vimeo.com/video/737629259&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+
+&lt;div style=&#34;padding:79.41% 0 0 0;position:relative;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/737629259?h=5d956f822a&amp;portrait=0#t=0&#34; style=&#34;position:absolute;top:0;left:0;width:100%;height:100%;&#34; frameborder=&#34;0&#34; allow=&#34;autoplay; fullscreen; picture-in-picture&#34; allowfullscreen&gt;
+  &lt;/iframe&gt;
 &lt;/div&gt;
+
+&lt;script src=&#34;https://player.vimeo.com/api/player.js&#34;&gt;&lt;/script&gt;
 
 &lt;h5 id=&#34;630a-departure--140100yd-pace&#34;&gt;6:30a Departure | 1:40/100yd Pace&lt;/h5&gt;
 
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://player.vimeo.com/video/737635428&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+
+&lt;div style=&#34;padding:79.41% 0 0 0;position:relative;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/737635428?h=5d956f822a&amp;portrait=0#t=0&#34; style=&#34;position:absolute;top:0;left:0;width:100%;height:100%;&#34; frameborder=&#34;0&#34; allow=&#34;autoplay; fullscreen; picture-in-picture&#34; allowfullscreen&gt;
+  &lt;/iframe&gt;
 &lt;/div&gt;
+
+&lt;script src=&#34;https://player.vimeo.com/api/player.js&#34;&gt;&lt;/script&gt;
 
 &lt;h5 id=&#34;630a-departure--200100yd-pace&#34;&gt;6:30a Departure | 2:00/100yd Pace&lt;/h5&gt;
 
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://player.vimeo.com/video/737634948&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+
+&lt;div style=&#34;padding:79.41% 0 0 0;position:relative;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/737634948?h=5d956f822a&amp;portrait=0#t=0&#34; style=&#34;position:absolute;top:0;left:0;width:100%;height:100%;&#34; frameborder=&#34;0&#34; allow=&#34;autoplay; fullscreen; picture-in-picture&#34; allowfullscreen&gt;
+  &lt;/iframe&gt;
 &lt;/div&gt;
+
+&lt;script src=&#34;https://player.vimeo.com/api/player.js&#34;&gt;&lt;/script&gt;
 
 &lt;h3 id=&#34;key-findings&#34;&gt;Key Findings&lt;/h3&gt;
 &lt;p&gt;I think more than anything, these simulations really underscore the extent to which &lt;strong&gt;timing is crucial&lt;/strong&gt; for this swim.&lt;/p&gt;
@@ -339,9 +379,14 @@ Realizing that we needed to first cut southwest across the ferry lane (again, to
 &lt;p&gt;Fortunately, the conditions looked ideal: there was very little wind, and no waves.  The sea surface was smooth and glassy.  The water visibility was at least 15-20 feet, and the water temperature was in the neighborhood of $70^{\circ}F$.  It seemed as though the sea gods had smiled upon our venture, and might see fit to deliver us safely across Vineyard Sound.  Only time would tell.&lt;/p&gt;
 &lt;p&gt;At 5:58a, it was time to go: each swimmer took a final deep breath, their body weight still supported by the silty sands off Nobska Beach, and dove into the water.  They would touch neither solid ground nor boat for the following two hours.&lt;/p&gt;
 &lt;p&gt;
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://player.vimeo.com/video/737940441&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;vimeo video&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+
+
+&lt;div style=&#34;padding:79.41% 0 0 0;position:relative;&#34;&gt;
+  &lt;iframe src=&#34;https://player.vimeo.com/video/737940441?h=5d956f822a&amp;portrait=0#t=0&#34; style=&#34;position:absolute;top:0;left:0;width:100%;height:100%;&#34; frameborder=&#34;0&#34; allow=&#34;autoplay; fullscreen; picture-in-picture&#34; allowfullscreen&gt;
+  &lt;/iframe&gt;
 &lt;/div&gt;
+
+&lt;script src=&#34;https://player.vimeo.com/api/player.js&#34;&gt;&lt;/script&gt;
 
 &lt;br&gt;
 The swim itself was fortunately quite uneventful for seven out of the ten swimmers.  We settled into a rhythm, and enjoyed the strange solace of gliding through an unfamiliar aquamarine world.  Some of us tripped out a little.  John mentioned that he felt like he was flying through the Cosmos, and my inner dialogue was dominated by a scientifically apocryphal mantra about humans being the descendants of whales.&lt;/p&gt;
