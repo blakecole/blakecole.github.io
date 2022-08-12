@@ -1148,7 +1148,33 @@ But, as time drew on, the folks on the beach became increasingly concerned: thre
 <p>As mentioned earlier in the <strong>Assumptions &amp; Caveats</strong> section, it is possible that the coarse spatial resolution of the ADCIRC bathymetric data led to an underestimation of the northeasterly current that develops over Middle Ground during the initial stages of a flood tide.  If this were true, the swimmers would be swept substantially farther northeast than the model predicted.</p>
 <p>The data supports this hypothesis.  One need only to observe the radical easterly deviation in trajectory that occurs just as the swimmers are passing over Middle Ground.  Assuming the swimmers maintained a constant speed-through-water and heading, this deviation can almost certainly be attributed, at least in part, to stronger than expected tidal currents over Middle Ground.</p>
 <h4 id="hypothesis-2-heading-error">Hypothesis #2: Heading Error</h4>
-<p>It is possible that the swimmers were not, in fact, following a 140 degree bearing.  This could have happened if the guide boats themselves attempted to follow a 140 degree bearing, at a pace faster than their swimmers could follow.  This would place them off to the left of their swimmers, compelling the swimmers to follow a more easterly trajectory.</p>
+<p>It is possible that the swimmers were not, in fact, following a $140^{\circ}$ heading.  Lacking terrestrial landmarks, the &ldquo;objective function&rdquo; of each swimmer was simply to swim directly toward their guide vessel at all times.  Thus, in order for the swimmers to remain on a fixed $140^{\circ}$ heading, their respective guide boats needed to maintain a $320^{\circ}$ relative bearing to them (say, using a handheld compass).  This is a subtle, but crucial distinction: it is not the instantaneous heading of the guide vessel that matters, but rather, its <strong>relative bearing</strong> to the swimmers, measured with respect to true north.  The figure below illustrates a situation in which a guide vessel is pursuing a $140^{\circ}$ heading, but is nevertheless inadvertently leading its swimmers in a more easterly direction.</p>
+
+
+
+
+
+
+<figure>
+
+  <a data-fancybox="" href="relative-bearing-both.png" data-caption="Depiction of the importance of relative bearing between swimmer and support vessel.  In the left-hand figure, the support vessel is following a $140^{\circ}$ heading; however, the relative bearing from the swimmer to the support vessel is $120^{\circ}$ ($-20^{\circ}$ offset from the target heading of $140^{\circ}$).  In this scenario, the support vessel should observe that its relative bearing to the swimmer is $300^{\circ}$ instead of $320^{\circ}$, and begin clocking around to the right until the relative bearing reads $320^{\circ}$.  This corrected configuration is displayed in the right-hand figure.  Note that the instantaneous, absolute vessel heading is not relevant; only its bearing relative to the swimmers matters.">
+
+<img src="relative-bearing-both.png" alt="Depiction of the importance of **relative bearing** between swimmer and support vessel.  In the left-hand figure, the support vessel is following a $140^{\circ}$ heading; however, the relative bearing from the swimmer to the support vessel is $120^{\circ}$ ($-20^{\circ}$ offset from the target heading of $140^{\circ}$).  In this scenario, the support vessel should observe that its relative bearing to the swimmer is $300^{\circ}$ instead of $320^{\circ}$, and begin clocking around to the right until the relative bearing reads $320^{\circ}$.  This corrected configuration is displayed in the right-hand figure.  Note that the instantaneous, absolute vessel heading is not relevant; only its bearing relative to the swimmers matters." >
+</a>
+
+
+<figcaption data-pre="Figure " data-post=":" >
+  
+  <p>
+    Depiction of the importance of <strong>relative bearing</strong> between swimmer and support vessel.  In the left-hand figure, the support vessel is following a $140^{\circ}$ heading; however, the relative bearing from the swimmer to the support vessel is $120^{\circ}$ ($-20^{\circ}$ offset from the target heading of $140^{\circ}$).  In this scenario, the support vessel should observe that its relative bearing to the swimmer is $300^{\circ}$ instead of $320^{\circ}$, and begin clocking around to the right until the relative bearing reads $320^{\circ}$.  This corrected configuration is displayed in the right-hand figure.  Note that the instantaneous, absolute vessel heading is not relevant; only its bearing relative to the swimmers matters.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
 <p>Rob Thieler suggested another potential source of heading error: magnetic declination.  Indeed, in the vicinity of Vineyard Sound, there is a $14^{\circ}~13&rsquo;~W$ separation between magnetic north (the direction a magnetized compass needle points) and true north (the direction along a meridian, towards the geographic North Pole).  Many marine GNSS systems account for magnetic declination by default, but some do not, and it isn&rsquo;t always easy to determine the active compass mode.  Following a 140 degree bearing relative to magnetic north would place us on a 126 degree bearing relative to true north.</p>
 <p>It is also possible that heading errors were simply inevitable.  A propeller-driven ocean vessel moving at slow speeds (1-2 knots) has virtually no heading control authority.  Holding a fixed bearing, relative to a moving school of swimmers, while contending with currents, wind, and waves is no easy feat.  We were incredibly fortunate to have such experienced support vessel captains, and literally could not have completed this swim without them.  A massive thank you to our captains: Chuck Redington, Robert Catilano, Eve Cinquino, Christie Hegermiller, and Kevin Manganini.</p>
 <p>Regardless of the source of the heading error, the data seems to suggest that there was <em>some</em> heading error, for some reason.  Roughly halfway through the swim, we took a brief break to hydrate.  This break can be seen in the data, when the black line jogs slightly southwest.  This small hop seems to suggest that the dominant tidal current in Vineyard Sound was still driving us southwest at this time, and had not yet gone slack.  Yet, our course over ground appears to be approximately 140 degrees; this would imply that our instantaneous heading must have been something less than 140 degrees (more easterly) at this time.</p>
