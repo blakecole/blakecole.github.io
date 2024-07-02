@@ -25,7 +25,7 @@
       <link>/authors/admin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/authors/admin/</guid>
-      <description>&lt;p&gt;Blake Cole is a doctoral candidate in the &lt;strong&gt;MIT-WHOI Joint Program in Applied Ocean Science and Engineering&lt;/strong&gt;.  He is a member of the Laboratory for Autonomous Marine Sensing Systems (LAMSS) at the Massachusetts Institute of Technology, coadvised by Peter Traykovski and Henrik Schmidt.  His research interests include marine vehicle autonomy, hydrodynamics, and feedback control systems.  Specifically, he is interested in developing economical, robust, long-range autonomous surface vehicles, capable of collecting meteorological and oceanographic data over extended periods of time.&lt;/p&gt;
+      <description>&lt;p&gt;Blake Cole received his Ph.D. in Mechanical Engineering from the &lt;strong&gt;Massachusetts Institute of Technology&lt;/strong&gt; in 2024.  He was part of the MIT-WHOI Joint Program, and was coadvised by Dr. Peter Traykovski and Prof. Henrik Schmidt.  While at MIT, Blake developed a first-of-its-kind design optimization methodology for aerodynamically-actuated wingsails, and validated this approach using a bespoke in-situ data aquisition rig called the &lt;em&gt;WingDAQ&lt;/em&gt;.  He also made meaningful contributions to the field of marine vehicle autonomy, having developed a novel instantiation of the unscented Kalman filter that is particularly well-suited to long-distance vessel tracking and collision avoidance.  Moving forward, Blake remains interested in designing, building, and testing new types of uncrewed surface vehicles.&lt;/p&gt;
 </description>
     </item>
     
