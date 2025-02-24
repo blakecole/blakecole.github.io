@@ -7,24 +7,25 @@
     <description>Authors</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 08 Aug 2022 13:09:10 -0400</lastBuildDate>
     <image>
-      <url>img/bluesea-512.png</url>
+      <url>/img/bluesea-512.png</url>
       <title>Authors</title>
       <link>/authors/</link>
     </image>
     
     <item>
-      <title>Blake Cole</title>
-      <link>/authors/blake-cole/</link>
+      <title></title>
+      <link>/authors/admin/</link>
       <pubDate>Mon, 08 Aug 2022 13:09:10 -0400</pubDate>
-      <guid>/authors/blake-cole/</guid>
-      <description></description>
+      <guid>/authors/admin/</guid>
+      <description>&lt;p&gt;Blake Cole received his Ph.D. in Mechanical Engineering from the &lt;strong&gt;Massachusetts Institute of Technology&lt;/strong&gt;.  He was part of the MIT-WHOI Joint Program, and was coadvised by Dr. Peter Traykovski and Prof. Henrik Schmidt.  While at MIT, Blake developed a first-of-its-kind design optimization methodology for aerodynamically-actuated wingsails, and validated his approach using a bespoke in-situ data aquisition rig called the &lt;em&gt;WingDAQ&lt;/em&gt;.  He also made meaningful contributions to the field of marine vehicle autonomy, including a novel instantiation of the unscented Kalman filter that is particularly well-suited to long-distance vessel tracking and collision avoidance.  Moving forward, Blake remains interested in designing, building, and testing new types of uncrewed surface vehicles and flying machines.&lt;/p&gt;
+</description>
     </item>
     
     <item>
       <title></title>
-      <link>/authors/admin/</link>
+      <link>/authors/authors/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/authors/admin/</guid>
+      <guid>/authors/authors/</guid>
       <description>&lt;p&gt;Blake Cole received his Ph.D. in Mechanical Engineering from the &lt;strong&gt;Massachusetts Institute of Technology&lt;/strong&gt;.  He was part of the MIT-WHOI Joint Program, and was coadvised by Dr. Peter Traykovski and Prof. Henrik Schmidt.  While at MIT, Blake developed a first-of-its-kind design optimization methodology for aerodynamically-actuated wingsails, and validated his approach using a bespoke in-situ data aquisition rig called the &lt;em&gt;WingDAQ&lt;/em&gt;.  He also made meaningful contributions to the field of marine vehicle autonomy, including a novel instantiation of the unscented Kalman filter that is particularly well-suited to long-distance vessel tracking and collision avoidance.  Moving forward, Blake remains interested in designing, building, and testing new types of uncrewed surface vehicles and flying machines.&lt;/p&gt;
 </description>
     </item>

@@ -2,16 +2,6 @@
 <html lang="en-us">
 
 <head>
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-237319401-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-237319401-1');
-    </script>
-
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,7 +28,8 @@
   
     
   
-  <meta name="description" content="Preamble At 5:58am on the morning of July 30th 2022, a small group of swimmers dove into the shallow waters off Woods Hole, Massachusetts, and began swimming steadily southwest toward Martha&rsquo;s Vineyard. The island was already visible in the early dawn light, though its features were obscured by mist and atmospheric scattering. Lacking terrestrial landmarks, the swimmers would need to orient themselves relative to nearby guide boats in order to make it safely to their intended destination near Lake Tashmoo.">
+  <meta name="description" content="Preamble
+At 5:58am on the morning of July 30th 2022, a small group of swimmers dove into the shallow waters off Woods Hole, Massachusetts, and began swimming steadily southwest toward Martha&rsquo;s Vineyard.  The island was already visible in the early dawn light, though its features were obscured by mist and atmospheric scattering.  Lacking terrestrial landmarks, the swimmers would need to orient themselves relative to nearby guide boats in order to make it safely to their intended destination near Lake Tashmoo.">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/1-adcirc-mv-swim/">
@@ -95,10 +86,6 @@
   
 
   
-  
-  
-
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon-32.png">
@@ -121,7 +108,8 @@
   <meta property="og:site_name" content="">
   <meta property="og:url" content="/post/1-adcirc-mv-swim/">
   <meta property="og:title" content="Leveraging the ADCIRC Model to Plan a Long-Distance, Open-Water Swim from Woods Hole to Martha&#39;s Vineyard | ">
-  <meta property="og:description" content="Preamble At 5:58am on the morning of July 30th 2022, a small group of swimmers dove into the shallow waters off Woods Hole, Massachusetts, and began swimming steadily southwest toward Martha&rsquo;s Vineyard. The island was already visible in the early dawn light, though its features were obscured by mist and atmospheric scattering. Lacking terrestrial landmarks, the swimmers would need to orient themselves relative to nearby guide boats in order to make it safely to their intended destination near Lake Tashmoo."><meta property="og:image" content="/post/1-adcirc-mv-swim/featured.jpg">
+  <meta property="og:description" content="Preamble
+At 5:58am on the morning of July 30th 2022, a small group of swimmers dove into the shallow waters off Woods Hole, Massachusetts, and began swimming steadily southwest toward Martha&rsquo;s Vineyard.  The island was already visible in the early dawn light, though its features were obscured by mist and atmospheric scattering.  Lacking terrestrial landmarks, the swimmers would need to orient themselves relative to nearby guide boats in order to make it safely to their intended destination near Lake Tashmoo."><meta property="og:image" content="/post/1-adcirc-mv-swim/featured.jpg">
   <meta property="twitter:image" content="/post/1-adcirc-mv-swim/featured.jpg"><meta property="og:locale" content="en-us">
   
     
@@ -151,6 +139,8 @@
 
 
 
+  
+
 
 <script type="application/ld+json">
 {
@@ -169,7 +159,12 @@
   "datePublished": "2022-08-08T13:09:10-04:00",
   "dateModified": "2022-08-08T13:09:10-04:00",
   
-  "description": "Preamble At 5:58am on the morning of July 30th 2022, a small group of swimmers dove into the shallow waters off Woods Hole, Massachusetts, and began swimming steadily southwest toward Martha\u0026rsquo;s Vineyard. The island was already visible in the early dawn light, though its features were obscured by mist and atmospheric scattering. Lacking terrestrial landmarks, the swimmers would need to orient themselves relative to nearby guide boats in order to make it safely to their intended destination near Lake Tashmoo."
+  "author": {
+    "@type": "Person",
+    "name": "Blake Cole"
+  },
+  
+  "description": "\u003ch2 id=\"preamble\"\u003ePreamble\u003c/h2\u003e\n\u003cp\u003eAt 5:58am on the morning of July 30th 2022, a small group of swimmers dove into the shallow waters off Woods Hole, Massachusetts, and began swimming steadily southwest toward Martha\u0026rsquo;s Vineyard.  The island was already visible in the early dawn light, though its features were obscured by mist and atmospheric scattering.  Lacking terrestrial landmarks, the swimmers would need to orient themselves relative to nearby guide boats in order to make it safely to their intended destination near Lake Tashmoo.\u003c/p\u003e"
 }
 </script>
 
@@ -468,7 +463,7 @@
 
 
 
-  <span><a href="/authors/blake-cole/">Blake Cole</a></span>
+  <span><a href="/authors/admin/">Blake Cole</a></span>
 
   </div>
   
@@ -614,7 +609,7 @@
 
 <div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 414px;">
   <div style="position: relative">
-    <img src="/post/1-adcirc-mv-swim/featured_hu54b3dc2150c925dda6e3ad278b092056_618591_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
+    <img src="/post/1-adcirc-mv-swim/featured_hu8444186487857793155.jpg" alt="" class="featured-image">
     <span class="article-header-caption">ADCIRC uses bathymetric data, in conjunction with tidally-forced boundary conditions, to predict the flow of water across the computational domain.</span>
   </div>
 </div>
@@ -711,7 +706,7 @@
 <li>Determine the tidal constituent phases corresponding to the morning of July 30th, 2022.</li>
 <li>At each timestep, sum the contribution of each tidal constituent at each spatial grid point.</li>
 </ol>
-<p>Fortunately, there is a MATLAB toolbox called <a href="https://www.eoas.ubc.ca/~rich/">T_TIDE</a>, written by Rich Pawlowicz, which facilitates the determination of the relevant tidal constituent corrections.  The implementation details of this toolbox are covered in a paper by Rich Pawlowicz, Bob Beardsley, and Steve Lentz, titled <a href="https://doi.org/10.1016/S0098-3004(02)00013-4">Classical tidal harmonic analysis including error estimates in MATLAB using T_TIDE</a>.</p>
+<p>Fortunately, there is a MATLAB toolbox called <a href="https://www.eoas.ubc.ca/~rich/">T_TIDE</a>, written by Rich Pawlowicz, which facilitates the determination of the relevant tidal constituent corrections.  The implementation details of this toolbox are covered in a paper by Rich Pawlowicz, Bob Beardsley, and Steve Lentz, titled <a href="https://doi.org/10.1016/S0098-3004%2802%2900013-4">Classical tidal harmonic analysis including error estimates in MATLAB using T_TIDE</a>.</p>
 <h3 id="swimmer-simulation">Swimmer Simulation</h3>
 <p>Once I was able to determine the time-varying vector field of current velocities in Vineyard Sound, I set about simulating the motion of a swimmer.  The basic procedure is as follows:</p>
 <ol>
@@ -719,12 +714,12 @@
 <li>Specify swimmer heading and speed-through-water.  These values can be held constant, or dynamically updated over the course of the simulation.  This permits the simulation of a swimmer slowing down due to fatigue, or following a non-constant heading.</li>
 <li>Linearly interpolate the ADCIRC current prediction to the swimmer&rsquo;s position.</li>
 <li>Compute the vector sum of the swimmer velocity and interpolated current velocity to estimate the swimmer&rsquo;s speed over ground (SOG) and course over ground (COG).</li>
-<li>Using the swimmer&rsquo;s SOG and COG, solve <a href="https://en.wikipedia.org/wiki/Vincenty's_formulae#Direct_problem">Vincenty&rsquo;s Direct Problem</a> to propagate the swimmer position along the WGS84 ellipsoid, and repeat steps 3-5 at each timestep.</li>
+<li>Using the swimmer&rsquo;s SOG and COG, solve <a href="https://en.wikipedia.org/wiki/Vincenty%27s_formulae#Direct_problem">Vincenty&rsquo;s Direct Problem</a> to propagate the swimmer position along the WGS84 ellipsoid, and repeat steps 3-5 at each timestep.</li>
 </ol>
 <h3 id="assumptions--caveats">Assumptions &amp; Caveats</h3>
 <ul>
 <li>
-<p>The model timestep was chosen to be $\Delta t = 0.1~hr = 6~min$.  This seemed like the shortest time over which a swimmer and guide boat could realistically perceive trajectory errors, and make changes to their course or speed.  Additional refinement of temporal resolution would not have been useful.  Because I was not actually solving the shallow-water equations, it was not necessary to consider the <a href="https://en.wikipedia.org/wiki/Courant-Friedrichs-Lewy_condition">Courant–Friedrichs–Lewy condition</a>.</p>
+<p>The model timestep was chosen to be $\Delta t = 0.1<del>hr = 6</del>min$.  This seemed like the shortest time over which a swimmer and guide boat could realistically perceive trajectory errors, and make changes to their course or speed.  Additional refinement of temporal resolution would not have been useful.  Because I was not actually solving the shallow-water equations, it was not necessary to consider the <a href="https://en.wikipedia.org/wiki/Courant-Friedrichs-Lewy_condition">Courant–Friedrichs–Lewy condition</a>.</p>
 </li>
 <li>
 <p>The spatial resolution of the bathymetric data is not fine enough to fully capture the shallow ridge at Middle Ground.  This will likely lead to an underestimation of the tidal current velocity in this region.</p>
@@ -1076,7 +1071,7 @@ The swim itself was fortunately quite uneventful for seven out of the ten swimme
     
     
   <a data-fancybox="gallery-mv-arrival-photos" href="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_0785.jpg" >
-  <img src="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_0785_huf5dfac9a58a55ad1d0c463b7275c1fa5_3358836_0x190_resize_q90_lanczos.jpg" alt="">
+  <img src="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_0785_hu18059592663278380215.jpg" alt="">
   </a>
   
     
@@ -1085,7 +1080,7 @@ The swim itself was fortunately quite uneventful for seven out of the ten swimme
     
     
   <a data-fancybox="gallery-mv-arrival-photos" href="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2837.jpg" >
-  <img src="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2837_hu3300058bb4a2a5e552f7205c9b2ee389_537358_0x190_resize_q90_lanczos.jpg" alt="">
+  <img src="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2837_hu98091609113864445.jpg" alt="">
   </a>
   
     
@@ -1094,7 +1089,7 @@ The swim itself was fortunately quite uneventful for seven out of the ten swimme
     
     
   <a data-fancybox="gallery-mv-arrival-photos" href="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2840.jpg" >
-  <img src="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2840_hu987a8f33aa65b81f9024d25e9ce8b513_1799047_0x190_resize_q90_lanczos.jpg" alt="">
+  <img src="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2840_hu13081809926934471417.jpg" alt="">
   </a>
   
     
@@ -1103,7 +1098,7 @@ The swim itself was fortunately quite uneventful for seven out of the ten swimme
     
     
   <a data-fancybox="gallery-mv-arrival-photos" href="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2866.jpg" >
-  <img src="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2866_hu83b2c7439796aaf949e172cb4f0e9446_3060450_0x190_resize_q90_lanczos.jpg" alt="">
+  <img src="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2866_hu10656050829207245622.jpg" alt="">
   </a>
   
 
@@ -1216,15 +1211,101 @@ But, as time drew on, the folks on the beach became increasingly concerned: thre
   
   
   
+    
+  
   
   <div class="media author-card">
     
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu6821597436754373058.jpg" alt="Avatar">
+    
 
     <div class="media-body">
-      <h5 class="card-title"><a href="/authors/blake-cole/"></a></h5>
-      
-      
+      <h5 class="card-title"><a href="/">Blake Cole</a></h5>
+      <h6 class="card-subtitle">PhD Candidate</h6>
+      <p class="card-text">My research interests include design optimization, marine vehicle autonomy, hydrodynamics, and control.</p>
       <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://twitter.com/blerkk" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://scholar.google.com" target="_blank" rel="noopener">
+              <i class="ai ai-google-scholar"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="https://github.mit.edu/blerk" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a href="/files/resume.pdf" >
+              <i class="ai ai-cv"></i>
+            </a>
+          </li>
         
       </ul>
     </div>
@@ -1377,7 +1458,11 @@ But, as time drew on, the folks on the beach became increasingly concerned: thre
   
 
   <p class="powered-by">
-    Copyright © 2024 Blake Cole.  All rights reserved.
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
 
     
     <span class="float-right" aria-hidden="true">

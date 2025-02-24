@@ -7,7 +7,7 @@
     <description>Posts</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 08 Aug 2022 13:09:10 -0400</lastBuildDate>
     <image>
-      <url>img/bluesea-512.png</url>
+      <url>/img/bluesea-512.png</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
@@ -104,7 +104,7 @@
 &lt;li&gt;Determine the tidal constituent phases corresponding to the morning of July 30th, 2022.&lt;/li&gt;
 &lt;li&gt;At each timestep, sum the contribution of each tidal constituent at each spatial grid point.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Fortunately, there is a MATLAB toolbox called &lt;a href=&#34;https://www.eoas.ubc.ca/~rich/&#34;&gt;T_TIDE&lt;/a&gt;, written by Rich Pawlowicz, which facilitates the determination of the relevant tidal constituent corrections.  The implementation details of this toolbox are covered in a paper by Rich Pawlowicz, Bob Beardsley, and Steve Lentz, titled &lt;a href=&#34;https://doi.org/10.1016/S0098-3004(02)00013-4&#34;&gt;Classical tidal harmonic analysis including error estimates in MATLAB using T_TIDE&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Fortunately, there is a MATLAB toolbox called &lt;a href=&#34;https://www.eoas.ubc.ca/~rich/&#34;&gt;T_TIDE&lt;/a&gt;, written by Rich Pawlowicz, which facilitates the determination of the relevant tidal constituent corrections.  The implementation details of this toolbox are covered in a paper by Rich Pawlowicz, Bob Beardsley, and Steve Lentz, titled &lt;a href=&#34;https://doi.org/10.1016/S0098-3004%2802%2900013-4&#34;&gt;Classical tidal harmonic analysis including error estimates in MATLAB using T_TIDE&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;swimmer-simulation&#34;&gt;Swimmer Simulation&lt;/h3&gt;
 &lt;p&gt;Once I was able to determine the time-varying vector field of current velocities in Vineyard Sound, I set about simulating the motion of a swimmer.  The basic procedure is as follows:&lt;/p&gt;
 &lt;ol&gt;
@@ -112,12 +112,12 @@
 &lt;li&gt;Specify swimmer heading and speed-through-water.  These values can be held constant, or dynamically updated over the course of the simulation.  This permits the simulation of a swimmer slowing down due to fatigue, or following a non-constant heading.&lt;/li&gt;
 &lt;li&gt;Linearly interpolate the ADCIRC current prediction to the swimmer&amp;rsquo;s position.&lt;/li&gt;
 &lt;li&gt;Compute the vector sum of the swimmer velocity and interpolated current velocity to estimate the swimmer&amp;rsquo;s speed over ground (SOG) and course over ground (COG).&lt;/li&gt;
-&lt;li&gt;Using the swimmer&amp;rsquo;s SOG and COG, solve &lt;a href=&#34;https://en.wikipedia.org/wiki/Vincenty&#39;s_formulae#Direct_problem&#34;&gt;Vincenty&amp;rsquo;s Direct Problem&lt;/a&gt; to propagate the swimmer position along the WGS84 ellipsoid, and repeat steps 3-5 at each timestep.&lt;/li&gt;
+&lt;li&gt;Using the swimmer&amp;rsquo;s SOG and COG, solve &lt;a href=&#34;https://en.wikipedia.org/wiki/Vincenty%27s_formulae#Direct_problem&#34;&gt;Vincenty&amp;rsquo;s Direct Problem&lt;/a&gt; to propagate the swimmer position along the WGS84 ellipsoid, and repeat steps 3-5 at each timestep.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;assumptions--caveats&#34;&gt;Assumptions &amp;amp; Caveats&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;The model timestep was chosen to be $\Delta t = 0.1~hr = 6~min$.  This seemed like the shortest time over which a swimmer and guide boat could realistically perceive trajectory errors, and make changes to their course or speed.  Additional refinement of temporal resolution would not have been useful.  Because I was not actually solving the shallow-water equations, it was not necessary to consider the &lt;a href=&#34;https://en.wikipedia.org/wiki/Courant-Friedrichs-Lewy_condition&#34;&gt;Courant–Friedrichs–Lewy condition&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The model timestep was chosen to be $\Delta t = 0.1&lt;del&gt;hr = 6&lt;/del&gt;min$.  This seemed like the shortest time over which a swimmer and guide boat could realistically perceive trajectory errors, and make changes to their course or speed.  Additional refinement of temporal resolution would not have been useful.  Because I was not actually solving the shallow-water equations, it was not necessary to consider the &lt;a href=&#34;https://en.wikipedia.org/wiki/Courant-Friedrichs-Lewy_condition&#34;&gt;Courant–Friedrichs–Lewy condition&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;The spatial resolution of the bathymetric data is not fine enough to fully capture the shallow ridge at Middle Ground.  This will likely lead to an underestimation of the tidal current velocity in this region.&lt;/p&gt;
@@ -469,7 +469,7 @@ The swim itself was fortunately quite uneventful for seven out of the ten swimme
     
     
   &lt;a data-fancybox=&#34;gallery-mv-arrival-photos&#34; href=&#34;/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_0785.jpg&#34; &gt;
-  &lt;img src=&#34;/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_0785_huf5dfac9a58a55ad1d0c463b7275c1fa5_3358836_0x190_resize_q90_lanczos.jpg&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_0785_hu18059592663278380215.jpg&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -478,7 +478,7 @@ The swim itself was fortunately quite uneventful for seven out of the ten swimme
     
     
   &lt;a data-fancybox=&#34;gallery-mv-arrival-photos&#34; href=&#34;/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2837.jpg&#34; &gt;
-  &lt;img src=&#34;/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2837_hu3300058bb4a2a5e552f7205c9b2ee389_537358_0x190_resize_q90_lanczos.jpg&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2837_hu98091609113864445.jpg&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -487,7 +487,7 @@ The swim itself was fortunately quite uneventful for seven out of the ten swimme
     
     
   &lt;a data-fancybox=&#34;gallery-mv-arrival-photos&#34; href=&#34;/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2840.jpg&#34; &gt;
-  &lt;img src=&#34;/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2840_hu987a8f33aa65b81f9024d25e9ce8b513_1799047_0x190_resize_q90_lanczos.jpg&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2840_hu13081809926934471417.jpg&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
     
@@ -496,7 +496,7 @@ The swim itself was fortunately quite uneventful for seven out of the ten swimme
     
     
   &lt;a data-fancybox=&#34;gallery-mv-arrival-photos&#34; href=&#34;/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2866.jpg&#34; &gt;
-  &lt;img src=&#34;/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2866_hu83b2c7439796aaf949e172cb4f0e9446_3060450_0x190_resize_q90_lanczos.jpg&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2866_hu10656050829207245622.jpg&#34; alt=&#34;&#34;&gt;
   &lt;/a&gt;
   
 
@@ -585,18 +585,18 @@ But, as time drew on, the folks on the beach became increasingly concerned: thre
       <pubDate>Mon, 08 Aug 2022 08:18:13 -0400</pubDate>
       <guid>/post/0-hello-world/</guid>
       <description>&lt;h2 id=&#34;hi-everyone&#34;&gt;Hi everyone!&lt;/h2&gt;
-&lt;p&gt;Welcome to my blog.  In case you skipped over the &lt;a href=&#34;https://www.blakecole.com/&#34;&gt;About&lt;/a&gt; section, my name is Blake, and I am currently a doctoral candidate in the &lt;a href=&#34;https://mit.whoi.edu/&#34;&gt;MIT-WHOI Joint Program&lt;/a&gt;.  My high-level research objective is to &lt;strong&gt;&lt;em&gt;improve the performance, reliability, and useability of autonomous sailing vessels&lt;/em&gt;&lt;/strong&gt;.  I am incredibly excited about this project, and will try to post incremental updates over the course of the next year.&lt;/p&gt;
-&lt;p&gt;However, the primary purpose of this blog is not to disseminate my thesis research; rather, I hope it will serve as a repository for discussions about my non-academic interests and side-projects.  I will focus mostly on the projects and experiences I think other people might find useful or illuminating.  Though I will do my best to make sure the information contained herein is as accurate as possible, I might make mistakes, and am counting on you (yes, &lt;em&gt;you!&lt;/em&gt;) to bring them to my attention.  I will also try to keep these posts consise, but basically anyone who has ever emailed or texted me knows that brevity is not exactly my strong suit.  There&amp;rsquo;s a lot of words out there, and I intend to use them all.&lt;/p&gt;
+&lt;p&gt;Welcome to my blog.  In case you skipped over the &lt;a href=&#34;https://www.blakecole.com/&#34;&gt;About&lt;/a&gt; section, my name is Blake, and I am currently a doctoral candidate in the &lt;a href=&#34;https://mit.whoi.edu/&#34;&gt;MIT-WHOI Joint Program&lt;/a&gt;.  My high-level research objective is to &lt;strong&gt;&lt;em&gt;improve the performance, reliability, and usability of autonomous sailing vessels&lt;/em&gt;&lt;/strong&gt;.  I am incredibly excited about this project, and will try to post incremental updates over the course of the next year.&lt;/p&gt;
+&lt;p&gt;However, the primary purpose of this blog is not to disseminate my thesis research; rather, I hope it will serve as a repository for discussions about my non-academic interests and side-projects.  I will focus mostly on the projects and experiences I think other people might find useful or illuminating.  Though I will do my best to make sure the information contained herein is as accurate as possible, I might make mistakes, and am counting on you (yes, &lt;em&gt;you!&lt;/em&gt;) to bring them to my attention.  I will also try to keep these posts concise, but basically anyone who has ever emailed or texted me knows that brevity is not exactly my strong suit.  There&amp;rsquo;s a lot of words out there, and I intend to use them all.&lt;/p&gt;
 &lt;h2 id=&#34;autobiographical-miscellany&#34;&gt;Autobiographical Miscellany&lt;/h2&gt;
 &lt;p&gt;In 2013, long before I began learning how to build ocean robots, I wanted to learn how to build ocean &lt;em&gt;models&lt;/em&gt;.  As a lifelong surfer, I had relied extensively upon wave forecasts to determine where and when I should try to hop in the ocean, but I had no clue how these forecasts worked.  I found the prospect of using math to predict the movement of seemingly chaotic ocean waves and currents completely fascinating.  At some point, I watched the video &lt;a href=&#34;https://www.youtube.com/watch?v=MX5cKoOm6Pk&#34;&gt;Waves Across The Pacific&lt;/a&gt;, a short documentary describing the pioneering ocean wave research conducted by Walter Munk in the 1950s, and I was hooked!&lt;/p&gt;
 
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;https://www.youtube.com/embed/MX5cKoOm6Pk&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/MX5cKoOm6Pk?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
 
 &lt;p&gt;&lt;br&gt;
-Soon thereafter, I began working toward a masters degree at the &lt;a href=&#34;https://cee.stanford.edu/research-impact/labs-centers/bob-and-norma-street-environmental-fluid-mechanics-laboratory-efml&#34;&gt;Stanford Environental Fluid Mechanics Laboratory&lt;/a&gt;, under the tutelage of professors &lt;a href=&#34;https://cee.stanford.edu/people/stephen-monismith&#34;&gt;Stephen Monismith&lt;/a&gt; and &lt;a href=&#34;https://cee.stanford.edu/people/oliver-fringer&#34;&gt;Oliver Fringer&lt;/a&gt;.  These two teachers really changed my life, and taught me a useful framework for approaching numerical integration problems, and &amp;ldquo;life problems&amp;rdquo; more broadly.  I owe them both a debt of gratitude.&lt;/p&gt;
-&lt;p&gt;Reaching back even further into the distant past, long before I learned how to build ocean models, I was basically just a kid who loved the ocean.  I grew up in Redondo Beach, CA, and spent most of my teenage years at the beach surfing, swimming, and playing volleyball.  It wasn&amp;rsquo;t until my 3rd year at UCSD that I began seriously considering the possibility of pursuing ocean science as a carreer.&lt;/p&gt;
+Soon thereafter, I began working toward a masters degree at the &lt;a href=&#34;https://cee.stanford.edu/research-impact/labs-centers/bob-and-norma-street-environmental-fluid-mechanics-laboratory-efml&#34;&gt;Stanford Environmental Fluid Mechanics Laboratory&lt;/a&gt;, under the tutelage of professors &lt;a href=&#34;https://cee.stanford.edu/people/stephen-monismith&#34;&gt;Stephen Monismith&lt;/a&gt; and &lt;a href=&#34;https://cee.stanford.edu/people/oliver-fringer&#34;&gt;Oliver Fringer&lt;/a&gt;.  These two teachers really changed my life, and taught me a useful framework for approaching numerical integration problems, and &amp;ldquo;life problems&amp;rdquo; more broadly.  I owe them both a debt of gratitude.&lt;/p&gt;
+&lt;p&gt;Reaching back even further into the distant past, long before I learned how to build ocean models, I was basically just a kid who loved the ocean.  I grew up in Redondo Beach, CA, and spent most of my teenage years at the beach surfing, swimming, and playing volleyball.  It wasn&amp;rsquo;t until my 3rd year at UCSD that I began seriously considering the possibility of pursuing ocean science as a career.&lt;/p&gt;
 &lt;p&gt;Fortunately, the good folks at the Scripps Institution of Oceanography&amp;rsquo;s (SIO) &lt;a href=&#34;https://coralreefecology.ucsd.edu/about/&#34;&gt;Coral Reef Ecology Lab&lt;/a&gt; gave me a shot, and let me volunteer a few hours per week in the lab.  My PI, &lt;a href=&#34;https://coralreefecology.ucsd.edu/people/#Smith&#34;&gt;Jen Smith&lt;/a&gt;, sponsored my AAUS Scientific Diving training, which was one of the most fun, memorable experiences of my entire life.  I fell in love with the culture, people, and mission at SIO, and my experience there set me off on an ocean science career trajectory upon which I remain comfortably situated today!&lt;/p&gt;
 &lt;p&gt;Anyway, I hope you enjoy the blog.  Please feel free to contact me with any feedback or questions.&lt;/p&gt;
 
