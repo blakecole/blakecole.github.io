@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MOOS-IvP | Blake Cole</title>
+    <link>https://www.blakecole.com/tags/moos-ivp/</link>
+      <atom:link href="https://www.blakecole.com/tags/moos-ivp/index.xml" rel="self" type="application/rss+xml" />
+    <description>MOOS-IvP</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Mon, 20 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.blakecole.com/media/icon_hu1996601983673389572.png</url>
+      <title>MOOS-IvP</title>
+      <link>https://www.blakecole.com/tags/moos-ivp/</link>
+    </image>
+    
+    <item>
+      <title>Surface vessel collision avoidance in MOOS-IvP using a geodetic unscented Kalman filter</title>
+      <link>https://www.blakecole.com/publication/conf-ieee-oceans-2021/</link>
+      <pubDate>Mon, 20 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.blakecole.com/publication/conf-ieee-oceans-2021/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

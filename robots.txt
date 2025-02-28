@@ -1,0 +1,96 @@
+User-agent: *
+
+Disallow: 
+
+Disallow: 
+
+Disallow: /event/example/
+
+Disallow: /event/
+
+Disallow: /projects/
+
+Disallow: /post/
+
+Disallow: /tags/hugo/
+
+Disallow: /tags/markdown/
+
+Disallow: /project/pandas/
+
+Disallow: /project/
+
+Disallow: /project/pytorch/
+
+Disallow: /project/scikit/
+
+Disallow: /tags/
+
+Disallow: /tags/wowchemy/
+
+Disallow: /experience/
+
+Disallow: /tags/javascript/
+
+Disallow: /teaching/js/
+
+Disallow: /teaching/python/
+
+Disallow: /tags/python/
+
+Disallow: /teaching/
+
+Disallow: /
+
+Disallow: /post/1-adcirc-mv-swim/
+
+Disallow: /post/0-hello-world/
+
+Disallow: /publication_types/article-journal/
+
+Disallow: 
+
+Disallow: /tags/geodetic/
+
+Disallow: /publication_types/
+
+Disallow: /publication/
+
+Disallow: /tags/target-tracking/
+
+Disallow: /tags/unscented-kalman-filter/
+
+Disallow: /publication/jrnl-aor-2022/
+
+Disallow: /tags/autonomy/
+
+Disallow: /tags/collision-avoidance/
+
+Disallow: 
+
+Disallow: /tags/moos-ivp/
+
+Disallow: /publication_types/paper-conference/
+
+Disallow: 
+
+Disallow: /publication/conf-ieee-oceans-2021/
+
+Disallow: /publication/jrnl-jgr-earth-surface-2017/
+
+Disallow: /tags/climate-change/
+
+Disallow: /tags/cosmos-coast/
+
+Disallow: /tags/data-assimilation/
+
+Disallow: /tags/extended-kalman-filter/
+
+Disallow: 
+
+Disallow: 
+
+Disallow: 
+
+Disallow: 
+

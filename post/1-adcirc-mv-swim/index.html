@@ -1,0 +1,2359 @@
+<!doctype html>
+<!-- This site was created with Hugo Blox. https://hugoblox.com -->
+<!-- Last Published: February 28, 2025 --><html lang="en-us" dir="ltr"
+      data-wc-theme-default="dark">
+  
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="Hugo Blox Builder 0.3.2" />
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Blake Cole" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Preamble At 5:58am on the morning of July 30th 2022, a small group of swimmers dove into the shallow waters off Woods Hole, Massachusetts, and began swimming steadily southwest toward Martha&rsquo;s Vineyard. The island was already visible in the early dawn light, though its features were obscured by mist and atmospheric scattering. Lacking terrestrial landmarks, the swimmers would need to orient themselves relative to nearby guide boats in order to make it safely to their intended destination near Lake Tashmoo.
+" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://www.blakecole.com/post/1-adcirc-mv-swim/" />
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="/css/themes/blue.min.css" />
+  
+
+  
+  
+    
+    <link href="/dist/wc.min.05570f1deda629d4e2d77f73534a63aa04471f012db6735c59424372f467db85.css" rel="stylesheet" />
+  
+
+  
+  
+  
+    <link href="/css/community-hugo-blox.min.4859612ff25db84453d3edef0eb29acbfae9f3fcb50a4286cf05609e8102c3b0.css" rel="stylesheet" />
+  
+
+  
+    
+    <link href="/css/custom.min.9cd5c240f0ee8098d413b90b9e1a3485e3e932ec53de59bb78fc3c497b1aa53e.css" rel="stylesheet" />
+  
+
+  <script>
+     
+    window.hbb = {
+       defaultTheme: document.documentElement.dataset.wcThemeDefault,
+       setDarkTheme: () => {
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = "dark";
+      },
+       setLightTheme: () => {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.colorScheme = "light";
+      }
+    }
+
+    console.debug(`Default Hugo Blox Builder theme is ${window.hbb.defaultTheme}`);
+
+    if ("wc-color-theme" in localStorage) {
+      localStorage.getItem("wc-color-theme") === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+    } else {
+      window.hbb.defaultTheme === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      if (window.hbb.defaultTheme === "system") {
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      }
+    }
+  </script>
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      
+      let checkboxes = document.querySelectorAll('li input[type=\'checkbox\'][disabled]');
+      checkboxes.forEach(e => {
+        e.parentElement.parentElement.classList.add('task-list');
+      });
+
+      
+      const liNodes = document.querySelectorAll('.task-list li');
+      liNodes.forEach(nodes => {
+        let textNodes = Array.from(nodes.childNodes).filter(node => node.nodeType === 3 && node.textContent.trim().length > 1);
+        if (textNodes.length > 0) {
+          const span = document.createElement('label');
+          textNodes[0].after(span);  
+          span.appendChild(nodes.querySelector('input[type=\'checkbox\']'));
+          span.appendChild(textNodes[0]);
+        }
+      });
+    });
+  </script>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  <link rel="icon" type="image/png" href="/media/icon_hu14732858049342914994.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu14233579803890805510.png" />
+
+  <link rel="canonical" href="https://www.blakecole.com/post/1-adcirc-mv-swim/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+    <meta property="twitter:site" content="@blerkk" />
+    <meta property="twitter:creator" content="@blerkk" />
+  
+  <meta property="og:site_name" content="Blake Cole" />
+  <meta property="og:url" content="https://www.blakecole.com/post/1-adcirc-mv-swim/" />
+  <meta property="og:title" content="Leveraging the ADCIRC Model to Plan a Long-Distance, Open-Water Swim from Woods Hole to Martha&#39;s Vineyard | Blake Cole" />
+  <meta property="og:description" content="Preamble
+At 5:58am on the morning of July 30th 2022, a small group of swimmers dove into the shallow waters off Woods Hole, Massachusetts, and began swimming steadily southwest toward Martha&rsquo;s Vineyard.  The island was already visible in the early dawn light, though its features were obscured by mist and atmospheric scattering.  Lacking terrestrial landmarks, the swimmers would need to orient themselves relative to nearby guide boats in order to make it safely to their intended destination near Lake Tashmoo." /><meta property="og:image" content="https://www.blakecole.com/post/1-adcirc-mv-swim/featured.jpg" />
+    <meta property="twitter:image" content="https://www.blakecole.com/post/1-adcirc-mv-swim/featured.jpg" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2022-08-08T13:09:10-04:00"
+      />
+    
+    <meta property="article:modified_time" content="2022-08-08T13:09:10-04:00">
+  
+
+  
+
+
+
+  
+
+
+  <title>Leveraging the ADCIRC Model to Plan a Long-Distance, Open-Water Swim from Woods Hole to Martha&#39;s Vineyard | Blake Cole</title>
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <style>
+    @font-face {
+      font-family: 'Inter var';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(/dist/font/Inter.var.woff2) format(woff2);
+    }
+  </style>
+
+  
+
+  
+  
+
+
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/dist/pagefind/pagefind-ui.be766eb419317a14ec769d216e9779bfe8f3737c80e780f4ba0dafb57a41a482.css" integrity="sha256-vnZutBkxehTsdp0hbpd5v&#43;jzc3yA54D0ug2vtXpBpII=" />
+
+
+<script src="/dist/pagefind/pagefind-ui.87693d7c6f2b3b347ce359d0ede762c033419f0a32b22ce508c335a81d841f1b.js" integrity="sha256-h2k9fG8rOzR841nQ7ediwDNBnwoysizlCMM1qB2EHxs="></script>
+
+
+<script>window.hbb.pagefind = {"baseUrl":"/"};</script>
+
+<style>
+  html.dark {
+    --pagefind-ui-primary: #eeeeee;
+    --pagefind-ui-text: #eeeeee;
+    --pagefind-ui-background: #152028;
+    --pagefind-ui-border: #152028;
+    --pagefind-ui-tag: #152028;
+  }
+
+   
+  .search-close > svg {
+    height: calc(64px * var(--pagefind-ui-scale));
+    width: calc(64px * var(--pagefind-ui-scale));
+  }
+</style>
+
+<script>
+  
+  let searchWrapper = null;
+
+  window.addEventListener('DOMContentLoaded', (event) => {
+    
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      baseUrl: window.hbb.pagefind.baseUrl,
+      bundlePath: window.hbb.pagefind.baseUrl + "pagefind/",
+    });
+
+    
+    searchWrapper = document.getElementById('search-wrapper');
+
+    
+    let triggers = document.querySelectorAll('[data-search-toggle]');
+    triggers.forEach(trigger =>
+      trigger.addEventListener('click', handleSearchToggle)
+    );
+  });
+
+  function handleSearchToggle(event) {
+    if (!searchWrapper) return;
+
+    const isHidden = searchWrapper.classList.contains('hidden');
+    searchWrapper.classList.toggle('hidden');
+    document.body.style.overflow = isHidden ? 'hidden' : '';
+
+    const searchInput = searchWrapper.querySelector("input");
+    if (searchInput) {
+      searchInput.value = "";
+      searchInput.focus();
+    }
+
+    if (!searchWrapper.classList.contains('hidden')) {
+      let clearTrigger = document.querySelector('.pagefind-ui__search-clear');
+
+      if (clearTrigger && !clearTrigger.hasAttribute('listenerOnClick')) {
+        clearTrigger.setAttribute('listenerOnClick', 'true');
+
+        clearTrigger.addEventListener('click', () => {
+          searchInput.focus();
+        });
+      }
+    }
+  }
+
+  
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && searchWrapper && !searchWrapper.classList.contains('hidden')) {
+      searchWrapper.classList.add('hidden');
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="/dist/lib/katex/katex.min.505d5f829022bb7b4f24dfee0aa1141cd7bba67afe411d1240335f820960b5c3.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr&#43;QR0SQDNfgglgtcM=" />
+  
+  
+  <script defer src="/dist/lib/katex/katex.min.dc84b296ec3e884de093158f760fd9d45b6c7abe58b5381557f4e138f46a58ae.js" integrity="sha256-3ISyluw&#43;iE3gkxWPdg/Z1Ftser5YtTgVV/ThOPRqWK4="></script>
+  
+  
+  
+  
+  <script defer src="/js/katex-renderer.6579ec9683211cfb952064aedf3a3baea5eeb17a061775b32b70917474637c80.js" integrity="sha256-ZXnsloMhHPuVIGSu3zo7rqXusXoGF3WzK3CRdHRjfIA="></script>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  <script
+    defer
+    src="/js/hugo-blox-en.min.47736f84e20cae1bb2224dc4605239689e913811575e32b5f86a700ee9d6529d.js"
+    integrity="sha256-R3NvhOIMrhuyIk3EYFI5aJ6ROBFXXjK1&#43;GpwDunWUp0="
+  ></script>
+
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+      
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+      
+    
+  
+
+
+
+
+</head>
+
+  <body class="dark:bg-hb-dark dark:text-white page-wrapper" id="top">
+    <div id="page-bg"></div>
+    <div class="page-header sticky top-0 z-30">
+      
+      
+      
+        
+        
+        
+          <header id="site-header" class="header">
+  <nav class="navbar px-3 flex justify-left">
+    <div class="order-0 h-100">
+      
+      <a class="navbar-brand" href="/" title="Blake Cole">
+        Blake Cole
+      </a>
+    </div>
+    
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-3 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1">
+      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+        <title>Open Menu</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+        <title>Close Menu</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    
+
+    
+    
+    <ul
+      id="nav-menu"
+      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8 justify-left
+      ">
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/"
+        >About</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#experience"
+        >Experience</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#publications"
+        >Publications</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#post"
+        >Blog</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#contact"
+        >Contact</a
+        >
+      </li>
+      
+      
+      
+    </ul>
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+
+      
+      
+      
+      <button
+        aria-label="toggle search"
+        class="text-black hover:text-primary  inline-block px-3 text-xl dark:text-white"
+        data-search-toggle>
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512" fill="currentColor"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+      </button>
+      
+
+      
+      
+      <div class="px-3 text-black hover:text-primary-700 dark:text-white dark:hover:text-primary-300
+            [&.active]:font-bold [&.active]:text-black/90 dark:[&.active]:text-white">
+        <button class="theme-toggle mt-1" accesskey="t" title="appearance">
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class="dark:hidden">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class=" dark:block [&:not(dark)]:hidden">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+      
+
+      
+      
+
+      
+      
+    </div>
+  </nav>
+</header>
+
+<div
+  id="search-wrapper"
+  class="hidden fixed inset-0 z-50 bg-white dark:bg-gray-900 flex flex-col overflow-hidden"
+>
+  <div class="flex justify-end p-3">
+    <button
+      aria-label="search"
+      class="search-close text-black hover:text-primary dark:text-white"
+      data-search-toggle
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="search" class="flex-1 overflow-y-auto p-3">
+    
+  </div>
+</div>
+
+
+        
+      
+    </div>
+    <div class="page-body  my-10">
+      
+
+
+
+
+
+<div class="mx-auto flex max-w-screen-xl">
+  
+
+
+
+<aside class="hb-sidebar-container max-lg:[transform:translate3d(0,-100%,0)] lg:hidden xl:block">
+  
+  <div class="px-4 pt-4 lg:hidden">
+    
+    
+  </div>
+  <div class="hb-scrollbar lg:h-[calc(100vh-var(--navbar-height))]">
+    <ul class="flex flex-col gap-1 lg:hidden">
+      
+      
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/"
+    
+  >Recent &amp; Upcoming Talks
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/example/"
+    
+  >Example Talk
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/projects/"
+    
+  >Blog
+    </a></li>
+        <li class="open"><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/"
+    
+  >Blog
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col open"><a
+    class="hb-sidebar-custom-link
+      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
+    href="/post/1-adcirc-mv-swim/"
+    
+  >Leveraging the ADCIRC Model to Plan a Long-Distance, Open-Water Swim from Woods Hole to Martha&#39;s Vineyard
+    </a>
+  
+    <ul class="hb-sidebar-mobile-toc"><li>
+              <a
+                href="#preamble"
+                class="hb-docs-link"
+              >Preamble</a>
+            </li>
+          <li>
+              <a
+                href="#the-chappy-swimmers"
+                class="hb-docs-link"
+              >The Chappy Swimmers</a>
+            </li>
+          <li>
+              <a
+                href="#the-plan"
+                class="hb-docs-link"
+              >The Plan</a>
+            </li>
+          <li>
+              <a
+                href="#the-adcirc-hydrodynamic-model"
+                class="hb-docs-link"
+              >The ADCIRC Hydrodynamic Model</a>
+            </li>
+          <li>
+              <a
+                href="#the-swim"
+                class="hb-docs-link"
+              >The Swim</a>
+            </li>
+          <li>
+              <a
+                href="#conclusion"
+                class="hb-docs-link"
+              >Conclusion</a>
+            </li>
+          <li>
+              <a
+                href="#conclusion-ii"
+                class="hb-docs-link"
+              >Conclusion II</a>
+            </li>
+          </ul>
+  
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/0-hello-world/"
+    
+  >Hello World &#43; Bio
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/"
+    
+  >Projects
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/pandas/"
+    
+  >Pandas
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/pytorch/"
+    
+  >PyTorch
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/scikit/"
+    
+  >scikit-learn
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/experience/"
+    
+  >Experience
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/"
+    
+  >Teaching
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/js/"
+    
+  >Learn JavaScript
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/python/"
+    
+  >Learn Python
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/"
+    
+  >Publications
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/jrnl-aor-2022/"
+    
+  >Unscented Kalman filter for long-distance vessel tracking in geodetic coordinates
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/conf-ieee-oceans-2021/"
+    
+  >Surface vessel collision avoidance in MOOS-IvP using a geodetic unscented Kalman filter
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/jrnl-jgr-earth-surface-2017/"
+    
+  >A model integrating longshore and cross-shore processes for predicting long-term shoreline response to climate change
+    </a>
+              
+            </li></ul>
+      </div></li>
+    </ul>
+
+    <div class="max-xl:hidden h-0 w-64 shrink-0"></div></div>
+
+</aside>
+  
+
+<nav class="hb-toc order-last hidden w-64 shrink-0 xl:block print:hidden px-4" aria-label="table of contents">
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div class="hb-scrollbar text-sm [hyphens:auto] sticky top-16 overflow-y-auto pr-4 pt-6 max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] -mr-4 rtl:-ml-4"><p class="mb-4 font-semibold tracking-tight">On this page</p><ul>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#preamble">Preamble</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#the-chappy-swimmers">The Chappy Swimmers</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#the-plan">The Plan</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#the-adcirc-hydrodynamic-model">The ADCIRC Hydrodynamic Model</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#background">Background</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#tidal-constituent-corrections">Tidal Constituent Corrections</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#swimmer-simulation">Swimmer Simulation</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#assumptions--caveats">Assumptions &amp; Caveats</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#results">Results:</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#constant-145circ-heading">Constant  Heading</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#forced-transit-through-predefined-waypoints">Forced Transit Through Predefined Waypoints</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#hybrid-strategy-transit-1st-waypoint--constant-140circ-heading">Hybrid Strategy: Transit 1st Waypoint &#43; Constant  Heading</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-12 rtl:pr-12 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#600a-departure--140100yd-pace">6:00a Departure | 1:40/100yd Pace</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-12 rtl:pr-12 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#600a-departure--200100yd-pace">6:00a Departure | 2:00/100yd Pace</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-12 rtl:pr-12 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#618a-departure--140100yd-pace">6:18a Departure | 1:40/100yd Pace</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-12 rtl:pr-12 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#618a-departure--200100yd-pace">6:18a Departure | 2:00/100yd Pace</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-12 rtl:pr-12 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#630a-departure--140100yd-pace">6:30a Departure | 1:40/100yd Pace</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-12 rtl:pr-12 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#630a-departure--200100yd-pace">6:30a Departure | 2:00/100yd Pace</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#key-findings">Key Findings</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#the-swim">The Swim</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#conclusion">Conclusion</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#hypothesis-1-insufficient-bathymetric-resolution">Hypothesis #1: Insufficient Bathymetric Resolution</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#hypothesis-2-heading-error">Hypothesis #2: Heading Error</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#hypothesis-3-systemic-model-error">Hypothesis #3: Systemic Model Error</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#conclusion-ii">Conclusion II</a>
+      </li></ul>
+
+  
+  
+    
+    
+  
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  </nav>
+
+
+  <article class="w-full break-words flex min-h-[calc(100vh-var(--navbar-height))] min-w-0 justify-center pb-8 pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+    <main class="w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
+
+      
+
+      <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Leveraging the ADCIRC Model to Plan a Long-Distance, Open-Water Swim from Woods Hole to Martha&#39;s Vineyard</h1>
+
+      <div class="mt-4 mb-16">
+      <div class="text-gray-500 dark:text-gray-300 text-sm flex items-center flex-wrap gap-y-2"><span class="mr-1">Aug 8, 2022</span><span class="mx-1">·</span>
+        
+          
+          
+          <div class="group inline-flex items-center text-current gap-x-1.5 mx-1">
+            
+            
+            <img src="/author/blake-cole/avatar_hu2599833077708766737.webp" alt="Blake Cole" class="inline-block h-4 w-4 rounded-full border border-current" loading="lazy" />
+            
+            <div >Blake Cole</div>
+          </div>
+          
+        
+
+        
+        <span class="mx-1">·</span>
+        <span class="mx-1">
+          23 min read
+        </span>
+        
+        </div>
+
+        <div class="mt-3">
+          
+
+
+
+
+
+        </div>
+      </div>
+
+
+
+      
+      
+      
+      
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="article-header article-container featured-image-wrapper mt-4 mb-16" style="max-width: 720px; max-height: 414px;">
+        <div style="position: relative">
+          <img src="/post/1-adcirc-mv-swim/featured_hu9051947897034051110.webp" width="720" height="414" alt="" class="featured-image">
+          <span class="article-header-caption">ADCIRC uses bathymetric data, in conjunction with tidally-forced boundary conditions, to predict the flow of water across the computational domain.</span>
+        </div>
+      </div>
+      
+
+      
+      
+
+      <div class="prose prose-slate lg:prose-md dark:prose-invert">
+        <h2 id="preamble">Preamble</h2>
+<p>At 5:58am on the morning of July 30th 2022, a small group of swimmers dove into the shallow waters off Woods Hole, Massachusetts, and began swimming steadily southwest toward Martha&rsquo;s Vineyard.  The island was already visible in the early dawn light, though its features were obscured by mist and atmospheric scattering.  Lacking terrestrial landmarks, the swimmers would need to orient themselves relative to nearby guide boats in order to make it safely to their intended destination near Lake Tashmoo.</p>
+<p>As the crow flies, Martha&rsquo;s Vineyard and Woods Hole are separated by only 3.3 miles; however, the sea separating these two landmasses is infamously tempestuous, with currents routinely exceeding 5 knots.  These strong currents are driven in large part by tidal resonance in the Gulf of Maine, which produces an isotropic pressure gradient between Cape Cod Bay and Buzzards Bay.</p>
+<p>A strong ocean swimmer can maintain a speed of 1.4-1.8 knots in ideal conditions, and sprint at 3 knots for a brief time.  Thus, it is vitally important that one seeking to swim across Vineyard Sound make a careful accounting of its powerful tidal currents.</p>
+<h2 id="the-chappy-swimmers">The Chappy Swimmers</h2>
+<p>The genesis of this swim can be traced back to an eclectic cadre of goggle-clad humans who call themselves the Chappy Swimmers.  This Falmouth-based swim club is a tight-knit group of long-time friends who range in age from 30 to 70, and simply enjoy swimming together.  <a href="https://www.usgs.gov/staff-profiles/rob-thieler" target="_blank" rel="noopener">Rob Thieler</a>, the Center Director of the USGS Woods Hole Coastal and Marine Science Center, manages the Chappy Swimmers group text, and is responsible for informing members where they will be swimming each weekend.  Rob is one of the eldest members (by seniority, not age), and has been swimming with the group since its founding in the early 1990&rsquo;s.  Anyone can become a Chappy Swimmer &ndash; the group is exceedingly friendly and inclusive.  One of the regulars named John McCadam started training with the group a few years ago, despite having no formal swim background.  He now swims every day, even in the icy winter months when water temperatures routinely dip into the low-30s.</p>
+
+
+
+
+
+
+<figure>
+
+  <a data-fancybox="" href="chappy-swimmers.jpg" data-caption="A small subset of the Chappy Swimmers, featuring: Rick Rheinhardt, Blake Cole, Kalina Grabb, Meri Gilson, Mary Kaminski, and Moira McCollough. [Photo: Chuck Redington]">
+
+<img src="chappy-swimmers.jpg" alt="A small subset of the Chappy Swimmers, featuring: Rick Rheinhardt, Blake Cole, Kalina Grabb, Meri Gilson, Mary Kaminski, and Moira McCollough. [Photo: Chuck Redington]" >
+</a>
+
+
+<figcaption data-pre="Figure " data-post=":" >
+  
+  <p>
+    A small subset of the Chappy Swimmers, featuring: Rick Rheinhardt, Blake Cole, Kalina Grabb, Meri Gilson, Mary Kaminski, and Moira McCollough. [Photo: Chuck Redington]
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>Shockingly, John isn&rsquo;t the only blue-lipped masochist in the group.  Of the thirty or so active summer members, approximately five are gnarly enough to swim through the winter.  Sometimes, on cold, dark January mornings, veterans of the group would speak in hushed tones about the time &ndash; nearly a decade ago &ndash; when they successfully swam across Vineyard Sound.  These stories piqued the interest of recent MIT-WHOI Joint Program graduate Dr. Kalina Grabb.</p>
+<p>Kalina is an intrepid human.  She played collegiate waterpolo, and still carries herself with a subtle alertness that surely grew out of the need to remain calm while grim-faced aquatic gladiators tried to drown her in various chlorinated cerulean coliseums nationwide.  However, this quiet intensity is often obscured by her overwhelming geniality.  Kalina is one of the nicest people you will ever meet, and has an infectious laugh.  She seems capable of weathering life&rsquo;s most brutal tempests with a smile and a wave.  So, in Dr. Grabb, we have a highly-competent swimmer who is both endlessly game for adventure, and affable enough to coax the fence-sitters (including yours truly) into action.</p>
+<h2 id="the-plan">The Plan</h2>
+<p>In March 2022, a small group of the winter Chappy Swimmers, including John McCadam, Meri Gilson, Mary Kaminski, and Kalina Grabb were out freezing their asses off somewhere in Buzzards Bay when Kalina popped the question: &ldquo;So who wants to swim to Martha&rsquo;s Vineyard this year?&rdquo;  A salvo of enthusiastic replies filled the chilly Spring air, echoing off the rows of vacant summer mansions which line the waterfront.  A plan had been hatched.</p>
+<p>However, a plan once hatched, must be nurtured until it is able to sustain itself, and take flight.  Months passed, and the grand plan remained anaemic.  In early July 2022, Kalina texted the Chappy Swimmers to alert them that she was serious about the idea, and would be starting a new group chat with anyone interested in participating.  One man was particularly interested, and would prove himself invaluable in the planning process: Rick Rheinhardt.</p>
+<p>Rick grabbed the ball from Kalina and ran with it.</p>
+<p>On July 14th, 2022, Rick sent out a detailed email covering swim logistics, safety concerns, ferry schedules, support boat logistics, and swim date proposals.  Long before most people had even seriously considered how messy and complicated this swim could get, Rick had basically already hashed the whole thing out.  An excerpt from his email read:</p>
+<blockquote>
+<p>I have been looking at tides and currents in the 2022 Eldridge Tide and Pilot Book&hellip; Current information is critical to us because we cannot outswim them, but we can use them to our advantage&hellip; There is a countercurrent off MV from Norton Pt to Vineyard Haven that floods NE while the main part of the Vineyard [Sound] ebbs southwest. If we catch [the current] off Norton Point, it will assist us the last 1/3rd of our swim.  If we catch it too far North, it could pull us into Vineyard Haven Bay and into the ferry route&hellip;. <strong>I think we should plan to leave on an ebb tide in Vineyard Sound before slack water at dead low tide.  Riding an ebb tide will take us southward and away from most boat and ferry traffic.</strong></p>
+</blockquote>
+
+
+
+
+
+
+<figure>
+
+  <a data-fancybox="" href="eldridge.jpg" data-caption="An excerpt from the 2022 Eldridge Tide and Pilot Book, which was used to determine an ideal time to start the swim: a neap ebb tide, just before slack. [Photo: Rick Rheinhardt]">
+
+<img src="eldridge.jpg" alt="An excerpt from the 2022 Eldridge Tide and Pilot Book, which was used to determine an ideal time to start the swim: a neap ebb tide, just before slack. [Photo: Rick Rheinhardt]" >
+</a>
+
+
+<figcaption data-pre="Figure " data-post=":" >
+  
+  <p>
+    An excerpt from the 2022 Eldridge Tide and Pilot Book, which was used to determine an ideal time to start the swim: a neap ebb tide, just before slack. [Photo: Rick Rheinhardt]
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>Rick&rsquo;s analysis tipped the scales: for the first time, it felt real, and everyone started to believe that the swim was actually going to happen.  A target date had been selected: July 30th, 2022.  This gave the swimmers two weeks to start conditioning, and to recruit additional support vessels.</p>
+<h2 id="the-adcirc-hydrodynamic-model">The ADCIRC Hydrodynamic Model</h2>
+<h3 id="background">Background</h3>
+<p>On July 20th, I mentioned  to my advisor, <a href="https://www2.whoi.edu/staff/ptraykovski/" target="_blank" rel="noopener">Dr. Peter Traykovski</a>, that I intended to swim to Martha&rsquo;s Vineyard in a few week&rsquo;s time.  Peter is an avid waterman himself, and immediately took a keen interest in the endeavor.  Understanding the severity of the tidal currents in Vineyard Sound, he inquired as to whether we had developed a detailed plan to contend with these currents.  I told Peter that we had narrowed down a set of prospective dates using the 2022 Eldgride Tide and Pilot Book, but still needed a specific swim plan for the day (i.e. a set of waypoints or headings to follow).</p>
+<p>Mostly for fun, he suggested I pursue  a technical approach, using the output of a tidally-driven, depth-averaged hydrodynamic model of Vineyard Sound to assess the effect of current action on a simulated swimmer.  So, I got to work!</p>
+<p>In 2012, the National Oceanic and Atmospheric Administration (NOAA) used a shallow-water equation solver called the <a href="https://adcirc.org/" target="_blank" rel="noopener">ADvanced CIRCulation model (ADCIRC)</a> to create a vertical datum transformation tool called <a href="https://vdatum.noaa.gov/download/publications/TM_NOS_CS_31_FY13_04_Yang_VDatumGulfOfMaine.pdf" target="_blank" rel="noopener">VDATUM</a>.  The purpose of this tool was to facilitate the comparison of water level measurements made with respect to different vertical references.  For instance, some measurements might be made with respect to a tidal datum, like Mean Lower Low Water (MLLW), while others might be made with respect to an orthometric datum, like <a href="https://en.wikipedia.org/wiki/North_American_Vertical_Datum_of_1988" target="_blank" rel="noopener">NAVD88</a>.  In order to create this tool, NOAA needed to simulate sea surface levels under tidal action, from the Gulf of Maine south to Rhode Island, over a span of 55 days.  For the purposes of this project, NOAA was not particularly interested in tidal currents.</p>
+<p>However, the shallow-water equations require the simultaneous computation of water level <em>and</em> flow velocity at each computational grid point.  It is useful to look at a simplified 1D form of the shallow-water equations (sometimes called the <em>Saint-Venant equations</em>) to illustrate this point:</p>
+$$\frac{\partial A}{\partial t} + \frac{\partial \left(Au \right)}{\partial x} = 0$$$$\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + g\frac{\partial \zeta}{\partial x} = - \frac{P}{A} \frac{\tau}{\rho}$$<p>The first of these equations can be recognized as the continuity equation.  Together, these two equations describe one-dimensional flow of an incompressible fluid in an open channel, where $x$ is the spatial coordinate running along the length of the channel; $t$ represents time; $A(x,t)$ is the cross-sectional area of the flow; $\tau(x,t)$ is the shear stress along the wetted perimeter $P(x,t)$; $u(x,t)$ is the <strong>flow velocity</strong> along the channel axis; and $\zeta(x,t)$ is the <strong>free surface elevation</strong>.</p>
+<p>This is probably a good time to mention that the good folks at NOAA and the USGS really did all the heavy lifting here (specifically, Zizang Yang, Edward P. Myers, Erin Twomey, and Rich Signell): they generated the computational grid; synthesized bathymetric data from multiple sources; interpolated this data onto the computational grid; and used nine tidal constituents to drive the free surface elevation at the model boundaries.  ADCIRC handled the rest, predicting the free surface elevation and flow velocity at each grid point over a 55 day span in 2012.  The model output was then compared to field measurements to assess its accuracy, and determine appropriate empirical corrections.  These corrections were then incorporated back into the ADCIRC model, further enhancing the accuracy of its predictions.</p>
+<h3 id="tidal-constituent-corrections">Tidal Constituent Corrections</h3>
+<p>Due to the fact that tidally-driven currents are periodic in nature, I was able to adapt these ADCIRC model results from 2012 to my application in 2022.</p>
+<p>To do this, I needed to complete the following steps:</p>
+<ol>
+<li>Apply a phase offset (<em>nodal phase modulation</em>) and amplitude correction to each tidal constituent.  These corrections are dependent on date and latitude.</li>
+<li>Determine the tidal constituent phases corresponding to the morning of July 30th, 2022.</li>
+<li>At each timestep, sum the contribution of each tidal constituent at each spatial grid point.</li>
+</ol>
+<p>Fortunately, there is a MATLAB toolbox called <a href="https://www.eoas.ubc.ca/~rich/" target="_blank" rel="noopener">T_TIDE</a>, written by Rich Pawlowicz, which facilitates the determination of the relevant tidal constituent corrections.  The implementation details of this toolbox are covered in a paper by Rich Pawlowicz, Bob Beardsley, and Steve Lentz, titled <a href="https://doi.org/10.1016/S0098-3004%2802%2900013-4" target="_blank" rel="noopener">Classical tidal harmonic analysis including error estimates in MATLAB using T_TIDE</a>.</p>
+<h3 id="swimmer-simulation">Swimmer Simulation</h3>
+<p>Once I was able to determine the time-varying vector field of current velocities in Vineyard Sound, I set about simulating the motion of a swimmer.  The basic procedure is as follows:</p>
+<ol>
+<li>Specify an initial swimmer position in geodetic coordinates (i.e. latitude and longitude).</li>
+<li>Specify swimmer heading and speed-through-water.  These values can be held constant, or dynamically updated over the course of the simulation.  This permits the simulation of a swimmer slowing down due to fatigue, or following a non-constant heading.</li>
+<li>Linearly interpolate the ADCIRC current prediction to the swimmer&rsquo;s position.</li>
+<li>Compute the vector sum of the swimmer velocity and interpolated current velocity to estimate the swimmer&rsquo;s speed over ground (SOG) and course over ground (COG).</li>
+<li>Using the swimmer&rsquo;s SOG and COG, solve <a href="https://en.wikipedia.org/wiki/Vincenty%27s_formulae#Direct_problem" target="_blank" rel="noopener">Vincenty&rsquo;s Direct Problem</a> to propagate the swimmer position along the WGS84 ellipsoid, and repeat steps 3-5 at each timestep.</li>
+</ol>
+<h3 id="assumptions--caveats">Assumptions &amp; Caveats</h3>
+<ul>
+<li>
+<p>The model timestep was chosen to be $\Delta t = 0.1~hr = 6~min$.  This seemed like the shortest time over which a swimmer and guide boat could realistically perceive trajectory errors, and make changes to their course or speed.  Additional refinement of temporal resolution would not have been useful.  Because I was not actually solving the shallow-water equations, it was not necessary to consider the <a href="https://en.wikipedia.org/wiki/Courant-Friedrichs-Lewy_condition" target="_blank" rel="noopener">Courant–Friedrichs–Lewy condition</a>.</p>
+</li>
+<li>
+<p>The spatial resolution of the bathymetric data is not fine enough to fully capture the shallow ridge at Middle Ground.  This will likely lead to an underestimation of the tidal current velocity in this region.</p>
+</li>
+<li>
+<p>The ADCIRC model is depth-averaged.  This assumption is only valid in circumstances when the horizontal flow velocity is much faster than the vertical flow velocity.  This assumption may not hold true in parts of the computational domain where there are rapid changes in bathymetry (like Middle Ground).</p>
+</li>
+<li>
+<p>The Vineyard Sound specific ADCIRC model is driven by barotropic pressure gradients only (i.e. surface set up resulting from tidal action).  It does not account for wind shear, nor wave-induced radiation stresses.</p>
+</li>
+</ul>
+<h3 id="results">Results:</h3>
+<p>Well, if you made it this far, congratulations!  Your reward is a handful of colorful plots and animations.</p>
+<p>Recall that the point of all of this was to determine a feasible, effective swim strategy.  The three key components of a simple swim strategy include:</p>
+<ul>
+<li>Departure time</li>
+<li>Swimmer speed</li>
+<li>Swimmer heading</li>
+</ul>
+<p>Ideally, the modified ADCIRC model would tell us something about how a change in any of these variables changes the fundamental characteristics of the swim, which can be described by:</p>
+<ul>
+<li>Swim duration</li>
+<li>Swim distance</li>
+<li>Arrival destination</li>
+</ul>
+<p>Of these three characteristics, <em>swim duration</em> is most important.  Assuming the swimmer is providing an approximately constant level of effort, swim duration serves as a good heuristic for <em>fatigue</em>.  Conversely, <em>swim distance</em> is less informative.  Consider the boundary cases:</p>
+<ul>
+<li>A swimmer opposing a strong current will move nowhere, and nevertheless become completely exhausted after some time.</li>
+<li>A swimmer aided by a strong current could exert no effort, and nevertheless arrive at their destination some arbitrary distance downstream.</li>
+</ul>
+<p>For this particular swim, <em>arrival destination</em> is also quite important, as it serves as a heuristic for risk of encountering ferry traffic.  Finishing too far to the northeast, near West Chop Point, places one in a strong northeasterly current, directly adjacent to ferry traffic entering and exiting Vineyard Haven Bay.  In this region, a small miscalculation could have catastrophic effects.</p>
+<p>One final caveat before I dive into the simulation results:</p>
+<blockquote>
+<p><strong>Nothing about what I have done here is &ldquo;optimal.&rdquo;</strong></p>
+</blockquote>
+<p>I simply poked around the parameter space (departure time, swimmer speed, and swimmer heading) until I found trajectories that seemed &ldquo;reasonable.&rdquo;  Specifically, I looked for paths that were:</p>
+<ul>
+<li><strong>Safe.</strong>  The route must avoid ferry traffic.</li>
+<li><strong>Efficient.</strong>  The swimmer should not fight the current (mathematically speaking, the dot product of swimmer velocity and current velocity should never be negative).</li>
+<li><strong>Timely.</strong>  The swim must be completed in less than 2.5 hours to avoid the strongest currents.</li>
+<li><strong>Practical.</strong>  The swimmer must arrive near the intended destination.</li>
+</ul>
+<p>This struck me as a justifiable approach, given that the parameter search space was actually quite small; indeed, Rick had already identified a relatively compact range of feasible departure dates and times.  Further, we already knew where we wanted to start (Nobska Beach), where we wanted to finish (Lake Tashmoo), and how fast we could swim.  The only remaining unknowns were the exact departure time, swim pace, and where we should point our bodies!</p>
+<p>Here is a quick summary of the simulations I ran:</p>
+<ul>
+<li>Constant $145^{\circ}$ Heading</li>
+<li>Forced Transit Through Predefined Waypoints</li>
+<li>Hybrid Strategy: Transit 1st Waypoint + Constant $140^{\circ}$ Heading
+<ul>
+<li>Departure Times
+<ul>
+<li>6:00a</li>
+<li>6:18a</li>
+<li>6:30a</li>
+</ul>
+</li>
+<li>Swim Pace
+<ul>
+<li>1:40/100yd</li>
+<li>2:00/100yd</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Finally, here are a few notes on the animations that might be useful:</p>
+<ul>
+<li>The <strong>colormap</strong> corresponds to the magnitude of current velocity.</li>
+<li>The <strong>black arrows</strong> indicate the direction of the current velocity.</li>
+<li>The <strong>black lines</strong> are rhumb lines between predefined waypoints, represented by <strong>black circles</strong>.</li>
+<li>The <strong>dashed magenta line</strong> represents the swimmer trajectory at each time step.</li>
+<li>The <strong>magenta arrow</strong> indicates the swimmer Course Over Ground (COG): this is the net direction of swimmer movement, including current action.</li>
+<li>The <strong>dark purple arrow</strong> indicates swimmer heading: this is the direction in which the swimmer is producing thrust.  Note that when the current goes completely slack, the <strong>magenta arrow</strong> and <strong>dark purple arrow</strong> become perfectly aligned.</li>
+</ul>
+<p>Enjoy!</p>
+<h4 id="constant-145circ-heading">Constant $145^{\circ}$ Heading</h4>
+<p>
+
+
+<div style="padding:79.41% 0 0 0;position:relative;">
+  <iframe src="https://player.vimeo.com/video/737636662?h=5d956f822a&portrait=0#t=0m0s" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+  </iframe>
+</div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<br>
+Initially, I was curious to see whether there existed a <strong>simple, constant-heading solution</strong> that would deliver a swimmer moving at a constant pace to a desired destination (e.g. Lake Tashmoo).  So I ran a few simulations, and found that a swimmer departing Nobska Beach at 6:18a on the morning of July 30th, 2022, who was able to hold an average 2:00/100yd pace, and a constant heading of 145 degrees, would have quite a pleasant, efficient swim.  At nearly all points throughout the journey, the swimmer&rsquo;s thrust vector is either perpendicular to, or somewhat aligned with, the tidal current vector (non-negative scalar product).  This is ideal, as it means the swimmer is not &ldquo;fighting&rdquo; the current.</p>
+<p>Unfortunately, this strategy places the swimmer directly in the Steamship Authority&rsquo;s ferry lane for much of the journey across Vineyard Sound.  Efficiency is a delightful thing, but truly nothing compares to the joy and satisfaction one feels when not being run over by a 154 ft ferry capable of producing 9,400 HP thrust, moving at 35 knots.  We needed a different strategy.</p>
+<h4 id="forced-transit-through-predefined-waypoints">Forced Transit Through Predefined Waypoints</h4>
+<p>
+
+
+<div style="padding:79.41% 0 0 0;position:relative;">
+  <iframe src="https://player.vimeo.com/video/737637856?h=5d956f822a&portrait=0#t=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+  </iframe>
+</div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<br>
+Realizing that we needed to first cut southwest across the ferry lane (again, to avoid being run over), before pivoting southeast toward Martha&rsquo;s Vineyard, we selected a set of waypoints that seemed like they would deliver us to our destination.  Unfortunately, this resulted in a much longer swim, both in terms of distance and time.  Following this strategy would also force the swimmers to fight hard against the current over Middle Ground, toward the end of the swim.  Back to the drawing board!</p>
+<h4 id="hybrid-strategy-transit-1st-waypoint--constant-140circ-heading">Hybrid Strategy: Transit 1st Waypoint + Constant $140^{\circ}$ Heading</h4>
+<p>At this point, we had a fairly good idea of what we needed to do: we would transit across the ferry channel to the first waypoint as quickly as possible, and then pursue a constant-heading trajectory thereafter.  So, I ran a 2D matrix of experiments, varying both <em>departure time</em> and <em>swim pace.</em></p>
+<p>I was quite concerned about the impact of fatigue.  If a swimmer started slowing down somewhere in Vineyard Haven, I wanted to know exactly what might happen to them.  This is why I ran both &ldquo;fast pace&rdquo; simulations (1:40/100yd) and &ldquo;slow pace&rdquo; (2:00/100yd) simulations.</p>
+<p>As for the departure times, well&hellip; the Chappy Swimmers are a lovely group, but also a loquacious one!  We like to chat before swims.  Accordingly, I thought it might also be useful to assess the impact of punctuality (Incidentally, I think everyone was so nervous, we ended up departing Nobska Beach a minute or two early).</p>
+<p>Here are the resulting six simulations:</p>
+<h5 id="600a-departure--140100yd-pace">6:00a Departure | 1:40/100yd Pace</h5>
+<p>
+
+
+<div style="padding:79.41% 0 0 0;position:relative;">
+  <iframe src="https://player.vimeo.com/video/737626385?h=5d956f822a&portrait=0#t=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+  </iframe>
+</div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+
+
+
+
+
+
+<figure>
+
+  <a data-fancybox="" href="dpt_600_hyb_140_fast_speed.png" data-caption="Swimmer speed over ground (SOG) and speed-through-water.  Ideally, SOG should always be greater than or equal to speed-through-water, indicating that the swimmer is never fighting the current.  In math terms, this efficiency condition is achieved by ensuring that that the dot product of swimmer velocity and current velocity is non-negative at each timestep.  For this particular simulation, the efficiency condition is met at every time except $t=1.4~hr$.">
+
+<img src="dpt_600_hyb_140_fast_speed.png" alt="Swimmer speed over ground (SOG) and speed-through-water.  Ideally, SOG should always be greater than or equal to speed-through-water, indicating that the swimmer is never fighting the current.  In math terms, this *efficiency condition* is achieved by ensuring that that the dot product of swimmer velocity and current velocity is non-negative at each timestep.  For this particular simulation, the efficiency condition is met at every time except $t=1.4~hr$." >
+</a>
+
+
+<figcaption data-pre="Figure " data-post=":" >
+  
+  <p>
+    Swimmer speed over ground (SOG) and speed-through-water.  Ideally, SOG should always be greater than or equal to speed-through-water, indicating that the swimmer is never fighting the current.  In math terms, this <em>efficiency condition</em> is achieved by ensuring that that the dot product of swimmer velocity and current velocity is non-negative at each timestep.  For this particular simulation, the efficiency condition is met at every time except $t=1.4~hr$.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+</p>
+<h5 id="600a-departure--200100yd-pace">6:00a Departure | 2:00/100yd Pace</h5>
+
+
+
+<div style="padding:79.41% 0 0 0;position:relative;">
+  <iframe src="https://player.vimeo.com/video/737624155?h=5d956f822a&portrait=0#t=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+  </iframe>
+</div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<h5 id="618a-departure--140100yd-pace">6:18a Departure | 1:40/100yd Pace</h5>
+
+
+
+<div style="padding:79.41% 0 0 0;position:relative;">
+  <iframe src="https://player.vimeo.com/video/737634275?h=5d956f822a&portrait=0#t=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+  </iframe>
+</div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<h5 id="618a-departure--200100yd-pace">6:18a Departure | 2:00/100yd Pace</h5>
+
+
+
+<div style="padding:79.41% 0 0 0;position:relative;">
+  <iframe src="https://player.vimeo.com/video/737629259?h=5d956f822a&portrait=0#t=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+  </iframe>
+</div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<h5 id="630a-departure--140100yd-pace">6:30a Departure | 1:40/100yd Pace</h5>
+
+
+
+<div style="padding:79.41% 0 0 0;position:relative;">
+  <iframe src="https://player.vimeo.com/video/737635428?h=5d956f822a&portrait=0#t=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+  </iframe>
+</div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<h5 id="630a-departure--200100yd-pace">6:30a Departure | 2:00/100yd Pace</h5>
+
+
+
+<div style="padding:79.41% 0 0 0;position:relative;">
+  <iframe src="https://player.vimeo.com/video/737634948?h=5d956f822a&portrait=0#t=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+  </iframe>
+</div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<h3 id="key-findings">Key Findings</h3>
+<p>I think more than anything, these simulations really underscore the extent to which <strong>timing is crucial</strong> for this swim.</p>
+<p>While the tide is ebbing, a strong southwesterly current develops in Vineyard Sound, reaching maximum speeds of 3-5 knots, depending on the lunar cycle.  The current then goes slack for a mere twenty minutes, reverses, and begins ripping back toward the northeast.  In shallow regions of Vineyard Sound, like Middle Ground, the large volume of water being funneled between Woods Hole and Martha&rsquo;s Vineyard can produce extremely fast local current velocities, and even hydraulic jumps.  Obviously, these are not ideal conditions for swimming!</p>
+<p>These simulations point to a useful conclusion: it is far safer and more conservative to err on the side of departing too early, as opposed to departing too late.  Departing at 6:00a, instead of 6:30a, may result in a slightly longer swim, but also gives swimmers more wiggle room to contend with exhaustion, cramps, heading misalignment, and various other unforeseen circumstances.</p>
+<p>I think simply visualizing how strong the currents can become (2-3 times our sustainable swim speed) gave the Chappy Swimmers a healthy dose of humility.  These simulations helped us understand that we might have be a bit flexible if things didn’t go exactly as planned.</p>
+<h2 id="the-swim">The Swim</h2>
+<p>The morning of the swim arrived, and the damp July air was buzzing with electricity.  Amplified laughter betrayed jittery nerves.  Beaming smiles were interspersed with heavy sighs and idle stretching.  The mood felt vaguely schizophrenic and unstable.  Each of the ten swimmers would occasionally gaze off into the distance, somehow both focused and vacant, contemplating the crucible that lay ahead.</p>
+
+
+
+
+
+
+<figure>
+
+  <a data-fancybox="" href="blake-friends.jpg" data-caption="Chappy Swimmers Blake Cole, Kalina Grabb, Karen Mareb, and Dina Pandya; along with support boat crew Kelsey Chenoweth and Captain Eve Cinquino. [Photo: Wan Grabb]">
+
+<img src="blake-friends.jpg" alt="Chappy Swimmers Blake Cole, Kalina Grabb, Karen Mareb, and Dina Pandya; along with support boat crew Kelsey Chenoweth and Captain Eve Cinquino. [Photo: Wan Grabb]" >
+</a>
+
+
+<figcaption data-pre="Figure " data-post=":" >
+  
+  <p>
+    Chappy Swimmers Blake Cole, Kalina Grabb, Karen Mareb, and Dina Pandya; along with support boat crew Kelsey Chenoweth and Captain Eve Cinquino. [Photo: Wan Grabb]
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>Fortunately, the conditions looked ideal: there was very little wind, and no waves.  The sea surface was smooth and glassy.  The water visibility was at least 15-20 feet, and the water temperature was in the neighborhood of $70^{\circ}F$.  It seemed as though the sea gods had smiled upon our venture, and might see fit to deliver us safely across Vineyard Sound.  Only time would tell.</p>
+<p>At 5:58a, it was time to go: each swimmer took a final deep breath, their body weight still supported by the silty sands off Nobska Beach, and dove into the water.  They would touch neither solid ground nor boat for the following two hours.</p>
+<p>
+
+
+<div style="padding:79.41% 0 0 0;position:relative;">
+  <iframe src="https://player.vimeo.com/video/737940441?h=5d956f822a&portrait=0#t=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+  </iframe>
+</div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<br>
+The swim itself was fortunately quite uneventful for seven out of the ten swimmers.  We settled into a rhythm, and enjoyed the strange solace of gliding through an unfamiliar aquamarine world.  Some of us tripped out a little.  John mentioned that he felt like he was flying through the Cosmos, and my inner dialogue was dominated by a scientifically apocryphal mantra about humans being the descendants of whales.</p>
+
+
+
+
+
+
+<figure>
+
+  <a data-fancybox="" href="placental-mammal.png" data-caption="The ancestral placental mammal. [Credit: Carl Buell]">
+
+<img src="placental-mammal.png" alt="The ancestral placental mammal. [Credit: Carl Buell]" >
+</a>
+
+
+<figcaption data-pre="Figure " data-post=":" >
+  
+  <p>
+    The ancestral placental mammal. [Credit: Carl Buell]
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>[Incidentally, I looked this up afterwards, an apparently we <a href="https://www.nationalgeographic.com/science/article/meet-the-ancestor-of-every-human-bat-cat-whale-and-mouse" target="_blank" rel="noopener">share a common ancestor</a>, but are in no way the descendants of whales.  Disappointing.]</p>
+<p>The conditions remained favorable throughout the swim, and just after 8:00a, John McCadam arrived on the shore of Martha&rsquo;s Vineyard, just north of Lake Tashmoo.  Blake Cole, Meri Gilson, and Kalina Grabb made landfall a few minutes later, followed by Megan Titas, Dina Pandya, and Karen Mareb.  Karen had endured a painful leg cramp during the last half of the swim. Nevertheless, she managed to persevere through the discomfort, and finished the swim using only her arms.</p>
+
+
+
+
+
+
+<figure>
+
+  <a data-fancybox="" href="garmin-path.jpg" data-caption="Swim path traversed by Blake Cole, recording using a Garmin Fenix 7S smartwatch, with multi-band GNSS mode enabled.">
+
+<img src="garmin-path.jpg" alt="Swim path traversed by Blake Cole, recording using a Garmin Fenix 7S smartwatch, with multi-band GNSS mode enabled." >
+</a>
+
+
+<figcaption data-pre="Figure " data-post=":" >
+  
+  <p>
+    Swim path traversed by Blake Cole, recording using a Garmin Fenix 7S smartwatch, with multi-band GNSS mode enabled.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>One of the most memorable aspects of the swim was the kindness bestowed upon us by the homeowners upon whose beach we landed.  Having various preconceptions about Martha&rsquo;s Vineyard and its mostly-too-affluent inhabitants, I had been expecting a chilly reception, at best.  I couldn&rsquo;t have been more wrong.  The husband and wife who greeted us were named Tom and Casey, and they were the sweetest people ever: not only did they congratulate us, but they offered us hot coffee, water, and snacks.  It was such a touching human moment, and meant so much to me!</p>
+<p>
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="gallery">
+
+  
+  
+  
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-arrival-photos" href="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_0785.jpg" >
+  <img src="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_0785_hu16474345169473458023.jpg" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-arrival-photos" href="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2837.jpg" >
+  <img src="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2837_hu3955482489327644120.jpg" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-arrival-photos" href="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2840.jpg" >
+  <img src="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2840_hu16084673096549929061.jpg" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-arrival-photos" href="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2866.jpg" >
+  <img src="/post/1-adcirc-mv-swim/mv-arrival-photos/IMG_2866_hu13230170306248124198.jpg" alt="">
+  </a>
+  
+
+  
+</div>
+<br>
+But, as time drew on, the folks on the beach became increasingly concerned: three of the original ten swimmers remained unaccounted for, and could not be seen from the shore.  Gazing out toward Middle Ground, small ripples had begun forming on the sea surface, indicating that the dangerous northeasterly current we had hoped to avoid was now rapidly building in strength.</p>
+<p>At 8:30a, Rick Rheinhardt, Mary Kaminski, and Moira McCullough had still yet to arrive.  With each passing minute, we understood that the northeasterly current would continue accelerating, eventually reaching a top speed of over 5 knots.  Eventually, around 8:50a, reports came trickling in from support boats: the three swimmers had indeed become stuck in the current, and were still fighting hard to make it to shore.  Fortunately, over an hour after John McCadam&rsquo;s toes touched sand on Martha&rsquo;s Vineyard, we received word that the trio had made landfall near the tip of West Chop Point, after swimming over 5.3 miles.  This was an incredible feat of strength and determination &ndash; kudos to Rick, Mary, and Moira!</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>So, the question remains: <strong>how effectively did the ADCIRC model predict our swim trajectory?</strong></p>
+<p>Unfortunately, we will never know.</p>
+<p>This question cannot be answered, because there is no way to determine the <em>control effort</em> exerted by each swimmer; in other words, while a GNSS track can tell us a swimmer&rsquo;s speed over ground (SOG), course over ground (COG), and true position over time, these metrics do not distinguish the influence of the current from the effort exerted by the swimmer.  This disambiguation would require knowledge of the swimmer&rsquo;s <em>true heading</em> and <em>speed-through-water</em> during the swim.</p>
+<p>Nevertheless, we can make a few observations, based on the data we were able to collect.</p>
+
+
+
+
+
+
+<figure>
+
+  <a data-fancybox="" href="sim-vs-reality.png" data-caption="True swim path compared to simulations produced using the ADCRIC hydrodynamic model.">
+
+<img src="sim-vs-reality.png" alt="True swim path compared to simulations produced using the ADCRIC hydrodynamic model." >
+</a>
+
+
+<figcaption data-pre="Figure " data-post=":" >
+  
+  <p>
+    True swim path compared to simulations produced using the ADCRIC hydrodynamic model.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>Immediately, it is clear that the path predicted by the ADCIRC simulations is significantly different than the true path traversed by the first wave of swimmers on July 30th, 2022.  Why might this be?  What might have led to this inconsistency?  Allow me to propose a few hypotheses:</p>
+<h4 id="hypothesis-1-insufficient-bathymetric-resolution">Hypothesis #1: Insufficient Bathymetric Resolution</h4>
+<p>As mentioned earlier in the <strong>Assumptions &amp; Caveats</strong> section, it is possible that the coarse spatial resolution of the ADCIRC bathymetric data led to an underestimation of the northeasterly current that develops over Middle Ground during the initial stages of a flood tide.  If this were true, the swimmers would be swept substantially farther northeast than the model predicted.</p>
+<p>The data supports this hypothesis.  One need only to observe the radical easterly deviation in trajectory that occurs just as the swimmers are passing over Middle Ground.  Assuming the swimmers maintained a constant speed-through-water and heading, this deviation can almost certainly be attributed, at least in part, to stronger than expected tidal currents over Middle Ground.</p>
+<h4 id="hypothesis-2-heading-error">Hypothesis #2: Heading Error</h4>
+<p>It is possible that the swimmers were not, in fact, following a $140^{\circ}$ heading.  Lacking terrestrial landmarks, the &ldquo;objective function&rdquo; of each swimmer was simply to swim directly toward their guide vessel at all times.  Thus, in order for the swimmers to remain on a fixed $140^{\circ}$ heading, their respective guide boats needed to maintain a $320^{\circ}$ relative bearing to them (say, using a handheld compass).  This is a subtle, but crucial distinction: it is not the instantaneous heading of the guide vessel that matters, but rather, its <strong>relative bearing</strong> to the swimmers, measured with respect to true north.  The figure below illustrates a situation in which a guide vessel is pursuing a $140^{\circ}$ heading, but is nevertheless inadvertently leading its swimmers in a more easterly direction.</p>
+
+
+
+
+
+
+<figure>
+
+  <a data-fancybox="" href="relative-bearing-both.png" data-caption="Depiction of the importance of relative bearing between swimmer and support vessel.  In the left-hand figure, the support vessel is following a $140^{\circ}$ heading; however, the relative bearing from the swimmer to the support vessel is $120^{\circ}$ ($-20^{\circ}$ offset from the target heading of $140^{\circ}$).  In this scenario, the support vessel should observe that its relative bearing to the swimmer is $300^{\circ}$ instead of $320^{\circ}$, and begin clocking around to the right until the relative bearing reads $320^{\circ}$.  This corrected configuration is displayed in the right-hand figure.  Note that the instantaneous, absolute vessel heading is not relevant; only its bearing relative to the swimmers matters.">
+
+<img src="relative-bearing-both.png" alt="Depiction of the importance of **relative bearing** between swimmer and support vessel.  In the left-hand figure, the support vessel is following a $140^{\circ}$ heading; however, the relative bearing from the swimmer to the support vessel is $120^{\circ}$ ($-20^{\circ}$ offset from the target heading of $140^{\circ}$).  In this scenario, the support vessel should observe that its relative bearing to the swimmer is $300^{\circ}$ instead of $320^{\circ}$, and begin clocking around to the right until the relative bearing reads $320^{\circ}$.  This corrected configuration is displayed in the right-hand figure.  Note that the instantaneous, absolute vessel heading is not relevant; only its bearing relative to the swimmers matters." >
+</a>
+
+
+<figcaption data-pre="Figure " data-post=":" >
+  
+  <p>
+    Depiction of the importance of <strong>relative bearing</strong> between swimmer and support vessel.  In the left-hand figure, the support vessel is following a $140^{\circ}$ heading; however, the relative bearing from the swimmer to the support vessel is $120^{\circ}$ ($-20^{\circ}$ offset from the target heading of $140^{\circ}$).  In this scenario, the support vessel should observe that its relative bearing to the swimmer is $300^{\circ}$ instead of $320^{\circ}$, and begin clocking around to the right until the relative bearing reads $320^{\circ}$.  This corrected configuration is displayed in the right-hand figure.  Note that the instantaneous, absolute vessel heading is not relevant; only its bearing relative to the swimmers matters.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>Rob Thieler suggested another potential source of heading error: magnetic declination.  Indeed, in the vicinity of Vineyard Sound, there is a $14^{\circ}~13'~W$ separation between magnetic north (the direction a magnetized compass needle points) and true north (the direction along a meridian, towards the geographic North Pole).  Many marine GNSS systems account for magnetic declination by default, but some do not, and it isn&rsquo;t always easy to determine the active compass mode.  Following a 140 degree bearing relative to magnetic north would place us on a 126 degree bearing relative to true north.</p>
+<p>It is also possible that heading errors were simply inevitable.  A propeller-driven ocean vessel moving at slow speeds (1-2 knots) has virtually no heading control authority.  Holding a fixed bearing, relative to a moving school of swimmers, while contending with currents, wind, and waves is no easy feat.  We were incredibly fortunate to have such experienced support vessel captains, and literally could not have completed this swim without them.  A massive thank you to our captains: Chuck Redington, Robert Catilano, Eve Cinquino, Christie Hegermiller, and Kevin Manganini.</p>
+<p>Regardless of the source of the heading error, the data seems to suggest that there was <em>some</em> heading error, for some reason.  Roughly halfway through the swim, we took a brief break to hydrate.  This break can be seen in the data, when the black line jogs slightly southwest.  This small hop seems to suggest that the dominant tidal current in Vineyard Sound was still driving us southwest at this time, and had not yet gone slack.  Yet, our course over ground appears to be approximately 140 degrees; this would imply that our instantaneous heading must have been something less than 140 degrees (more easterly) at this time.</p>
+<p>In some ways, this is the most obvious explanation: pursuing a more easterly course will result in a path that is shifted in an easterly direction.</p>
+<h4 id="hypothesis-3-systemic-model-error">Hypothesis #3: Systemic Model Error</h4>
+<p>Finally, it is possible that the ADCIRC model is simply inaccurate, or lacks sufficient spatial or temporal resolution.  However, given the strong consistency of its predictions with the Eldridge Tide and Pilot Book, I think this is unlikely.</p>
+<h2 id="conclusion-ii">Conclusion II</h2>
+<p>Well, that just about wraps up this longer-than-expected blog post.  If you have any questions, concerns, or alternative hypotheses regarding the discrepancy between the true swimmer trajectory and the path predicted by ADCIRC, please reach out.  Thanks for reading.</p>
+
+      </div>
+
+      
+  <time class="mt-12 mb-8 block text-xs text-gray-500 ltr:text-right rtl:text-left dark:text-gray-400" datetime="2022-08-08T13:09:10.000Z">
+    <span>Last updated on</span>
+    Aug 8, 2022</time>
+
+      <div class="container mx-auto prose prose-slate lg:prose-xl dark:prose-invert mt-5">
+        
+        <div class="max-w-prose print:hidden">
+  
+  
+
+  
+
+
+  
+<section class="flex flex-row flex-wrap justify-center pt-4 text-xl">
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F1-adcirc-mv-swim%2F&amp;text=Leveraging&#43;the&#43;ADCIRC&#43;Model&#43;to&#43;Plan&#43;a&#43;Long-Distance%2C&#43;Open-Water&#43;Swim&#43;from&#43;Woods&#43;Hole&#43;to&#43;Martha%27s&#43;Vineyard"
+    title="X"
+    aria-label="X"
+    id="share-link-x"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F1-adcirc-mv-swim%2F&amp;t=Leveraging&#43;the&#43;ADCIRC&#43;Model&#43;to&#43;Plan&#43;a&#43;Long-Distance%2C&#43;Open-Water&#43;Swim&#43;from&#43;Woods&#43;Hole&#43;to&#43;Martha%27s&#43;Vineyard"
+    title="Facebook"
+    aria-label="Facebook"
+    id="share-link-facebook"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+    
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="mailto:?subject=Leveraging%20the%20ADCIRC%20Model%20to%20Plan%20a%20Long-Distance%2C%20Open-Water%20Swim%20from%20Woods%20Hole%20to%20Martha%27s%20Vineyard&amp;body=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F1-adcirc-mv-swim%2F"
+    title="Email"
+    aria-label="Email"
+    id="share-link-email"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M16.5 12a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F1-adcirc-mv-swim%2F&amp;title=Leveraging&#43;the&#43;ADCIRC&#43;Model&#43;to&#43;Plan&#43;a&#43;Long-Distance%2C&#43;Open-Water&#43;Swim&#43;from&#43;Woods&#43;Hole&#43;to&#43;Martha%27s&#43;Vineyard"
+    title="LinkedIn"
+    aria-label="LinkedIn"
+    id="share-link-linkedin"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="whatsapp://send?text=Leveraging&#43;the&#43;ADCIRC&#43;Model&#43;to&#43;Plan&#43;a&#43;Long-Distance%2C&#43;Open-Water&#43;Swim&#43;from&#43;Woods&#43;Hole&#43;to&#43;Martha%27s&#43;Vineyard%20https%3A%2F%2Fwww.blakecole.com%2Fpost%2F1-adcirc-mv-swim%2F"
+    title="WhatsApp"
+    aria-label="WhatsApp"
+    id="share-link-whatsapp"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="m187.58 144.84-32-16a8 8 0 0 0-8 .5l-14.69 9.8a40.55 40.55 0 0 1-16-16l9.8-14.69a8 8 0 0 0 .5-8l-16-32A8 8 0 0 0 104 64a40 40 0 0 0-40 40 88.1 88.1 0 0 0 88 88 40 40 0 0 0 40-40 8 8 0 0 0-4.42-7.16ZM152 176a72.08 72.08 0 0 1-72-72 24 24 0 0 1 19.29-23.54l11.48 23L101 118a8 8 0 0 0-.73 7.51 56.47 56.47 0 0 0 30.15 30.15A8 8 0 0 0 138 155l14.61-9.74 23 11.48A24 24 0 0 1 152 176ZM128 24a104 104 0 0 0-91.82 152.88l-11.35 34.05a16 16 0 0 0 20.24 20.24l34.05-11.35A104 104 0 1 0 128 24Zm0 192a87.87 87.87 0 0 1-44.06-11.81 8 8 0 0 0-6.54-.67L40 216l12.47-37.4a8 8 0 0 0-.66-6.54A88 88 0 1 1 128 216Z"/></svg>
+  </a>
+  
+</section>
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+
+<div class="flex pt-12 pb-4">
+  
+  
+  <img
+    class="mr-4 h-24 w-24 rounded-full"
+    width="96"
+    height="96"
+    alt="Blake Cole"
+  src="/author/blake-cole/avatar_hu14049081479133909916.jpg"
+  loading="lazy"
+  />
+  
+  <div class="place-self-center">
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Authors
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      <a href="https://www.blakecole.com/" class="no-underline">
+      Blake Cole
+      </a>
+    </div>
+
+    
+    <div class="text-sm font-bold text-neutral-700 dark:text-neutral-300">
+    Mechanical Engineer
+    </div>
+    
+
+
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-300">Problem Solver. Ocean Creature.</div>
+    
+
+    <div class="text-2xl sm:text-lg pt-1">
+
+      
+<div class="flex flex-wrap text-neutral-500 dark:text-neutral-300">
+  
+    
+    
+    
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="mailto:blake@seawing.io"
+      
+      aria-label="At-Symbol"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M16.5 12a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://x.com/blerkk"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/X"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://github.com/blakecole"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/Github"
+    ><svg style="height: 1em;" fill="currentColor" viewBox="3 3 18 18"><path d="M12 3C7.0275 3 3 7.12937 3 12.2276C3 16.3109 5.57625 19.7597 9.15374 20.9824C9.60374 21.0631 9.77249 20.7863 9.77249 20.5441C9.77249 20.3249 9.76125 19.5982 9.76125 18.8254C7.5 19.2522 6.915 18.2602 6.735 17.7412C6.63375 17.4759 6.19499 16.6569 5.8125 16.4378C5.4975 16.2647 5.0475 15.838 5.80124 15.8264C6.51 15.8149 7.01625 16.4954 7.18499 16.7723C7.99499 18.1679 9.28875 17.7758 9.80625 17.5335C9.885 16.9337 10.1212 16.53 10.38 16.2993C8.3775 16.0687 6.285 15.2728 6.285 11.7432C6.285 10.7397 6.63375 9.9092 7.20749 9.26326C7.1175 9.03257 6.8025 8.08674 7.2975 6.81794C7.2975 6.81794 8.05125 6.57571 9.77249 7.76377C10.4925 7.55615 11.2575 7.45234 12.0225 7.45234C12.7875 7.45234 13.5525 7.55615 14.2725 7.76377C15.9937 6.56418 16.7475 6.81794 16.7475 6.81794C17.2424 8.08674 16.9275 9.03257 16.8375 9.26326C17.4113 9.9092 17.76 10.7281 17.76 11.7432C17.76 15.2843 15.6563 16.0687 13.6537 16.2993C13.98 16.5877 14.2613 17.1414 14.2613 18.0065C14.2613 19.2407 14.25 20.2326 14.25 20.5441C14.25 20.7863 14.4188 21.0746 14.8688 20.9824C16.6554 20.364 18.2079 19.1866 19.3078 17.6162C20.4077 16.0457 20.9995 14.1611 21 12.2276C21 7.12937 16.9725 3 12 3Z"></path></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://www.linkedin.com/in/coleblake/"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/Linkedin"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://scholar.google.com/citations?user=waW_BnYAAAAJ"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Academicons/Google-Scholar"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M343.759 106.662V79.43L363.524 64h-213.89L20.476 176.274h85.656a82.339 82.339 0 0 0-.219 6.225c0 20.845 7.22 38.087 21.672 51.861c14.453 13.797 32.252 20.648 53.327 20.648c4.923 0 9.75-.368 14.438-1.024c-2.907 6.5-4.374 12.523-4.374 18.142c0 9.875 4.499 20.43 13.467 31.642c-39.234 2.67-68.061 9.732-86.437 21.163c-10.531 6.5-19 14.704-25.39 24.531c-6.391 9.9-9.578 20.515-9.578 31.962c0 9.648 2.062 18.336 6.219 26.062c4.156 7.726 9.578 14.07 16.312 18.984c6.718 4.968 14.469 9.101 23.219 12.469c8.734 3.344 17.406 5.718 26.061 7.062A167.052 167.052 0 0 0 180.555 448c13.469 0 26.953-1.734 40.547-5.187c13.562-3.485 26.28-8.642 38.171-15.493c11.86-6.805 21.515-16.086 28.922-27.718c7.39-11.68 11.094-24.805 11.094-39.336c0-11.016-2.25-21.039-6.75-30.14c-4.468-9.073-9.938-16.542-16.452-22.345c-6.501-5.813-13-11.155-19.516-15.968c-6.5-4.845-12-9.75-16.468-14.813c-4.485-5.046-6.735-10.054-6.735-14.984c0-4.921 1.734-9.672 5.216-14.265c3.455-4.61 7.674-9.048 12.61-13.306c4.937-4.25 9.875-8.968 14.796-14.133c4.922-5.147 9.141-11.827 12.61-20.008c3.485-8.18 5.203-17.445 5.203-27.757c0-13.453-2.547-24.46-7.547-33.314c-.594-1.022-1.218-1.803-1.875-3.022l56.907-46.672v17.119c-7.393.93-6.624 5.345-6.624 10.635V245.96c0 5.958 4.875 10.834 10.834 10.834h3.989c5.958 0 10.833-4.875 10.833-10.834V117.293c0-5.277.778-9.688-6.561-10.63zm-107.36 222.48c1.14.75 3.704 2.78 7.718 6.038c4.05 3.243 6.797 5.695 8.266 7.414a443.553 443.553 0 0 1 6.376 7.547c2.813 3.375 4.718 6.304 5.718 8.734c1 2.477 2.016 5.461 3.047 8.946a38.27 38.27 0 0 1 1.485 10.562c0 17.048-6.564 29.68-19.656 37.859c-13.125 8.18-28.767 12.274-46.938 12.274c-9.187 0-18.203-1.093-27.063-3.196c-8.843-2.116-17.311-5.336-25.39-9.601c-8.078-4.258-14.577-10.204-19.5-17.797c-4.938-7.64-7.407-16.415-7.407-26.25c0-10.32 2.797-19.29 8.422-26.906c5.594-7.625 12.938-13.391 22.032-17.315c9.063-3.946 18.25-6.742 27.562-8.398a157.865 157.865 0 0 1 28.438-2.555c4.47 0 7.936.25 10.405.696c.455.219 3.032 2.07 7.735 5.563c4.704 3.462 7.625 5.595 8.75 6.384zm-3.359-100.579c-7.406 8.86-17.734 13.288-30.953 13.288c-11.86 0-22.298-4.764-31.266-14.312c-9-9.523-15.422-20.328-19.344-32.43c-3.937-12.109-5.906-23.984-5.906-35.648c0-13.694 3.596-25.352 10.781-34.976c7.187-9.65 17.5-14.485 30.938-14.485c11.875 0 22.374 5.038 31.437 15.157c9.094 10.085 15.61 21.413 19.517 33.968c3.922 12.54 5.873 24.53 5.873 35.984c0 13.446-3.702 24.61-11.076 33.454z"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://orcid.org/0000-0002-4957-6903"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Academicons/Orcid"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M336.62 194.538c-7.13-3.328-13.866-5.56-20.253-6.614c-6.365-1.095-16.574-1.612-30.71-1.612h-36.704v152.747h37.634c14.673 0 26.081-1.013 34.224-3.017c8.142-2.004 14.921-4.526 20.356-7.626a69.448 69.448 0 0 0 14.942-11.388c14.488-14.714 21.742-33.273 21.742-55.717c0-22.052-7.44-40.052-22.341-53.982c-5.498-5.166-11.822-9.444-18.89-12.793zM256 8C119.022 8 8 119.042 8 256s111.022 248 248 248s248-111.042 248-248S392.978 8 256 8Zm-82.336 357.513h-29.389V160.148h29.389zM158.95 138.696c-11.14 0-20.213-9.01-20.213-20.212c0-11.118 9.052-20.191 20.213-20.191c11.18 0 20.232 9.052 20.232 20.191a20.194 20.194 0 0 1-20.232 20.212zm241.386 163.597c-5.29 12.545-12.834 23.581-22.65 33.088c-9.982 9.837-21.597 17.194-34.844 22.196c-7.75 3.017-14.839 5.063-21.307 6.117c-6.49 1.013-18.828 1.509-37.076 1.509h-64.956V160.148h69.233c27.962 0 50.034 4.154 66.32 12.545c16.265 8.37 29.181 20.728 38.792 36.972c9.61 16.265 14.425 34.018 14.425 53.196c.023 13.765-2.666 26.908-7.936 39.432z"/></svg></a>
+  
+</div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+
+
+
+  
+  
+    
+    
+    
+      
+      
+    
+<div class="pt-1 no-prose w-full">
+  <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+  <div class="flex flex-col md:flex-row flex-nowrap justify-between gap-5 pt-2">
+    <div class="">
+      
+    </div>
+    <div class="">
+      
+        <a class="group flex text-right no-underline" href="/post/0-hello-world/">
+          <span class="flex flex-col">
+            <span
+              class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+            >Hello World &#43; Bio</span
+            >
+            <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+              
+                Aug 8, 2022
+              
+            </span>
+          </span>
+          <span
+            class="mt-[-0.3rem] ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+          ><span class="ltr:inline">&rarr;</span></span>
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+
+  
+
+
+
+</div>
+
+      </div>
+
+    </main>
+  </article>
+</div>
+
+    </div>
+    <div class="page-footer">
+      <footer class="container mx-auto flex flex-col justify-items-center text-sm leading-6 mt-24 mb-4 text-slate-700 dark:text-slate-200">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by text-center">
+    © 2025 Blake Cole. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by text-center">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Hugo Blox Builder</a> — the free, <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+
+</footer>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

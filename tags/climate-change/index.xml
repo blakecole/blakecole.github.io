@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Climate Change | Blake Cole</title>
+    <link>https://www.blakecole.com/tags/climate-change/</link>
+      <atom:link href="https://www.blakecole.com/tags/climate-change/index.xml" rel="self" type="application/rss+xml" />
+    <description>Climate Change</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 15 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.blakecole.com/media/icon_hu1996601983673389572.png</url>
+      <title>Climate Change</title>
+      <link>https://www.blakecole.com/tags/climate-change/</link>
+    </image>
+    
+    <item>
+      <title>A model integrating longshore and cross-shore processes for predicting long-term shoreline response to climate change</title>
+      <link>https://www.blakecole.com/publication/jrnl-jgr-earth-surface-2017/</link>
+      <pubDate>Wed, 15 Mar 2017 00:00:00 +0000</pubDate>
+      <guid>https://www.blakecole.com/publication/jrnl-jgr-earth-surface-2017/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

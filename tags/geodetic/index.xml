@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Geodetic | Blake Cole</title>
+    <link>https://www.blakecole.com/tags/geodetic/</link>
+      <atom:link href="https://www.blakecole.com/tags/geodetic/index.xml" rel="self" type="application/rss+xml" />
+    <description>Geodetic</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 01 Jul 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.blakecole.com/media/icon_hu1996601983673389572.png</url>
+      <title>Geodetic</title>
+      <link>https://www.blakecole.com/tags/geodetic/</link>
+    </image>
+    
+    <item>
+      <title>Unscented Kalman filter for long-distance vessel tracking in geodetic coordinates</title>
+      <link>https://www.blakecole.com/publication/jrnl-aor-2022/</link>
+      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://www.blakecole.com/publication/jrnl-aor-2022/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

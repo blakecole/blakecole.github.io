@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Target Tracking | Blake Cole</title>
+    <link>https://www.blakecole.com/tags/target-tracking/</link>
+      <atom:link href="https://www.blakecole.com/tags/target-tracking/index.xml" rel="self" type="application/rss+xml" />
+    <description>Target Tracking</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 01 Jul 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.blakecole.com/media/icon_hu1996601983673389572.png</url>
+      <title>Target Tracking</title>
+      <link>https://www.blakecole.com/tags/target-tracking/</link>
+    </image>
+    
+    <item>
+      <title>Unscented Kalman filter for long-distance vessel tracking in geodetic coordinates</title>
+      <link>https://www.blakecole.com/publication/jrnl-aor-2022/</link>
+      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://www.blakecole.com/publication/jrnl-aor-2022/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Surface vessel collision avoidance in MOOS-IvP using a geodetic unscented Kalman filter</title>
+      <link>https://www.blakecole.com/publication/conf-ieee-oceans-2021/</link>
+      <pubDate>Mon, 20 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.blakecole.com/publication/conf-ieee-oceans-2021/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

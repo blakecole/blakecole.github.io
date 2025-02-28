@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Article-Journal | Blake Cole</title>
+    <link>https://www.blakecole.com/publication_types/article-journal/</link>
+      <atom:link href="https://www.blakecole.com/publication_types/article-journal/index.xml" rel="self" type="application/rss+xml" />
+    <description>Article-Journal</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Fri, 01 Jul 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://www.blakecole.com/media/icon_hu1996601983673389572.png</url>
+      <title>Article-Journal</title>
+      <link>https://www.blakecole.com/publication_types/article-journal/</link>
+    </image>
+    
+    <item>
+      <title>Unscented Kalman filter for long-distance vessel tracking in geodetic coordinates</title>
+      <link>https://www.blakecole.com/publication/jrnl-aor-2022/</link>
+      <pubDate>Fri, 01 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>https://www.blakecole.com/publication/jrnl-aor-2022/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A model integrating longshore and cross-shore processes for predicting long-term shoreline response to climate change</title>
+      <link>https://www.blakecole.com/publication/jrnl-jgr-earth-surface-2017/</link>
+      <pubDate>Wed, 15 Mar 2017 00:00:00 +0000</pubDate>
+      <guid>https://www.blakecole.com/publication/jrnl-jgr-earth-surface-2017/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
