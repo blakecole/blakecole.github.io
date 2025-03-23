@@ -41,7 +41,7 @@
   
     
   
-  <meta name="description" content="One of my more talented friends helped me determine the *best possible* swim route to Martha&#39;s Vineyard.  Bless you, Casey Handmer." />
+  <meta name="description" content="Swim route optimization using the Metropolis-Hastings algorithm." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://www.blakecole.com/post/2-mcmc-mv-swim/" />
@@ -193,7 +193,7 @@
   <meta property="og:site_name" content="Blake Cole" />
   <meta property="og:url" content="https://www.blakecole.com/post/2-mcmc-mv-swim/" />
   <meta property="og:title" content="Leveraging Reversible Jump Markov Chain Monte Carlo (RJ-MCMC) to Plan a (Better) Swim to Martha&#39;s Vineyard | Blake Cole" />
-  <meta property="og:description" content="One of my more talented friends helped me determine the *best possible* swim route to Martha&#39;s Vineyard.  Bless you, Casey Handmer." /><meta property="og:image" content="https://www.blakecole.com/post/2-mcmc-mv-swim/featured.png" />
+  <meta property="og:description" content="Swim route optimization using the Metropolis-Hastings algorithm." /><meta property="og:image" content="https://www.blakecole.com/post/2-mcmc-mv-swim/featured.png" />
     <meta property="twitter:image" content="https://www.blakecole.com/post/2-mcmc-mv-swim/featured.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -1404,12 +1404,12 @@
 
       <div class="prose prose-slate lg:prose-md dark:prose-invert">
         <h2 id="should-you-read-this">Should You Read This?</h2>
-<p>Life is short &ndash; there are mountains to climb, oceans to explore, TikTok reels to enjoy and forget about microseconds later.</p>
+<p>Life is short &ndash; there are mountains to climb, oceans to explore, TikTok reels to enjoy and forget about mere seconds later.</p>
 <p>Continue reading if:</p>
 <ul>
-<li>You have contemplated swimming to Martha&rsquo;s Vineyard, and want to know how it can be done, and done well (in theory).*</li>
+<li>You have contemplated swimming to Martha&rsquo;s Vineyard, and want to know how it can be done optimally (in theory).*</li>
 <li>You want to learn about the history and implementation of <em>Markov Chain Monte Carlo</em> (MCMC) optimization methods.</li>
-<li>You need to optimize a system defined by an <em>unknown number of parameters</em> (sometimes this is called <em>model selection</em>).  We will accomplish this task using a cool extension of MCMC called <em>Reversible Jump MCMC</em> (RJ-MCMC).</li>
+<li>You need to optimize a system defined by an unknown number of parameters (sometimes this is called <em>model selection</em>).  We will accomplish this task using a cool extension of MCMC called <em>Reversible Jump MCMC</em> (RJ-MCMC).</li>
 <li>You want to extend/improve my <a href="https://github.com/blakecole/mv-mcmc" target="_blank" rel="noopener">RJ-MCMC repository on GitHub</a>.</li>
 </ul>
 <p>*Please don&rsquo;t be an idiot.  Be safe.  Do your homework.  Don&rsquo;t get hit by a ferry. <br>  Or, if you prefer legalese:
@@ -1491,11 +1491,11 @@ The content provided on this website/blog is for informational purposes only and
 </figure>
 
 <h2 id="need-for-speed">Need for Speed</h2>
-<p>In the days and weeks after I published the original <a href="https://www.blakecole.com/post/1-adcirc-mv-swim/" target="_blank" rel="noopener">post</a>, I received a great deal of positive feedback on my work, and was admittedly somewhat pleased with myself.  I had used my brain to plan a logistically complex adventure which my body executed, and that felt very good.  I was still indulgently basking in self-satisfaction when I received a message from my good friend and colleague, <a href="https://www.caseyhandmer.com/home" target="_blank" rel="noopener">Casey Handmer</a>, which said something along the lines of,</p>
+<p>In the days and weeks after I published the original <a href="https://www.blakecole.com/post/1-adcirc-mv-swim/" target="_blank" rel="noopener">post</a>, I received a great deal of positive feedback on my work, and was admittedly somewhat pleased with myself.  I had used my brain to plan a logistically complex adventure which my body executed, and that felt very good.  I was still indulgently basking in self-satisfaction when I received a message from my good friend and colleague, <a href="https://www.caseyhandmer.com/home" target="_blank" rel="noopener">Casey Handmer</a>, saying something along the lines of,</p>
 <blockquote>
 <p>You should optimize the swim.</p>
 </blockquote>
-<p>I swallowed hard.  I knew he was right, but absolutely did not want to admit it.  Admitting it would mean more work for me, and probably not just a little more &ndash; I suspected I would need to familiarize myself with some super fancy gradient-free, nonlinear, nonconvex optimization routine.  At the time, I was already five years into my PhD program, and could feel the institutional pressure rising: I needed to defend my thesis soon, or risk being kicked out of the program.  I bristled at Casey&rsquo;s nonchalance, which seemed to suggest that this problem &ndash; which I didn&rsquo;t even know how to structure &ndash; could be solved easily in an afternoon.  Suppressing my indignation, I informed Casey that I wasn&rsquo;t going to optimize the swim, and that I needed to focus on my doctoral research.  He replied quickly, and asked me to send him the tidal current simulation data <em>so that he could do it himself</em>.</p>
+<p>I knew he was right, but absolutely did not want to admit it.  Admitting it would mean more work for me, and probably not just a little more &ndash; I suspected I would need to familiarize myself with some super fancy gradient-free, nonlinear, nonconvex optimization routine.  At the time, I was already five years into my PhD program, and could feel the institutional pressure rising: I needed to defend my thesis soon, or risk being kicked out of the program.  I bristled at Casey&rsquo;s nonchalance, which seemed to suggest that this problem &ndash; which I didn&rsquo;t even know how to structure &ndash; could be solved easily in an afternoon.  Suppressing my indignation, I informed Casey that I wasn&rsquo;t going to optimize the swim, and that I needed to focus on my doctoral research.  He replied quickly, and asked me to send him the tidal current simulation data so that he could do it himself.</p>
 <p>This is classic Casey Handmer.  For those of you who do not know him, that sucks &ndash; he is certainly one of the most fascinating people I have ever met.  He seems to crave technical problems like most people crave sweets or other sensory indulgences.  A physicist named Stanislaw Ulam (more on him <a href="https://www.blakecole.com/post/2-mcmc-mv-swim/#history">later</a>) once remarked, &ldquo;the mathematicians know a great deal about very little, and the physicists [know] very little about a great deal.&rdquo;  Casey knows basically everything about everything.   At the age of 19, he traveled to Vietnam by himself, and hitchhiked through China and Russia before arriving in Italy; he speaks multiple languages, sings, and plays the trombone; when he isn&rsquo;t riding his unicycle, he likes to fly airplanes or climb mountains; he also has a PhD in theoretical physics from Caltech, and founded <a href="https://www.terraformindustries.com/" target="_blank" rel="noopener">Terraform Industries</a>, a company which aims to mitigate climate change by <a href="https://terraformindustries.wordpress.com/2022/07/24/terraform-industries-whitepaper/" target="_blank" rel="noopener">synthesizing natural gas from sunlight and air</a>.  He is a caring husband and father of three, and yet still somehow finds time to crank out wide-ranging technical <a href="https://caseyhandmer.wordpress.com/" target="_blank" rel="noopener">articles</a> on a weekly basis.  He is also Australian.  Go figure.</p>
 
 
@@ -1523,7 +1523,7 @@ The content provided on this website/blog is for informational purposes only and
 
 </figure>
 
-<p>The rate at which Casey solves problems is astounding.  This ability is rooted in an inclination to find first-order solutions quickly, and then decide whether higher fidelity approaches are warranted.  All good engineers seem to operate this way.  Not me.  I frequently succumb to the siren song of complexity, and spend hours deliberating which state-of-the-art technique I&rsquo;m going to use to solve a problem.  This an ill-advised strategy: you could spend half a lifetime figuring out the best approach to a problem, and never get around to actually solving it.  Further, you can&rsquo;t really know the <em>best</em> approach to a problem unless you have already solved it a few times (or talked to someone who has), so you might as well start with something simple &ndash; dare I say, something <em>random</em>.  Such was Casey&rsquo;s reasoning when he decided to utilize a relatively simple stochastic methodology to determine the best possible swim route from Woods Hole to Martha&rsquo;s Vineyard.</p>
+<p>The rate at which Casey solves problems is astounding.  This ability is rooted in an inclination to find first-order solutions quickly, and then decide whether higher fidelity approaches are warranted.  All good engineers seem to operate this way.  Not me.  I frequently succumb to the siren song of complexity, and spend hours deliberating which state-of-the-art technique I&rsquo;m going to use to solve a problem.  This an ill-advised strategy: you could spend half a lifetime figuring out the best approach to a problem, and never get around to actually solving it.  You can&rsquo;t really know the <em>best</em> approach to a problem unless you have already solved it a few times (or talked to someone who has), so you might as well start with something simple &ndash; dare I say, something <em>random</em> (hah).  Such was Casey&rsquo;s reasoning when he decided to utilize a relatively simple stochastic methodology to determine the best possible swim route from Woods Hole to Martha&rsquo;s Vineyard.</p>
 <h2 id="markov-chain-monte-carlo">Markov Chain Monte Carlo</h2>
 <p>There is power in randomness &ndash; this is the fundamental premise of so-called <em>Monte Carlo</em> methods.  How can this be?  Randomness is inherently chaotic, and chaos is bad, right?  Isn&rsquo;t the foremost goal of science and engineering to distill order from chaos?</p>
 <p>Sort of.  Another way to think about randomness is as means of observing reality in an unbiased manner.  Imagine being a journalist who is told to write an article about one of ten equally important subjects &ndash; how should they choose which one to cover?  It obviously wouldn&rsquo;t be fair if they simply picked their favorite topic, so instead, they might randomly select one of the subjects.  By doing so, they ensure that each subject is treated with equal importance, free from any personal bias.  This randomness introduces fairness into the process, enabling a more objective approach to gathering information.  In much the same way, Monte Carlo methods use randomness to explore possible solutions to a problem, systematically sampling different outcomes to estimate the most likely result (or discover the best solution).  While it may seem counterintuitive, this stochastic process can be surprisingly powerful, as it allows us to explore a broad range of scenarios and capture complex behaviors that deterministic methods might miss.</p>
@@ -1598,8 +1598,8 @@ The content provided on this website/blog is for informational purposes only and
 $$
 P(x) \propto e^{\beta C(x)},
 $$<p>
-where $\beta$ is a positive parameter controlling the sharpness of the distribution.  If you run the Metropolis–Hastings algorithm with this distribution, the generated &ldquo;samples&rdquo; &ndash; which represent sets of parameters, $x$, in this instance &ndash; will preferentially come from low-cost regions of the parameter space, because these samples have a higher probability of being selected.</p>
-<p>If none of <em>that</em> made sense to you, I am sorry.  Don&rsquo;t give up yet.  I have great news: the Metropolis–Hastings algorithm is shockingly easy to implement, even if you do not fully understand the underlying theory.  This means you (yes <em>you</em>!) can optimize all sorts of cool things in your life.</p>
+where $\beta$ is a positive (<em>inverse cooling</em>) parameter controlling the sharpness of the distribution.  If you run the Metropolis–Hastings algorithm with this distribution, the generated &ldquo;samples&rdquo; &ndash; which represent sets of parameters, $x$, in this instance &ndash; will preferentially come from low-cost regions of the parameter space, because these samples have a higher probability of being selected.</p>
+<p>If none of <em>that</em> made sense to you, I am sorry.  But, I have great news: the Metropolis–Hastings algorithm is shockingly easy to implement, even if you do not fully understand the underlying theory.  This means you (yes <em>you</em>!) can optimize all sorts of cool things in your life.</p>
 <p>These are the key steps:</p>
 
 
@@ -1625,7 +1625,7 @@ where $\beta$ is a positive parameter controlling the sharpness of the distribut
 <li>Introduce a random perturbation to the previous solution, and compute the new cost.
 <ul>
 <li>If the perturbation results in a <strong>lower</strong> cost, accept the solution.</li>
-<li>If the perturbation results in a <strong>higher</strong> cost, accept the solution with probability $\alpha$, where $\alpha$ is an <em>acceptance ratio</em> that depends on the difference between the previous cost and the current cost.  The acceptance ratio can be systematically adjusted over time (this is called <em>simulated annealing</em>).</li>
+<li>If the perturbation results in a <strong>higher</strong> cost, accept the solution with probability $\alpha$, where $\alpha$ is an <em>acceptance probability</em> that depends on the difference between the previous cost and the current cost.  The acceptance probability can be systematically adjusted over time (this is called <em>simulated annealing</em>).</li>
 <li>If the perturbation results in the <strong>lowest</strong> cost thus far, store the solution.</li>
 </ul>
 </li>
@@ -1714,7 +1714,7 @@ flowchart TD
 
 </figure>
 
-<p>To me, the fact that this algorithm actually works (most of the time) is nothing short of astounding &ndash; it is basically &ldquo;guess-and-check&rdquo; on steroids.  And yet, despite its simplicity, this technique has revolutionized the fields of nuclear physics, economics, genetics, and climate science, just to name a few.  It also paved the way for advances in <a href="https://en.wikipedia.org/wiki/Bayesian_statistics" target="_blank" rel="noopener">Bayesian statistics</a> and modern machine learning techniques.  The power of this approach cannot be attributed to luck or magic; it is underwritten by <em>randomness</em>, and the properties inherent thereto.</p>
+<p>To me, the fact that this algorithm actually works (most of the time) is nothing short of astounding &ndash; it is basically &ldquo;guess-and-check&rdquo; on steroids.  And yet, despite its simplicity, this technique has revolutionized the fields of nuclear physics, economics, genetics, and climate science, just to name a few.  It also paved the way for modern machine learning techniques.  The power of this approach cannot be attributed to luck or magic; it is underwritten by <em>randomness</em>, and the properties inherent thereto.</p>
 <h3 id="python-demo">Python Demo</h3>
 <p>Below is a simple, fully-functional 1-D implementation of the Metropolis–Hastings algorithm.  Feel free to <a href="https://github.com/blakecole/mv-mcmc/blob/main/src/mcmc_demo_1d.py" target="_blank" rel="noopener">download</a> it, and modify it as you see fit.  I would encourage you to play around with the initial guess (<code>initial</code>) and standard deviation (<code>proposal_std</code>) parameters to get a sense of how these influence solution convergence.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
@@ -1795,7 +1795,7 @@ flowchart TD
 </span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;Convergence of Metropolis-Hastings</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</span></span></code></pre></div><p>If you run the code as is, you should find that the optimizer rapidly finds the smallest value of the cost function $C(x) = (x-2)^2$ at (spoiler alert) $x=2$.  Even for an absurd initial guess like $x_0 = 100$, the Metropolis-Hastings algorithm converges to the true solution in about 250 iterations.</p>
+</span></span></code></pre></div><p>If you run the code as is, you should find that the optimizer rapidly finds the smallest value of the cost function $C(x) = (x-2)^2$ at&hellip;<br> &hellip;drumroll, please&hellip;<br> $x=2$.<br>Even for an absurd initial guess like $x_0 = 100$, the Metropolis-Hastings algorithm converges to the true solution in about 250 iterations.</p>
 
 
 
@@ -1822,7 +1822,7 @@ flowchart TD
 
 </figure>
 
-<p>This is a fun example, but it doesn&rsquo;t demonstrate the true power of this technique; after all, such a simple problem could have been solved using basic calculus.  What makes the MCMC approach so fascinating is its generality: it can explore parameter spaces of varying dimension, and the cost function need not be differentiable or continuous.  For those interested in diving into the weeds, I would highly recommend checking out my <a href="https://github.com/blakecole/mv-mcmc" target="_blank" rel="noopener">RJ-MCMC repository on GitHub</a>.  It has a few really useful functions and clever <a href="https://www.blakecole.com/post/2-mcmc-mv-swim/#flourishes">flourishes</a> that pertain specifically to swim route optimization.</p>
+<p>This is a fun example, but it really doesn&rsquo;t demonstrate the true power of this technique; after all, this trivial problem can be solved using basic calculus.  What makes the MCMC approach so fascinating is its generality: it can explore parameter spaces of varying dimension, and the cost function need not be differentiable or continuous.</p>
 <h2 id="problem-setup">Problem Setup</h2>
 <h3 id="goal">Goal</h3>
 <p>Depart Nobska Beach between 2:00a and 11:00a on July 30th, 2022 and cross Vineyard Sound as fast as possible.</p>
@@ -2010,7 +2010,7 @@ Hi Blake,
 <p><strong>Reversible Jump MCMC</strong>: Rather than assuming a fixed number of headings, my approach allows the heading vector to shrink and grow as necessary.  You can imagine the tip of the swim trajectory rapidly bouncing around the shoreline, probing different solutions like some sort of disgusting proboscis.</p>
 </li>
 <li>
-<p><strong>Pre-optimization</strong>: Prior to firing up the main optimization engine, I conduct an automated series of <em>constant-heading</em> simulations, keeping track of the ones that reach Martha&rsquo;s Vineyard, and pick the fastest one as my first guess.  Surprisingly, this very dumb technique produced solutions that were only a few minutes slower than the final optimized solutions.</p>
+<p><strong>Pre-optimization</strong>: Prior to firing up the main optimization engine, I conduct an automated sweep of <em>constant-heading</em> simulations, keeping track of the ones that reach Martha&rsquo;s Vineyard, and pick the fastest solution as my first guess.  Surprisingly, this very dumb technique produced solutions that were only a few minutes slower than the final optimized solutions.</p>
 </li>
 <li>
 <p><strong>Enhanced arrival detection</strong>: I use <a href="https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm" target="_blank" rel="noopener">ray casting</a> to determine if swim trajectories terminate inside the digitized boundary of Martha&rsquo;s Vineyard.</p>
@@ -2181,7 +2181,7 @@ Hi Blake,
 </p>
 <p>Assuming a constant swim pace of $1$:$40/100yd$, and no concerns about getting maimed by a ferry&hellip;</p>
 <p><em><strong>On July 30th, 2022, it would have been possible to depart Nobska Beach between 7:30a and 8:00a, and cross Vineyard Sound in 1 hour, 32 minutes</strong></em>.</p>
-<p>These plots reveal another interesting fact: <em>constant-heading solutions are actually pretty damn good</em>.  Most of the time, the optimal trajectory sticks pretty close to at least one <em>constant-heading</em> trajectory.  So, unless you&rsquo;re really determined to shave a few minutes off your swim, using a <em>constant-heading</em> strategy is totally fine.</p>
+<p>These plots reveal another interesting fact: <em>constant-heading solutions are actually pretty good</em>.  Most of the time, the optimal trajectory sticks pretty close to at least one <em>constant-heading</em> trajectory.  So, unless you&rsquo;re really determined to shave a few minutes off your swim, using a <em>constant-heading</em> strategy is totally fine.</p>
 <h4 id="optimal-heading-sequences">Optimal Heading Sequences</h4>
 
 
@@ -2230,7 +2230,7 @@ Hi Blake,
 </figure>
 
 <p>I ran this optimization shortly after I applied an exponential cooling schedule to the <code>bump_size</code> parameter, and was shocked by how well it worked &ndash; the resulting solutions were almost entirely insensitive to initial conditions.  In other words, the optimization procedure was <em>robust</em>.  Knowing in advance that the optimal heading vector hovered around $135^{\circ}$ for this start time, I decided to push my luck and use a $180^{\circ}$ <em>constant-heading</em> solution as my initial guess.</p>
-<p>Uncalled for.  Pathological!</p>
+<p>Uncalled for.  Pathological.</p>
 <p>Nevertheless, the optimization routine quickly honed in on the correct solution.  I was so proud that it didn&rsquo;t get mired in the morass of bullshit to which it was intentionally subjected &ndash; I think I understand now <a href="https://www.youtube.com/watch?v=zkv-_LqTeQA" target="_blank" rel="noopener">why those guys at Boston Dynamics are so mean to their robots</a>!</p>
 <p>On to the next!</p>
 
@@ -2260,7 +2260,8 @@ Hi Blake,
 </figure>
 
 <p>This particular optimization attempt did not yield the best solution &ndash; note that the simulated swim lasted 1.5 minutes longer than the optimal solution for a 6:30a start &ndash; but I liked how it again demonstrated <em>robustness</em>, and an ability to escape local minima.  Look at how the solution periodically becomes stuck in local minima, before jumping to better solutions.</p>
-<p>Incredible!  We love it.</p>
+<p>Incredible!</p>
+<p>We love it.</p>
 <h4 id="reflections">Reflections</h4>
 <p>Ultimately, this was a highly academic exercise.  Maybe this sort of thing makes sense if you&rsquo;re a professional athlete or a Navy SEAL with a <a href="https://en.wikipedia.org/wiki/Head-up_display" target="_blank" rel="noopener">head-up display</a> in your goggles, but otherwise you&rsquo;re better off sticking with a <em>constant-heading</em> strategy.  During the actual swim, it was challenging enough to follow a single fixed heading with any appreciable degree of confidence &ndash; the notion that a swimmer might be able to make sub-degree alterations to their bearing every eighteen seconds is laughable.</p>
 <p>But, on the other hand&hellip; pretty cool, right?</p>
