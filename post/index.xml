@@ -13,7 +13,7 @@
     </image>
     
     <item>
-      <title>Leveraging Reversible Jump Markov Chain Monte Carlo (RJ-MCMC) to Plan a (Better) Swim to Martha&#39;s Vineyard</title>
+      <title>Open Water Swim Route Optimization Using Reversible Jump Markov Chain Monte Carlo (RJ-MCMC)</title>
       <link>https://www.blakecole.com/post/2-mcmc-mv-swim/</link>
       <pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>
       <guid>https://www.blakecole.com/post/2-mcmc-mv-swim/</guid>
@@ -77,7 +77,7 @@ The content provided on this website/blog is for informational purposes only and
 &lt;li&gt;&lt;strong&gt;Practical.&lt;/strong&gt;  The swimmer must arrive near the intended destination.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Efficient.&lt;/strong&gt;  The swimmer should not fight the current, if possible.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;My simple guess-and-check approach worked well enough &amp;ndash; the swim was a success, and we arrived safely on shore near our intended destination, a little less than two hours after we departed.  However, some inquisitive minds soon began to wonder: &lt;em&gt;&amp;ldquo;Could it have been done better?&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;My simple guess-and-check approach worked well enough &amp;ndash; the swim was a success, and we arrived safely on shore near our intended destination, a little less than two hours after we departed.  However, inquisitive minds soon began to wonder: &lt;em&gt;&amp;ldquo;Could it have been done better?&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
 
 
 
@@ -137,7 +137,7 @@ The content provided on this website/blog is for informational purposes only and
 
 &lt;/figure&gt;
 
-&lt;p&gt;The rate at which Casey solves problems is astounding.  This ability is rooted in an inclination to find first-order solutions quickly, and then decide whether higher fidelity approaches are warranted.  All good engineers seem to operate this way.  Not me.  I frequently succumb to the siren song of complexity, and spend hours deliberating which state-of-the-art technique I&amp;rsquo;m going to use to solve a problem.  This an ill-advised strategy: you could spend half a lifetime figuring out the best approach to a problem, and never get around to actually solving it.  You can&amp;rsquo;t really know the &lt;em&gt;best&lt;/em&gt; approach to a problem unless you have already solved it a few times (or talked to someone who has), so you might as well start with something simple &amp;ndash; dare I say, something &lt;em&gt;random&lt;/em&gt; (hah).  Such was Casey&amp;rsquo;s reasoning when he decided to utilize a relatively simple stochastic methodology to determine the best possible swim route from Woods Hole to Martha&amp;rsquo;s Vineyard.&lt;/p&gt;
+&lt;p&gt;The rate at which Casey solves problems is astounding.  This ability is rooted in an inclination to find first-order solutions quickly, and then decide whether higher fidelity approaches are warranted.  All good engineers seem to operate this way.  Not me.  I frequently succumb to the siren song of complexity, and spend hours deliberating which state-of-the-art technique I&amp;rsquo;m going to use to solve a problem.  This an ill-advised strategy: you could spend half a lifetime figuring out the best approach to a problem, and never get around to actually solving it.  You can&amp;rsquo;t really know the &lt;em&gt;best&lt;/em&gt; approach to a problem unless you have already solved it a few times (or talked to someone who has), so you might as well start with something simple &amp;ndash; dare I say, something &lt;em&gt;random&lt;/em&gt;.  Such was Casey&amp;rsquo;s reasoning when he decided to utilize a relatively simple stochastic methodology to determine the best possible swim route from Woods Hole to Martha&amp;rsquo;s Vineyard.&lt;/p&gt;
 &lt;h2 id=&#34;markov-chain-monte-carlo&#34;&gt;Markov Chain Monte Carlo&lt;/h2&gt;
 &lt;p&gt;There is power in randomness &amp;ndash; this is the fundamental premise of so-called &lt;em&gt;Monte Carlo&lt;/em&gt; methods.  How can this be?  Randomness is inherently chaotic, and chaos is bad, right?  Isn&amp;rsquo;t the foremost goal of science and engineering to distill order from chaos?&lt;/p&gt;
 &lt;p&gt;Sort of.  Another way to think about randomness is as means of observing reality in an unbiased manner.  Imagine being a journalist who is told to write an article about one of ten equally important subjects &amp;ndash; how should they choose which one to cover?  It obviously wouldn&amp;rsquo;t be fair if they simply picked their favorite topic, so instead, they might randomly select one of the subjects.  By doing so, they ensure that each subject is treated with equal importance, free from any personal bias.  This randomness introduces fairness into the process, enabling a more objective approach to gathering information.  In much the same way, Monte Carlo methods use randomness to explore possible solutions to a problem, systematically sampling different outcomes to estimate the most likely result (or discover the best solution).  While it may seem counterintuitive, this stochastic process can be surprisingly powerful, as it allows us to explore a broad range of scenarios and capture complex behaviors that deterministic methods might miss.&lt;/p&gt;
@@ -170,7 +170,7 @@ The content provided on this website/blog is for informational purposes only and
 &lt;/figure&gt;
 
 &lt;p&gt;A major advance came in the 1950s with the introduction of the Metropolis algorithm by Nicholas Metropolis and his colleagues Marshall Rosenbluth, Arianna Rosenbluth, Augusta Teller, and Edward Teller at Los Alamos National Laboratory.  This method combined Monte Carlo techniques with the mathematics of Markov Chains &amp;ndash; theoretical frameworks that describe sequences of possible events in which the probability of each event depends only on the state attained in the previous event, not the full history.  This &lt;em&gt;memoryless&lt;/em&gt; property of Markov Chains makes them especially useful for exploring complex parameter spaces in a controlled (yet random) fashion.  In the Metropolis algorithm, a Markov Chain is constructed in such a way that, over time, it produces samples from a desired probability distribution &amp;ndash; or, equivalently, yields a set of parameters that minimizes a cost function (more on this equivalency in the &lt;a href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/#algorithm&#34;&gt;Algorithm&lt;/a&gt; section).&lt;/p&gt;
-&lt;p&gt;Why would anyone want to do this?  Well, in short, there quite a few ways in which nuclear fusion does not happen, and Nicholas Metropolis and his colleagues wanted very badly for it to happen.  I would say more, but that&amp;rsquo;s literally all I know &amp;ndash; my apologies in advance to Iran, South Korea, and Saudi Arabia.&lt;/p&gt;
+&lt;p&gt;Why would anyone want to do this?  Well, in short, there quite a few ways in which nuclear fission does not happen, and Nicholas Metropolis and his colleagues wanted very badly for it to happen.  I would say more, but that&amp;rsquo;s literally all I know, and even if I did know more, I probably wouldn&amp;rsquo;t say more &amp;ndash; apologies in advance to Iran, South Korea, and Saudi Arabia.&lt;/p&gt;
 
 
 
@@ -206,14 +206,14 @@ The content provided on this website/blog is for informational purposes only and
 &lt;/blockquote&gt;
 &lt;p&gt;What?&lt;/p&gt;
 &lt;p&gt;How does that relate to optimization?&lt;/p&gt;
-&lt;p&gt;I wondered the same thing, at first &amp;ndash; do not dismay.&lt;/p&gt;
+&lt;p&gt;I wondered the same thing at first &amp;ndash; do not dismay.&lt;/p&gt;
 &lt;p&gt;The Metropolis–Hastings algorithm was originally developed to approximate probability distributions by generating a sequence of samples such that, after many iterations, the frequency of samples at any point, $x$, approximates the probability density, $P(x)$.&lt;/p&gt;
 &lt;p&gt;Very clever people eventually figured out that this same method could be used to minimize a cost function by defining a target probability distribution that preferentially selects good solutions, and rejects bad ones.  Suppose you have a cost function, $C(x),$ that you want to minimize.  You could then define a target probability distribution, $P(x)$, where solutions with lower costs have higher probabilities:&lt;/p&gt;
 $$
 P(x) \propto e^{\beta C(x)},
 $$&lt;p&gt;
 where $\beta$ is a positive (&lt;em&gt;inverse cooling&lt;/em&gt;) parameter controlling the sharpness of the distribution.  If you run the Metropolis–Hastings algorithm with this distribution, the generated &amp;ldquo;samples&amp;rdquo; &amp;ndash; which represent sets of parameters, $x$, in this instance &amp;ndash; will preferentially come from low-cost regions of the parameter space, because these samples have a higher probability of being selected.&lt;/p&gt;
-&lt;p&gt;If none of &lt;em&gt;that&lt;/em&gt; made sense to you, I am sorry.  But, I have great news: the Metropolis–Hastings algorithm is shockingly easy to implement, even if you do not fully understand the underlying theory.  This means you (yes &lt;em&gt;you&lt;/em&gt;!) can optimize all sorts of cool things in your life.&lt;/p&gt;
+&lt;p&gt;If none of &lt;em&gt;that&lt;/em&gt; made sense to you, that&amp;rsquo;s okay &amp;ndash; I have great news: the Metropolis–Hastings algorithm is shockingly easy to implement, even if you do not fully understand the underlying theory.  This means you (yes, &lt;em&gt;you&lt;/em&gt;!) can optimize all sorts of cool things in your life.&lt;/p&gt;
 &lt;p&gt;These are the key steps:&lt;/p&gt;
 
 
@@ -301,7 +301,7 @@ flowchart TD
 
 &lt;/p&gt;
 &lt;p&gt;Why periodically accept worse (higher cost) solutions?&lt;/p&gt;
-&lt;p&gt;Imagine you are hiking in the mountains on a foggy day, searching for the highest peak.  If you simply climb upwards at every step, you might find yourself atop a small hill and assume you&amp;rsquo;ve reached the highest point (these little hilltops are called a &lt;em&gt;local maxima&lt;/em&gt; or &lt;em&gt;local extrema&lt;/em&gt; in nerd speak&amp;hellip; we despise them).  In order to locate the highest peak &amp;ndash; the &lt;em&gt;global maximum&lt;/em&gt; (which we love) &amp;ndash; you might need to occasionally descend to lower elevations, even if it seems counterproductive in the moment.&lt;/p&gt;
+&lt;p&gt;Imagine you are hiking in the mountains on a foggy day, searching for the highest peak.  If you simply climb upwards at every step, you might find yourself atop a small hill and assume you&amp;rsquo;ve reached the highest point (these little hilltops are called a &lt;em&gt;local maxima&lt;/em&gt; or &lt;em&gt;local extrema&lt;/em&gt; in nerd speak).  In order to locate the highest peak &amp;ndash; the &lt;em&gt;global maximum&lt;/em&gt; &amp;ndash; you might need to occasionally descend to lower elevations, even if it seems counterproductive in the moment.&lt;/p&gt;
 
 
 
@@ -444,7 +444,7 @@ flowchart TD
 &lt;p&gt;&lt;strong&gt;None&lt;/strong&gt;.  We&amp;rsquo;re prioritizing &lt;em&gt;speed&lt;/em&gt;, and speed alone &amp;ndash; ferries, ruffled feathers, and private beaches be damned (&lt;em&gt;especially&lt;/em&gt; the private beaches, those can go straight to hell).  Any heading sequence that delivers the swimmer to Martha&amp;rsquo;s Vineyard is on the table.&lt;/p&gt;
 &lt;h3 id=&#34;assumptions&#34;&gt;Assumptions&lt;/h3&gt;
 &lt;ol&gt;
-&lt;li&gt;We assume the swimmer is able to maintain a &lt;strong&gt;constant pace&lt;/strong&gt; of $1$:$40$/$100yd$.  This is a reasonable pace for an average open water swimmer in good shape.&lt;/li&gt;
+&lt;li&gt;We assume the swimmer is able to maintain a &lt;strong&gt;constant pace&lt;/strong&gt; of 1:40/100yd.  This is a reasonable pace for an average open water swimmer in good shape.&lt;/li&gt;
 &lt;li&gt;We assume the swimmer departs from a &lt;strong&gt;fixed location&lt;/strong&gt; on Nobska Beach, MA, sometime between 2:00a and 11:00a on July 20th, 2022.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;parameters&#34;&gt;Parameters&lt;/h3&gt;
@@ -508,7 +508,7 @@ flowchart TD
 &lt;p&gt;Compute the acceptance probability: $\alpha_k = \exp{\left( \frac{\Delta_k}{T_k} \right)}$, where $\Delta_k$ is the cost difference between the candidate and previous solutions, and $T_k$ is the annealing temperature parameter.  We reduce $T_k$ gradually over time using a &lt;em&gt;linear cooling schedule&lt;/em&gt; to discourage premature convergence.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Keep the candidate solution if &lt;em&gt;&lt;strong&gt;BOTH&lt;/strong&gt;&lt;/em&gt; of the following conditions are met:&lt;/p&gt;
+&lt;p&gt;Keep the candidate solution if &lt;em&gt;&lt;strong&gt;BOTH&lt;/strong&gt;&lt;/em&gt; the following conditions are met:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;em&gt;&lt;strong&gt;EITHER&lt;/strong&gt;&lt;/em&gt; the candidate cost is lower than the previous cost, $C_k &lt; C_{k-1}$, &lt;em&gt;&lt;strong&gt;OR&lt;/strong&gt;&lt;/em&gt; the acceptance probability, $\alpha_k$, is greater than a random number drawn from a uniform distribution, $\mathcal{U}(0,1)$.&lt;/li&gt;
 &lt;li&gt;The swim trajectory terminates inside the boundary of Martha&amp;rsquo;s Vineyard.&lt;/li&gt;
@@ -793,7 +793,7 @@ Hi Blake,
   
 &lt;/div&gt;
 &lt;/p&gt;
-&lt;p&gt;Assuming a constant swim pace of $1$:$40/100yd$, and no concerns about getting maimed by a ferry&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Assuming a constant swim pace of 1:40/100yd, and no concerns about getting maimed by a ferry&amp;hellip;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;On July 30th, 2022, it would have been possible to depart Nobska Beach between 7:30a and 8:00a, and cross Vineyard Sound in 1 hour, 32 minutes&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;These plots reveal another interesting fact: &lt;em&gt;constant-heading solutions are actually pretty good&lt;/em&gt;.  Most of the time, the optimal trajectory sticks pretty close to at least one &lt;em&gt;constant-heading&lt;/em&gt; trajectory.  So, unless you&amp;rsquo;re really determined to shave a few minutes off your swim, using a &lt;em&gt;constant-heading&lt;/em&gt; strategy is totally fine.&lt;/p&gt;
 &lt;h4 id=&#34;optimal-heading-sequences&#34;&gt;Optimal Heading Sequences&lt;/h4&gt;
@@ -816,7 +816,7 @@ Hi Blake,
 &lt;p&gt;By this time in the morning, the tidal current is absolutely ripping from west to east (check out the &lt;a href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/#recapitulation&#34;&gt;tidal current gif&lt;/a&gt;).  By starting later, you&amp;rsquo;re effectively getting all the longitudinal velocity you could possible hope for, and more, for free &amp;ndash; your only option is to swim due south, and hope you make it to the beach before you get ripped around the tip of West Chop.  Good luck!&lt;/p&gt;
 &lt;p&gt;Probably a good time to reiterate my initial caveat: this would be an insanely high-risk strategy in practice, and is not recommended.  By the time the tidal current is this strong, swimming across Middle Ground would be dangerous, if not impossible.&lt;/p&gt;
 &lt;h4 id=&#34;convergence&#34;&gt;Convergence&lt;/h4&gt;
-&lt;p&gt;I wanted to display a few figures that highlight the robust convergence properties of this optimization routine.  In the following two figures, the grayscale lines represent the best solution after every 100 iterations, with a corresponding colorbar displaying the total swim time in seconds.  The optimized solution is shown in yellow, and the textbox in the upper righthand corner shows the optimized swim distance and time.&lt;/p&gt;
+&lt;p&gt;I wanted to display a few figures that highlight the robust convergence properties of this optimization routine.  In the following two figures, the grayscale lines represent the in-progress solution every 100 iterations, with a corresponding colorbar displaying the total swim time in seconds.  The optimized solution is shown in yellow, and the textbox in the upper righthand corner shows the optimized swim distance and time.&lt;/p&gt;
 
 
 
@@ -845,7 +845,7 @@ Hi Blake,
 
 &lt;p&gt;I ran this optimization shortly after I applied an exponential cooling schedule to the &lt;code&gt;bump_size&lt;/code&gt; parameter, and was shocked by how well it worked &amp;ndash; the resulting solutions were almost entirely insensitive to initial conditions.  In other words, the optimization procedure was &lt;em&gt;robust&lt;/em&gt;.  Knowing in advance that the optimal heading vector hovered around $135^{\circ}$ for this start time, I decided to push my luck and use a $180^{\circ}$ &lt;em&gt;constant-heading&lt;/em&gt; solution as my initial guess.&lt;/p&gt;
 &lt;p&gt;Uncalled for.  Pathological.&lt;/p&gt;
-&lt;p&gt;Nevertheless, the optimization routine quickly honed in on the correct solution.  I was so proud that it didn&amp;rsquo;t get mired in the morass of bullshit to which it was intentionally subjected &amp;ndash; I think I understand now &lt;a href=&#34;https://www.youtube.com/watch?v=zkv-_LqTeQA&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;why those guys at Boston Dynamics are so mean to their robots&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;Nevertheless, the optimization routine quickly honed in on the correct solution.  I was so proud that it didn&amp;rsquo;t get mired in the morass of bullshit to which it was intentionally subjected &amp;ndash; now I understand why the &lt;a href=&#34;https://www.youtube.com/watch?v=zkv-_LqTeQA&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Boston Dynamics engineers are so mean to their robots&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;On to the next!&lt;/p&gt;
 
 
@@ -880,8 +880,8 @@ Hi Blake,
 &lt;p&gt;Ultimately, this was a highly academic exercise.  Maybe this sort of thing makes sense if you&amp;rsquo;re a professional athlete or a Navy SEAL with a &lt;a href=&#34;https://en.wikipedia.org/wiki/Head-up_display&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;head-up display&lt;/a&gt; in your goggles, but otherwise you&amp;rsquo;re better off sticking with a &lt;em&gt;constant-heading&lt;/em&gt; strategy.  During the actual swim, it was challenging enough to follow a single fixed heading with any appreciable degree of confidence &amp;ndash; the notion that a swimmer might be able to make sub-degree alterations to their bearing every eighteen seconds is laughable.&lt;/p&gt;
 &lt;p&gt;But, on the other hand&amp;hellip; pretty cool, right?&lt;/p&gt;
 &lt;p&gt;It is often said (by lunatics, mostly) that there are many ways to skin a cat; likewise, I am confident that there are other, perhaps better, ways to approach this problem.  But, then again, there are so many cats, and so little time.&lt;/p&gt;
-&lt;p&gt;Feel free to &lt;a href=&#34;../../#contact&#34;&gt;reach out&lt;/a&gt; if you have any questions, comments, or want to collaborate on a cool project.  Thanks for reading.&lt;/p&gt;
-&lt;p&gt;Go forth and optimize!&lt;/p&gt;
+&lt;p&gt;Feel free to &lt;a href=&#34;../../#contact&#34;&gt;reach out&lt;/a&gt; if you have any questions, comments, or want to collaborate on a cool project.&lt;/p&gt;
+&lt;p&gt;Thanks for reading.&lt;/p&gt;
 &lt;hr&gt;
 &lt;br&gt;
 &lt;br&gt;

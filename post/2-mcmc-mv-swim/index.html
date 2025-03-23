@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: March 23, 2025 --><html lang="en-us" dir="ltr"
+<!-- Last Published: March 24, 2025 --><html lang="en-us" dir="ltr"
       data-wc-theme-default="dark">
   
 <head>
@@ -41,7 +41,7 @@
   
     
   
-  <meta name="description" content="Swim route optimization using the Metropolis-Hastings algorithm." />
+  <meta name="description" content="An application of the Metropolis-Hastings algorithm." />
 
   
   <link rel="alternate" hreflang="en-us" href="https://www.blakecole.com/post/2-mcmc-mv-swim/" />
@@ -192,8 +192,8 @@
   
   <meta property="og:site_name" content="Blake Cole" />
   <meta property="og:url" content="https://www.blakecole.com/post/2-mcmc-mv-swim/" />
-  <meta property="og:title" content="Leveraging Reversible Jump Markov Chain Monte Carlo (RJ-MCMC) to Plan a (Better) Swim to Martha&#39;s Vineyard | Blake Cole" />
-  <meta property="og:description" content="Swim route optimization using the Metropolis-Hastings algorithm." /><meta property="og:image" content="https://www.blakecole.com/post/2-mcmc-mv-swim/featured.png" />
+  <meta property="og:title" content="Open Water Swim Route Optimization Using Reversible Jump Markov Chain Monte Carlo (RJ-MCMC) | Blake Cole" />
+  <meta property="og:description" content="An application of the Metropolis-Hastings algorithm." /><meta property="og:image" content="https://www.blakecole.com/post/2-mcmc-mv-swim/featured.png" />
     <meta property="twitter:image" content="https://www.blakecole.com/post/2-mcmc-mv-swim/featured.png" /><meta property="og:locale" content="en-us" />
   
     
@@ -212,7 +212,7 @@
   
 
 
-  <title>Leveraging Reversible Jump Markov Chain Monte Carlo (RJ-MCMC) to Plan a (Better) Swim to Martha&#39;s Vineyard | Blake Cole</title>
+  <title>Open Water Swim Route Optimization Using Reversible Jump Markov Chain Monte Carlo (RJ-MCMC) | Blake Cole</title>
 
   
   
@@ -1028,7 +1028,7 @@
       sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
     href="/post/2-mcmc-mv-swim/"
     
-  >Leveraging Reversible Jump Markov Chain Monte Carlo (RJ-MCMC) to Plan a (Better) Swim to Martha&#39;s Vineyard
+  >Open Water Swim Route Optimization Using Reversible Jump Markov Chain Monte Carlo (RJ-MCMC)
     </a>
   
     <ul class="hb-sidebar-mobile-toc"><li>
@@ -1338,7 +1338,7 @@
 
       
 
-      <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Leveraging Reversible Jump Markov Chain Monte Carlo (RJ-MCMC) to Plan a (Better) Swim to Martha&#39;s Vineyard</h1>
+      <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Open Water Swim Route Optimization Using Reversible Jump Markov Chain Monte Carlo (RJ-MCMC)</h1>
 
       <div class="mt-4 mb-16">
       <div class="text-gray-500 dark:text-gray-300 text-sm flex items-center flex-wrap gap-y-2"><span class="mr-1">Mar 23, 2025</span><span class="mx-1">·</span>
@@ -1463,7 +1463,7 @@ The content provided on this website/blog is for informational purposes only and
 <li><strong>Practical.</strong>  The swimmer must arrive near the intended destination.</li>
 <li><strong>Efficient.</strong>  The swimmer should not fight the current, if possible.</li>
 </ul>
-<p>My simple guess-and-check approach worked well enough &ndash; the swim was a success, and we arrived safely on shore near our intended destination, a little less than two hours after we departed.  However, some inquisitive minds soon began to wonder: <em>&ldquo;Could it have been done better?&rdquo;</em></p>
+<p>My simple guess-and-check approach worked well enough &ndash; the swim was a success, and we arrived safely on shore near our intended destination, a little less than two hours after we departed.  However, inquisitive minds soon began to wonder: <em>&ldquo;Could it have been done better?&rdquo;</em></p>
 
 
 
@@ -1523,7 +1523,7 @@ The content provided on this website/blog is for informational purposes only and
 
 </figure>
 
-<p>The rate at which Casey solves problems is astounding.  This ability is rooted in an inclination to find first-order solutions quickly, and then decide whether higher fidelity approaches are warranted.  All good engineers seem to operate this way.  Not me.  I frequently succumb to the siren song of complexity, and spend hours deliberating which state-of-the-art technique I&rsquo;m going to use to solve a problem.  This an ill-advised strategy: you could spend half a lifetime figuring out the best approach to a problem, and never get around to actually solving it.  You can&rsquo;t really know the <em>best</em> approach to a problem unless you have already solved it a few times (or talked to someone who has), so you might as well start with something simple &ndash; dare I say, something <em>random</em> (hah).  Such was Casey&rsquo;s reasoning when he decided to utilize a relatively simple stochastic methodology to determine the best possible swim route from Woods Hole to Martha&rsquo;s Vineyard.</p>
+<p>The rate at which Casey solves problems is astounding.  This ability is rooted in an inclination to find first-order solutions quickly, and then decide whether higher fidelity approaches are warranted.  All good engineers seem to operate this way.  Not me.  I frequently succumb to the siren song of complexity, and spend hours deliberating which state-of-the-art technique I&rsquo;m going to use to solve a problem.  This an ill-advised strategy: you could spend half a lifetime figuring out the best approach to a problem, and never get around to actually solving it.  You can&rsquo;t really know the <em>best</em> approach to a problem unless you have already solved it a few times (or talked to someone who has), so you might as well start with something simple &ndash; dare I say, something <em>random</em>.  Such was Casey&rsquo;s reasoning when he decided to utilize a relatively simple stochastic methodology to determine the best possible swim route from Woods Hole to Martha&rsquo;s Vineyard.</p>
 <h2 id="markov-chain-monte-carlo">Markov Chain Monte Carlo</h2>
 <p>There is power in randomness &ndash; this is the fundamental premise of so-called <em>Monte Carlo</em> methods.  How can this be?  Randomness is inherently chaotic, and chaos is bad, right?  Isn&rsquo;t the foremost goal of science and engineering to distill order from chaos?</p>
 <p>Sort of.  Another way to think about randomness is as means of observing reality in an unbiased manner.  Imagine being a journalist who is told to write an article about one of ten equally important subjects &ndash; how should they choose which one to cover?  It obviously wouldn&rsquo;t be fair if they simply picked their favorite topic, so instead, they might randomly select one of the subjects.  By doing so, they ensure that each subject is treated with equal importance, free from any personal bias.  This randomness introduces fairness into the process, enabling a more objective approach to gathering information.  In much the same way, Monte Carlo methods use randomness to explore possible solutions to a problem, systematically sampling different outcomes to estimate the most likely result (or discover the best solution).  While it may seem counterintuitive, this stochastic process can be surprisingly powerful, as it allows us to explore a broad range of scenarios and capture complex behaviors that deterministic methods might miss.</p>
@@ -1556,7 +1556,7 @@ The content provided on this website/blog is for informational purposes only and
 </figure>
 
 <p>A major advance came in the 1950s with the introduction of the Metropolis algorithm by Nicholas Metropolis and his colleagues Marshall Rosenbluth, Arianna Rosenbluth, Augusta Teller, and Edward Teller at Los Alamos National Laboratory.  This method combined Monte Carlo techniques with the mathematics of Markov Chains &ndash; theoretical frameworks that describe sequences of possible events in which the probability of each event depends only on the state attained in the previous event, not the full history.  This <em>memoryless</em> property of Markov Chains makes them especially useful for exploring complex parameter spaces in a controlled (yet random) fashion.  In the Metropolis algorithm, a Markov Chain is constructed in such a way that, over time, it produces samples from a desired probability distribution &ndash; or, equivalently, yields a set of parameters that minimizes a cost function (more on this equivalency in the <a href="https://www.blakecole.com/post/2-mcmc-mv-swim/#algorithm">Algorithm</a> section).</p>
-<p>Why would anyone want to do this?  Well, in short, there quite a few ways in which nuclear fusion does not happen, and Nicholas Metropolis and his colleagues wanted very badly for it to happen.  I would say more, but that&rsquo;s literally all I know &ndash; my apologies in advance to Iran, South Korea, and Saudi Arabia.</p>
+<p>Why would anyone want to do this?  Well, in short, there quite a few ways in which nuclear fission does not happen, and Nicholas Metropolis and his colleagues wanted very badly for it to happen.  I would say more, but that&rsquo;s literally all I know, and even if I did know more, I probably wouldn&rsquo;t say more &ndash; apologies in advance to Iran, South Korea, and Saudi Arabia.</p>
 
 
 
@@ -1592,14 +1592,14 @@ The content provided on this website/blog is for informational purposes only and
 </blockquote>
 <p>What?</p>
 <p>How does that relate to optimization?</p>
-<p>I wondered the same thing, at first &ndash; do not dismay.</p>
+<p>I wondered the same thing at first &ndash; do not dismay.</p>
 <p>The Metropolis–Hastings algorithm was originally developed to approximate probability distributions by generating a sequence of samples such that, after many iterations, the frequency of samples at any point, $x$, approximates the probability density, $P(x)$.</p>
 <p>Very clever people eventually figured out that this same method could be used to minimize a cost function by defining a target probability distribution that preferentially selects good solutions, and rejects bad ones.  Suppose you have a cost function, $C(x),$ that you want to minimize.  You could then define a target probability distribution, $P(x)$, where solutions with lower costs have higher probabilities:</p>
 $$
 P(x) \propto e^{\beta C(x)},
 $$<p>
 where $\beta$ is a positive (<em>inverse cooling</em>) parameter controlling the sharpness of the distribution.  If you run the Metropolis–Hastings algorithm with this distribution, the generated &ldquo;samples&rdquo; &ndash; which represent sets of parameters, $x$, in this instance &ndash; will preferentially come from low-cost regions of the parameter space, because these samples have a higher probability of being selected.</p>
-<p>If none of <em>that</em> made sense to you, I am sorry.  But, I have great news: the Metropolis–Hastings algorithm is shockingly easy to implement, even if you do not fully understand the underlying theory.  This means you (yes <em>you</em>!) can optimize all sorts of cool things in your life.</p>
+<p>If none of <em>that</em> made sense to you, that&rsquo;s okay &ndash; I have great news: the Metropolis–Hastings algorithm is shockingly easy to implement, even if you do not fully understand the underlying theory.  This means you (yes, <em>you</em>!) can optimize all sorts of cool things in your life.</p>
 <p>These are the key steps:</p>
 
 
@@ -1687,7 +1687,7 @@ flowchart TD
 
 </p>
 <p>Why periodically accept worse (higher cost) solutions?</p>
-<p>Imagine you are hiking in the mountains on a foggy day, searching for the highest peak.  If you simply climb upwards at every step, you might find yourself atop a small hill and assume you&rsquo;ve reached the highest point (these little hilltops are called a <em>local maxima</em> or <em>local extrema</em> in nerd speak&hellip; we despise them).  In order to locate the highest peak &ndash; the <em>global maximum</em> (which we love) &ndash; you might need to occasionally descend to lower elevations, even if it seems counterproductive in the moment.</p>
+<p>Imagine you are hiking in the mountains on a foggy day, searching for the highest peak.  If you simply climb upwards at every step, you might find yourself atop a small hill and assume you&rsquo;ve reached the highest point (these little hilltops are called a <em>local maxima</em> or <em>local extrema</em> in nerd speak).  In order to locate the highest peak &ndash; the <em>global maximum</em> &ndash; you might need to occasionally descend to lower elevations, even if it seems counterproductive in the moment.</p>
 
 
 
@@ -1830,7 +1830,7 @@ flowchart TD
 <p><strong>None</strong>.  We&rsquo;re prioritizing <em>speed</em>, and speed alone &ndash; ferries, ruffled feathers, and private beaches be damned (<em>especially</em> the private beaches, those can go straight to hell).  Any heading sequence that delivers the swimmer to Martha&rsquo;s Vineyard is on the table.</p>
 <h3 id="assumptions">Assumptions</h3>
 <ol>
-<li>We assume the swimmer is able to maintain a <strong>constant pace</strong> of $1$:$40$/$100yd$.  This is a reasonable pace for an average open water swimmer in good shape.</li>
+<li>We assume the swimmer is able to maintain a <strong>constant pace</strong> of 1:40/100yd.  This is a reasonable pace for an average open water swimmer in good shape.</li>
 <li>We assume the swimmer departs from a <strong>fixed location</strong> on Nobska Beach, MA, sometime between 2:00a and 11:00a on July 20th, 2022.</li>
 </ol>
 <h3 id="parameters">Parameters</h3>
@@ -1894,7 +1894,7 @@ flowchart TD
 <p>Compute the acceptance probability: $\alpha_k = \exp{\left( \frac{\Delta_k}{T_k} \right)}$, where $\Delta_k$ is the cost difference between the candidate and previous solutions, and $T_k$ is the annealing temperature parameter.  We reduce $T_k$ gradually over time using a <em>linear cooling schedule</em> to discourage premature convergence.</p>
 </li>
 <li>
-<p>Keep the candidate solution if <em><strong>BOTH</strong></em> of the following conditions are met:</p>
+<p>Keep the candidate solution if <em><strong>BOTH</strong></em> the following conditions are met:</p>
 <ol>
 <li><em><strong>EITHER</strong></em> the candidate cost is lower than the previous cost, $C_k < C_{k-1}$, <em><strong>OR</strong></em> the acceptance probability, $\alpha_k$, is greater than a random number drawn from a uniform distribution, $\mathcal{U}(0,1)$.</li>
 <li>The swim trajectory terminates inside the boundary of Martha&rsquo;s Vineyard.</li>
@@ -2179,7 +2179,7 @@ Hi Blake,
   
 </div>
 </p>
-<p>Assuming a constant swim pace of $1$:$40/100yd$, and no concerns about getting maimed by a ferry&hellip;</p>
+<p>Assuming a constant swim pace of 1:40/100yd, and no concerns about getting maimed by a ferry&hellip;</p>
 <p><em><strong>On July 30th, 2022, it would have been possible to depart Nobska Beach between 7:30a and 8:00a, and cross Vineyard Sound in 1 hour, 32 minutes</strong></em>.</p>
 <p>These plots reveal another interesting fact: <em>constant-heading solutions are actually pretty good</em>.  Most of the time, the optimal trajectory sticks pretty close to at least one <em>constant-heading</em> trajectory.  So, unless you&rsquo;re really determined to shave a few minutes off your swim, using a <em>constant-heading</em> strategy is totally fine.</p>
 <h4 id="optimal-heading-sequences">Optimal Heading Sequences</h4>
@@ -2202,7 +2202,7 @@ Hi Blake,
 <p>By this time in the morning, the tidal current is absolutely ripping from west to east (check out the <a href="https://www.blakecole.com/post/2-mcmc-mv-swim/#recapitulation">tidal current gif</a>).  By starting later, you&rsquo;re effectively getting all the longitudinal velocity you could possible hope for, and more, for free &ndash; your only option is to swim due south, and hope you make it to the beach before you get ripped around the tip of West Chop.  Good luck!</p>
 <p>Probably a good time to reiterate my initial caveat: this would be an insanely high-risk strategy in practice, and is not recommended.  By the time the tidal current is this strong, swimming across Middle Ground would be dangerous, if not impossible.</p>
 <h4 id="convergence">Convergence</h4>
-<p>I wanted to display a few figures that highlight the robust convergence properties of this optimization routine.  In the following two figures, the grayscale lines represent the best solution after every 100 iterations, with a corresponding colorbar displaying the total swim time in seconds.  The optimized solution is shown in yellow, and the textbox in the upper righthand corner shows the optimized swim distance and time.</p>
+<p>I wanted to display a few figures that highlight the robust convergence properties of this optimization routine.  In the following two figures, the grayscale lines represent the in-progress solution every 100 iterations, with a corresponding colorbar displaying the total swim time in seconds.  The optimized solution is shown in yellow, and the textbox in the upper righthand corner shows the optimized swim distance and time.</p>
 
 
 
@@ -2231,7 +2231,7 @@ Hi Blake,
 
 <p>I ran this optimization shortly after I applied an exponential cooling schedule to the <code>bump_size</code> parameter, and was shocked by how well it worked &ndash; the resulting solutions were almost entirely insensitive to initial conditions.  In other words, the optimization procedure was <em>robust</em>.  Knowing in advance that the optimal heading vector hovered around $135^{\circ}$ for this start time, I decided to push my luck and use a $180^{\circ}$ <em>constant-heading</em> solution as my initial guess.</p>
 <p>Uncalled for.  Pathological.</p>
-<p>Nevertheless, the optimization routine quickly honed in on the correct solution.  I was so proud that it didn&rsquo;t get mired in the morass of bullshit to which it was intentionally subjected &ndash; I think I understand now <a href="https://www.youtube.com/watch?v=zkv-_LqTeQA" target="_blank" rel="noopener">why those guys at Boston Dynamics are so mean to their robots</a>!</p>
+<p>Nevertheless, the optimization routine quickly honed in on the correct solution.  I was so proud that it didn&rsquo;t get mired in the morass of bullshit to which it was intentionally subjected &ndash; now I understand why the <a href="https://www.youtube.com/watch?v=zkv-_LqTeQA" target="_blank" rel="noopener">Boston Dynamics engineers are so mean to their robots</a>.</p>
 <p>On to the next!</p>
 
 
@@ -2266,8 +2266,8 @@ Hi Blake,
 <p>Ultimately, this was a highly academic exercise.  Maybe this sort of thing makes sense if you&rsquo;re a professional athlete or a Navy SEAL with a <a href="https://en.wikipedia.org/wiki/Head-up_display" target="_blank" rel="noopener">head-up display</a> in your goggles, but otherwise you&rsquo;re better off sticking with a <em>constant-heading</em> strategy.  During the actual swim, it was challenging enough to follow a single fixed heading with any appreciable degree of confidence &ndash; the notion that a swimmer might be able to make sub-degree alterations to their bearing every eighteen seconds is laughable.</p>
 <p>But, on the other hand&hellip; pretty cool, right?</p>
 <p>It is often said (by lunatics, mostly) that there are many ways to skin a cat; likewise, I am confident that there are other, perhaps better, ways to approach this problem.  But, then again, there are so many cats, and so little time.</p>
-<p>Feel free to <a href="../../#contact">reach out</a> if you have any questions, comments, or want to collaborate on a cool project.  Thanks for reading.</p>
-<p>Go forth and optimize!</p>
+<p>Feel free to <a href="../../#contact">reach out</a> if you have any questions, comments, or want to collaborate on a cool project.</p>
+<p>Thanks for reading.</p>
 <hr>
 <br>
 <br>
@@ -2391,7 +2391,7 @@ This method is arguably simpler to implement, but less flexible since it require
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F2-mcmc-mv-swim%2F&amp;text=Leveraging&#43;Reversible&#43;Jump&#43;Markov&#43;Chain&#43;Monte&#43;Carlo&#43;%28RJ-MCMC%29&#43;to&#43;Plan&#43;a&#43;%28Better%29&#43;Swim&#43;to&#43;Martha%27s&#43;Vineyard"
+    href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F2-mcmc-mv-swim%2F&amp;text=Open&#43;Water&#43;Swim&#43;Route&#43;Optimization&#43;Using&#43;Reversible&#43;Jump&#43;Markov&#43;Chain&#43;Monte&#43;Carlo&#43;%28RJ-MCMC%29"
     title="X"
     aria-label="X"
     id="share-link-x"
@@ -2409,7 +2409,7 @@ This method is arguably simpler to implement, but less flexible since it require
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F2-mcmc-mv-swim%2F&amp;t=Leveraging&#43;Reversible&#43;Jump&#43;Markov&#43;Chain&#43;Monte&#43;Carlo&#43;%28RJ-MCMC%29&#43;to&#43;Plan&#43;a&#43;%28Better%29&#43;Swim&#43;to&#43;Martha%27s&#43;Vineyard"
+    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F2-mcmc-mv-swim%2F&amp;t=Open&#43;Water&#43;Swim&#43;Route&#43;Optimization&#43;Using&#43;Reversible&#43;Jump&#43;Markov&#43;Chain&#43;Monte&#43;Carlo&#43;%28RJ-MCMC%29"
     title="Facebook"
     aria-label="Facebook"
     id="share-link-facebook"
@@ -2429,7 +2429,7 @@ This method is arguably simpler to implement, but less flexible since it require
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="mailto:?subject=Leveraging%20Reversible%20Jump%20Markov%20Chain%20Monte%20Carlo%20%28RJ-MCMC%29%20to%20Plan%20a%20%28Better%29%20Swim%20to%20Martha%27s%20Vineyard&amp;body=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F2-mcmc-mv-swim%2F"
+    href="mailto:?subject=Open%20Water%20Swim%20Route%20Optimization%20Using%20Reversible%20Jump%20Markov%20Chain%20Monte%20Carlo%20%28RJ-MCMC%29&amp;body=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F2-mcmc-mv-swim%2F"
     title="Email"
     aria-label="Email"
     id="share-link-email"
@@ -2447,7 +2447,7 @@ This method is arguably simpler to implement, but less flexible since it require
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F2-mcmc-mv-swim%2F&amp;title=Leveraging&#43;Reversible&#43;Jump&#43;Markov&#43;Chain&#43;Monte&#43;Carlo&#43;%28RJ-MCMC%29&#43;to&#43;Plan&#43;a&#43;%28Better%29&#43;Swim&#43;to&#43;Martha%27s&#43;Vineyard"
+    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F2-mcmc-mv-swim%2F&amp;title=Open&#43;Water&#43;Swim&#43;Route&#43;Optimization&#43;Using&#43;Reversible&#43;Jump&#43;Markov&#43;Chain&#43;Monte&#43;Carlo&#43;%28RJ-MCMC%29"
     title="LinkedIn"
     aria-label="LinkedIn"
     id="share-link-linkedin"
@@ -2465,7 +2465,7 @@ This method is arguably simpler to implement, but less flexible since it require
   <a
     target="_blank" rel="noopener"
     class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
-    href="whatsapp://send?text=Leveraging&#43;Reversible&#43;Jump&#43;Markov&#43;Chain&#43;Monte&#43;Carlo&#43;%28RJ-MCMC%29&#43;to&#43;Plan&#43;a&#43;%28Better%29&#43;Swim&#43;to&#43;Martha%27s&#43;Vineyard%20https%3A%2F%2Fwww.blakecole.com%2Fpost%2F2-mcmc-mv-swim%2F"
+    href="whatsapp://send?text=Open&#43;Water&#43;Swim&#43;Route&#43;Optimization&#43;Using&#43;Reversible&#43;Jump&#43;Markov&#43;Chain&#43;Monte&#43;Carlo&#43;%28RJ-MCMC%29%20https%3A%2F%2Fwww.blakecole.com%2Fpost%2F2-mcmc-mv-swim%2F"
     title="WhatsApp"
     aria-label="WhatsApp"
     id="share-link-whatsapp"
