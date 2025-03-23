@@ -1,0 +1,2795 @@
+<!doctype html>
+<!-- This site was created with Hugo Blox. https://hugoblox.com -->
+<!-- Last Published: March 23, 2025 --><html lang="en-us" dir="ltr"
+      data-wc-theme-default="dark">
+  
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="Hugo Blox Builder 0.3.2" />
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Blake Cole" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="One of my more talented friends helped me determine the *best possible* swim route to Martha&#39;s Vineyard.  Bless you, Casey Handmer." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://www.blakecole.com/post/2-mcmc-mv-swim/" />
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="/css/themes/blue.min.css" />
+  
+
+  
+  
+    
+    <link href="/dist/wc.min.05570f1deda629d4e2d77f73534a63aa04471f012db6735c59424372f467db85.css" rel="stylesheet" />
+  
+
+  
+  
+  
+    <link href="/css/community-hugo-blox.min.4859612ff25db84453d3edef0eb29acbfae9f3fcb50a4286cf05609e8102c3b0.css" rel="stylesheet" />
+  
+
+  
+    
+    <link href="/css/custom.min.7915624c6fa09d3db385e95f78355e6072c5745a23acad607a7f300f3bdd9e5f.css" rel="stylesheet" />
+  
+
+  <script>
+     
+    window.hbb = {
+       defaultTheme: document.documentElement.dataset.wcThemeDefault,
+       setDarkTheme: () => {
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = "dark";
+      },
+       setLightTheme: () => {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.colorScheme = "light";
+      }
+    }
+
+    console.debug(`Default Hugo Blox Builder theme is ${window.hbb.defaultTheme}`);
+
+    if ("wc-color-theme" in localStorage) {
+      localStorage.getItem("wc-color-theme") === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+    } else {
+      window.hbb.defaultTheme === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      if (window.hbb.defaultTheme === "system") {
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      }
+    }
+  </script>
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      
+      let checkboxes = document.querySelectorAll('li input[type=\'checkbox\'][disabled]');
+      checkboxes.forEach(e => {
+        e.parentElement.parentElement.classList.add('task-list');
+      });
+
+      
+      const liNodes = document.querySelectorAll('.task-list li');
+      liNodes.forEach(nodes => {
+        let textNodes = Array.from(nodes.childNodes).filter(node => node.nodeType === 3 && node.textContent.trim().length > 1);
+        if (textNodes.length > 0) {
+          const span = document.createElement('label');
+          textNodes[0].after(span);  
+          span.appendChild(nodes.querySelector('input[type=\'checkbox\']'));
+          span.appendChild(textNodes[0]);
+        }
+      });
+    });
+  </script>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  <link rel="icon" type="image/png" href="/media/icon_hu14732858049342914994.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu14233579803890805510.png" />
+
+  <link rel="canonical" href="https://www.blakecole.com/post/2-mcmc-mv-swim/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+    <meta property="twitter:site" content="@blerkk" />
+    <meta property="twitter:creator" content="@blerkk" />
+  
+  <meta property="og:site_name" content="Blake Cole" />
+  <meta property="og:url" content="https://www.blakecole.com/post/2-mcmc-mv-swim/" />
+  <meta property="og:title" content="Leveraging Reversible Jump Markov Chain Monte Carlo (RJ-MCMC) to Plan a (Better) Swim to Martha&#39;s Vineyard | Blake Cole" />
+  <meta property="og:description" content="One of my more talented friends helped me determine the *best possible* swim route to Martha&#39;s Vineyard.  Bless you, Casey Handmer." /><meta property="og:image" content="https://www.blakecole.com/post/2-mcmc-mv-swim/featured.png" />
+    <meta property="twitter:image" content="https://www.blakecole.com/post/2-mcmc-mv-swim/featured.png" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2025-02-21T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2025-03-23T17:45:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  <title>Leveraging Reversible Jump Markov Chain Monte Carlo (RJ-MCMC) to Plan a (Better) Swim to Martha&#39;s Vineyard | Blake Cole</title>
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <style>
+    @font-face {
+      font-family: 'Inter var';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(/dist/font/Inter.var.woff2) format(woff2);
+    }
+  </style>
+
+  
+
+  
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/dist/pagefind/pagefind-ui.be766eb419317a14ec769d216e9779bfe8f3737c80e780f4ba0dafb57a41a482.css" integrity="sha256-vnZutBkxehTsdp0hbpd5v&#43;jzc3yA54D0ug2vtXpBpII=" />
+
+
+<script src="/dist/pagefind/pagefind-ui.87693d7c6f2b3b347ce359d0ede762c033419f0a32b22ce508c335a81d841f1b.js" integrity="sha256-h2k9fG8rOzR841nQ7ediwDNBnwoysizlCMM1qB2EHxs="></script>
+
+
+<script>window.hbb.pagefind = {"baseUrl":"/"};</script>
+
+<style>
+  html.dark {
+    --pagefind-ui-primary: #eeeeee;
+    --pagefind-ui-text: #eeeeee;
+    --pagefind-ui-background: #152028;
+    --pagefind-ui-border: #152028;
+    --pagefind-ui-tag: #152028;
+  }
+
+   
+  .search-close > svg {
+    height: calc(64px * var(--pagefind-ui-scale));
+    width: calc(64px * var(--pagefind-ui-scale));
+  }
+</style>
+
+<script>
+  
+  let searchWrapper = null;
+
+  window.addEventListener('DOMContentLoaded', (event) => {
+    
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      baseUrl: window.hbb.pagefind.baseUrl,
+      bundlePath: window.hbb.pagefind.baseUrl + "pagefind/",
+    });
+
+    
+    searchWrapper = document.getElementById('search-wrapper');
+
+    
+    let triggers = document.querySelectorAll('[data-search-toggle]');
+    triggers.forEach(trigger =>
+      trigger.addEventListener('click', handleSearchToggle)
+    );
+  });
+
+  function handleSearchToggle(event) {
+    if (!searchWrapper) return;
+
+    const isHidden = searchWrapper.classList.contains('hidden');
+    searchWrapper.classList.toggle('hidden');
+    document.body.style.overflow = isHidden ? 'hidden' : '';
+
+    const searchInput = searchWrapper.querySelector("input");
+    if (searchInput) {
+      searchInput.value = "";
+      searchInput.focus();
+    }
+
+    if (!searchWrapper.classList.contains('hidden')) {
+      let clearTrigger = document.querySelector('.pagefind-ui__search-clear');
+
+      if (clearTrigger && !clearTrigger.hasAttribute('listenerOnClick')) {
+        clearTrigger.setAttribute('listenerOnClick', 'true');
+
+        clearTrigger.addEventListener('click', () => {
+          searchInput.focus();
+        });
+      }
+    }
+  }
+
+  
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && searchWrapper && !searchWrapper.classList.contains('hidden')) {
+      searchWrapper.classList.add('hidden');
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="/dist/lib/katex/katex.min.505d5f829022bb7b4f24dfee0aa1141cd7bba67afe411d1240335f820960b5c3.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr&#43;QR0SQDNfgglgtcM=" />
+  
+  
+  <script defer src="/dist/lib/katex/katex.min.dc84b296ec3e884de093158f760fd9d45b6c7abe58b5381557f4e138f46a58ae.js" integrity="sha256-3ISyluw&#43;iE3gkxWPdg/Z1Ftser5YtTgVV/ThOPRqWK4="></script>
+  
+  
+  
+  
+  <script defer src="/js/katex-renderer.6579ec9683211cfb952064aedf3a3baea5eeb17a061775b32b70917474637c80.js" integrity="sha256-ZXnsloMhHPuVIGSu3zo7rqXusXoGF3WzK3CRdHRjfIA="></script>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  <script
+    defer
+    src="/js/hugo-blox-en.min.47736f84e20cae1bb2224dc4605239689e913811575e32b5f86a700ee9d6529d.js"
+    integrity="sha256-R3NvhOIMrhuyIk3EYFI5aJ6ROBFXXjK1&#43;GpwDunWUp0="
+  ></script>
+
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+      
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+      
+    
+  
+
+
+
+
+</head>
+
+  <body class="dark:bg-hb-dark dark:text-white page-wrapper" id="top">
+    <div id="page-bg"></div>
+    <div class="page-header sticky top-0 z-30">
+      
+      
+      
+        
+        
+        
+          <header id="site-header" class="header">
+  <nav class="navbar px-3 flex justify-left">
+    <div class="order-0 h-100">
+      
+      <a class="navbar-brand" href="/" title="Blake Cole">
+        Blake Cole
+      </a>
+    </div>
+    
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-3 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1">
+      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+        <title>Open Menu</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+        <title>Close Menu</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    
+
+    
+    
+    <ul
+      id="nav-menu"
+      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8 justify-left
+      ">
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/"
+        >About</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#experience"
+        >Experience</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#publications"
+        >Publications</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#post"
+        >Blog</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#contact"
+        >Contact</a
+        >
+      </li>
+      
+      
+      
+    </ul>
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+
+      
+      
+      
+      <button
+        aria-label="toggle search"
+        class="text-black hover:text-primary  inline-block px-3 text-xl dark:text-white"
+        data-search-toggle>
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512" fill="currentColor"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+      </button>
+      
+
+      
+      
+      <div class="px-3 text-black hover:text-primary-700 dark:text-white dark:hover:text-primary-300
+            [&.active]:font-bold [&.active]:text-black/90 dark:[&.active]:text-white">
+        <button class="theme-toggle mt-1" accesskey="t" title="appearance">
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class="dark:hidden">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class=" dark:block [&:not(dark)]:hidden">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+      
+
+      
+      
+
+      
+      
+    </div>
+  </nav>
+</header>
+
+<div
+  id="search-wrapper"
+  class="hidden fixed inset-0 z-50 bg-white dark:bg-gray-900 flex flex-col overflow-hidden"
+>
+  <div class="flex justify-end p-3">
+    <button
+      aria-label="search"
+      class="search-close text-black hover:text-primary dark:text-white"
+      data-search-toggle
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="search" class="flex-1 overflow-y-auto p-3">
+    
+  </div>
+</div>
+
+
+        
+      
+    </div>
+    <div class="page-body  my-10">
+      
+
+
+
+
+
+<div class="mx-auto flex max-w-screen-xl">
+  
+
+
+
+<aside class="hb-sidebar-container max-lg:[transform:translate3d(0,-100%,0)] lg:hidden xl:block">
+  
+  <div class="px-4 pt-4 lg:hidden">
+    
+    
+  </div>
+  <div class="hb-scrollbar lg:h-[calc(100vh-var(--navbar-height))]">
+    <ul class="flex flex-col gap-1 lg:hidden">
+      
+      
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/"
+    
+  >Recent &amp; Upcoming Talks
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/example/"
+    
+  >Example Talk
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class="open"><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/"
+    
+  >Blog
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col open"><a
+    class="hb-sidebar-custom-link
+      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
+    href="/post/2-mcmc-mv-swim/"
+    
+  >Leveraging Reversible Jump Markov Chain Monte Carlo (RJ-MCMC) to Plan a (Better) Swim to Martha&#39;s Vineyard
+    </a>
+  
+    <ul class="hb-sidebar-mobile-toc"><li>
+              <a
+                href="#should-you-read-this"
+                class="hb-docs-link"
+              >Should You Read This?</a>
+            </li>
+          <li>
+              <a
+                href="#recapitulation"
+                class="hb-docs-link"
+              >Recapitulation</a>
+            </li>
+          <li>
+              <a
+                href="#need-for-speed"
+                class="hb-docs-link"
+              >Need for Speed</a>
+            </li>
+          <li>
+              <a
+                href="#markov-chain-monte-carlo"
+                class="hb-docs-link"
+              >Markov Chain Monte Carlo</a>
+            </li>
+          <li>
+              <a
+                href="#problem-setup"
+                class="hb-docs-link"
+              >Problem Setup</a>
+            </li>
+          <li>
+              <a
+                href="#results"
+                class="hb-docs-link"
+              >Results</a>
+            </li>
+          <li>
+              <a
+                href="#flourishes"
+                class="hb-docs-link"
+              >Flourishes</a>
+            </li>
+          </ul>
+  
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/1-adcirc-mv-swim/"
+    
+  >Leveraging the ADCIRC Model to Plan an Open-Water Swim from Woods Hole to Martha&#39;s Vineyard
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/0-hello-world/"
+    
+  >Hello World &#43; Bio
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/projects/"
+    
+  >Blog
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/"
+    
+  >Projects
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/pandas/"
+    
+  >Pandas
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/pytorch/"
+    
+  >PyTorch
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/scikit/"
+    
+  >scikit-learn
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/experience/"
+    
+  >Experience
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/"
+    
+  >Teaching
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/js/"
+    
+  >Learn JavaScript
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/python/"
+    
+  >Learn Python
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/"
+    
+  >Publications
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/jrnl-aor-2022/"
+    
+  >Unscented Kalman filter for long-distance vessel tracking in geodetic coordinates
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/conf-ieee-oceans-2021/"
+    
+  >Surface vessel collision avoidance in MOOS-IvP using a geodetic unscented Kalman filter
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/jrnl-jgr-earth-surface-2017/"
+    
+  >A model integrating longshore and cross-shore processes for predicting long-term shoreline response to climate change
+    </a>
+              
+            </li></ul>
+      </div></li>
+    </ul>
+
+    <div class="max-xl:hidden h-0 w-64 shrink-0"></div></div>
+
+</aside>
+  
+
+<nav class="hb-toc order-last hidden w-64 shrink-0 xl:block print:hidden px-4" aria-label="table of contents">
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div class="hb-scrollbar text-sm [hyphens:auto] sticky top-16 overflow-y-auto pr-4 pt-6 max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] -mr-4 rtl:-ml-4"><p class="mb-4 font-semibold tracking-tight">On this page</p><ul>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#should-you-read-this">Should You Read This?</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#recapitulation">Recapitulation</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#need-for-speed">Need for Speed</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#markov-chain-monte-carlo">Markov Chain Monte Carlo</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#history">History</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#algorithm">Algorithm</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#python-demo">Python Demo</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#problem-setup">Problem Setup</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#goal">Goal</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#constraints">Constraints</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#assumptions">Assumptions</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#parameters">Parameters</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#methodology">Methodology</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#useful-functions">Useful Functions</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#results">Results</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#caseys-solution">Casey’s Solution</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#my-solution">My Solution</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#optimal-trajectories">Optimal Trajectories</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#optimal-heading-sequences">Optimal Heading Sequences</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#convergence">Convergence</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#reflections">Reflections</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#flourishes">Flourishes</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#gaussian-bump">Gaussian Bump</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#simulated-annealing">Simulated Annealing</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#exponential">Exponential</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-8 rtl:pr-8 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#linear">Linear</a>
+      </li></ul>
+
+  
+  
+    
+    
+  
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  </nav>
+
+
+  <article class="w-full break-words flex min-h-[calc(100vh-var(--navbar-height))] min-w-0 justify-center pb-8 pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+    <main class="w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
+
+      
+
+      <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Leveraging Reversible Jump Markov Chain Monte Carlo (RJ-MCMC) to Plan a (Better) Swim to Martha&#39;s Vineyard</h1>
+
+      <div class="mt-4 mb-16">
+      <div class="text-gray-500 dark:text-gray-300 text-sm flex items-center flex-wrap gap-y-2"><span class="mr-1">Feb 21, 2025</span><span class="mx-1">·</span>
+        
+          
+          
+          <div class="group inline-flex items-center text-current gap-x-1.5 mx-1">
+            
+            
+            <img src="/author/blake-cole/avatar_hu2599833077708766737.webp" alt="Blake Cole" class="inline-block h-4 w-4 rounded-full border border-current" loading="lazy" />
+            
+            <div >Blake Cole</div>
+          </div>
+          
+        
+
+        
+        <span class="mx-1">·</span>
+        <span class="mx-1">
+          31 min read
+        </span>
+        
+        </div>
+
+        <div class="mt-3">
+          
+
+
+
+
+
+        </div>
+      </div>
+
+
+
+      
+      
+      
+      
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="article-header article-container featured-image-wrapper mt-4 mb-16" style="max-width: 720px; max-height: 558px;">
+        <div style="position: relative">
+          <img src="/post/2-mcmc-mv-swim/featured_hu10332449141916435573.webp" width="720" height="558" alt="" class="featured-image">
+          <span class="article-header-caption">Reversible Jump Markov Chain Monte Carlo is a stochastic, sampling-based optimization method that can explore parameter spaces of varying dimension by introducing or removing parameters while maintaining detailed balance.</span>
+        </div>
+      </div>
+      
+
+      
+      
+
+      <div class="prose prose-slate lg:prose-md dark:prose-invert">
+        <h2 id="should-you-read-this">Should You Read This?</h2>
+<p>Life is short &ndash; there are mountains to climb, oceans to explore, TikTok reels to enjoy and forget about microseconds later.</p>
+<p>Continue reading if:</p>
+<ul>
+<li>You have contemplated swimming to Martha&rsquo;s Vineyard, and want to know how it can be done, and done well (in theory).*</li>
+<li>You want to learn about the history and implementation of <em>Markov Chain Monte Carlo</em> (MCMC) optimization methods.</li>
+<li>You need to optimize a system defined by an <em>unknown number of parameters</em> (sometimes this is called <em>model selection</em>).  We will accomplish this task using a cool extension of MCMC called <em>Reversible Jump MCMC</em> (RJ-MCMC).</li>
+<li>You want to extend/improve my <a href="https://github.com/blakecole/mv-mcmc" target="_blank" rel="noopener">RJ-MCMC repository on GitHub</a>.</li>
+</ul>
+<p>*Please don&rsquo;t be an idiot.  Be safe.  Do your homework.  Don&rsquo;t get hit by a ferry. <br>  Or, if you prefer legalese:
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+<div class="px-4 py-3 mb-6 rounded-md bg-yellow-100 dark:bg-yellow-900">
+  
+    <div class="flex">
+      <span class="pr-3 pt-1 text-red-400">
+        <svg height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0zM12 15.75h.007v.008H12z"/></svg>
+      </span>
+      <span class="dark:text-neutral-300"><strong>Disclaimer:</strong><br>
+The content provided on this website/blog is for informational purposes only and does not constitute professional advice. While I strive to ensure accuracy, I make no representations or warranties regarding its completeness or applicability. Readers are solely responsible for how they use or interpret the information presented. I disclaim any liability for actions taken based on the content of this website.</span>
+    </div>
+  
+</div>
+
+</p>
+<h2 id="recapitulation">Recapitulation</h2>
+<p>In August 2022, I published a lengthy blog post describing a <a href="../1-adcirc-mv-swim/">very nerdy plan to swim across Vineyard Sound</a>.  As the crow flies, Martha’s Vineyard and Woods Hole are separated by only 3.3 miles; however, the sea separating these two landmasses is infamously tempestuous, with tidally-driven currents routinely exceeding 5 knots.  My goal was to leverage NOAA&rsquo;s <a href="https://adcirc.org/" target="_blank" rel="noopener">ADvanced CIRCulation (ADCIRC) model</a> to predict these currents, and determine a sensible combination of swim parameters &ndash; departure time, speed, and heading &ndash; that yielded reasonable trajectories across Vineyard Sound.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="mv_tides.gif" style="display:inline-block; margin:0; padding:0; line-height:0;" >
+
+<img src="mv_tides.gif" style="display:block; margin:0; padding:0;" >
+</a>
+
+</figure>
+
+<p>Specifically, I looked for solutions that were:</p>
+<ul>
+<li><strong>Safe.</strong>  The swim route must avoid ferry traffic.</li>
+<li><strong>Timely.</strong>  The swim must not exceed 2.5 hours, to avoid the strongest currents.</li>
+<li><strong>Practical.</strong>  The swimmer must arrive near the intended destination.</li>
+<li><strong>Efficient.</strong>  The swimmer should not fight the current, if possible.</li>
+</ul>
+<p>My simple guess-and-check approach worked well enough &ndash; the swim was a success, and we arrived safely on shore near our intended destination, a little less than two hours after we departed.  However, some inquisitive minds soon began to wonder: <em>&ldquo;Could it have been done better?&rdquo;</em></p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="mv_swim_finish.jpg" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Swimmers arriving on the shore of Martha&rsquo;s Vineyard, near Lake Tashmoo.">
+
+<img src="mv_swim_finish.jpg" style="display:block; margin:0; padding:0;" alt="Swimmers arriving on the shore of Martha&#39;s Vineyard, near Lake Tashmoo." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    Swimmers arriving on the shore of Martha&rsquo;s Vineyard, near Lake Tashmoo.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<h2 id="need-for-speed">Need for Speed</h2>
+<p>In the days and weeks after I published the original <a href="https://www.blakecole.com/post/1-adcirc-mv-swim/" target="_blank" rel="noopener">post</a>, I received a great deal of positive feedback on my work, and was admittedly somewhat pleased with myself.  I had used my brain to plan a logistically complex adventure which my body executed, and that felt very good.  I was still indulgently basking in self-satisfaction when I received a message from my good friend and colleague, <a href="https://www.caseyhandmer.com/home" target="_blank" rel="noopener">Casey Handmer</a>, which said something along the lines of,</p>
+<blockquote>
+<p>You should optimize the swim.</p>
+</blockquote>
+<p>I swallowed hard.  I knew he was right, but absolutely did not want to admit it.  Admitting it would mean more work for me, and probably not just a little more &ndash; I suspected I would need to familiarize myself with some super fancy gradient-free, nonlinear, nonconvex optimization routine.  At the time, I was already five years into my PhD program, and could feel the institutional pressure rising: I needed to defend my thesis soon, or risk being kicked out of the program.  I bristled at Casey&rsquo;s nonchalance, which seemed to suggest that this problem &ndash; which I didn&rsquo;t even know how to structure &ndash; could be solved easily in an afternoon.  Suppressing my indignation, I informed Casey that I wasn&rsquo;t going to optimize the swim, and that I needed to focus on my doctoral research.  He replied quickly, and asked me to send him the tidal current simulation data <em>so that he could do it himself</em>.</p>
+<p>This is classic Casey Handmer.  For those of you who do not know him, that sucks &ndash; he is certainly one of the most fascinating people I have ever met.  He seems to crave technical problems like most people crave sweets or other sensory indulgences.  A physicist named Stanislaw Ulam (more on him <a href="https://www.blakecole.com/post/2-mcmc-mv-swim/#history">later</a>) once remarked, &ldquo;the mathematicians know a great deal about very little, and the physicists [know] very little about a great deal.&rdquo;  Casey knows basically everything about everything.   At the age of 19, he traveled to Vietnam by himself, and hitchhiked through China and Russia before arriving in Italy; he speaks multiple languages, sings, and plays the trombone; when he isn&rsquo;t riding his unicycle, he likes to fly airplanes or climb mountains; he also has a PhD in theoretical physics from Caltech, and founded <a href="https://www.terraformindustries.com/" target="_blank" rel="noopener">Terraform Industries</a>, a company which aims to mitigate climate change by <a href="https://terraformindustries.wordpress.com/2022/07/24/terraform-industries-whitepaper/" target="_blank" rel="noopener">synthesizing natural gas from sunlight and air</a>.  He is a caring husband and father of three, and yet still somehow finds time to crank out wide-ranging technical <a href="https://caseyhandmer.wordpress.com/" target="_blank" rel="noopener">articles</a> on a weekly basis.  He is also Australian.  Go figure.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="casey_handmer.jpg" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Casey Handmer, in the desert somewhere, presumably before he had children.">
+
+<img src="casey_handmer.jpg" style="display:block; margin:0; padding:0;" alt="Casey Handmer, in the desert somewhere, presumably before he had children." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    Casey Handmer, in the desert somewhere, presumably before he had children.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>The rate at which Casey solves problems is astounding.  This ability is rooted in an inclination to find first-order solutions quickly, and then decide whether higher fidelity approaches are warranted.  All good engineers seem to operate this way.  Not me.  I frequently succumb to the siren song of complexity, and spend hours deliberating which state-of-the-art technique I&rsquo;m going to use to solve a problem.  This an ill-advised strategy: you could spend half a lifetime figuring out the best approach to a problem, and never get around to actually solving it.  Further, you can&rsquo;t really know the <em>best</em> approach to a problem unless you have already solved it a few times (or talked to someone who has), so you might as well start with something simple &ndash; dare I say, something <em>random</em>.  Such was Casey&rsquo;s reasoning when he decided to utilize a relatively simple stochastic methodology to determine the best possible swim route from Woods Hole to Martha&rsquo;s Vineyard.</p>
+<h2 id="markov-chain-monte-carlo">Markov Chain Monte Carlo</h2>
+<p>There is power in randomness &ndash; this is the fundamental premise of so-called <em>Monte Carlo</em> methods.  How can this be?  Randomness is inherently chaotic, and chaos is bad, right?  Isn&rsquo;t the foremost goal of science and engineering to distill order from chaos?</p>
+<p>Sort of.  Another way to think about randomness is as means of observing reality in an unbiased manner.  Imagine being a journalist who is told to write an article about one of ten equally important subjects &ndash; how should they choose which one to cover?  It obviously wouldn&rsquo;t be fair if they simply picked their favorite topic, so instead, they might randomly select one of the subjects.  By doing so, they ensure that each subject is treated with equal importance, free from any personal bias.  This randomness introduces fairness into the process, enabling a more objective approach to gathering information.  In much the same way, Monte Carlo methods use randomness to explore possible solutions to a problem, systematically sampling different outcomes to estimate the most likely result (or discover the best solution).  While it may seem counterintuitive, this stochastic process can be surprisingly powerful, as it allows us to explore a broad range of scenarios and capture complex behaviors that deterministic methods might miss.</p>
+<h3 id="history">History</h3>
+<p>Monte Carlo methods trace their origins to the 1940s, when they were developed as part of the Manhattan Project to aid in the <a href="https://www.lanl.gov/media/publications/actinide-research-quarterly/1123-hitting-the-jackpot-the-birth-of-the-monte-carlo-method" target="_blank" rel="noopener">design of nuclear weapons</a>.  Pioneered by scientists such as <a href="https://en.wikipedia.org/wiki/Stanis%C5%82aw_Ulam" target="_blank" rel="noopener">Stanislaw Ulam</a> and <a href="https://en.wikipedia.org/wiki/John_von_Neumann" target="_blank" rel="noopener">John von Neumann</a>, these methods were used to model complex physical processes, including neutron diffusion in fission reactions.  The fundamental idea was to use random sampling to approximate solutions to otherwise intractable mathematical problems, leveraging the power of early computers to perform large-scale simulations.  The name <em>Monte Carlo</em> was inspired by the famous casino in Monaco, reflecting the role of chance in the method.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="mc_pi_estimation.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="A canoncial demonstration of the Monte Carlo approach involves the estimation of $\pi$ without geometrical relationships.  As points are randomly scattered inside a unit square, some fall within an inscribed unit circle, and some do not; as the number of points approaches infinity, the fraction of points that land inside the circle approaches $\pi/4$ [source: Iván Mauricio Cely Toro].">
+
+<img src="mc_pi_estimation.png" style="display:block; margin:0; padding:0;" alt="A canoncial demonstration of the Monte Carlo approach involves the estimation of $\pi$ without geometrical relationships.  As points are randomly scattered inside a unit square, some fall within an inscribed unit circle, and some do not; as the number of points approaches infinity, the fraction of points that land inside the circle approaches $\pi/4$ [source: [Iván Mauricio Cely Toro](https://mauriciocely.github.io/blog/2020/08/05/estimating-pi-using-the-monte-carlo-method/)]." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    A canoncial demonstration of the Monte Carlo approach involves the estimation of $\pi$ without geometrical relationships.  As points are randomly scattered inside a unit square, some fall within an inscribed unit circle, and some do not; as the number of points approaches infinity, the fraction of points that land inside the circle approaches $\pi/4$ [source: <a href="https://mauriciocely.github.io/blog/2020/08/05/estimating-pi-using-the-monte-carlo-method/" target="_blank" rel="noopener">Iván Mauricio Cely Toro</a>].
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>A major advance came in the 1950s with the introduction of the Metropolis algorithm by Nicholas Metropolis and his colleagues Marshall Rosenbluth, Arianna Rosenbluth, Augusta Teller, and Edward Teller at Los Alamos National Laboratory.  This method combined Monte Carlo techniques with the mathematics of Markov Chains &ndash; theoretical frameworks that describe sequences of possible events in which the probability of each event depends only on the state attained in the previous event, not the full history.  This <em>memoryless</em> property of Markov Chains makes them especially useful for exploring complex parameter spaces in a controlled (yet random) fashion.  In the Metropolis algorithm, a Markov Chain is constructed in such a way that, over time, it produces samples from a desired probability distribution &ndash; or, equivalently, yields a set of parameters that minimizes a cost function (more on this equivalency in the <a href="https://www.blakecole.com/post/2-mcmc-mv-swim/#algorithm">Algorithm</a> section).</p>
+<p>Why would anyone want to do this?  Well, in short, there quite a few ways in which nuclear fusion does not happen, and Nicholas Metropolis and his colleagues wanted very badly for it to happen.  I would say more, but that&rsquo;s literally all I know &ndash; my apologies in advance to Iran, South Korea, and Saudi Arabia.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="markov_chain.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="A diagram representing a two-state Markov process. The numbers are the probability of changing from one state to another state [source: Wikipedia Commons].">
+
+<img src="markov_chain.png" style="display:block; margin:0; padding:0;" alt="A diagram representing a two-state Markov process. The numbers are the probability of changing from one state to another state [source: [Wikipedia Commons](https://en.wikipedia.org/wiki/Markov_chain)]." width="200" >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    A diagram representing a two-state Markov process. The numbers are the probability of changing from one state to another state [source: <a href="https://en.wikipedia.org/wiki/Markov_chain" target="_blank" rel="noopener">Wikipedia Commons</a>].
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>The Metropolis algorithm was later generalized by W.K. Hastings in 1970, resulting in the <a href="https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm" target="_blank" rel="noopener">Metropolis-Hastings algorithm</a>, a flexible and widely-used approach that underpins modern Markov Chain Monte Carlo (MCMC) techniques.  By using carefully designed Markov Chains to guide random sampling, MCMC methods are able to efficiently explore high-dimensional solution spaces.</p>
+<p><a href="https://academic.oup.com/biomet/article/82/4/711/252058" target="_blank" rel="noopener">Reversible Jump MCMC</a> (RJ-MCMC) is an extension of traditional MCMC methods, developed by Peter J. Green in 1995.  Standard MCMC methods like Metropolis–Hastings typically operate in parameter spaces with a fixed dimension &ndash; that is, the number of parameters doesn&rsquo;t change during optimization.  In contrast, RJ-MCMC introduces special moves that alter the dimension of the parameter space by dynamically adding or removing parameters (effectively &ldquo;jumping&rdquo; between models with different complexities).  This flexibility makes RJ-MCMC ideal for problems where the best number of parameters (like the optimal number of discrete swim headings) is not known ahead of time.</p>
+<h3 id="algorithm">Algorithm</h3>
+<p>If you haven&rsquo;t taken a probability course in a while (or even if you have), you might get bogged down in the mathematical language used to describe the <a href="https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm" target="_blank" rel="noopener">Metropolis-Hastings algorithm</a>.  If you peruse its Wikipedia page, you will find no shortage of obscure remarks that assume considerable familiarity with probability theory:</p>
+<blockquote>
+<p>The Metropolis–Hastings algorithm can draw samples from any probability distribution with probability density $P(x)$, provided that we know a function $f(x)$ proportional to the density $P$ and the values of $f(x)$ can be calculated.</p>
+</blockquote>
+<p>What?</p>
+<p>How does that relate to optimization?</p>
+<p>I wondered the same thing, at first &ndash; do not dismay.</p>
+<p>The Metropolis–Hastings algorithm was originally developed to approximate probability distributions by generating a sequence of samples such that, after many iterations, the frequency of samples at any point, $x$, approximates the probability density, $P(x)$.</p>
+<p>Very clever people eventually figured out that this same method could be used to minimize a cost function by defining a target probability distribution that preferentially selects good solutions, and rejects bad ones.  Suppose you have a cost function, $C(x),$ that you want to minimize.  You could then define a target probability distribution, $P(x)$, where solutions with lower costs have higher probabilities:</p>
+$$
+P(x) \propto e^{\beta C(x)},
+$$<p>
+where $\beta$ is a positive parameter controlling the sharpness of the distribution.  If you run the Metropolis–Hastings algorithm with this distribution, the generated &ldquo;samples&rdquo; &ndash; which represent sets of parameters, $x$, in this instance &ndash; will preferentially come from low-cost regions of the parameter space, because these samples have a higher probability of being selected.</p>
+<p>If none of <em>that</em> made sense to you, I am sorry.  Don&rsquo;t give up yet.  I have great news: the Metropolis–Hastings algorithm is shockingly easy to implement, even if you do not fully understand the underlying theory.  This means you (yes <em>you</em>!) can optimize all sorts of cool things in your life.</p>
+<p>These are the key steps:</p>
+
+
+
+
+
+
+
+
+  
+
+
+<div class="px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900">
+  
+    
+      <div class="mb-2 font-bold text-primary-600 dark:text-primary-300">
+        Metropolis-Hastings in Plain English
+      </div>
+    
+    <div class="dark:text-neutral-300"><ol>
+<li>Define a cost function to evaluate the quality of a prospective solution.</li>
+<li>Propose an initial solution, and compute its cost.</li>
+<li>Introduce a random perturbation to the previous solution, and compute the new cost.
+<ul>
+<li>If the perturbation results in a <strong>lower</strong> cost, accept the solution.</li>
+<li>If the perturbation results in a <strong>higher</strong> cost, accept the solution with probability $\alpha$, where $\alpha$ is an <em>acceptance ratio</em> that depends on the difference between the previous cost and the current cost.  The acceptance ratio can be systematically adjusted over time (this is called <em>simulated annealing</em>).</li>
+<li>If the perturbation results in the <strong>lowest</strong> cost thus far, store the solution.</li>
+</ul>
+</li>
+<li>Repeat <strong>Step 3</strong> until a convergence criterion (or iteration limit) is met.</li>
+</ol>
+</div>
+  
+</div>
+
+
+<p>Or, if you&rsquo;re more of a flowchart kind of person:
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  
+  function initMermaidDiagrams(theme) {
+    mermaid.initialize({ theme: theme, startOnLoad: false, logLevel: 'fatal' });
+    mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+  }
+
+  
+  
+  let currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'default';
+  initMermaidDiagrams(currentTheme);
+
+  
+  const observer = new MutationObserver(function(mutationsList) {
+    for (let mutation of mutationsList) {
+      if (mutation.attributeName === 'class') {
+        let newTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'default';
+        
+        if (newTheme !== currentTheme) {
+          currentTheme = newTheme;
+          initMermaidDiagrams(newTheme);
+        }
+      }
+    }
+  });
+
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+});
+</script>
+
+<div class="mermaid">
+  
+flowchart TD
+    A[Initial Guess] --> B[Compute Cost]
+    B --> C[Modify Solution]
+    C --> D[Compute Cost & Acceptance Probability]
+    D -- $C_k < C_{k-1}$ --> E[Accept New Solution]
+    D -- $C_k \geq C_{k-1}$ --> F{Roll Dice}
+    F -- $\mathcal{U}(0,1) < \alpha_k$ --> E
+    F -- $\mathcal{U}(0,1) \geq \alpha_k$ --> G[Keep Old Solution]
+    G --> H[Current Solution]
+    E --> H[Current Solution]
+    H --> C
+
+</div>
+
+</p>
+<p>Why periodically accept worse (higher cost) solutions?</p>
+<p>Imagine you are hiking in the mountains on a foggy day, searching for the highest peak.  If you simply climb upwards at every step, you might find yourself atop a small hill and assume you&rsquo;ve reached the highest point (these little hilltops are called a <em>local maxima</em> or <em>local extrema</em> in nerd speak&hellip; we despise them).  In order to locate the highest peak &ndash; the <em>global maximum</em> (which we love) &ndash; you might need to occasionally descend to lower elevations, even if it seems counterproductive in the moment.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="hiker.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Sometimes you have to go lower to get higher [source: DALL-E 16.20.12].">
+
+<img src="hiker.png" style="display:block; margin:0; padding:0;" alt="Sometimes you have to go lower to get higher [source: DALL-E 16.20.12]." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    Sometimes you have to go lower to get higher [source: DALL-E 16.20.12].
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>To me, the fact that this algorithm actually works (most of the time) is nothing short of astounding &ndash; it is basically &ldquo;guess-and-check&rdquo; on steroids.  And yet, despite its simplicity, this technique has revolutionized the fields of nuclear physics, economics, genetics, and climate science, just to name a few.  It also paved the way for advances in <a href="https://en.wikipedia.org/wiki/Bayesian_statistics" target="_blank" rel="noopener">Bayesian statistics</a> and modern machine learning techniques.  The power of this approach cannot be attributed to luck or magic; it is underwritten by <em>randomness</em>, and the properties inherent thereto.</p>
+<h3 id="python-demo">Python Demo</h3>
+<p>Below is a simple, fully-functional 1-D implementation of the Metropolis–Hastings algorithm.  Feel free to <a href="https://github.com/blakecole/mv-mcmc/blob/main/src/mcmc_demo_1d.py" target="_blank" rel="noopener">download</a> it, and modify it as you see fit.  I would encourage you to play around with the initial guess (<code>initial</code>) and standard deviation (<code>proposal_std</code>) parameters to get a sense of how these influence solution convergence.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">random</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">math</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">metropolis_hastings</span><span class="p">(</span><span class="n">cost_func</span><span class="p">,</span> <span class="n">initial</span><span class="p">,</span> <span class="n">iterations</span><span class="p">,</span> <span class="n">proposal_std</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Metropolis-Hastings algorithm for cost function minimization.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Args:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        cost_func: The cost function to minimize. It should take a single parameter.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        initial: Initial value for the parameter.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        iterations: Number of iterations to run.
+</span></span></span><span class="line"><span class="cl"><span class="s2">        proposal_std: Standard deviation of the Gaussian proposal distribution.
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Returns:
+</span></span></span><span class="line"><span class="cl"><span class="s2">        A tuple (best, best_cost, samples) where:
+</span></span></span><span class="line"><span class="cl"><span class="s2">          - best is the best found parameter value.
+</span></span></span><span class="line"><span class="cl"><span class="s2">          - best_cost is the corresponding cost.
+</span></span></span><span class="line"><span class="cl"><span class="s2">          - samples is a list of the parameter values over the iterations.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">current</span> <span class="o">=</span> <span class="n">initial</span>
+</span></span><span class="line"><span class="cl">    <span class="n">current_cost</span> <span class="o">=</span> <span class="n">cost_func</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">best</span> <span class="o">=</span> <span class="n">current</span>
+</span></span><span class="line"><span class="cl">    <span class="n">best_cost</span> <span class="o">=</span> <span class="n">current_cost</span>
+</span></span><span class="line"><span class="cl">    <span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="n">current</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">best_cost_history</span> <span class="o">=</span> <span class="p">[</span><span class="n">best_cost</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Propose a new candidate using a Gaussian random step.</span>
+</span></span><span class="line"><span class="cl">        <span class="n">candidate</span> <span class="o">=</span> <span class="n">current</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposal_std</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">candidate_cost</span> <span class="o">=</span> <span class="n">cost_func</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Calculate acceptance probability.</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># For minimization, lower cost is better.</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># If the candidate cost is lower, accept it outright.</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Otherwise, accept it with probability exp(-(candidate_cost - current_cost)).</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">candidate_cost</span> <span class="o">&lt;</span> <span class="n">current_cost</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">accept</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">accept_prob</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">candidate_cost</span> <span class="o">-</span> <span class="n">current_cost</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">accept</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">accept_prob</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">accept</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">current</span> <span class="o">=</span> <span class="n">candidate</span>
+</span></span><span class="line"><span class="cl">            <span class="n">current_cost</span> <span class="o">=</span> <span class="n">candidate_cost</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># Update best if the new candidate is better.</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">candidate_cost</span> <span class="o">&lt;</span> <span class="n">best_cost</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">best</span> <span class="o">=</span> <span class="n">candidate</span>
+</span></span><span class="line"><span class="cl">                <span class="n">best_cost</span> <span class="o">=</span> <span class="n">candidate_cost</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">best_cost_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">best_cost</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">best</span><span class="p">,</span> <span class="n">best_cost</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">best_cost_history</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Example usage</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Define a simple cost function, e.g., a parabola with a minimum at x = 2.</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Run the Metropolis-Hastings algorithm.</span>
+</span></span><span class="line"><span class="cl">    <span class="n">best</span><span class="p">,</span> <span class="n">best_cost</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">best_cost_history</span> <span class="o">=</span> <span class="n">metropolis_hastings</span><span class="p">(</span><span class="n">cost_func</span><span class="o">=</span><span class="n">cost</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                                                      <span class="n">initial</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>       <span class="c1"># Starting value</span>
+</span></span><span class="line"><span class="cl">                                                                      <span class="n">iterations</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="c1"># Number of iterations</span>
+</span></span><span class="line"><span class="cl">                                                                      <span class="n">proposal_std</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span> <span class="c1"># Step size</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Best x found:   </span><span class="si">{</span><span class="n">best</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Cost at best x: </span><span class="si">{</span><span class="n">best_cost</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Plot convergence: best cost over iterations.</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">best_cost_history</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;Iteration&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&#34;Best Cost&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;Convergence of Metropolis-Hastings</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></span></code></pre></div><p>If you run the code as is, you should find that the optimizer rapidly finds the smallest value of the cost function $C(x) = (x-2)^2$ at (spoiler alert) $x=2$.  Even for an absurd initial guess like $x_0 = 100$, the Metropolis-Hastings algorithm converges to the true solution in about 250 iterations.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="mcmc_demo_convergence.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Convergence of the Metropolis-Hastings algorithm for $C(x) = (x-2)^2$, with $x_0 = 100$.">
+
+<img src="mcmc_demo_convergence.png" style="display:block; margin:0; padding:0;" alt="Convergence of the Metropolis-Hastings algorithm for $C(x) = (x-2)^2$, with $x_0 = 100$." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    Convergence of the Metropolis-Hastings algorithm for $C(x) = (x-2)^2$, with $x_0 = 100$.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>This is a fun example, but it doesn&rsquo;t demonstrate the true power of this technique; after all, such a simple problem could have been solved using basic calculus.  What makes the MCMC approach so fascinating is its generality: it can explore parameter spaces of varying dimension, and the cost function need not be differentiable or continuous.  For those interested in diving into the weeds, I would highly recommend checking out my <a href="https://github.com/blakecole/mv-mcmc" target="_blank" rel="noopener">RJ-MCMC repository on GitHub</a>.  It has a few really useful functions and clever <a href="https://www.blakecole.com/post/2-mcmc-mv-swim/#flourishes">flourishes</a> that pertain specifically to swim route optimization.</p>
+<h2 id="problem-setup">Problem Setup</h2>
+<h3 id="goal">Goal</h3>
+<p>Depart Nobska Beach between 2:00a and 11:00a on July 30th, 2022 and cross Vineyard Sound as fast as possible.</p>
+<h3 id="constraints">Constraints</h3>
+<p><strong>None</strong>.  We&rsquo;re prioritizing <em>speed</em>, and speed alone &ndash; ferries, ruffled feathers, and private beaches be damned (<em>especially</em> the private beaches, those can go straight to hell).  Any heading sequence that delivers the swimmer to Martha&rsquo;s Vineyard is on the table.</p>
+<h3 id="assumptions">Assumptions</h3>
+<ol>
+<li>We assume the swimmer is able to maintain a <strong>constant pace</strong> of $1$:$40$/$100yd$.  This is a reasonable pace for an average open water swimmer in good shape.</li>
+<li>We assume the swimmer departs from a <strong>fixed location</strong> on Nobska Beach, MA, sometime between 2:00a and 11:00a on July 20th, 2022.</li>
+</ol>
+<h3 id="parameters">Parameters</h3>
+<ol>
+<li><strong>Heading Sequence</strong>:  Each heading is pursued for a fixed time interval, $\Delta t;$ the total number of heading changes is not known in advance.</li>
+<li><strong>Start Time</strong>:  This parameter determines the state of the tidal current vector field during the simulated swim, and thus exerts a strong influence on the crossing time and optimal heading sequence.</li>
+</ol>
+<h3 id="methodology">Methodology</h3>
+<ol>
+<li>
+<p>Define <strong>swim constants</strong>:</p>
+<ul>
+<li>Departure location</li>
+<li>Start time</li>
+<li>Time step</li>
+</ul>
+</li>
+<li>
+<p>Define <strong>optimization constants</strong>:</p>
+<ul>
+<li>Initial annealing temperature</li>
+<li>Initial Gaussian bump amplitude limit</li>
+<li>Number of iterations</li>
+</ul>
+</li>
+<li>
+<p>Determine a reasonable <strong>initial guess</strong>.</p>
+<ol>
+<li>Simulate a series of <em>constant-heading</em> swims.</li>
+<li>Store the solutions which produce valid trajectories (i.e., those that reach Martha&rsquo;s Vineyard in under 3 hours).</li>
+<li>Pick the fastest valid <em>constant-heading</em> solution as the initial guess.</li>
+<li>Compute the cost (swim duration) of the initial guess.</li>
+</ol>
+</li>
+<li>
+<p>Randomly choose whether to modify, grow, or shrink the heading vector,  using the following logic:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pb</span> <span class="o">=</span> <span class="mf">0.33</span>
+</span></span><span class="line"><span class="cl"><span class="n">pd</span> <span class="o">=</span> <span class="mf">0.33</span>
+</span></span><span class="line"><span class="cl"><span class="n">pm</span> <span class="o">=</span> <span class="mf">0.34</span>
+</span></span><span class="line"><span class="cl"><span class="n">move_type</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;birth&#39;</span><span class="p">,</span> <span class="s1">&#39;death&#39;</span><span class="p">,</span> <span class="s1">&#39;modify&#39;</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">pb</span><span class="p">,</span> <span class="n">pd</span><span class="p">,</span> <span class="n">pm</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="n">move_type</span> <span class="o">==</span> <span class="s1">&#39;modify&#39;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_h</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">perturbation</span> <span class="o">=</span> <span class="n">generate_bump</span><span class="p">(</span><span class="n">new_h</span><span class="p">,</span> <span class="n">bump_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">new_h</span> <span class="o">+=</span> <span class="n">perturbation</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">elif</span> <span class="n">move_type</span> <span class="o">==</span> <span class="s1">&#39;birth&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">new_heading</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">birth_bearing</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">insert_idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_h</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">new_h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">new_h</span><span class="p">,</span> <span class="n">insert_idx</span><span class="p">,</span> <span class="n">new_heading</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="k">elif</span> <span class="n">move_type</span> <span class="o">==</span> <span class="s1">&#39;death&#39;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_h</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">     <span class="n">idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_h</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">     <span class="n">removed_heading</span> <span class="o">=</span> <span class="n">new_h</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">     <span class="n">new_h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">new_h</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
+</span></span></code></pre></div><p>The <code>bump_size</code> parameter is typically set between 5 and 15 degrees at the outset, depending on the user&rsquo;s confidence in their first guess, and reduced $0.1\%$ after every iteration; this allows the optimization routine to conduct a thorough exploration of the parameter space early on, and then refine the solution using smaller perturbations.  The use of a larger initial <code>bump_size</code> results in very robust performance, but can sometimes yield sub-optimal solutions; conversely, the use of a smaller initial <code>bump_size</code> works better if the initial guess is already pretty good, such that the odds of getting trapped in a local minimum are small.  This function is described in greater detail in the <a href="https://www.blakecole.com/post/2-mcmc-mv-swim/#gaussian-bump">Flourishes</a> section.</p>
+</li>
+<li>
+<p>Compute the cost of the candidate solution.</p>
+</li>
+<li>
+<p>Compute the acceptance probability: $\alpha_k = \exp{\left( \frac{\Delta_k}{T_k} \right)}$, where $\Delta_k$ is the cost difference between the candidate and previous solutions, and $T_k$ is the annealing temperature parameter.  We reduce $T_k$ gradually over time using a <em>linear cooling schedule</em> to discourage premature convergence.</p>
+</li>
+<li>
+<p>Keep the candidate solution if <em><strong>BOTH</strong></em> of the following conditions are met:</p>
+<ol>
+<li><em><strong>EITHER</strong></em> the candidate cost is lower than the previous cost, $C_k < C_{k-1}$, <em><strong>OR</strong></em> the acceptance probability, $\alpha_k$, is greater than a random number drawn from a uniform distribution, $\mathcal{U}(0,1)$.</li>
+<li>The swim trajectory terminates inside the boundary of Martha&rsquo;s Vineyard.</li>
+</ol>
+</li>
+<li>
+<p>If the candidate solution is the lowest-cost solution yet, store it.</p>
+</li>
+<li>
+<p>If the iteration limit has not been reached, return to <strong>Step 4</strong>.</p>
+</li>
+</ol>
+<h3 id="useful-functions">Useful Functions</h3>
+<ol>
+<li>
+<p><strong>Flowfield Interpolation</strong>:  Extract a tidal current vector from the discrete computational domain using SciPy&rsquo;s <code>NearestNDInterpolator</code> function.  I also experimented with the <code>LinearNDInterpolator</code> function, but the minor fidelity improvement did not justify the enormous increase in computational cost.</p>
+</li>
+<li>
+<p><strong>Dead Reckon</strong>: Given a starting point (lon, lat), initial bearing (in degrees), and a distance (in meters), compute the destination point along a <em>great-circle path</em> using a modified form of the <a href="https://en.wikipedia.org/wiki/Haversine_formula" target="_blank" rel="noopener">Haversine formula</a> (note: if you like geodesy, check out my <a href="../../publication/jrnl-aor-2022/">proof of this relationship</a>).  This function permits the simulation of swim trajectories knowing only a starting point, a set of sequential headings, and the swimmer&rsquo;s speed over ground.</p>
+</li>
+<li>
+<p><strong>Arrival Detection</strong>: Given a point (lon, lat) and a list of points describing a closed region, determine whether the point is inside the closed region using the <a href="https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm" target="_blank" rel="noopener">ray casting algorithm</a>.  This function is used to determine whether a given sequence of headings produces a swim trajectory that reaches Martha&rsquo;s Vineyard.</p>
+</li>
+<li>
+<p><strong>Closest Approach</strong> (Optional): Compute the closest distance (in meters), and the bearing (in degrees), from a geodetic point (lon, lat) to a closed polygon defined as a (Nx2) NumPy ndarray of (lon, lat) points, using vectorized geodetic functions.  Although this function is not strictly necessary, it was useful when I was debugging my optimization routine.</p>
+</li>
+</ol>
+<h2 id="results">Results</h2>
+<p>Before I present my own solutions, I&rsquo;d like to show Casey&rsquo;s work.  His results aren&rsquo;t quite as polished as mine, but he probably cranked them out in about the same time I spent formatting one of my plots (that being said, I wholeheartedly believe that data visualization is important, beauty is important, and making <a href="https://www.datawrapper.de/blog/beautifulcolors#1" target="_blank" rel="noopener">good plots</a> is worth the time and effort; I will die on this hill).  Further, Casey&rsquo;s findings were compelling enough to inspire me to write my own MCMC code, and publish this blog.</p>
+<h3 id="caseys-solution">Casey&rsquo;s Solution</h3>
+<p>Shortly after I sent Casey my tide simulation data, I received the following email:</p>
+<div style="background-color: #00131A; color: #F2F2F2; padding: 10px;">
+Hi Blake, 
+<p>Finally getting around to shooting you this info.</p>
+<p>I relaxed the constraint that the headings be constant to see if it was possible to find a faster routing. I coded a function that would (quickly) attempt to find an optimal sequence of headings as a function of</p>
+<ul>
+<li>departure location and time</li>
+<li>arrival location</li>
+<li>minimizing time in the ferry zone</li>
+<li>pace together with an interpolated background dataset of known (simulated) current flows.</li>
+</ul>
+<p>This graph shows an example output, with headings in degrees as a function of time (units in multiples of 3 minutes). For a particular combination of start time and pace, close to 140 degrees the whole way is adequate, as shown with the orange line. Leaving earlier or later, favors different headings to take advantage of the water speed.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="casey_heading_vs_time.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Optimal swim heading sequences for assorted start times. [source: Casey Handmer]">
+
+<img src="casey_heading_vs_time.png" style="display:block; margin:0; padding:0;" alt="&lt;center&gt;Optimal swim heading sequences for assorted start times. [source: Casey Handmer]&lt;/center&gt;" width="600" >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    <center>Optimal swim heading sequences for assorted start times. [source: Casey Handmer]</center>
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>This ground track shows, as a function of latitude and longitude in degrees, the ground tracks corresponding to the curves above. The bright green and red are baselines premised on 140 degree headings the whole time, while the colored red and green dots demarcate the boundaries of the ferry zone. Blue dots show the grid on which tide current values are known with certainty, and hence an inference of the shoreline location. Not every start time converged to the desired landing point but most of them did.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="casey_trajectories.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Optimal swim trajectories for assorted start times. [source: Casey Handmer]">
+
+<img src="casey_trajectories.png" style="display:block; margin:0; padding:0;" alt="&lt;center&gt;Optimal swim trajectories for assorted start times. [source: Casey Handmer]&lt;/center&gt;" width="600" >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    <center>Optimal swim trajectories for assorted start times. [source: Casey Handmer]</center>
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>The time saved compared to 140 degrees baseline varied between 5 and 20 minutes, some of which could be attributed to reducing the overall distance needed to be covered. Fortunately Martha&rsquo;s Vineyard has a big beachy coast which is hard to miss!</p>
+<p>Compared to Blake and friends&rsquo; actual swim, the solutions are about 20-30 minutes faster. I think this is probably because the simulated swimmers routed close to the shore on departure, waiting until they were in strong current before zooming across the ferry zone. Blake&rsquo;s strategy to swim directly across the zone in still water meant their group took longer to get into the faster water.</p>
+<p>This optimization effort was very hacky, and I&rsquo;m sure there&rsquo;s another 3-5 minutes of performance to be squeezed out with concerted effort.</p>
+<p>Casey</p>
+</div>
+<p>I have a few thoughts on this.</p>
+<p>First, <em>nice</em>.</p>
+<p>I think the coolest part of Casey&rsquo;s work is actually hiding behind the figures: it is his  <em>Gaussian bump</em> feature.  Extremely clever.  I initially tried to run my optimization algorithm without it, and the results were nightmarish: the heading vector was perturbed every which way, yielding a chaotic, jagged swim trajectory.  Casey realized that such drastic changes in sequential headings were counterproductive, and developed a <em>representation</em> that encoded this knowledge.  The result?  Gorgeously smooth solutions, and much faster convergence.  Bravo!</p>
+<p>Casey&rsquo;s results are <em>quick-and-dirty</em> but credible.  It makes sense that earlier departures &ndash; which subject the swimmer to stronger westward currents &ndash; would necessitate a course adjustment to the east.  Plus, given that my <a href="https://www.blakecole.com/post/1-adcirc-mv-swim/#600a-departure--140100yd-pace">initial analysis</a> suggested that a constant $140^{\circ}$ heading was a reasonably efficient solution (i.e., the dot product of current velocity and swimmer velocity is nonnegative at nearly every timestep), we wouldn&rsquo;t expect the optimal solution to be dramatically different.</p>
+<p>I also thought it was cool that he was able to modify the cost function to penalize solutions that spent too much time in the ferry channel, and arrived too far from Lake Tashmoo.  Tinkering with the cost function sometimes leads to bizarre behavior.  Early on, I was using a cost function that combined <code>swim_time</code> and <code>distance_from_shore</code> as a weighted sum, hoping this would permit sufficient solution flexibility (i.e., the simulated swimmer can make landfall at any point along the shoreline), while guiding the optimization routine toward solutions that were both fast <em>and</em> valid.  However, I found that the routine frequently opted for solutions that never made it to shore &ndash; it was prioritizing a smaller value of <code>swim_time</code> over the necessary condition that <code>distance_from_shore = 0</code>.  I initially rectified this solution by tuning the cost function weights, but I hated this solution; it felt flimsy.  So, I eventually figured out a way to reject invalid solutions, and remove <code>distance_from_shore</code> from the cost function.</p>
+<p>I think Casey would be the first to admit that there is room for improvement here (from the horse&rsquo;s mouth: &ldquo;This optimization effort was very hacky&rdquo;).</p>
+<p>He didn&rsquo;t digitize the shoreline of Martha&rsquo;s Vineyard, so I&rsquo;m guessing his arrival detection function might have introduced errors on the order of a few minutes.  Practically speaking, this isn&rsquo;t a big deal; however, I found that optimization generally only improves the initial guess by a few minutes, so an error of this magnitude is problematic.</p>
+<p>Finally, I think a good chunk of the &ldquo;20-30 minute improvement&rdquo; Casey referenced could be explained by the fact that we took a 10-minute break in the middle of Vineyard Sound to chat, hydrate, and eat snacks.  But, I don&rsquo;t think he knew about this, and thus cannot be blamed for pointing his hypotheses elsewhere.  I agree with his general contention that swimming south into stronger currents before crossing the ferry channel may have reduced our total swim time &ndash; but not by 30 minutes.</p>
+<h3 id="my-solution">My Solution</h3>
+<p>My approach improves on Casey&rsquo;s in a number of ways:</p>
+<ul>
+<li>
+<p><strong>Reversible Jump MCMC</strong>: Rather than assuming a fixed number of headings, my approach allows the heading vector to shrink and grow as necessary.  You can imagine the tip of the swim trajectory rapidly bouncing around the shoreline, probing different solutions like some sort of disgusting proboscis.</p>
+</li>
+<li>
+<p><strong>Pre-optimization</strong>: Prior to firing up the main optimization engine, I conduct an automated series of <em>constant-heading</em> simulations, keeping track of the ones that reach Martha&rsquo;s Vineyard, and pick the fastest one as my first guess.  Surprisingly, this very dumb technique produced solutions that were only a few minutes slower than the final optimized solutions.</p>
+</li>
+<li>
+<p><strong>Enhanced arrival detection</strong>: I use <a href="https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm" target="_blank" rel="noopener">ray casting</a> to determine if swim trajectories terminate inside the digitized boundary of Martha&rsquo;s Vineyard.</p>
+</li>
+<li>
+<p><strong>Better temporal resolution</strong>: I reduced the simulation timestep from $\Delta t = 3 min$ to $\Delta t = 18 s$.  Without the use of a smaller timestep, the optimizer will reject candidate solutions unless they yield at least a $2.99 min$ reduction in swim time.</p>
+</li>
+<li>
+<p><strong>Exponentially-cooled Gaussian bump</strong>: Rather than selecting the amplitude of each <em>Gaussian bump</em> from a uniform distribution with fixed bounds, I allow the bounds to shrink over time.  This enhancement yielded a dramatic improvement in both solver robustness and solution quality.</p>
+</li>
+<li>
+<p><strong>Linearly-cooled annealing temperature</strong>: The use of a linear cooling schedule resulted in a reasonable reduction in the acceptance probability over time.  This feature worked in conjunction with the <em>exponentially-cooled Gaussian bump</em> to improve convergence.</p>
+</li>
+<li>
+<p><strong>Pretty dark plots</strong>: Who doesn&rsquo;t like dark plots?</p>
+</li>
+</ul>
+<h4 id="optimal-trajectories">Optimal Trajectories</h4>
+<p>In the following plots, the pre-optimization (i.e., <em>constant-heading</em>) solutions are shown as grayscale lines, with a corresponding colorbar showing the total swim time in minutes.  The final, optimized swim trajectory is shown in yellow, and the textbox in the upper righthand corner shows the optimized swim distance and time.</p>
+<p>Without further ado, here are the results you presumably came here for.
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="gallery">
+
+  
+  
+  
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-mcmc-solutions" href="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0200.png" >
+  <img src="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0200_hu9702191598295576557.png" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-mcmc-solutions" href="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0300.png" >
+  <img src="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0300_hu726981676191603475.png" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-mcmc-solutions" href="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0400.png" >
+  <img src="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0400_hu15014220347669501482.png" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-mcmc-solutions" href="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0500.png" >
+  <img src="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0500_hu3010738333727801451.png" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-mcmc-solutions" href="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0530.png" >
+  <img src="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0530_hu7083378037529976592.png" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-mcmc-solutions" href="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0600.png" >
+  <img src="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0600_hu3507575466172302232.png" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-mcmc-solutions" href="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0630.png" >
+  <img src="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0630_hu9641414576707092587.png" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-mcmc-solutions" href="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0700.png" >
+  <img src="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0700_hu5966164392947521403.png" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-mcmc-solutions" href="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0730.png" >
+  <img src="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0730_hu8248667861131879233.png" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-mcmc-solutions" href="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0800.png" >
+  <img src="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0800_hu11340982467088891652.png" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-mcmc-solutions" href="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0830.png" >
+  <img src="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0830_hu12657168158616906872.png" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-mcmc-solutions" href="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0900.png" >
+  <img src="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0900_hu17642410279193075216.png" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-mcmc-solutions" href="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_1000.png" >
+  <img src="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_1000_hu8756962965758381073.png" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-mv-mcmc-solutions" href="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_1100.png" >
+  <img src="/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_1100_hu4846221858893792330.png" alt="">
+  </a>
+  
+
+  
+</div>
+</p>
+<p>Assuming a constant swim pace of $1$:$40/100yd$, and no concerns about getting maimed by a ferry&hellip;</p>
+<p><em><strong>On July 30th, 2022, it would have been possible to depart Nobska Beach between 7:30a and 8:00a, and cross Vineyard Sound in 1 hour, 32 minutes</strong></em>.</p>
+<p>These plots reveal another interesting fact: <em>constant-heading solutions are actually pretty damn good</em>.  Most of the time, the optimal trajectory sticks pretty close to at least one <em>constant-heading</em> trajectory.  So, unless you&rsquo;re really determined to shave a few minutes off your swim, using a <em>constant-heading</em> strategy is totally fine.</p>
+<h4 id="optimal-heading-sequences">Optimal Heading Sequences</h4>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="mv_swim_heading_vs_time.png" style="display:inline-block; margin:0; padding:0; line-height:0;" >
+
+<img src="mv_swim_heading_vs_time.png" style="display:block; margin:0; padding:0;" >
+</a>
+
+</figure>
+
+<p>Despite the fact that both 7:30a and 8:00a starts enable an optimal crossing, the required corresponding heading sequences couldn&rsquo;t be more different!  While a 7:30a start requires a sequence of headings that varies between $150^{\circ}-155^{\circ}$, an 8:00a start requires a sequence of headings that hovers around $170^{\circ}$.  What&rsquo;s going on?</p>
+<p>By this time in the morning, the tidal current is absolutely ripping from west to east (check out the <a href="https://www.blakecole.com/post/2-mcmc-mv-swim/#recapitulation">tidal current gif</a>).  By starting later, you&rsquo;re effectively getting all the longitudinal velocity you could possible hope for, and more, for free &ndash; your only option is to swim due south, and hope you make it to the beach before you get ripped around the tip of West Chop.  Good luck!</p>
+<p>Probably a good time to reiterate my initial caveat: this would be an insanely high-risk strategy in practice, and is not recommended.  By the time the tidal current is this strong, swimming across Middle Ground would be dangerous, if not impossible.</p>
+<h4 id="convergence">Convergence</h4>
+<p>I wanted to display a few figures that highlight the robust convergence properties of this optimization routine.  In the following two figures, the grayscale lines represent the best solution after every 100 iterations, with a corresponding colorbar displaying the total swim time in seconds.  The optimized solution is shown in yellow, and the textbox in the upper righthand corner shows the optimized swim distance and time.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="mv_swim_convergence_h180_0630.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Illustration of solver robustness: convergence is achieved despite poorly chosen initial conditions.">
+
+<img src="mv_swim_convergence_h180_0630.png" style="display:block; margin:0; padding:0;" alt="Illustration of solver robustness: convergence is achieved despite poorly chosen initial conditions." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    Illustration of solver robustness: convergence is achieved despite poorly chosen initial conditions.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>I ran this optimization shortly after I applied an exponential cooling schedule to the <code>bump_size</code> parameter, and was shocked by how well it worked &ndash; the resulting solutions were almost entirely insensitive to initial conditions.  In other words, the optimization procedure was <em>robust</em>.  Knowing in advance that the optimal heading vector hovered around $135^{\circ}$ for this start time, I decided to push my luck and use a $180^{\circ}$ <em>constant-heading</em> solution as my initial guess.</p>
+<p>Uncalled for.  Pathological!</p>
+<p>Nevertheless, the optimization routine quickly honed in on the correct solution.  I was so proud that it didn&rsquo;t get mired in the morass of bullshit to which it was intentionally subjected &ndash; I think I understand now <a href="https://www.youtube.com/watch?v=zkv-_LqTeQA" target="_blank" rel="noopener">why those guys at Boston Dynamics are so mean to their robots</a>!</p>
+<p>On to the next!</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="mv_swim_convergence_2_0630.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Illustration of solver ability to escape local minima.">
+
+<img src="mv_swim_convergence_2_0630.png" style="display:block; margin:0; padding:0;" alt="Illustration of solver ability to escape local minima." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    Illustration of solver ability to escape local minima.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>This particular optimization attempt did not yield the best solution &ndash; note that the simulated swim lasted 1.5 minutes longer than the optimal solution for a 6:30a start &ndash; but I liked how it again demonstrated <em>robustness</em>, and an ability to escape local minima.  Look at how the solution periodically becomes stuck in local minima, before jumping to better solutions.</p>
+<p>Incredible!  We love it.</p>
+<h4 id="reflections">Reflections</h4>
+<p>Ultimately, this was a highly academic exercise.  Maybe this sort of thing makes sense if you&rsquo;re a professional athlete or a Navy SEAL with a <a href="https://en.wikipedia.org/wiki/Head-up_display" target="_blank" rel="noopener">head-up display</a> in your goggles, but otherwise you&rsquo;re better off sticking with a <em>constant-heading</em> strategy.  During the actual swim, it was challenging enough to follow a single fixed heading with any appreciable degree of confidence &ndash; the notion that a swimmer might be able to make sub-degree alterations to their bearing every eighteen seconds is laughable.</p>
+<p>But, on the other hand&hellip; pretty cool, right?</p>
+<p>It is often said (by lunatics, mostly) that there are many ways to skin a cat; likewise, I am confident that there are other, perhaps better, ways to approach this problem.  But, then again, there are so many cats, and so little time.</p>
+<p>Feel free to <a href="../../#contact">reach out</a> if you have any questions, comments, or want to collaborate on a cool project.  Thanks for reading.</p>
+<p>Go forth and optimize!</p>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<h2 id="flourishes">Flourishes</h2>
+<h3 id="gaussian-bump">Gaussian Bump</h3>
+<p>A common and straightforward method for proposing new candidate solutions in MCMC optimization involves directly perturbing the parameter vector with random noise.  For instance, one typically selects a random index from the parameter vector and adds a small perturbation drawn from a Gaussian distribution with zero mean and a chosen standard deviation.  A Python implementation of this approach might look like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">proposal_std</span> <span class="o">=</span> <span class="mf">1.0</span>
+</span></span><span class="line"><span class="cl"><span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">old_soln</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">perturbation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">proposal_std</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">new_soln</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">old_soln</span> <span class="o">+</span> <span class="n">perturbation</span>
+</span></span></code></pre></div><p>Although easy to implement, this method tends to produce isolated, incremental changes, potentially limiting the ability of the algorithm to explore broader variations in the solution space efficiently.  We can often leverage domain-specific expertise to modify the <em>proposal step</em>, and drastically improve both the convergence rate and quality of the resulting solutions.  For instance, when optimizing a swim route, we can be fairly confident that swimmer heading will not change abruptly, and can modify our proposals accordingly.</p>
+<p>Rather than simply adding random noise to the swimmer heading vector, we can preserve smoothness by adding a <em>Gaussian bump</em>.  The <em>Gaussian bump</em> is characterized by three randomly selected parameters: the <strong>center</strong> (index in the heading vector), the <strong>width</strong> (extent of the perturbation along the heading vector), and the <strong>amplitude</strong> (magnitude and direction of the perturbation).</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="gaussian_bumps_invert.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="An set of Gaussian functions with varying center (i.e. mean), width (i.e. variance), and amplitude [source: Wikimedia Commons].">
+
+<img src="gaussian_bumps_invert.png" style="display:block; margin:0; padding:0;" alt="An set of Gaussian functions with varying center (i.e. mean), width (i.e. variance), and amplitude [source: [Wikimedia Commons](https://en.wikipedia.org/wiki/File:Normal_Distribution_PDF.svg)]." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    An set of Gaussian functions with varying center (i.e. mean), width (i.e. variance), and amplitude [source: <a href="https://en.wikipedia.org/wiki/File:Normal_Distribution_PDF.svg" target="_blank" rel="noopener">Wikimedia Commons</a>].
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>By adjusting these parameters randomly within carefully chosen ranges, the function introduces controlled yet diverse variability, allowing the optimization routine to explore different route possibilities without creating unrealistic or overly abrupt path changes.  A Python implementation of the Gaussian bump might look like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">generate_bump</span><span class="p">(</span><span class="n">headings</span><span class="p">,</span> <span class="n">bump_size</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Random center in [-0.2, 1.2]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Random width: generate log-width uniformly between log(0.05) and log(1), then exponentiate</span>
+</span></span><span class="line"><span class="cl">    <span class="n">log_width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.05</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.0</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="n">width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_width</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Random amplitude in [-bump_size, bump_size]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">amplitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">bump_size</span><span class="p">,</span> <span class="n">bump_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Create sample points: the number of points equals the length of headings</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n_points</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">headings</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_points</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Evaluate the Gaussian bump at each sample point</span>
+</span></span><span class="line"><span class="cl">    <span class="n">bump</span> <span class="o">=</span> <span class="n">amplitude</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x_vals</span> <span class="o">-</span> <span class="n">center</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">width</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">bump</span>
+</span></span></code></pre></div><p>To enhance convergence toward an optimal solution, the amplitude range of these perturbations &ndash; controlled by the parameter <code>bump_size</code> &ndash; is reduced after each iteration (e.g., using <code>bump_size *= 0.999</code> in the optimization loop).  Initially, larger perturbations encourage exploration across a broad set of candidate solutions, preventing premature convergence on local minima. As the optimization progresses, decreasing <code>bump_size</code> narrows the search area, transitioning from broad exploration toward refined, localized adjustments.  This adaptive strategy balances efficient global exploration with precise local optimization, resulting in a systematically improved swim trajectory.</p>
+<p>I was honestly shocked at how well this worked.  Initially, I was using a fixed value of <code>bump_size = 3.0</code> (units: degrees), and found that the final solution was highly dependent on the initial guess.  The Gaussian bump technique, with exponential cooling, yielded a much more robust solver capable of converging to the global optimum, almost regardless of the initial guess.</p>
+<h3 id="simulated-annealing">Simulated Annealing</h3>
+<p>Generally speaking, simulated annealing is a technique used to gradually reduce the rate of change experienced by a system over time; indeed, its name was inspired by the physical process of slowly cooling molten metal to achieve a stable crystal structure.  In the context of optimization, it involves slowly decreasing a <em>temperature parameter</em> to control the acceptance probability of proposed solutions.  In the Metropolis-Hastings algorithm, the acceptance probability is typically computed in the following way:</p>
+$$
+\alpha_k = \exp{\left( \frac{\Delta_k}{T_k} \right)}
+$$<p>where $T_k$ is the temperature parameter, and $\Delta_k = C_k - C_{k-1}$ is the difference between the new and old solution costs. For simple problems (as in the <a href="https://www.blakecole.com/post/2-mcmc-mv-swim/#python-demo">Python Demo</a> provided above), it is often sufficient to simply set $T=1$; however, by allowing the temperature parameter to gradually decrease over time, we can achieve both broad <em>exploration</em> early in the optimization process, and focused <em>exploitation</em> and refinement as convergence progresses.</p>
+<p>The temperature parameter is often reduced according to a predefined <em>cooling schedule</em>, a few of which will be outlined here:</p>
+<h4 id="exponential">Exponential</h4>
+<p>This is likely the most widely-used cooling method, due to its simplicity and effectiveness:</p>
+$$
+T_k = \beta T_{k-1}
+$$<p>
+where $T_k$ is the temperature at iteration $k$, and $\beta$ is a constant slightly less than $1$ (typically $0.80 \leq \beta \leq 0.99$), controlling how rapidly temperature decreases.  However, it should be noted that exponential decay reduces the temperature proportionally each step, leading to a rapid reduction in temperature early on, quickly suppressing exploration.  I found that this cooling technique resulted in an overly-aggressive reduction of the acceptance probability, even when I set $\beta$ very close to $1$; however, this approach was perfectly suited to the <code>bump_size</code> parameter, which controls the maximum amplitude of <em>Gaussian bump</em> perturbations.</p>
+<h4 id="linear">Linear</h4>
+<p>This is straightforward method that is useful when the number of iterations, $N$, is known in advance.  Linear cooling reduces temperature at a constant rate rather than proportionally:</p>
+$$
+T_k = T_{k-1} - \Delta T, \qquad \Delta T = \frac{T_0 - T_{final}}{N}
+$$<p>
+This method is arguably simpler to implement, but less flexible since it requires knowing the final iteration count in advance.  It also results in much slower cooling, which was more appropriate for my application.</p>
+
+      </div>
+
+      
+  <time class="mt-12 mb-8 block text-xs text-gray-500 ltr:text-right rtl:text-left dark:text-gray-400" datetime="2025-03-23T17:45:00.000Z">
+    <span>Last updated on</span>
+    Mar 23, 2025</time>
+
+      <div class="container mx-auto prose prose-slate lg:prose-xl dark:prose-invert mt-5">
+        
+        <div class="max-w-prose print:hidden">
+  
+  
+
+  
+
+
+  
+<section class="flex flex-row flex-wrap justify-center pt-4 text-xl">
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F2-mcmc-mv-swim%2F&amp;text=Leveraging&#43;Reversible&#43;Jump&#43;Markov&#43;Chain&#43;Monte&#43;Carlo&#43;%28RJ-MCMC%29&#43;to&#43;Plan&#43;a&#43;%28Better%29&#43;Swim&#43;to&#43;Martha%27s&#43;Vineyard"
+    title="X"
+    aria-label="X"
+    id="share-link-x"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F2-mcmc-mv-swim%2F&amp;t=Leveraging&#43;Reversible&#43;Jump&#43;Markov&#43;Chain&#43;Monte&#43;Carlo&#43;%28RJ-MCMC%29&#43;to&#43;Plan&#43;a&#43;%28Better%29&#43;Swim&#43;to&#43;Martha%27s&#43;Vineyard"
+    title="Facebook"
+    aria-label="Facebook"
+    id="share-link-facebook"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+    
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="mailto:?subject=Leveraging%20Reversible%20Jump%20Markov%20Chain%20Monte%20Carlo%20%28RJ-MCMC%29%20to%20Plan%20a%20%28Better%29%20Swim%20to%20Martha%27s%20Vineyard&amp;body=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F2-mcmc-mv-swim%2F"
+    title="Email"
+    aria-label="Email"
+    id="share-link-email"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M16.5 12a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F2-mcmc-mv-swim%2F&amp;title=Leveraging&#43;Reversible&#43;Jump&#43;Markov&#43;Chain&#43;Monte&#43;Carlo&#43;%28RJ-MCMC%29&#43;to&#43;Plan&#43;a&#43;%28Better%29&#43;Swim&#43;to&#43;Martha%27s&#43;Vineyard"
+    title="LinkedIn"
+    aria-label="LinkedIn"
+    id="share-link-linkedin"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="whatsapp://send?text=Leveraging&#43;Reversible&#43;Jump&#43;Markov&#43;Chain&#43;Monte&#43;Carlo&#43;%28RJ-MCMC%29&#43;to&#43;Plan&#43;a&#43;%28Better%29&#43;Swim&#43;to&#43;Martha%27s&#43;Vineyard%20https%3A%2F%2Fwww.blakecole.com%2Fpost%2F2-mcmc-mv-swim%2F"
+    title="WhatsApp"
+    aria-label="WhatsApp"
+    id="share-link-whatsapp"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="m187.58 144.84-32-16a8 8 0 0 0-8 .5l-14.69 9.8a40.55 40.55 0 0 1-16-16l9.8-14.69a8 8 0 0 0 .5-8l-16-32A8 8 0 0 0 104 64a40 40 0 0 0-40 40 88.1 88.1 0 0 0 88 88 40 40 0 0 0 40-40 8 8 0 0 0-4.42-7.16ZM152 176a72.08 72.08 0 0 1-72-72 24 24 0 0 1 19.29-23.54l11.48 23L101 118a8 8 0 0 0-.73 7.51 56.47 56.47 0 0 0 30.15 30.15A8 8 0 0 0 138 155l14.61-9.74 23 11.48A24 24 0 0 1 152 176ZM128 24a104 104 0 0 0-91.82 152.88l-11.35 34.05a16 16 0 0 0 20.24 20.24l34.05-11.35A104 104 0 1 0 128 24Zm0 192a87.87 87.87 0 0 1-44.06-11.81 8 8 0 0 0-6.54-.67L40 216l12.47-37.4a8 8 0 0 0-.66-6.54A88 88 0 1 1 128 216Z"/></svg>
+  </a>
+  
+</section>
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+
+<div class="flex pt-12 pb-4">
+  
+  
+  <img
+    class="mr-4 h-24 w-24 rounded-full"
+    width="96"
+    height="96"
+    alt="Blake Cole"
+  src="/author/blake-cole/avatar_hu14049081479133909916.jpg"
+  loading="lazy"
+  />
+  
+  <div class="place-self-center">
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Authors
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      <a href="https://www.blakecole.com/" class="no-underline">
+      Blake Cole
+      </a>
+    </div>
+
+    
+    <div class="text-sm font-bold text-neutral-700 dark:text-neutral-300">
+    Mechanical Engineer
+    </div>
+    
+
+
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-300">Problem Solver. Ocean Creature.</div>
+    
+
+    <div class="text-2xl sm:text-lg pt-1">
+
+      
+<div class="flex flex-wrap text-neutral-500 dark:text-neutral-300">
+  
+    
+    
+    
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="mailto:blake@seawing.io"
+      
+      aria-label="At-Symbol"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M16.5 12a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://x.com/blerkk"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/X"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://github.com/blakecole"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/Github"
+    ><svg style="height: 1em;" fill="currentColor" viewBox="3 3 18 18"><path d="M12 3C7.0275 3 3 7.12937 3 12.2276C3 16.3109 5.57625 19.7597 9.15374 20.9824C9.60374 21.0631 9.77249 20.7863 9.77249 20.5441C9.77249 20.3249 9.76125 19.5982 9.76125 18.8254C7.5 19.2522 6.915 18.2602 6.735 17.7412C6.63375 17.4759 6.19499 16.6569 5.8125 16.4378C5.4975 16.2647 5.0475 15.838 5.80124 15.8264C6.51 15.8149 7.01625 16.4954 7.18499 16.7723C7.99499 18.1679 9.28875 17.7758 9.80625 17.5335C9.885 16.9337 10.1212 16.53 10.38 16.2993C8.3775 16.0687 6.285 15.2728 6.285 11.7432C6.285 10.7397 6.63375 9.9092 7.20749 9.26326C7.1175 9.03257 6.8025 8.08674 7.2975 6.81794C7.2975 6.81794 8.05125 6.57571 9.77249 7.76377C10.4925 7.55615 11.2575 7.45234 12.0225 7.45234C12.7875 7.45234 13.5525 7.55615 14.2725 7.76377C15.9937 6.56418 16.7475 6.81794 16.7475 6.81794C17.2424 8.08674 16.9275 9.03257 16.8375 9.26326C17.4113 9.9092 17.76 10.7281 17.76 11.7432C17.76 15.2843 15.6563 16.0687 13.6537 16.2993C13.98 16.5877 14.2613 17.1414 14.2613 18.0065C14.2613 19.2407 14.25 20.2326 14.25 20.5441C14.25 20.7863 14.4188 21.0746 14.8688 20.9824C16.6554 20.364 18.2079 19.1866 19.3078 17.6162C20.4077 16.0457 20.9995 14.1611 21 12.2276C21 7.12937 16.9725 3 12 3Z"></path></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://www.linkedin.com/in/coleblake/"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/Linkedin"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://scholar.google.com/citations?user=waW_BnYAAAAJ"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Academicons/Google-Scholar"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M343.759 106.662V79.43L363.524 64h-213.89L20.476 176.274h85.656a82.339 82.339 0 0 0-.219 6.225c0 20.845 7.22 38.087 21.672 51.861c14.453 13.797 32.252 20.648 53.327 20.648c4.923 0 9.75-.368 14.438-1.024c-2.907 6.5-4.374 12.523-4.374 18.142c0 9.875 4.499 20.43 13.467 31.642c-39.234 2.67-68.061 9.732-86.437 21.163c-10.531 6.5-19 14.704-25.39 24.531c-6.391 9.9-9.578 20.515-9.578 31.962c0 9.648 2.062 18.336 6.219 26.062c4.156 7.726 9.578 14.07 16.312 18.984c6.718 4.968 14.469 9.101 23.219 12.469c8.734 3.344 17.406 5.718 26.061 7.062A167.052 167.052 0 0 0 180.555 448c13.469 0 26.953-1.734 40.547-5.187c13.562-3.485 26.28-8.642 38.171-15.493c11.86-6.805 21.515-16.086 28.922-27.718c7.39-11.68 11.094-24.805 11.094-39.336c0-11.016-2.25-21.039-6.75-30.14c-4.468-9.073-9.938-16.542-16.452-22.345c-6.501-5.813-13-11.155-19.516-15.968c-6.5-4.845-12-9.75-16.468-14.813c-4.485-5.046-6.735-10.054-6.735-14.984c0-4.921 1.734-9.672 5.216-14.265c3.455-4.61 7.674-9.048 12.61-13.306c4.937-4.25 9.875-8.968 14.796-14.133c4.922-5.147 9.141-11.827 12.61-20.008c3.485-8.18 5.203-17.445 5.203-27.757c0-13.453-2.547-24.46-7.547-33.314c-.594-1.022-1.218-1.803-1.875-3.022l56.907-46.672v17.119c-7.393.93-6.624 5.345-6.624 10.635V245.96c0 5.958 4.875 10.834 10.834 10.834h3.989c5.958 0 10.833-4.875 10.833-10.834V117.293c0-5.277.778-9.688-6.561-10.63zm-107.36 222.48c1.14.75 3.704 2.78 7.718 6.038c4.05 3.243 6.797 5.695 8.266 7.414a443.553 443.553 0 0 1 6.376 7.547c2.813 3.375 4.718 6.304 5.718 8.734c1 2.477 2.016 5.461 3.047 8.946a38.27 38.27 0 0 1 1.485 10.562c0 17.048-6.564 29.68-19.656 37.859c-13.125 8.18-28.767 12.274-46.938 12.274c-9.187 0-18.203-1.093-27.063-3.196c-8.843-2.116-17.311-5.336-25.39-9.601c-8.078-4.258-14.577-10.204-19.5-17.797c-4.938-7.64-7.407-16.415-7.407-26.25c0-10.32 2.797-19.29 8.422-26.906c5.594-7.625 12.938-13.391 22.032-17.315c9.063-3.946 18.25-6.742 27.562-8.398a157.865 157.865 0 0 1 28.438-2.555c4.47 0 7.936.25 10.405.696c.455.219 3.032 2.07 7.735 5.563c4.704 3.462 7.625 5.595 8.75 6.384zm-3.359-100.579c-7.406 8.86-17.734 13.288-30.953 13.288c-11.86 0-22.298-4.764-31.266-14.312c-9-9.523-15.422-20.328-19.344-32.43c-3.937-12.109-5.906-23.984-5.906-35.648c0-13.694 3.596-25.352 10.781-34.976c7.187-9.65 17.5-14.485 30.938-14.485c11.875 0 22.374 5.038 31.437 15.157c9.094 10.085 15.61 21.413 19.517 33.968c3.922 12.54 5.873 24.53 5.873 35.984c0 13.446-3.702 24.61-11.076 33.454z"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://orcid.org/0000-0002-4957-6903"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Academicons/Orcid"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M336.62 194.538c-7.13-3.328-13.866-5.56-20.253-6.614c-6.365-1.095-16.574-1.612-30.71-1.612h-36.704v152.747h37.634c14.673 0 26.081-1.013 34.224-3.017c8.142-2.004 14.921-4.526 20.356-7.626a69.448 69.448 0 0 0 14.942-11.388c14.488-14.714 21.742-33.273 21.742-55.717c0-22.052-7.44-40.052-22.341-53.982c-5.498-5.166-11.822-9.444-18.89-12.793zM256 8C119.022 8 8 119.042 8 256s111.022 248 248 248s248-111.042 248-248S392.978 8 256 8Zm-82.336 357.513h-29.389V160.148h29.389zM158.95 138.696c-11.14 0-20.213-9.01-20.213-20.212c0-11.118 9.052-20.191 20.213-20.191c11.18 0 20.232 9.052 20.232 20.191a20.194 20.194 0 0 1-20.232 20.212zm241.386 163.597c-5.29 12.545-12.834 23.581-22.65 33.088c-9.982 9.837-21.597 17.194-34.844 22.196c-7.75 3.017-14.839 5.063-21.307 6.117c-6.49 1.013-18.828 1.509-37.076 1.509h-64.956V160.148h69.233c27.962 0 50.034 4.154 66.32 12.545c16.265 8.37 29.181 20.728 38.792 36.972c9.61 16.265 14.425 34.018 14.425 53.196c.023 13.765-2.666 26.908-7.936 39.432z"/></svg></a>
+  
+</div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+
+
+
+  
+  
+    
+    
+    
+      
+      
+    
+<div class="pt-1 no-prose w-full">
+  <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+  <div class="flex flex-col md:flex-row flex-nowrap justify-between gap-5 pt-2">
+    <div class="">
+      
+    </div>
+    <div class="">
+      
+        <a class="group flex text-right no-underline" href="/post/1-adcirc-mv-swim/">
+          <span class="flex flex-col">
+            <span
+              class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+            >Leveraging the ADCIRC Model to Plan an Open-Water Swim from Woods Hole to Martha&#39;s Vineyard</span
+            >
+            <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+              
+                Aug 8, 2022
+              
+            </span>
+          </span>
+          <span
+            class="mt-[-0.3rem] ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+          ><span class="ltr:inline">&rarr;</span></span>
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+
+  
+
+
+
+</div>
+
+      </div>
+
+    </main>
+  </article>
+</div>
+
+    </div>
+    <div class="page-footer">
+      <footer class="container mx-auto flex flex-col justify-items-center text-sm leading-6 mt-24 mb-4 text-slate-700 dark:text-slate-200">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by text-center">
+    © 2025 Blake Cole. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by text-center">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Hugo Blox Builder</a> — the free, <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+
+</footer>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

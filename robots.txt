@@ -8,9 +8,11 @@ Disallow: /event/example/
 
 Disallow: /event/
 
-Disallow: /projects/
-
 Disallow: /post/
+
+Disallow: /post/2-mcmc-mv-swim/
+
+Disallow: /projects/
 
 Disallow: /tags/hugo/
 

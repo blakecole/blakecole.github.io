@@ -17,11 +17,14 @@
       <link>https://www.blakecole.com/event/example/</link>
       <pubDate>Sat, 01 Jun 2030 13:00:00 +0000</pubDate>
       <guid>https://www.blakecole.com/event/example/</guid>
-      <description>&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
-&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
-  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
-&lt;/span&gt;
-  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;Click on the &lt;strong&gt;Slides&lt;/strong&gt; button above to view the built-in slides feature.&lt;/span&gt;
+      <description>&lt;div class=&#34;px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;flex&amp;quot;&amp;gt;
+  &amp;lt;span class=&amp;quot;pr-3 pt-1 text-primary-600 dark:text-primary-300&amp;quot;&amp;gt;
+    &amp;lt;svg height=&amp;quot;24&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot;&amp;gt;&amp;lt;path fill=&amp;quot;none&amp;quot; stroke=&amp;quot;currentColor&amp;quot; stroke-linecap=&amp;quot;round&amp;quot; stroke-linejoin=&amp;quot;round&amp;quot; stroke-width=&amp;quot;1.5&amp;quot; d=&amp;quot;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;
+  &amp;lt;/span&amp;gt;
+  &amp;lt;span class=&amp;quot;dark:text-neutral-300&amp;quot;&amp;gt;Click on the &amp;lt;strong&amp;gt;Slides&amp;lt;/strong&amp;gt; button above to view the built-in slides feature.&amp;lt;/span&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Slides can be added in a few ways:&lt;/p&gt;
 &lt;ul&gt;
@@ -30,6 +33,971 @@
 &lt;li&gt;&lt;strong&gt;Embed&lt;/strong&gt; your slides (e.g. Google Slides) or presentation video on this page using &lt;a href=&#34;https://docs.hugoblox.com/reference/markdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;shortcodes&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Further event details, including &lt;a href=&#34;https://docs.hugoblox.com/reference/markdown/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;page elements&lt;/a&gt; such as image galleries, can be added to the body of this page.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Leveraging Reversible Jump Markov Chain Monte Carlo (RJ-MCMC) to Plan a (Better) Swim to Martha&#39;s Vineyard</title>
+      <link>https://www.blakecole.com/post/2-mcmc-mv-swim/</link>
+      <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://www.blakecole.com/post/2-mcmc-mv-swim/</guid>
+      <description>&lt;h2 id=&#34;should-you-read-this&#34;&gt;Should You Read This?&lt;/h2&gt;
+&lt;p&gt;Life is short &amp;ndash; there are mountains to climb, oceans to explore, TikTok reels to enjoy and forget about microseconds later.&lt;/p&gt;
+&lt;p&gt;Continue reading if:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You have contemplated swimming to Martha&amp;rsquo;s Vineyard, and want to know how it can be done, and done well (in theory).*&lt;/li&gt;
+&lt;li&gt;You want to learn about the history and implementation of &lt;em&gt;Markov Chain Monte Carlo&lt;/em&gt; (MCMC) optimization methods.&lt;/li&gt;
+&lt;li&gt;You need to optimize a system defined by an &lt;em&gt;unknown number of parameters&lt;/em&gt; (sometimes this is called &lt;em&gt;model selection&lt;/em&gt;).  We will accomplish this task using a cool extension of MCMC called &lt;em&gt;Reversible Jump MCMC&lt;/em&gt; (RJ-MCMC).&lt;/li&gt;
+&lt;li&gt;You want to extend/improve my &lt;a href=&#34;https://github.com/blakecole/mv-mcmc&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;RJ-MCMC repository on GitHub&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;*Please don&amp;rsquo;t be an idiot.  Be safe.  Do your homework.  Don&amp;rsquo;t get hit by a ferry. &lt;br&gt;  Or, if you prefer legalese:
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+&lt;div class=&#34;px-4 py-3 mb-6 rounded-md bg-yellow-100 dark:bg-yellow-900&#34;&gt;
+  
+    &lt;div class=&#34;flex&#34;&gt;
+      &lt;span class=&#34;pr-3 pt-1 text-red-400&#34;&gt;
+        &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0zM12 15.75h.007v.008H12z&#34;/&gt;&lt;/svg&gt;
+      &lt;/span&gt;
+      &lt;span class=&#34;dark:text-neutral-300&#34;&gt;&lt;strong&gt;Disclaimer:&lt;/strong&gt;&lt;br&gt;
+The content provided on this website/blog is for informational purposes only and does not constitute professional advice. While I strive to ensure accuracy, I make no representations or warranties regarding its completeness or applicability. Readers are solely responsible for how they use or interpret the information presented. I disclaim any liability for actions taken based on the content of this website.&lt;/span&gt;
+    &lt;/div&gt;
+  
+&lt;/div&gt;
+
+&lt;/p&gt;
+&lt;h2 id=&#34;recapitulation&#34;&gt;Recapitulation&lt;/h2&gt;
+&lt;p&gt;In August 2022, I published a lengthy blog post describing a &lt;a href=&#34;../1-adcirc-mv-swim/&#34;&gt;very nerdy plan to swim across Vineyard Sound&lt;/a&gt;.  As the crow flies, Martha’s Vineyard and Woods Hole are separated by only 3.3 miles; however, the sea separating these two landmasses is infamously tempestuous, with tidally-driven currents routinely exceeding 5 knots.  My goal was to leverage NOAA&amp;rsquo;s &lt;a href=&#34;https://adcirc.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ADvanced CIRCulation (ADCIRC) model&lt;/a&gt; to predict these currents, and determine a sensible combination of swim parameters &amp;ndash; departure time, speed, and heading &amp;ndash; that yielded reasonable trajectories across Vineyard Sound.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;mv_tides.gif&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; &gt;
+
+&lt;img src=&#34;mv_tides.gif&#34; style=&#34;display:block; margin:0; padding:0;&#34; &gt;
+&lt;/a&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;Specifically, I looked for solutions that were:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Safe.&lt;/strong&gt;  The swim route must avoid ferry traffic.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Timely.&lt;/strong&gt;  The swim must not exceed 2.5 hours, to avoid the strongest currents.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Practical.&lt;/strong&gt;  The swimmer must arrive near the intended destination.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Efficient.&lt;/strong&gt;  The swimmer should not fight the current, if possible.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;My simple guess-and-check approach worked well enough &amp;ndash; the swim was a success, and we arrived safely on shore near our intended destination, a little less than two hours after we departed.  However, some inquisitive minds soon began to wonder: &lt;em&gt;&amp;ldquo;Could it have been done better?&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;mv_swim_finish.jpg&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Swimmers arriving on the shore of Martha&amp;rsquo;s Vineyard, near Lake Tashmoo.&#34;&gt;
+
+&lt;img src=&#34;mv_swim_finish.jpg&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Swimmers arriving on the shore of Martha&amp;#39;s Vineyard, near Lake Tashmoo.&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    Swimmers arriving on the shore of Martha&amp;rsquo;s Vineyard, near Lake Tashmoo.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;need-for-speed&#34;&gt;Need for Speed&lt;/h2&gt;
+&lt;p&gt;In the days and weeks after I published the original &lt;a href=&#34;https://www.blakecole.com/post/1-adcirc-mv-swim/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;post&lt;/a&gt;, I received a great deal of positive feedback on my work, and was admittedly somewhat pleased with myself.  I had used my brain to plan a logistically complex adventure which my body executed, and that felt very good.  I was still indulgently basking in self-satisfaction when I received a message from my good friend and colleague, &lt;a href=&#34;https://www.caseyhandmer.com/home&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Casey Handmer&lt;/a&gt;, which said something along the lines of,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You should optimize the swim.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I swallowed hard.  I knew he was right, but absolutely did not want to admit it.  Admitting it would mean more work for me, and probably not just a little more &amp;ndash; I suspected I would need to familiarize myself with some super fancy gradient-free, nonlinear, nonconvex optimization routine.  At the time, I was already five years into my PhD program, and could feel the institutional pressure rising: I needed to defend my thesis soon, or risk being kicked out of the program.  I bristled at Casey&amp;rsquo;s nonchalance, which seemed to suggest that this problem &amp;ndash; which I didn&amp;rsquo;t even know how to structure &amp;ndash; could be solved easily in an afternoon.  Suppressing my indignation, I informed Casey that I wasn&amp;rsquo;t going to optimize the swim, and that I needed to focus on my doctoral research.  He replied quickly, and asked me to send him the tidal current simulation data &lt;em&gt;so that he could do it himself&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;This is classic Casey Handmer.  For those of you who do not know him, that sucks &amp;ndash; he is certainly one of the most fascinating people I have ever met.  He seems to crave technical problems like most people crave sweets or other sensory indulgences.  A physicist named Stanislaw Ulam (more on him &lt;a href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/#history&#34;&gt;later&lt;/a&gt;) once remarked, &amp;ldquo;the mathematicians know a great deal about very little, and the physicists [know] very little about a great deal.&amp;rdquo;  Casey knows basically everything about everything.   At the age of 19, he traveled to Vietnam by himself, and hitchhiked through China and Russia before arriving in Italy; he speaks multiple languages, sings, and plays the trombone; when he isn&amp;rsquo;t riding his unicycle, he likes to fly airplanes or climb mountains; he also has a PhD in theoretical physics from Caltech, and founded &lt;a href=&#34;https://www.terraformindustries.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Terraform Industries&lt;/a&gt;, a company which aims to mitigate climate change by &lt;a href=&#34;https://terraformindustries.wordpress.com/2022/07/24/terraform-industries-whitepaper/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;synthesizing natural gas from sunlight and air&lt;/a&gt;.  He is a caring husband and father of three, and yet still somehow finds time to crank out wide-ranging technical &lt;a href=&#34;https://caseyhandmer.wordpress.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;articles&lt;/a&gt; on a weekly basis.  He is also Australian.  Go figure.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;casey_handmer.jpg&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Casey Handmer, in the desert somewhere, presumably before he had children.&#34;&gt;
+
+&lt;img src=&#34;casey_handmer.jpg&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Casey Handmer, in the desert somewhere, presumably before he had children.&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    Casey Handmer, in the desert somewhere, presumably before he had children.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;The rate at which Casey solves problems is astounding.  This ability is rooted in an inclination to find first-order solutions quickly, and then decide whether higher fidelity approaches are warranted.  All good engineers seem to operate this way.  Not me.  I frequently succumb to the siren song of complexity, and spend hours deliberating which state-of-the-art technique I&amp;rsquo;m going to use to solve a problem.  This an ill-advised strategy: you could spend half a lifetime figuring out the best approach to a problem, and never get around to actually solving it.  Further, you can&amp;rsquo;t really know the &lt;em&gt;best&lt;/em&gt; approach to a problem unless you have already solved it a few times (or talked to someone who has), so you might as well start with something simple &amp;ndash; dare I say, something &lt;em&gt;random&lt;/em&gt;.  Such was Casey&amp;rsquo;s reasoning when he decided to utilize a relatively simple stochastic methodology to determine the best possible swim route from Woods Hole to Martha&amp;rsquo;s Vineyard.&lt;/p&gt;
+&lt;h2 id=&#34;markov-chain-monte-carlo&#34;&gt;Markov Chain Monte Carlo&lt;/h2&gt;
+&lt;p&gt;There is power in randomness &amp;ndash; this is the fundamental premise of so-called &lt;em&gt;Monte Carlo&lt;/em&gt; methods.  How can this be?  Randomness is inherently chaotic, and chaos is bad, right?  Isn&amp;rsquo;t the foremost goal of science and engineering to distill order from chaos?&lt;/p&gt;
+&lt;p&gt;Sort of.  Another way to think about randomness is as means of observing reality in an unbiased manner.  Imagine being a journalist who is told to write an article about one of ten equally important subjects &amp;ndash; how should they choose which one to cover?  It obviously wouldn&amp;rsquo;t be fair if they simply picked their favorite topic, so instead, they might randomly select one of the subjects.  By doing so, they ensure that each subject is treated with equal importance, free from any personal bias.  This randomness introduces fairness into the process, enabling a more objective approach to gathering information.  In much the same way, Monte Carlo methods use randomness to explore possible solutions to a problem, systematically sampling different outcomes to estimate the most likely result (or discover the best solution).  While it may seem counterintuitive, this stochastic process can be surprisingly powerful, as it allows us to explore a broad range of scenarios and capture complex behaviors that deterministic methods might miss.&lt;/p&gt;
+&lt;h3 id=&#34;history&#34;&gt;History&lt;/h3&gt;
+&lt;p&gt;Monte Carlo methods trace their origins to the 1940s, when they were developed as part of the Manhattan Project to aid in the &lt;a href=&#34;https://www.lanl.gov/media/publications/actinide-research-quarterly/1123-hitting-the-jackpot-the-birth-of-the-monte-carlo-method&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;design of nuclear weapons&lt;/a&gt;.  Pioneered by scientists such as &lt;a href=&#34;https://en.wikipedia.org/wiki/Stanis%C5%82aw_Ulam&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Stanislaw Ulam&lt;/a&gt; and &lt;a href=&#34;https://en.wikipedia.org/wiki/John_von_Neumann&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;John von Neumann&lt;/a&gt;, these methods were used to model complex physical processes, including neutron diffusion in fission reactions.  The fundamental idea was to use random sampling to approximate solutions to otherwise intractable mathematical problems, leveraging the power of early computers to perform large-scale simulations.  The name &lt;em&gt;Monte Carlo&lt;/em&gt; was inspired by the famous casino in Monaco, reflecting the role of chance in the method.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;mc_pi_estimation.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;A canoncial demonstration of the Monte Carlo approach involves the estimation of $\pi$ without geometrical relationships.  As points are randomly scattered inside a unit square, some fall within an inscribed unit circle, and some do not; as the number of points approaches infinity, the fraction of points that land inside the circle approaches $\pi/4$ [source: Iván Mauricio Cely Toro].&#34;&gt;
+
+&lt;img src=&#34;mc_pi_estimation.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;A canoncial demonstration of the Monte Carlo approach involves the estimation of $\pi$ without geometrical relationships.  As points are randomly scattered inside a unit square, some fall within an inscribed unit circle, and some do not; as the number of points approaches infinity, the fraction of points that land inside the circle approaches $\pi/4$ [source: [Iván Mauricio Cely Toro](https://mauriciocely.github.io/blog/2020/08/05/estimating-pi-using-the-monte-carlo-method/)].&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    A canoncial demonstration of the Monte Carlo approach involves the estimation of $\pi$ without geometrical relationships.  As points are randomly scattered inside a unit square, some fall within an inscribed unit circle, and some do not; as the number of points approaches infinity, the fraction of points that land inside the circle approaches $\pi/4$ [source: &lt;a href=&#34;https://mauriciocely.github.io/blog/2020/08/05/estimating-pi-using-the-monte-carlo-method/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Iván Mauricio Cely Toro&lt;/a&gt;].
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;A major advance came in the 1950s with the introduction of the Metropolis algorithm by Nicholas Metropolis and his colleagues Marshall Rosenbluth, Arianna Rosenbluth, Augusta Teller, and Edward Teller at Los Alamos National Laboratory.  This method combined Monte Carlo techniques with the mathematics of Markov Chains &amp;ndash; theoretical frameworks that describe sequences of possible events in which the probability of each event depends only on the state attained in the previous event, not the full history.  This &lt;em&gt;memoryless&lt;/em&gt; property of Markov Chains makes them especially useful for exploring complex parameter spaces in a controlled (yet random) fashion.  In the Metropolis algorithm, a Markov Chain is constructed in such a way that, over time, it produces samples from a desired probability distribution &amp;ndash; or, equivalently, yields a set of parameters that minimizes a cost function (more on this equivalency in the &lt;a href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/#algorithm&#34;&gt;Algorithm&lt;/a&gt; section).&lt;/p&gt;
+&lt;p&gt;Why would anyone want to do this?  Well, in short, there quite a few ways in which nuclear fusion does not happen, and Nicholas Metropolis and his colleagues wanted very badly for it to happen.  I would say more, but that&amp;rsquo;s literally all I know &amp;ndash; my apologies in advance to Iran, South Korea, and Saudi Arabia.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;markov_chain.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;A diagram representing a two-state Markov process. The numbers are the probability of changing from one state to another state [source: Wikipedia Commons].&#34;&gt;
+
+&lt;img src=&#34;markov_chain.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;A diagram representing a two-state Markov process. The numbers are the probability of changing from one state to another state [source: [Wikipedia Commons](https://en.wikipedia.org/wiki/Markov_chain)].&#34; width=&#34;200&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    A diagram representing a two-state Markov process. The numbers are the probability of changing from one state to another state [source: &lt;a href=&#34;https://en.wikipedia.org/wiki/Markov_chain&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia Commons&lt;/a&gt;].
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;The Metropolis algorithm was later generalized by W.K. Hastings in 1970, resulting in the &lt;a href=&#34;https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Metropolis-Hastings algorithm&lt;/a&gt;, a flexible and widely-used approach that underpins modern Markov Chain Monte Carlo (MCMC) techniques.  By using carefully designed Markov Chains to guide random sampling, MCMC methods are able to efficiently explore high-dimensional solution spaces.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://academic.oup.com/biomet/article/82/4/711/252058&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Reversible Jump MCMC&lt;/a&gt; (RJ-MCMC) is an extension of traditional MCMC methods, developed by Peter J. Green in 1995.  Standard MCMC methods like Metropolis–Hastings typically operate in parameter spaces with a fixed dimension &amp;ndash; that is, the number of parameters doesn&amp;rsquo;t change during optimization.  In contrast, RJ-MCMC introduces special moves that alter the dimension of the parameter space by dynamically adding or removing parameters (effectively &amp;ldquo;jumping&amp;rdquo; between models with different complexities).  This flexibility makes RJ-MCMC ideal for problems where the best number of parameters (like the optimal number of discrete swim headings) is not known ahead of time.&lt;/p&gt;
+&lt;h3 id=&#34;algorithm&#34;&gt;Algorithm&lt;/h3&gt;
+&lt;p&gt;If you haven&amp;rsquo;t taken a probability course in a while (or even if you have), you might get bogged down in the mathematical language used to describe the &lt;a href=&#34;https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Metropolis-Hastings algorithm&lt;/a&gt;.  If you peruse its Wikipedia page, you will find no shortage of obscure remarks that assume considerable familiarity with probability theory:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Metropolis–Hastings algorithm can draw samples from any probability distribution with probability density $P(x)$, provided that we know a function $f(x)$ proportional to the density $P$ and the values of $f(x)$ can be calculated.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;What?&lt;/p&gt;
+&lt;p&gt;How does that relate to optimization?&lt;/p&gt;
+&lt;p&gt;I wondered the same thing, at first &amp;ndash; do not dismay.&lt;/p&gt;
+&lt;p&gt;The Metropolis–Hastings algorithm was originally developed to approximate probability distributions by generating a sequence of samples such that, after many iterations, the frequency of samples at any point, $x$, approximates the probability density, $P(x)$.&lt;/p&gt;
+&lt;p&gt;Very clever people eventually figured out that this same method could be used to minimize a cost function by defining a target probability distribution that preferentially selects good solutions, and rejects bad ones.  Suppose you have a cost function, $C(x),$ that you want to minimize.  You could then define a target probability distribution, $P(x)$, where solutions with lower costs have higher probabilities:&lt;/p&gt;
+$$
+P(x) \propto e^{\beta C(x)},
+$$&lt;p&gt;
+where $\beta$ is a positive parameter controlling the sharpness of the distribution.  If you run the Metropolis–Hastings algorithm with this distribution, the generated &amp;ldquo;samples&amp;rdquo; &amp;ndash; which represent sets of parameters, $x$, in this instance &amp;ndash; will preferentially come from low-cost regions of the parameter space, because these samples have a higher probability of being selected.&lt;/p&gt;
+&lt;p&gt;If none of &lt;em&gt;that&lt;/em&gt; made sense to you, I am sorry.  Don&amp;rsquo;t give up yet.  I have great news: the Metropolis–Hastings algorithm is shockingly easy to implement, even if you do not fully understand the underlying theory.  This means you (yes &lt;em&gt;you&lt;/em&gt;!) can optimize all sorts of cool things in your life.&lt;/p&gt;
+&lt;p&gt;These are the key steps:&lt;/p&gt;
+
+
+
+
+
+
+
+
+  
+
+
+&lt;div class=&#34;px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+  
+    
+      &lt;div class=&#34;mb-2 font-bold text-primary-600 dark:text-primary-300&#34;&gt;
+        Metropolis-Hastings in Plain English
+      &lt;/div&gt;
+    
+    &lt;div class=&#34;dark:text-neutral-300&#34;&gt;&lt;ol&gt;
+&lt;li&gt;Define a cost function to evaluate the quality of a prospective solution.&lt;/li&gt;
+&lt;li&gt;Propose an initial solution, and compute its cost.&lt;/li&gt;
+&lt;li&gt;Introduce a random perturbation to the previous solution, and compute the new cost.
+&lt;ul&gt;
+&lt;li&gt;If the perturbation results in a &lt;strong&gt;lower&lt;/strong&gt; cost, accept the solution.&lt;/li&gt;
+&lt;li&gt;If the perturbation results in a &lt;strong&gt;higher&lt;/strong&gt; cost, accept the solution with probability $\alpha$, where $\alpha$ is an &lt;em&gt;acceptance ratio&lt;/em&gt; that depends on the difference between the previous cost and the current cost.  The acceptance ratio can be systematically adjusted over time (this is called &lt;em&gt;simulated annealing&lt;/em&gt;).&lt;/li&gt;
+&lt;li&gt;If the perturbation results in the &lt;strong&gt;lowest&lt;/strong&gt; cost thus far, store the solution.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Repeat &lt;strong&gt;Step 3&lt;/strong&gt; until a convergence criterion (or iteration limit) is met.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+  
+&lt;/div&gt;
+
+
+&lt;p&gt;Or, if you&amp;rsquo;re more of a flowchart kind of person:
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+document.addEventListener(&#34;DOMContentLoaded&#34;, function() {
+  
+  function initMermaidDiagrams(theme) {
+    mermaid.initialize({ theme: theme, startOnLoad: false, logLevel: &#39;fatal&#39; });
+    mermaid.init(undefined, document.querySelectorAll(&#39;.mermaid&#39;));
+  }
+
+  
+  
+  let currentTheme = document.documentElement.classList.contains(&#39;dark&#39;) ? &#39;dark&#39; : &#39;default&#39;;
+  initMermaidDiagrams(currentTheme);
+
+  
+  const observer = new MutationObserver(function(mutationsList) {
+    for (let mutation of mutationsList) {
+      if (mutation.attributeName === &#39;class&#39;) {
+        let newTheme = document.documentElement.classList.contains(&#39;dark&#39;) ? &#39;dark&#39; : &#39;default&#39;;
+        
+        if (newTheme !== currentTheme) {
+          currentTheme = newTheme;
+          initMermaidDiagrams(newTheme);
+        }
+      }
+    }
+  });
+
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: [&#39;class&#39;] });
+});
+&lt;/script&gt;
+
+&lt;div class=&#34;mermaid&#34;&gt;
+  
+flowchart TD
+    A[Initial Guess] --&gt; B[Compute Cost]
+    B --&gt; C[Modify Solution]
+    C --&gt; D[Compute Cost &amp; Acceptance Probability]
+    D -- $C_k &lt; C_{k-1}$ --&gt; E[Accept New Solution]
+    D -- $C_k \geq C_{k-1}$ --&gt; F{Roll Dice}
+    F -- $\mathcal{U}(0,1) &lt; \alpha_k$ --&gt; E
+    F -- $\mathcal{U}(0,1) \geq \alpha_k$ --&gt; G[Keep Old Solution]
+    G --&gt; H[Current Solution]
+    E --&gt; H[Current Solution]
+    H --&gt; C
+
+&lt;/div&gt;
+
+&lt;/p&gt;
+&lt;p&gt;Why periodically accept worse (higher cost) solutions?&lt;/p&gt;
+&lt;p&gt;Imagine you are hiking in the mountains on a foggy day, searching for the highest peak.  If you simply climb upwards at every step, you might find yourself atop a small hill and assume you&amp;rsquo;ve reached the highest point (these little hilltops are called a &lt;em&gt;local maxima&lt;/em&gt; or &lt;em&gt;local extrema&lt;/em&gt; in nerd speak&amp;hellip; we despise them).  In order to locate the highest peak &amp;ndash; the &lt;em&gt;global maximum&lt;/em&gt; (which we love) &amp;ndash; you might need to occasionally descend to lower elevations, even if it seems counterproductive in the moment.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;hiker.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Sometimes you have to go lower to get higher [source: DALL-E 16.20.12].&#34;&gt;
+
+&lt;img src=&#34;hiker.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Sometimes you have to go lower to get higher [source: DALL-E 16.20.12].&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    Sometimes you have to go lower to get higher [source: DALL-E 16.20.12].
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;To me, the fact that this algorithm actually works (most of the time) is nothing short of astounding &amp;ndash; it is basically &amp;ldquo;guess-and-check&amp;rdquo; on steroids.  And yet, despite its simplicity, this technique has revolutionized the fields of nuclear physics, economics, genetics, and climate science, just to name a few.  It also paved the way for advances in &lt;a href=&#34;https://en.wikipedia.org/wiki/Bayesian_statistics&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bayesian statistics&lt;/a&gt; and modern machine learning techniques.  The power of this approach cannot be attributed to luck or magic; it is underwritten by &lt;em&gt;randomness&lt;/em&gt;, and the properties inherent thereto.&lt;/p&gt;
+&lt;h3 id=&#34;python-demo&#34;&gt;Python Demo&lt;/h3&gt;
+&lt;p&gt;Below is a simple, fully-functional 1-D implementation of the Metropolis–Hastings algorithm.  Feel free to &lt;a href=&#34;https://github.com/blakecole/mv-mcmc/blob/main/src/mcmc_demo_1d.py&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;download&lt;/a&gt; it, and modify it as you see fit.  I would encourage you to play around with the initial guess (&lt;code&gt;initial&lt;/code&gt;) and standard deviation (&lt;code&gt;proposal_std&lt;/code&gt;) parameters to get a sense of how these influence solution convergence.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;random&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;math&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;as&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;plt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;metropolis_hastings&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cost_func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;initial&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;iterations&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;proposal_std&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    Metropolis-Hastings algorithm for cost function minimization.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    Args:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        cost_func: The cost function to minimize. It should take a single parameter.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        initial: Initial value for the parameter.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        iterations: Number of iterations to run.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        proposal_std: Standard deviation of the Gaussian proposal distribution.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    Returns:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;        A tuple (best, best_cost, samples) where:
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;          - best is the best found parameter value.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;          - best_cost is the corresponding cost.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;          - samples is a list of the parameter values over the iterations.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;s2&#34;&gt;    &amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;initial&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;current_cost&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cost_func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;best&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;best_cost&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;current_cost&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;samples&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;best_cost_history&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;best_cost&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;iterations&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# Propose a new candidate using a Gaussian random step.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;candidate&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gauss&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;proposal_std&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;candidate_cost&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cost_func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;candidate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# Calculate acceptance probability.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# For minimization, lower cost is better.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# If the candidate cost is lower, accept it outright.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;# Otherwise, accept it with probability exp(-(candidate_cost - current_cost)).&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;candidate_cost&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;current_cost&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;accept&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;accept_prob&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;math&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;candidate_cost&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;current_cost&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;accept&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;accept_prob&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;accept&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;current&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;candidate&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;current_cost&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;candidate_cost&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;c1&#34;&gt;# Update best if the new candidate is better.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;candidate_cost&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;best_cost&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;best&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;candidate&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;best_cost&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;candidate_cost&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;samples&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;current&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;best_cost_history&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;best_cost&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;best&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;best_cost&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;samples&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;best_cost_history&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Example usage&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;vm&#34;&gt;__name__&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Define a simple cost function, e.g., a parabola with a minimum at x = 2.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;cost&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;**&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Run the Metropolis-Hastings algorithm.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;best&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;best_cost&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;samples&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;best_cost_history&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;metropolis_hastings&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cost_func&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cost&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                                                      &lt;span class=&#34;n&#34;&gt;initial&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;       &lt;span class=&#34;c1&#34;&gt;# Starting value&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                                                      &lt;span class=&#34;n&#34;&gt;iterations&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;250&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Number of iterations&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                                                                      &lt;span class=&#34;n&#34;&gt;proposal_std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# Step size&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Best x found:   &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;best&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.5f&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Cost at best x: &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;best_cost&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;.8f&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Plot convergence: best cost over iterations.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;figure&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;figsize&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;plot&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;best_cost_history&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xlabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Iteration&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ylabel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Best Cost&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Convergence of Metropolis-Hastings&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;grid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;True&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you run the code as is, you should find that the optimizer rapidly finds the smallest value of the cost function $C(x) = (x-2)^2$ at (spoiler alert) $x=2$.  Even for an absurd initial guess like $x_0 = 100$, the Metropolis-Hastings algorithm converges to the true solution in about 250 iterations.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;mcmc_demo_convergence.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Convergence of the Metropolis-Hastings algorithm for $C(x) = (x-2)^2$, with $x_0 = 100$.&#34;&gt;
+
+&lt;img src=&#34;mcmc_demo_convergence.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Convergence of the Metropolis-Hastings algorithm for $C(x) = (x-2)^2$, with $x_0 = 100$.&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    Convergence of the Metropolis-Hastings algorithm for $C(x) = (x-2)^2$, with $x_0 = 100$.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;This is a fun example, but it doesn&amp;rsquo;t demonstrate the true power of this technique; after all, such a simple problem could have been solved using basic calculus.  What makes the MCMC approach so fascinating is its generality: it can explore parameter spaces of varying dimension, and the cost function need not be differentiable or continuous.  For those interested in diving into the weeds, I would highly recommend checking out my &lt;a href=&#34;https://github.com/blakecole/mv-mcmc&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;RJ-MCMC repository on GitHub&lt;/a&gt;.  It has a few really useful functions and clever &lt;a href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/#flourishes&#34;&gt;flourishes&lt;/a&gt; that pertain specifically to swim route optimization.&lt;/p&gt;
+&lt;h2 id=&#34;problem-setup&#34;&gt;Problem Setup&lt;/h2&gt;
+&lt;h3 id=&#34;goal&#34;&gt;Goal&lt;/h3&gt;
+&lt;p&gt;Depart Nobska Beach between 2:00a and 11:00a on July 30th, 2022 and cross Vineyard Sound as fast as possible.&lt;/p&gt;
+&lt;h3 id=&#34;constraints&#34;&gt;Constraints&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;None&lt;/strong&gt;.  We&amp;rsquo;re prioritizing &lt;em&gt;speed&lt;/em&gt;, and speed alone &amp;ndash; ferries, ruffled feathers, and private beaches be damned (&lt;em&gt;especially&lt;/em&gt; the private beaches, those can go straight to hell).  Any heading sequence that delivers the swimmer to Martha&amp;rsquo;s Vineyard is on the table.&lt;/p&gt;
+&lt;h3 id=&#34;assumptions&#34;&gt;Assumptions&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;We assume the swimmer is able to maintain a &lt;strong&gt;constant pace&lt;/strong&gt; of $1$:$40$/$100yd$.  This is a reasonable pace for an average open water swimmer in good shape.&lt;/li&gt;
+&lt;li&gt;We assume the swimmer departs from a &lt;strong&gt;fixed location&lt;/strong&gt; on Nobska Beach, MA, sometime between 2:00a and 11:00a on July 20th, 2022.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;parameters&#34;&gt;Parameters&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Heading Sequence&lt;/strong&gt;:  Each heading is pursued for a fixed time interval, $\Delta t;$ the total number of heading changes is not known in advance.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Start Time&lt;/strong&gt;:  This parameter determines the state of the tidal current vector field during the simulated swim, and thus exerts a strong influence on the crossing time and optimal heading sequence.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;methodology&#34;&gt;Methodology&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Define &lt;strong&gt;swim constants&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Departure location&lt;/li&gt;
+&lt;li&gt;Start time&lt;/li&gt;
+&lt;li&gt;Time step&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Define &lt;strong&gt;optimization constants&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Initial annealing temperature&lt;/li&gt;
+&lt;li&gt;Initial Gaussian bump amplitude limit&lt;/li&gt;
+&lt;li&gt;Number of iterations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Determine a reasonable &lt;strong&gt;initial guess&lt;/strong&gt;.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Simulate a series of &lt;em&gt;constant-heading&lt;/em&gt; swims.&lt;/li&gt;
+&lt;li&gt;Store the solutions which produce valid trajectories (i.e., those that reach Martha&amp;rsquo;s Vineyard in under 3 hours).&lt;/li&gt;
+&lt;li&gt;Pick the fastest valid &lt;em&gt;constant-heading&lt;/em&gt; solution as the initial guess.&lt;/li&gt;
+&lt;li&gt;Compute the cost (swim duration) of the initial guess.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Randomly choose whether to modify, grow, or shrink the heading vector,  using the following logic:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pb&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.33&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.33&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pm&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;0.34&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;move_type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;choice&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;birth&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;death&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;modify&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pb&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pm&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;move_type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;modify&amp;#39;&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new_h&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;perturbation&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;generate_bump&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new_h&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bump_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;new_h&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;perturbation&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;move_type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;birth&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;new_heading&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;normal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;birth_bearing&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;20.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;insert_idx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new_h&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;new_h&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;insert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new_h&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;insert_idx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new_heading&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; &lt;span class=&#34;k&#34;&gt;elif&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;move_type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;death&amp;#39;&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;and&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new_h&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new_h&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;n&#34;&gt;removed_heading&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;new_h&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     &lt;span class=&#34;n&#34;&gt;new_h&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;delete&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new_h&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;bump_size&lt;/code&gt; parameter is typically set between 5 and 15 degrees at the outset, depending on the user&amp;rsquo;s confidence in their first guess, and reduced $0.1\%$ after every iteration; this allows the optimization routine to conduct a thorough exploration of the parameter space early on, and then refine the solution using smaller perturbations.  The use of a larger initial &lt;code&gt;bump_size&lt;/code&gt; results in very robust performance, but can sometimes yield sub-optimal solutions; conversely, the use of a smaller initial &lt;code&gt;bump_size&lt;/code&gt; works better if the initial guess is already pretty good, such that the odds of getting trapped in a local minimum are small.  This function is described in greater detail in the &lt;a href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/#gaussian-bump&#34;&gt;Flourishes&lt;/a&gt; section.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Compute the cost of the candidate solution.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Compute the acceptance probability: $\alpha_k = \exp{\left( \frac{\Delta_k}{T_k} \right)}$, where $\Delta_k$ is the cost difference between the candidate and previous solutions, and $T_k$ is the annealing temperature parameter.  We reduce $T_k$ gradually over time using a &lt;em&gt;linear cooling schedule&lt;/em&gt; to discourage premature convergence.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Keep the candidate solution if &lt;em&gt;&lt;strong&gt;BOTH&lt;/strong&gt;&lt;/em&gt; of the following conditions are met:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;EITHER&lt;/strong&gt;&lt;/em&gt; the candidate cost is lower than the previous cost, $C_k &lt; C_{k-1}$, &lt;em&gt;&lt;strong&gt;OR&lt;/strong&gt;&lt;/em&gt; the acceptance probability, $\alpha_k$, is greater than a random number drawn from a uniform distribution, $\mathcal{U}(0,1)$.&lt;/li&gt;
+&lt;li&gt;The swim trajectory terminates inside the boundary of Martha&amp;rsquo;s Vineyard.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If the candidate solution is the lowest-cost solution yet, store it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If the iteration limit has not been reached, return to &lt;strong&gt;Step 4&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;useful-functions&#34;&gt;Useful Functions&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Flowfield Interpolation&lt;/strong&gt;:  Extract a tidal current vector from the discrete computational domain using SciPy&amp;rsquo;s &lt;code&gt;NearestNDInterpolator&lt;/code&gt; function.  I also experimented with the &lt;code&gt;LinearNDInterpolator&lt;/code&gt; function, but the minor fidelity improvement did not justify the enormous increase in computational cost.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Dead Reckon&lt;/strong&gt;: Given a starting point (lon, lat), initial bearing (in degrees), and a distance (in meters), compute the destination point along a &lt;em&gt;great-circle path&lt;/em&gt; using a modified form of the &lt;a href=&#34;https://en.wikipedia.org/wiki/Haversine_formula&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Haversine formula&lt;/a&gt; (note: if you like geodesy, check out my &lt;a href=&#34;../../publication/jrnl-aor-2022/&#34;&gt;proof of this relationship&lt;/a&gt;).  This function permits the simulation of swim trajectories knowing only a starting point, a set of sequential headings, and the swimmer&amp;rsquo;s speed over ground.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Arrival Detection&lt;/strong&gt;: Given a point (lon, lat) and a list of points describing a closed region, determine whether the point is inside the closed region using the &lt;a href=&#34;https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ray casting algorithm&lt;/a&gt;.  This function is used to determine whether a given sequence of headings produces a swim trajectory that reaches Martha&amp;rsquo;s Vineyard.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Closest Approach&lt;/strong&gt; (Optional): Compute the closest distance (in meters), and the bearing (in degrees), from a geodetic point (lon, lat) to a closed polygon defined as a (Nx2) NumPy ndarray of (lon, lat) points, using vectorized geodetic functions.  Although this function is not strictly necessary, it was useful when I was debugging my optimization routine.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;
+&lt;p&gt;Before I present my own solutions, I&amp;rsquo;d like to show Casey&amp;rsquo;s work.  His results aren&amp;rsquo;t quite as polished as mine, but he probably cranked them out in about the same time I spent formatting one of my plots (that being said, I wholeheartedly believe that data visualization is important, beauty is important, and making &lt;a href=&#34;https://www.datawrapper.de/blog/beautifulcolors#1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;good plots&lt;/a&gt; is worth the time and effort; I will die on this hill).  Further, Casey&amp;rsquo;s findings were compelling enough to inspire me to write my own MCMC code, and publish this blog.&lt;/p&gt;
+&lt;h3 id=&#34;caseys-solution&#34;&gt;Casey&amp;rsquo;s Solution&lt;/h3&gt;
+&lt;p&gt;Shortly after I sent Casey my tide simulation data, I received the following email:&lt;/p&gt;
+&lt;div style=&#34;background-color: #00131A; color: #F2F2F2; padding: 10px;&#34;&gt;
+Hi Blake, 
+&lt;p&gt;Finally getting around to shooting you this info.&lt;/p&gt;
+&lt;p&gt;I relaxed the constraint that the headings be constant to see if it was possible to find a faster routing. I coded a function that would (quickly) attempt to find an optimal sequence of headings as a function of&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;departure location and time&lt;/li&gt;
+&lt;li&gt;arrival location&lt;/li&gt;
+&lt;li&gt;minimizing time in the ferry zone&lt;/li&gt;
+&lt;li&gt;pace together with an interpolated background dataset of known (simulated) current flows.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This graph shows an example output, with headings in degrees as a function of time (units in multiples of 3 minutes). For a particular combination of start time and pace, close to 140 degrees the whole way is adequate, as shown with the orange line. Leaving earlier or later, favors different headings to take advantage of the water speed.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;casey_heading_vs_time.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Optimal swim heading sequences for assorted start times. [source: Casey Handmer]&#34;&gt;
+
+&lt;img src=&#34;casey_heading_vs_time.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;&amp;lt;center&amp;gt;Optimal swim heading sequences for assorted start times. [source: Casey Handmer]&amp;lt;/center&amp;gt;&#34; width=&#34;600&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    &lt;center&gt;Optimal swim heading sequences for assorted start times. [source: Casey Handmer]&lt;/center&gt;
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;This ground track shows, as a function of latitude and longitude in degrees, the ground tracks corresponding to the curves above. The bright green and red are baselines premised on 140 degree headings the whole time, while the colored red and green dots demarcate the boundaries of the ferry zone. Blue dots show the grid on which tide current values are known with certainty, and hence an inference of the shoreline location. Not every start time converged to the desired landing point but most of them did.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;casey_trajectories.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Optimal swim trajectories for assorted start times. [source: Casey Handmer]&#34;&gt;
+
+&lt;img src=&#34;casey_trajectories.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;&amp;lt;center&amp;gt;Optimal swim trajectories for assorted start times. [source: Casey Handmer]&amp;lt;/center&amp;gt;&#34; width=&#34;600&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    &lt;center&gt;Optimal swim trajectories for assorted start times. [source: Casey Handmer]&lt;/center&gt;
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;The time saved compared to 140 degrees baseline varied between 5 and 20 minutes, some of which could be attributed to reducing the overall distance needed to be covered. Fortunately Martha&amp;rsquo;s Vineyard has a big beachy coast which is hard to miss!&lt;/p&gt;
+&lt;p&gt;Compared to Blake and friends&amp;rsquo; actual swim, the solutions are about 20-30 minutes faster. I think this is probably because the simulated swimmers routed close to the shore on departure, waiting until they were in strong current before zooming across the ferry zone. Blake&amp;rsquo;s strategy to swim directly across the zone in still water meant their group took longer to get into the faster water.&lt;/p&gt;
+&lt;p&gt;This optimization effort was very hacky, and I&amp;rsquo;m sure there&amp;rsquo;s another 3-5 minutes of performance to be squeezed out with concerted effort.&lt;/p&gt;
+&lt;p&gt;Casey&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;I have a few thoughts on this.&lt;/p&gt;
+&lt;p&gt;First, &lt;em&gt;nice&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;I think the coolest part of Casey&amp;rsquo;s work is actually hiding behind the figures: it is his  &lt;em&gt;Gaussian bump&lt;/em&gt; feature.  Extremely clever.  I initially tried to run my optimization algorithm without it, and the results were nightmarish: the heading vector was perturbed every which way, yielding a chaotic, jagged swim trajectory.  Casey realized that such drastic changes in sequential headings were counterproductive, and developed a &lt;em&gt;representation&lt;/em&gt; that encoded this knowledge.  The result?  Gorgeously smooth solutions, and much faster convergence.  Bravo!&lt;/p&gt;
+&lt;p&gt;Casey&amp;rsquo;s results are &lt;em&gt;quick-and-dirty&lt;/em&gt; but credible.  It makes sense that earlier departures &amp;ndash; which subject the swimmer to stronger westward currents &amp;ndash; would necessitate a course adjustment to the east.  Plus, given that my &lt;a href=&#34;https://www.blakecole.com/post/1-adcirc-mv-swim/#600a-departure--140100yd-pace&#34;&gt;initial analysis&lt;/a&gt; suggested that a constant $140^{\circ}$ heading was a reasonably efficient solution (i.e., the dot product of current velocity and swimmer velocity is nonnegative at nearly every timestep), we wouldn&amp;rsquo;t expect the optimal solution to be dramatically different.&lt;/p&gt;
+&lt;p&gt;I also thought it was cool that he was able to modify the cost function to penalize solutions that spent too much time in the ferry channel, and arrived too far from Lake Tashmoo.  Tinkering with the cost function sometimes leads to bizarre behavior.  Early on, I was using a cost function that combined &lt;code&gt;swim_time&lt;/code&gt; and &lt;code&gt;distance_from_shore&lt;/code&gt; as a weighted sum, hoping this would permit sufficient solution flexibility (i.e., the simulated swimmer can make landfall at any point along the shoreline), while guiding the optimization routine toward solutions that were both fast &lt;em&gt;and&lt;/em&gt; valid.  However, I found that the routine frequently opted for solutions that never made it to shore &amp;ndash; it was prioritizing a smaller value of &lt;code&gt;swim_time&lt;/code&gt; over the necessary condition that &lt;code&gt;distance_from_shore = 0&lt;/code&gt;.  I initially rectified this solution by tuning the cost function weights, but I hated this solution; it felt flimsy.  So, I eventually figured out a way to reject invalid solutions, and remove &lt;code&gt;distance_from_shore&lt;/code&gt; from the cost function.&lt;/p&gt;
+&lt;p&gt;I think Casey would be the first to admit that there is room for improvement here (from the horse&amp;rsquo;s mouth: &amp;ldquo;This optimization effort was very hacky&amp;rdquo;).&lt;/p&gt;
+&lt;p&gt;He didn&amp;rsquo;t digitize the shoreline of Martha&amp;rsquo;s Vineyard, so I&amp;rsquo;m guessing his arrival detection function might have introduced errors on the order of a few minutes.  Practically speaking, this isn&amp;rsquo;t a big deal; however, I found that optimization generally only improves the initial guess by a few minutes, so an error of this magnitude is problematic.&lt;/p&gt;
+&lt;p&gt;Finally, I think a good chunk of the &amp;ldquo;20-30 minute improvement&amp;rdquo; Casey referenced could be explained by the fact that we took a 10-minute break in the middle of Vineyard Sound to chat, hydrate, and eat snacks.  But, I don&amp;rsquo;t think he knew about this, and thus cannot be blamed for pointing his hypotheses elsewhere.  I agree with his general contention that swimming south into stronger currents before crossing the ferry channel may have reduced our total swim time &amp;ndash; but not by 30 minutes.&lt;/p&gt;
+&lt;h3 id=&#34;my-solution&#34;&gt;My Solution&lt;/h3&gt;
+&lt;p&gt;My approach improves on Casey&amp;rsquo;s in a number of ways:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Reversible Jump MCMC&lt;/strong&gt;: Rather than assuming a fixed number of headings, my approach allows the heading vector to shrink and grow as necessary.  You can imagine the tip of the swim trajectory rapidly bouncing around the shoreline, probing different solutions like some sort of disgusting proboscis.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Pre-optimization&lt;/strong&gt;: Prior to firing up the main optimization engine, I conduct an automated series of &lt;em&gt;constant-heading&lt;/em&gt; simulations, keeping track of the ones that reach Martha&amp;rsquo;s Vineyard, and pick the fastest one as my first guess.  Surprisingly, this very dumb technique produced solutions that were only a few minutes slower than the final optimized solutions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Enhanced arrival detection&lt;/strong&gt;: I use &lt;a href=&#34;https://en.wikipedia.org/wiki/Point_in_polygon#Ray_casting_algorithm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ray casting&lt;/a&gt; to determine if swim trajectories terminate inside the digitized boundary of Martha&amp;rsquo;s Vineyard.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Better temporal resolution&lt;/strong&gt;: I reduced the simulation timestep from $\Delta t = 3 min$ to $\Delta t = 18 s$.  Without the use of a smaller timestep, the optimizer will reject candidate solutions unless they yield at least a $2.99 min$ reduction in swim time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Exponentially-cooled Gaussian bump&lt;/strong&gt;: Rather than selecting the amplitude of each &lt;em&gt;Gaussian bump&lt;/em&gt; from a uniform distribution with fixed bounds, I allow the bounds to shrink over time.  This enhancement yielded a dramatic improvement in both solver robustness and solution quality.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Linearly-cooled annealing temperature&lt;/strong&gt;: The use of a linear cooling schedule resulted in a reasonable reduction in the acceptance probability over time.  This feature worked in conjunction with the &lt;em&gt;exponentially-cooled Gaussian bump&lt;/em&gt; to improve convergence.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Pretty dark plots&lt;/strong&gt;: Who doesn&amp;rsquo;t like dark plots?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;optimal-trajectories&#34;&gt;Optimal Trajectories&lt;/h4&gt;
+&lt;p&gt;In the following plots, the pre-optimization (i.e., &lt;em&gt;constant-heading&lt;/em&gt;) solutions are shown as grayscale lines, with a corresponding colorbar showing the total swim time in minutes.  The final, optimized swim trajectory is shown in yellow, and the textbox in the upper righthand corner shows the optimized swim distance and time.&lt;/p&gt;
+&lt;p&gt;Without further ado, here are the results you presumably came here for.
+
+
+
+
+
+
+
+
+  
+  
+
+
+&lt;div class=&#34;gallery&#34;&gt;
+
+  
+  
+  
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-mv-mcmc-solutions&#34; href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0200.png&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0200_hu9702191598295576557.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-mv-mcmc-solutions&#34; href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0300.png&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0300_hu726981676191603475.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-mv-mcmc-solutions&#34; href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0400.png&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0400_hu15014220347669501482.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-mv-mcmc-solutions&#34; href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0500.png&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0500_hu3010738333727801451.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-mv-mcmc-solutions&#34; href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0530.png&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0530_hu7083378037529976592.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-mv-mcmc-solutions&#34; href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0600.png&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0600_hu3507575466172302232.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-mv-mcmc-solutions&#34; href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0630.png&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0630_hu9641414576707092587.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-mv-mcmc-solutions&#34; href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0700.png&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0700_hu5966164392947521403.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-mv-mcmc-solutions&#34; href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0730.png&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0730_hu8248667861131879233.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-mv-mcmc-solutions&#34; href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0800.png&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0800_hu11340982467088891652.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-mv-mcmc-solutions&#34; href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0830.png&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0830_hu12657168158616906872.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-mv-mcmc-solutions&#34; href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0900.png&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_0900_hu17642410279193075216.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-mv-mcmc-solutions&#34; href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_1000.png&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_1000_hu8756962965758381073.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-mv-mcmc-solutions&#34; href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_1100.png&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/mv-mcmc-solutions/mv_swim_1100_hu4846221858893792330.png&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+
+  
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;Assuming a constant swim pace of $1$:$40/100yd$, and no concerns about getting maimed by a ferry&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;On July 30th, 2022, it would have been possible to depart Nobska Beach between 7:30a and 8:00a, and cross Vineyard Sound in 1 hour, 32 minutes&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;These plots reveal another interesting fact: &lt;em&gt;constant-heading solutions are actually pretty damn good&lt;/em&gt;.  Most of the time, the optimal trajectory sticks pretty close to at least one &lt;em&gt;constant-heading&lt;/em&gt; trajectory.  So, unless you&amp;rsquo;re really determined to shave a few minutes off your swim, using a &lt;em&gt;constant-heading&lt;/em&gt; strategy is totally fine.&lt;/p&gt;
+&lt;h4 id=&#34;optimal-heading-sequences&#34;&gt;Optimal Heading Sequences&lt;/h4&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;mv_swim_heading_vs_time.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; &gt;
+
+&lt;img src=&#34;mv_swim_heading_vs_time.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; &gt;
+&lt;/a&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;Despite the fact that both 7:30a and 8:00a starts enable an optimal crossing, the required corresponding heading sequences couldn&amp;rsquo;t be more different!  While a 7:30a start requires a sequence of headings that varies between $150^{\circ}-155^{\circ}$, an 8:00a start requires a sequence of headings that hovers around $170^{\circ}$.  What&amp;rsquo;s going on?&lt;/p&gt;
+&lt;p&gt;By this time in the morning, the tidal current is absolutely ripping from west to east (check out the &lt;a href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/#recapitulation&#34;&gt;tidal current gif&lt;/a&gt;).  By starting later, you&amp;rsquo;re effectively getting all the longitudinal velocity you could possible hope for, and more, for free &amp;ndash; your only option is to swim due south, and hope you make it to the beach before you get ripped around the tip of West Chop.  Good luck!&lt;/p&gt;
+&lt;p&gt;Probably a good time to reiterate my initial caveat: this would be an insanely high-risk strategy in practice, and is not recommended.  By the time the tidal current is this strong, swimming across Middle Ground would be dangerous, if not impossible.&lt;/p&gt;
+&lt;h4 id=&#34;convergence&#34;&gt;Convergence&lt;/h4&gt;
+&lt;p&gt;I wanted to display a few figures that highlight the robust convergence properties of this optimization routine.  In the following two figures, the grayscale lines represent the best solution after every 100 iterations, with a corresponding colorbar displaying the total swim time in seconds.  The optimized solution is shown in yellow, and the textbox in the upper righthand corner shows the optimized swim distance and time.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;mv_swim_convergence_h180_0630.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Illustration of solver robustness: convergence is achieved despite poorly chosen initial conditions.&#34;&gt;
+
+&lt;img src=&#34;mv_swim_convergence_h180_0630.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Illustration of solver robustness: convergence is achieved despite poorly chosen initial conditions.&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    Illustration of solver robustness: convergence is achieved despite poorly chosen initial conditions.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;I ran this optimization shortly after I applied an exponential cooling schedule to the &lt;code&gt;bump_size&lt;/code&gt; parameter, and was shocked by how well it worked &amp;ndash; the resulting solutions were almost entirely insensitive to initial conditions.  In other words, the optimization procedure was &lt;em&gt;robust&lt;/em&gt;.  Knowing in advance that the optimal heading vector hovered around $135^{\circ}$ for this start time, I decided to push my luck and use a $180^{\circ}$ &lt;em&gt;constant-heading&lt;/em&gt; solution as my initial guess.&lt;/p&gt;
+&lt;p&gt;Uncalled for.  Pathological!&lt;/p&gt;
+&lt;p&gt;Nevertheless, the optimization routine quickly honed in on the correct solution.  I was so proud that it didn&amp;rsquo;t get mired in the morass of bullshit to which it was intentionally subjected &amp;ndash; I think I understand now &lt;a href=&#34;https://www.youtube.com/watch?v=zkv-_LqTeQA&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;why those guys at Boston Dynamics are so mean to their robots&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;On to the next!&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;mv_swim_convergence_2_0630.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Illustration of solver ability to escape local minima.&#34;&gt;
+
+&lt;img src=&#34;mv_swim_convergence_2_0630.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Illustration of solver ability to escape local minima.&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    Illustration of solver ability to escape local minima.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;This particular optimization attempt did not yield the best solution &amp;ndash; note that the simulated swim lasted 1.5 minutes longer than the optimal solution for a 6:30a start &amp;ndash; but I liked how it again demonstrated &lt;em&gt;robustness&lt;/em&gt;, and an ability to escape local minima.  Look at how the solution periodically becomes stuck in local minima, before jumping to better solutions.&lt;/p&gt;
+&lt;p&gt;Incredible!  We love it.&lt;/p&gt;
+&lt;h4 id=&#34;reflections&#34;&gt;Reflections&lt;/h4&gt;
+&lt;p&gt;Ultimately, this was a highly academic exercise.  Maybe this sort of thing makes sense if you&amp;rsquo;re a professional athlete or a Navy SEAL with a &lt;a href=&#34;https://en.wikipedia.org/wiki/Head-up_display&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;head-up display&lt;/a&gt; in your goggles, but otherwise you&amp;rsquo;re better off sticking with a &lt;em&gt;constant-heading&lt;/em&gt; strategy.  During the actual swim, it was challenging enough to follow a single fixed heading with any appreciable degree of confidence &amp;ndash; the notion that a swimmer might be able to make sub-degree alterations to their bearing every eighteen seconds is laughable.&lt;/p&gt;
+&lt;p&gt;But, on the other hand&amp;hellip; pretty cool, right?&lt;/p&gt;
+&lt;p&gt;It is often said (by lunatics, mostly) that there are many ways to skin a cat; likewise, I am confident that there are other, perhaps better, ways to approach this problem.  But, then again, there are so many cats, and so little time.&lt;/p&gt;
+&lt;p&gt;Feel free to &lt;a href=&#34;../../#contact&#34;&gt;reach out&lt;/a&gt; if you have any questions, comments, or want to collaborate on a cool project.  Thanks for reading.&lt;/p&gt;
+&lt;p&gt;Go forth and optimize!&lt;/p&gt;
+&lt;hr&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;flourishes&#34;&gt;Flourishes&lt;/h2&gt;
+&lt;h3 id=&#34;gaussian-bump&#34;&gt;Gaussian Bump&lt;/h3&gt;
+&lt;p&gt;A common and straightforward method for proposing new candidate solutions in MCMC optimization involves directly perturbing the parameter vector with random noise.  For instance, one typically selects a random index from the parameter vector and adds a small perturbation drawn from a Gaussian distribution with zero mean and a chosen standard deviation.  A Python implementation of this approach might look like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;proposal_std&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;randint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;old_soln&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;perturbation&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;normal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;proposal_std&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;new_soln&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;old_soln&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;perturbation&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Although easy to implement, this method tends to produce isolated, incremental changes, potentially limiting the ability of the algorithm to explore broader variations in the solution space efficiently.  We can often leverage domain-specific expertise to modify the &lt;em&gt;proposal step&lt;/em&gt;, and drastically improve both the convergence rate and quality of the resulting solutions.  For instance, when optimizing a swim route, we can be fairly confident that swimmer heading will not change abruptly, and can modify our proposals accordingly.&lt;/p&gt;
+&lt;p&gt;Rather than simply adding random noise to the swimmer heading vector, we can preserve smoothness by adding a &lt;em&gt;Gaussian bump&lt;/em&gt;.  The &lt;em&gt;Gaussian bump&lt;/em&gt; is characterized by three randomly selected parameters: the &lt;strong&gt;center&lt;/strong&gt; (index in the heading vector), the &lt;strong&gt;width&lt;/strong&gt; (extent of the perturbation along the heading vector), and the &lt;strong&gt;amplitude&lt;/strong&gt; (magnitude and direction of the perturbation).&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;gaussian_bumps_invert.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;An set of Gaussian functions with varying center (i.e. mean), width (i.e. variance), and amplitude [source: Wikimedia Commons].&#34;&gt;
+
+&lt;img src=&#34;gaussian_bumps_invert.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;An set of Gaussian functions with varying center (i.e. mean), width (i.e. variance), and amplitude [source: [Wikimedia Commons](https://en.wikipedia.org/wiki/File:Normal_Distribution_PDF.svg)].&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    An set of Gaussian functions with varying center (i.e. mean), width (i.e. variance), and amplitude [source: &lt;a href=&#34;https://en.wikipedia.org/wiki/File:Normal_Distribution_PDF.svg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikimedia Commons&lt;/a&gt;].
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;By adjusting these parameters randomly within carefully chosen ranges, the function introduces controlled yet diverse variability, allowing the optimization routine to explore different route possibilities without creating unrealistic or overly abrupt path changes.  A Python implementation of the Gaussian bump might look like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;generate_bump&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;headings&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bump_size&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Random center in [-0.2, 1.2]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;center&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uniform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;1.2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Random width: generate log-width uniformly between log(0.05) and log(1), then exponentiate&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;log_width&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uniform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;0.05&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mf&#34;&gt;1.0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;width&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;log_width&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Random amplitude in [-bump_size, bump_size]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;amplitude&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;random&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;uniform&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bump_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bump_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Create sample points: the number of points equals the length of headings&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;n_points&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;headings&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;x_vals&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;linspace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n_points&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;# Evaluate the Gaussian bump at each sample point&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;bump&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;amplitude&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;np&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x_vals&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;center&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;**&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;/&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;width&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;**&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bump&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To enhance convergence toward an optimal solution, the amplitude range of these perturbations &amp;ndash; controlled by the parameter &lt;code&gt;bump_size&lt;/code&gt; &amp;ndash; is reduced after each iteration (e.g., using &lt;code&gt;bump_size *= 0.999&lt;/code&gt; in the optimization loop).  Initially, larger perturbations encourage exploration across a broad set of candidate solutions, preventing premature convergence on local minima. As the optimization progresses, decreasing &lt;code&gt;bump_size&lt;/code&gt; narrows the search area, transitioning from broad exploration toward refined, localized adjustments.  This adaptive strategy balances efficient global exploration with precise local optimization, resulting in a systematically improved swim trajectory.&lt;/p&gt;
+&lt;p&gt;I was honestly shocked at how well this worked.  Initially, I was using a fixed value of &lt;code&gt;bump_size = 3.0&lt;/code&gt; (units: degrees), and found that the final solution was highly dependent on the initial guess.  The Gaussian bump technique, with exponential cooling, yielded a much more robust solver capable of converging to the global optimum, almost regardless of the initial guess.&lt;/p&gt;
+&lt;h3 id=&#34;simulated-annealing&#34;&gt;Simulated Annealing&lt;/h3&gt;
+&lt;p&gt;Generally speaking, simulated annealing is a technique used to gradually reduce the rate of change experienced by a system over time; indeed, its name was inspired by the physical process of slowly cooling molten metal to achieve a stable crystal structure.  In the context of optimization, it involves slowly decreasing a &lt;em&gt;temperature parameter&lt;/em&gt; to control the acceptance probability of proposed solutions.  In the Metropolis-Hastings algorithm, the acceptance probability is typically computed in the following way:&lt;/p&gt;
+$$
+\alpha_k = \exp{\left( \frac{\Delta_k}{T_k} \right)}
+$$&lt;p&gt;where $T_k$ is the temperature parameter, and $\Delta_k = C_k - C_{k-1}$ is the difference between the new and old solution costs. For simple problems (as in the &lt;a href=&#34;https://www.blakecole.com/post/2-mcmc-mv-swim/#python-demo&#34;&gt;Python Demo&lt;/a&gt; provided above), it is often sufficient to simply set $T=1$; however, by allowing the temperature parameter to gradually decrease over time, we can achieve both broad &lt;em&gt;exploration&lt;/em&gt; early in the optimization process, and focused &lt;em&gt;exploitation&lt;/em&gt; and refinement as convergence progresses.&lt;/p&gt;
+&lt;p&gt;The temperature parameter is often reduced according to a predefined &lt;em&gt;cooling schedule&lt;/em&gt;, a few of which will be outlined here:&lt;/p&gt;
+&lt;h4 id=&#34;exponential&#34;&gt;Exponential&lt;/h4&gt;
+&lt;p&gt;This is likely the most widely-used cooling method, due to its simplicity and effectiveness:&lt;/p&gt;
+$$
+T_k = \beta T_{k-1}
+$$&lt;p&gt;
+where $T_k$ is the temperature at iteration $k$, and $\beta$ is a constant slightly less than $1$ (typically $0.80 \leq \beta \leq 0.99$), controlling how rapidly temperature decreases.  However, it should be noted that exponential decay reduces the temperature proportionally each step, leading to a rapid reduction in temperature early on, quickly suppressing exploration.  I found that this cooling technique resulted in an overly-aggressive reduction of the acceptance probability, even when I set $\beta$ very close to $1$; however, this approach was perfectly suited to the &lt;code&gt;bump_size&lt;/code&gt; parameter, which controls the maximum amplitude of &lt;em&gt;Gaussian bump&lt;/em&gt; perturbations.&lt;/p&gt;
+&lt;h4 id=&#34;linear&#34;&gt;Linear&lt;/h4&gt;
+&lt;p&gt;This is straightforward method that is useful when the number of iterations, $N$, is known in advance.  Linear cooling reduces temperature at a constant rate rather than proportionally:&lt;/p&gt;
+$$
+T_k = T_{k-1} - \Delta T, \qquad \Delta T = \frac{T_0 - T_{final}}{N}
+$$&lt;p&gt;
+This method is arguably simpler to implement, but less flexible since it requires knowing the final iteration count in advance.  It also results in much slower cooling, which was more appropriate for my application.&lt;/p&gt;
 </description>
     </item>
     
@@ -139,11 +1107,14 @@
 &lt;h2 id=&#34;math&#34;&gt;Math&lt;/h2&gt;
 &lt;p&gt;Hugo Blox Builder supports a Markdown extension for $\LaTeX$ math. You can enable this feature by toggling the &lt;code&gt;math&lt;/code&gt; option in your &lt;code&gt;config/_default/params.yaml&lt;/code&gt; file.&lt;/p&gt;
 &lt;p&gt;To render &lt;em&gt;inline&lt;/em&gt; or &lt;em&gt;block&lt;/em&gt; math, wrap your LaTeX math with &lt;code&gt;{{&amp;lt; math &amp;gt;}}$...${{&amp;lt; /math &amp;gt;}}&lt;/code&gt; or &lt;code&gt;{{&amp;lt; math &amp;gt;}}$$...$${{&amp;lt; /math &amp;gt;}}&lt;/code&gt;, respectively.&lt;/p&gt;
-&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
-&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
-  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
-&lt;/span&gt;
-  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;We wrap the LaTeX math in the Hugo Blox &lt;em&gt;math&lt;/em&gt; shortcode to prevent Hugo rendering our math as Markdown.&lt;/span&gt;
+&lt;div class=&#34;px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;flex&amp;quot;&amp;gt;
+  &amp;lt;span class=&amp;quot;pr-3 pt-1 text-primary-600 dark:text-primary-300&amp;quot;&amp;gt;
+    &amp;lt;svg height=&amp;quot;24&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot;&amp;gt;&amp;lt;path fill=&amp;quot;none&amp;quot; stroke=&amp;quot;currentColor&amp;quot; stroke-linecap=&amp;quot;round&amp;quot; stroke-linejoin=&amp;quot;round&amp;quot; stroke-width=&amp;quot;1.5&amp;quot; d=&amp;quot;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;
+  &amp;lt;/span&amp;gt;
+  &amp;lt;span class=&amp;quot;dark:text-neutral-300&amp;quot;&amp;gt;We wrap the LaTeX math in the Hugo Blox &amp;lt;em&amp;gt;math&amp;lt;/em&amp;gt; shortcode to prevent Hugo rendering our math as Markdown.&amp;lt;/span&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Example &lt;strong&gt;math block&lt;/strong&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;{{&lt;/span&gt;&amp;lt; math &amp;gt;&lt;span class=&#34;nb&#34;&gt;}}&lt;/span&gt;
@@ -262,11 +1233,14 @@ data.head()
 &lt;h2 id=&#34;math&#34;&gt;Math&lt;/h2&gt;
 &lt;p&gt;Hugo Blox Builder supports a Markdown extension for $\LaTeX$ math. You can enable this feature by toggling the &lt;code&gt;math&lt;/code&gt; option in your &lt;code&gt;config/_default/params.yaml&lt;/code&gt; file.&lt;/p&gt;
 &lt;p&gt;To render &lt;em&gt;inline&lt;/em&gt; or &lt;em&gt;block&lt;/em&gt; math, wrap your LaTeX math with &lt;code&gt;{{&amp;lt; math &amp;gt;}}$...${{&amp;lt; /math &amp;gt;}}&lt;/code&gt; or &lt;code&gt;{{&amp;lt; math &amp;gt;}}$$...$${{&amp;lt; /math &amp;gt;}}&lt;/code&gt;, respectively.&lt;/p&gt;
-&lt;div class=&#34;flex px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
-&lt;span class=&#34;pr-3 pt-1 text-primary-600 dark:text-primary-300&#34;&gt;
-  &lt;svg height=&#34;24&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;1.5&#34; d=&#34;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&#34;/&gt;&lt;/svg&gt;
-&lt;/span&gt;
-  &lt;span class=&#34;dark:text-neutral-300&#34;&gt;We wrap the LaTeX math in the Hugo Blox &lt;em&gt;math&lt;/em&gt; shortcode to prevent Hugo rendering our math as Markdown.&lt;/span&gt;
+&lt;div class=&#34;px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;flex&amp;quot;&amp;gt;
+  &amp;lt;span class=&amp;quot;pr-3 pt-1 text-primary-600 dark:text-primary-300&amp;quot;&amp;gt;
+    &amp;lt;svg height=&amp;quot;24&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot;&amp;gt;&amp;lt;path fill=&amp;quot;none&amp;quot; stroke=&amp;quot;currentColor&amp;quot; stroke-linecap=&amp;quot;round&amp;quot; stroke-linejoin=&amp;quot;round&amp;quot; stroke-width=&amp;quot;1.5&amp;quot; d=&amp;quot;m11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9-3.75h.008v.008H12z&amp;quot;/&amp;gt;&amp;lt;/svg&amp;gt;
+  &amp;lt;/span&amp;gt;
+  &amp;lt;span class=&amp;quot;dark:text-neutral-300&amp;quot;&amp;gt;We wrap the LaTeX math in the Hugo Blox &amp;lt;em&amp;gt;math&amp;lt;/em&amp;gt; shortcode to prevent Hugo rendering our math as Markdown.&amp;lt;/span&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Example &lt;strong&gt;math block&lt;/strong&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;{{&lt;/span&gt;&amp;lt; math &amp;gt;&lt;span class=&#34;nb&#34;&gt;}}&lt;/span&gt;
@@ -320,7 +1294,7 @@ data.head()
     </item>
     
     <item>
-      <title>Leveraging the ADCIRC Model to Plan a Long-Distance, Open-Water Swim from Woods Hole to Martha&#39;s Vineyard</title>
+      <title>Leveraging the ADCIRC Model to Plan an Open-Water Swim from Woods Hole to Martha&#39;s Vineyard</title>
       <link>https://www.blakecole.com/post/1-adcirc-mv-swim/</link>
       <pubDate>Mon, 08 Aug 2022 13:09:10 -0400</pubDate>
       <guid>https://www.blakecole.com/post/1-adcirc-mv-swim/</guid>
@@ -336,15 +1310,15 @@ data.head()
 
 
 
-&lt;figure&gt;
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;chappy-swimmers.jpg&#34; data-caption=&#34;A small subset of the Chappy Swimmers, featuring: Rick Rheinhardt, Blake Cole, Kalina Grabb, Meri Gilson, Mary Kaminski, and Moira McCollough. [Photo: Chuck Redington]&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;chappy-swimmers.jpg&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;A small subset of the Chappy Swimmers, featuring: Rick Rheinhardt, Blake Cole, Kalina Grabb, Meri Gilson, Mary Kaminski, and Moira McCollough. [Photo: Chuck Redington]&#34;&gt;
 
-&lt;img src=&#34;chappy-swimmers.jpg&#34; alt=&#34;A small subset of the Chappy Swimmers, featuring: Rick Rheinhardt, Blake Cole, Kalina Grabb, Meri Gilson, Mary Kaminski, and Moira McCollough. [Photo: Chuck Redington]&#34; &gt;
+&lt;img src=&#34;chappy-swimmers.jpg&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;A small subset of the Chappy Swimmers, featuring: Rick Rheinhardt, Blake Cole, Kalina Grabb, Meri Gilson, Mary Kaminski, and Moira McCollough. [Photo: Chuck Redington]&#34; &gt;
 &lt;/a&gt;
 
 
-&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
   
   &lt;p&gt;
     A small subset of the Chappy Swimmers, featuring: Rick Rheinhardt, Blake Cole, Kalina Grabb, Meri Gilson, Mary Kaminski, and Moira McCollough. [Photo: Chuck Redington]
@@ -372,15 +1346,15 @@ data.head()
 
 
 
-&lt;figure&gt;
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;eldridge.jpg&#34; data-caption=&#34;An excerpt from the 2022 Eldridge Tide and Pilot Book, which was used to determine an ideal time to start the swim: a neap ebb tide, just before slack. [Photo: Rick Rheinhardt]&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;eldridge.jpg&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;An excerpt from the 2022 Eldridge Tide and Pilot Book, which was used to determine an ideal time to start the swim: a neap ebb tide, just before slack. [Photo: Rick Rheinhardt]&#34;&gt;
 
-&lt;img src=&#34;eldridge.jpg&#34; alt=&#34;An excerpt from the 2022 Eldridge Tide and Pilot Book, which was used to determine an ideal time to start the swim: a neap ebb tide, just before slack. [Photo: Rick Rheinhardt]&#34; &gt;
+&lt;img src=&#34;eldridge.jpg&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;An excerpt from the 2022 Eldridge Tide and Pilot Book, which was used to determine an ideal time to start the swim: a neap ebb tide, just before slack. [Photo: Rick Rheinhardt]&#34; &gt;
 &lt;/a&gt;
 
 
-&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
   
   &lt;p&gt;
     An excerpt from the 2022 Eldridge Tide and Pilot Book, which was used to determine an ideal time to start the swim: a neap ebb tide, just before slack. [Photo: Rick Rheinhardt]
@@ -547,15 +1521,15 @@ Realizing that we needed to first cut southwest across the ferry lane (again, to
 
 
 
-&lt;figure&gt;
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;dpt_600_hyb_140_fast_speed.png&#34; data-caption=&#34;Swimmer speed over ground (SOG) and speed-through-water.  Ideally, SOG should always be greater than or equal to speed-through-water, indicating that the swimmer is never fighting the current.  In math terms, this efficiency condition is achieved by ensuring that that the dot product of swimmer velocity and current velocity is non-negative at each timestep.  For this particular simulation, the efficiency condition is met at every time except $t=1.4~hr$.&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;dpt_600_hyb_140_fast_speed.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Swimmer speed over ground (SOG) and speed-through-water.  Ideally, SOG should always be greater than or equal to speed-through-water, indicating that the swimmer is never fighting the current.  In math terms, this efficiency condition is achieved by ensuring that that the dot product of swimmer velocity and current velocity is non-negative at each timestep.  For this particular simulation, the efficiency condition is met at every time except $t=1.4~hr$.&#34;&gt;
 
-&lt;img src=&#34;dpt_600_hyb_140_fast_speed.png&#34; alt=&#34;Swimmer speed over ground (SOG) and speed-through-water.  Ideally, SOG should always be greater than or equal to speed-through-water, indicating that the swimmer is never fighting the current.  In math terms, this *efficiency condition* is achieved by ensuring that that the dot product of swimmer velocity and current velocity is non-negative at each timestep.  For this particular simulation, the efficiency condition is met at every time except $t=1.4~hr$.&#34; &gt;
+&lt;img src=&#34;dpt_600_hyb_140_fast_speed.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Swimmer speed over ground (SOG) and speed-through-water.  Ideally, SOG should always be greater than or equal to speed-through-water, indicating that the swimmer is never fighting the current.  In math terms, this *efficiency condition* is achieved by ensuring that that the dot product of swimmer velocity and current velocity is non-negative at each timestep.  For this particular simulation, the efficiency condition is met at every time except $t=1.4~hr$.&#34; &gt;
 &lt;/a&gt;
 
 
-&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
   
   &lt;p&gt;
     Swimmer speed over ground (SOG) and speed-through-water.  Ideally, SOG should always be greater than or equal to speed-through-water, indicating that the swimmer is never fighting the current.  In math terms, this &lt;em&gt;efficiency condition&lt;/em&gt; is achieved by ensuring that that the dot product of swimmer velocity and current velocity is non-negative at each timestep.  For this particular simulation, the efficiency condition is met at every time except $t=1.4~hr$.
@@ -635,15 +1609,15 @@ Realizing that we needed to first cut southwest across the ferry lane (again, to
 
 
 
-&lt;figure&gt;
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;blake-friends.jpg&#34; data-caption=&#34;Chappy Swimmers Blake Cole, Kalina Grabb, Karen Mareb, and Dina Pandya; along with support boat crew Kelsey Chenoweth and Captain Eve Cinquino. [Photo: Wan Grabb]&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;blake-friends.jpg&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Chappy Swimmers Blake Cole, Kalina Grabb, Karen Mareb, and Dina Pandya; along with support boat crew Kelsey Chenoweth and Captain Eve Cinquino. [Photo: Wan Grabb]&#34;&gt;
 
-&lt;img src=&#34;blake-friends.jpg&#34; alt=&#34;Chappy Swimmers Blake Cole, Kalina Grabb, Karen Mareb, and Dina Pandya; along with support boat crew Kelsey Chenoweth and Captain Eve Cinquino. [Photo: Wan Grabb]&#34; &gt;
+&lt;img src=&#34;blake-friends.jpg&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Chappy Swimmers Blake Cole, Kalina Grabb, Karen Mareb, and Dina Pandya; along with support boat crew Kelsey Chenoweth and Captain Eve Cinquino. [Photo: Wan Grabb]&#34; &gt;
 &lt;/a&gt;
 
 
-&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
   
   &lt;p&gt;
     Chappy Swimmers Blake Cole, Kalina Grabb, Karen Mareb, and Dina Pandya; along with support boat crew Kelsey Chenoweth and Captain Eve Cinquino. [Photo: Wan Grabb]
@@ -675,15 +1649,15 @@ The swim itself was fortunately quite uneventful for seven out of the ten swimme
 
 
 
-&lt;figure&gt;
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;placental-mammal.png&#34; data-caption=&#34;The ancestral placental mammal. [Credit: Carl Buell]&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;placental-mammal.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;The ancestral placental mammal. [Credit: Carl Buell]&#34;&gt;
 
-&lt;img src=&#34;placental-mammal.png&#34; alt=&#34;The ancestral placental mammal. [Credit: Carl Buell]&#34; &gt;
+&lt;img src=&#34;placental-mammal.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;The ancestral placental mammal. [Credit: Carl Buell]&#34; &gt;
 &lt;/a&gt;
 
 
-&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
   
   &lt;p&gt;
     The ancestral placental mammal. [Credit: Carl Buell]
@@ -703,15 +1677,15 @@ The swim itself was fortunately quite uneventful for seven out of the ten swimme
 
 
 
-&lt;figure&gt;
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;garmin-path.jpg&#34; data-caption=&#34;Swim path traversed by Blake Cole, recording using a Garmin Fenix 7S smartwatch, with multi-band GNSS mode enabled.&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;garmin-path.jpg&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Swim path traversed by Blake Cole, recording using a Garmin Fenix 7S smartwatch, with multi-band GNSS mode enabled.&#34;&gt;
 
-&lt;img src=&#34;garmin-path.jpg&#34; alt=&#34;Swim path traversed by Blake Cole, recording using a Garmin Fenix 7S smartwatch, with multi-band GNSS mode enabled.&#34; &gt;
+&lt;img src=&#34;garmin-path.jpg&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Swim path traversed by Blake Cole, recording using a Garmin Fenix 7S smartwatch, with multi-band GNSS mode enabled.&#34; &gt;
 &lt;/a&gt;
 
 
-&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
   
   &lt;p&gt;
     Swim path traversed by Blake Cole, recording using a Garmin Fenix 7S smartwatch, with multi-band GNSS mode enabled.
@@ -796,15 +1770,15 @@ But, as time drew on, the folks on the beach became increasingly concerned: thre
 
 
 
-&lt;figure&gt;
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;sim-vs-reality.png&#34; data-caption=&#34;True swim path compared to simulations produced using the ADCRIC hydrodynamic model.&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;sim-vs-reality.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;True swim path compared to simulations produced using the ADCRIC hydrodynamic model.&#34;&gt;
 
-&lt;img src=&#34;sim-vs-reality.png&#34; alt=&#34;True swim path compared to simulations produced using the ADCRIC hydrodynamic model.&#34; &gt;
+&lt;img src=&#34;sim-vs-reality.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;True swim path compared to simulations produced using the ADCRIC hydrodynamic model.&#34; &gt;
 &lt;/a&gt;
 
 
-&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
   
   &lt;p&gt;
     True swim path compared to simulations produced using the ADCRIC hydrodynamic model.
@@ -828,15 +1802,15 @@ But, as time drew on, the folks on the beach became increasingly concerned: thre
 
 
 
-&lt;figure&gt;
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;relative-bearing-both.png&#34; data-caption=&#34;Depiction of the importance of relative bearing between swimmer and support vessel.  In the left-hand figure, the support vessel is following a $140^{\circ}$ heading; however, the relative bearing from the swimmer to the support vessel is $120^{\circ}$ ($-20^{\circ}$ offset from the target heading of $140^{\circ}$).  In this scenario, the support vessel should observe that its relative bearing to the swimmer is $300^{\circ}$ instead of $320^{\circ}$, and begin clocking around to the right until the relative bearing reads $320^{\circ}$.  This corrected configuration is displayed in the right-hand figure.  Note that the instantaneous, absolute vessel heading is not relevant; only its bearing relative to the swimmers matters.&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;relative-bearing-both.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Depiction of the importance of relative bearing between swimmer and support vessel.  In the left-hand figure, the support vessel is following a $140^{\circ}$ heading; however, the relative bearing from the swimmer to the support vessel is $120^{\circ}$ ($-20^{\circ}$ offset from the target heading of $140^{\circ}$).  In this scenario, the support vessel should observe that its relative bearing to the swimmer is $300^{\circ}$ instead of $320^{\circ}$, and begin clocking around to the right until the relative bearing reads $320^{\circ}$.  This corrected configuration is displayed in the right-hand figure.  Note that the instantaneous, absolute vessel heading is not relevant; only its bearing relative to the swimmers matters.&#34;&gt;
 
-&lt;img src=&#34;relative-bearing-both.png&#34; alt=&#34;Depiction of the importance of **relative bearing** between swimmer and support vessel.  In the left-hand figure, the support vessel is following a $140^{\circ}$ heading; however, the relative bearing from the swimmer to the support vessel is $120^{\circ}$ ($-20^{\circ}$ offset from the target heading of $140^{\circ}$).  In this scenario, the support vessel should observe that its relative bearing to the swimmer is $300^{\circ}$ instead of $320^{\circ}$, and begin clocking around to the right until the relative bearing reads $320^{\circ}$.  This corrected configuration is displayed in the right-hand figure.  Note that the instantaneous, absolute vessel heading is not relevant; only its bearing relative to the swimmers matters.&#34; &gt;
+&lt;img src=&#34;relative-bearing-both.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Depiction of the importance of **relative bearing** between swimmer and support vessel.  In the left-hand figure, the support vessel is following a $140^{\circ}$ heading; however, the relative bearing from the swimmer to the support vessel is $120^{\circ}$ ($-20^{\circ}$ offset from the target heading of $140^{\circ}$).  In this scenario, the support vessel should observe that its relative bearing to the swimmer is $300^{\circ}$ instead of $320^{\circ}$, and begin clocking around to the right until the relative bearing reads $320^{\circ}$.  This corrected configuration is displayed in the right-hand figure.  Note that the instantaneous, absolute vessel heading is not relevant; only its bearing relative to the swimmers matters.&#34; &gt;
 &lt;/a&gt;
 
 
-&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
   
   &lt;p&gt;
     Depiction of the importance of &lt;strong&gt;relative bearing&lt;/strong&gt; between swimmer and support vessel.  In the left-hand figure, the support vessel is following a $140^{\circ}$ heading; however, the relative bearing from the swimmer to the support vessel is $120^{\circ}$ ($-20^{\circ}$ offset from the target heading of $140^{\circ}$).  In this scenario, the support vessel should observe that its relative bearing to the swimmer is $300^{\circ}$ instead of $320^{\circ}$, and begin clocking around to the right until the relative bearing reads $320^{\circ}$.  This corrected configuration is displayed in the right-hand figure.  Note that the instantaneous, absolute vessel heading is not relevant; only its bearing relative to the swimmers matters.
@@ -862,7 +1836,7 @@ But, as time drew on, the folks on the beach became increasingly concerned: thre
     <item>
       <title>Hello World &#43; Bio</title>
       <link>https://www.blakecole.com/post/0-hello-world/</link>
-      <pubDate>Mon, 08 Aug 2022 08:18:13 -0400</pubDate>
+      <pubDate>Sun, 07 Aug 2022 08:18:13 -0400</pubDate>
       <guid>https://www.blakecole.com/post/0-hello-world/</guid>
       <description>&lt;h2 id=&#34;hi-everyone&#34;&gt;Hi everyone!&lt;/h2&gt;
 &lt;p&gt;Welcome to my blog.  In case you skipped over the &lt;a href=&#34;https://www.blakecole.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;About&lt;/a&gt; section, my name is Blake, and I am currently a doctoral candidate in the &lt;a href=&#34;https://mit.whoi.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MIT-WHOI Joint Program&lt;/a&gt;.  My high-level research objective is to &lt;strong&gt;&lt;em&gt;improve the performance, reliability, and useability of autonomous sailing vessels&lt;/em&gt;&lt;/strong&gt;.  I am incredibly excited about this project, and will try to post incremental updates over the course of the next year.&lt;/p&gt;
@@ -885,15 +1859,15 @@ Soon thereafter, I began working toward a masters degree at the &lt;a href=&#34;
 
 
 
-&lt;figure&gt;
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;jump.jpg&#34; data-caption=&#34;Longtime friends Mark H. and Blake C. jumping off rocks, somewhere between San Francisco, CA and Portland, OR.&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;jump.jpg&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Longtime friends Mark H. and Blake C. jumping off rocks, somewhere between San Francisco, CA and Portland, OR.&#34;&gt;
 
-&lt;img src=&#34;jump.jpg&#34; alt=&#34;Longtime friends Mark H. and Blake C. jumping off rocks, somewhere between San Francisco, CA and Portland, OR.&#34; &gt;
+&lt;img src=&#34;jump.jpg&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Longtime friends Mark H. and Blake C. jumping off rocks, somewhere between San Francisco, CA and Portland, OR.&#34; &gt;
 &lt;/a&gt;
 
 
-&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
   
   &lt;p&gt;
     Longtime friends Mark H. and Blake C. jumping off rocks, somewhere between San Francisco, CA and Portland, OR.
