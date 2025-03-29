@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: March 24, 2025 --><html lang="en-us" dir="ltr"
+<!-- Last Published: March 29, 2025 --><html lang="en-us" dir="ltr"
       data-wc-theme-default="dark">
   
 <head>
@@ -1410,7 +1410,7 @@
 <li>You have contemplated swimming to Martha&rsquo;s Vineyard, and want to know how it can be done optimally (in theory).*</li>
 <li>You want to learn about the history and implementation of <em>Markov Chain Monte Carlo</em> (MCMC) optimization methods.</li>
 <li>You need to optimize a system defined by an unknown number of parameters (sometimes this is called <em>model selection</em>).  We will accomplish this task using a cool extension of MCMC called <em>Reversible Jump MCMC</em> (RJ-MCMC).</li>
-<li>You want to extend/improve my <a href="https://github.com/blakecole/mv-mcmc" target="_blank" rel="noopener">RJ-MCMC repository on GitHub</a>.</li>
+<li>You want to extend my <a href="https://github.com/blakecole/mv-mcmc" target="_blank" rel="noopener">RJ-MCMC repository on GitHub</a>.</li>
 </ul>
 <p>*Please don&rsquo;t be an idiot.  Be safe.  Do your homework.  Don&rsquo;t get hit by a ferry. <br>  Or, if you prefer legalese:
 
@@ -1523,12 +1523,12 @@ The content provided on this website/blog is for informational purposes only and
 
 </figure>
 
-<p>The rate at which Casey solves problems is astounding.  This ability is rooted in an inclination to find first-order solutions quickly, and then decide whether higher fidelity approaches are warranted.  All good engineers seem to operate this way.  Not me.  I frequently succumb to the siren song of complexity, and spend hours deliberating which state-of-the-art technique I&rsquo;m going to use to solve a problem.  This an ill-advised strategy: you could spend half a lifetime figuring out the best approach to a problem, and never get around to actually solving it.  You can&rsquo;t really know the <em>best</em> approach to a problem unless you have already solved it a few times (or talked to someone who has), so you might as well start with something simple &ndash; dare I say, something <em>random</em>.  Such was Casey&rsquo;s reasoning when he decided to utilize a relatively simple stochastic methodology to determine the best possible swim route from Woods Hole to Martha&rsquo;s Vineyard.</p>
+<p>The rate at which Casey solves problems is astounding.  This ability is rooted in an inclination to find first-order solutions quickly, and then decide whether higher fidelity approaches are warranted.  All good engineers seem to operate this way.  Not me.  I frequently succumb to the siren song of complexity, and spend hours deliberating which state-of-the-art technique I&rsquo;m going to use to solve a problem.  This an ill-advised strategy: you could spend half a lifetime figuring out the best approach to a problem, and never get around to actually solving it.  Plus, you can&rsquo;t really know the <em>best</em> approach to a problem unless you have already solved it a few times (or talked to someone who has), so you might as well start with something simple &ndash; dare I say, something <em>random</em>.  Such was Casey&rsquo;s reasoning when he decided to utilize a relatively simple stochastic methodology to determine the best possible swim route from Woods Hole to Martha&rsquo;s Vineyard.</p>
 <h2 id="markov-chain-monte-carlo">Markov Chain Monte Carlo</h2>
 <p>There is power in randomness &ndash; this is the fundamental premise of so-called <em>Monte Carlo</em> methods.  How can this be?  Randomness is inherently chaotic, and chaos is bad, right?  Isn&rsquo;t the foremost goal of science and engineering to distill order from chaos?</p>
 <p>Sort of.  Another way to think about randomness is as means of observing reality in an unbiased manner.  Imagine being a journalist who is told to write an article about one of ten equally important subjects &ndash; how should they choose which one to cover?  It obviously wouldn&rsquo;t be fair if they simply picked their favorite topic, so instead, they might randomly select one of the subjects.  By doing so, they ensure that each subject is treated with equal importance, free from any personal bias.  This randomness introduces fairness into the process, enabling a more objective approach to gathering information.  In much the same way, Monte Carlo methods use randomness to explore possible solutions to a problem, systematically sampling different outcomes to estimate the most likely result (or discover the best solution).  While it may seem counterintuitive, this stochastic process can be surprisingly powerful, as it allows us to explore a broad range of scenarios and capture complex behaviors that deterministic methods might miss.</p>
 <h3 id="history">History</h3>
-<p>Monte Carlo methods trace their origins to the 1940s, when they were developed as part of the Manhattan Project to aid in the <a href="https://www.lanl.gov/media/publications/actinide-research-quarterly/1123-hitting-the-jackpot-the-birth-of-the-monte-carlo-method" target="_blank" rel="noopener">design of nuclear weapons</a>.  Pioneered by scientists such as <a href="https://en.wikipedia.org/wiki/Stanis%C5%82aw_Ulam" target="_blank" rel="noopener">Stanislaw Ulam</a> and <a href="https://en.wikipedia.org/wiki/John_von_Neumann" target="_blank" rel="noopener">John von Neumann</a>, these methods were used to model complex physical processes, including neutron diffusion in fission reactions.  The fundamental idea was to use random sampling to approximate solutions to otherwise intractable mathematical problems, leveraging the power of early computers to perform large-scale simulations.  The name <em>Monte Carlo</em> was inspired by the famous casino in Monaco, reflecting the role of chance in the method.</p>
+<p>Monte Carlo methods trace their origins to the 1940s, when they were developed as part of the Manhattan Project to aid in the <a href="https://www.lanl.gov/media/publications/actinide-research-quarterly/1123-hitting-the-jackpot-the-birth-of-the-monte-carlo-method" target="_blank" rel="noopener">design of nuclear weapons</a>.  Pioneered by scientists such as <a href="https://en.wikipedia.org/wiki/Stanis%C5%82aw_Ulam" target="_blank" rel="noopener">Stanislaw Ulam</a> and <a href="https://en.wikipedia.org/wiki/John_von_Neumann" target="_blank" rel="noopener">John von Neumann</a>, these methods were used to model complex physical processes, including neutron diffusion in fusion reactions.  The fundamental idea was to use random sampling to approximate solutions to otherwise intractable mathematical problems, leveraging the power of early computers to perform large-scale simulations.  The name <em>Monte Carlo</em> was inspired by the famous casino in Monaco, reflecting the role of chance in the method.</p>
 
 
 
@@ -1556,7 +1556,7 @@ The content provided on this website/blog is for informational purposes only and
 </figure>
 
 <p>A major advance came in the 1950s with the introduction of the Metropolis algorithm by Nicholas Metropolis and his colleagues Marshall Rosenbluth, Arianna Rosenbluth, Augusta Teller, and Edward Teller at Los Alamos National Laboratory.  This method combined Monte Carlo techniques with the mathematics of Markov Chains &ndash; theoretical frameworks that describe sequences of possible events in which the probability of each event depends only on the state attained in the previous event, not the full history.  This <em>memoryless</em> property of Markov Chains makes them especially useful for exploring complex parameter spaces in a controlled (yet random) fashion.  In the Metropolis algorithm, a Markov Chain is constructed in such a way that, over time, it produces samples from a desired probability distribution &ndash; or, equivalently, yields a set of parameters that minimizes a cost function (more on this equivalency in the <a href="https://www.blakecole.com/post/2-mcmc-mv-swim/#algorithm">Algorithm</a> section).</p>
-<p>Why would anyone want to do this?  Well, in short, there quite a few ways in which nuclear fission does not happen, and Nicholas Metropolis and his colleagues wanted very badly for it to happen.  I would say more, but that&rsquo;s literally all I know, and even if I did know more, I probably wouldn&rsquo;t say more &ndash; apologies in advance to Iran, South Korea, and Saudi Arabia.</p>
+<p>Why would anyone want to do this?  Well, in short, there quite a few ways in which nuclear fusion does not happen, and Nicholas Metropolis and his colleagues wanted very badly for it to happen.  I would say more, but that&rsquo;s literally all I know, and even if I did know more, I probably wouldn&rsquo;t say more &ndash; apologies in advance to Iran, South Korea, and Saudi Arabia.</p>
 
 
 
@@ -1596,7 +1596,7 @@ The content provided on this website/blog is for informational purposes only and
 <p>The Metropolis–Hastings algorithm was originally developed to approximate probability distributions by generating a sequence of samples such that, after many iterations, the frequency of samples at any point, $x$, approximates the probability density, $P(x)$.</p>
 <p>Very clever people eventually figured out that this same method could be used to minimize a cost function by defining a target probability distribution that preferentially selects good solutions, and rejects bad ones.  Suppose you have a cost function, $C(x),$ that you want to minimize.  You could then define a target probability distribution, $P(x)$, where solutions with lower costs have higher probabilities:</p>
 $$
-P(x) \propto e^{\beta C(x)},
+P(x) \propto e^{-\beta C(x)},
 $$<p>
 where $\beta$ is a positive (<em>inverse cooling</em>) parameter controlling the sharpness of the distribution.  If you run the Metropolis–Hastings algorithm with this distribution, the generated &ldquo;samples&rdquo; &ndash; which represent sets of parameters, $x$, in this instance &ndash; will preferentially come from low-cost regions of the parameter space, because these samples have a higher probability of being selected.</p>
 <p>If none of <em>that</em> made sense to you, that&rsquo;s okay &ndash; I have great news: the Metropolis–Hastings algorithm is shockingly easy to implement, even if you do not fully understand the underlying theory.  This means you (yes, <em>you</em>!) can optimize all sorts of cool things in your life.</p>
@@ -1675,8 +1675,8 @@ flowchart TD
     A[Initial Guess] --> B[Compute Cost]
     B --> C[Modify Solution]
     C --> D[Compute Cost & Acceptance Probability]
-    D -- $C_k < C_{k-1}$ --> E[Accept New Solution]
-    D -- $C_k \geq C_{k-1}$ --> F{Roll Dice}
+    D -- $C(x_k) < C(x_{k-1})$ --> E[Accept New Solution]
+    D -- $C(x_k) \geq C(x_{k-1})$ --> F{Roll Dice}
     F -- $\mathcal{U}(0,1) < \alpha_k$ --> E
     F -- $\mathcal{U}(0,1) \geq \alpha_k$ --> G[Keep Old Solution]
     G --> H[Current Solution]
@@ -1891,12 +1891,12 @@ flowchart TD
 <p>Compute the cost of the candidate solution.</p>
 </li>
 <li>
-<p>Compute the acceptance probability: $\alpha_k = \exp{\left( \frac{\Delta_k}{T_k} \right)}$, where $\Delta_k$ is the cost difference between the candidate and previous solutions, and $T_k$ is the annealing temperature parameter.  We reduce $T_k$ gradually over time using a <em>linear cooling schedule</em> to discourage premature convergence.</p>
+<p>Compute the acceptance probability: $\alpha_k = \exp{\left( \frac{\Delta_k}{T_k} \right)}$, where $\Delta_k = C(x_k) - C(x_{k-1})$ is the cost difference between the candidate and previous solutions, and $T_k$ is the annealing temperature parameter.  We reduce $T_k$ gradually over time using a <em>linear cooling schedule</em> to discourage premature convergence.</p>
 </li>
 <li>
 <p>Keep the candidate solution if <em><strong>BOTH</strong></em> the following conditions are met:</p>
 <ol>
-<li><em><strong>EITHER</strong></em> the candidate cost is lower than the previous cost, $C_k < C_{k-1}$, <em><strong>OR</strong></em> the acceptance probability, $\alpha_k$, is greater than a random number drawn from a uniform distribution, $\mathcal{U}(0,1)$.</li>
+<li><em><strong>EITHER</strong></em> the candidate cost is lower than the previous cost, $C(x_k) < C(x_{k-1})$, <em><strong>OR</strong></em> the acceptance probability, $\alpha_k$, is greater than a random number drawn from a uniform distribution, $\mathcal{U}(0,1)$.</li>
 <li>The swim trajectory terminates inside the boundary of Martha&rsquo;s Vineyard.</li>
 </ol>
 </li>
@@ -1910,7 +1910,7 @@ flowchart TD
 <h3 id="useful-functions">Useful Functions</h3>
 <ol>
 <li>
-<p><strong>Flowfield Interpolation</strong>:  Extract a tidal current vector from the discrete computational domain using SciPy&rsquo;s <code>NearestNDInterpolator</code> function.  I also experimented with the <code>LinearNDInterpolator</code> function, but the minor fidelity improvement did not justify the enormous increase in computational cost.</p>
+<p><strong>Flowfield Interpolation</strong>:  Extract a tidal current vector from the discrete computational domain using SciPy&rsquo;s <code>NearestNDInterpolator</code> function.  I also experimented with the <code>LinearNDInterpolator</code> function, but the minor fidelity improvement did not justify the enormous (roughly $1000x$) increase* in computational cost.</p>
 </li>
 <li>
 <p><strong>Dead Reckon</strong>: Given a starting point (lon, lat), initial bearing (in degrees), and a distance (in meters), compute the destination point along a <em>great-circle path</em> using a modified form of the <a href="https://en.wikipedia.org/wiki/Haversine_formula" target="_blank" rel="noopener">Haversine formula</a> (note: if you like geodesy, check out my <a href="../../publication/jrnl-aor-2022/">proof of this relationship</a>).  This function permits the simulation of swim trajectories knowing only a starting point, a set of sequential headings, and the swimmer&rsquo;s speed over ground.</p>
@@ -1922,6 +1922,7 @@ flowchart TD
 <p><strong>Closest Approach</strong> (Optional): Compute the closest distance (in meters), and the bearing (in degrees), from a geodetic point (lon, lat) to a closed polygon defined as a (Nx2) NumPy ndarray of (lon, lat) points, using vectorized geodetic functions.  Although this function is not strictly necessary, it was useful when I was debugging my optimization routine.</p>
 </li>
 </ol>
+<p>*You may have found this surprising.  How could simple linear interpolation incur such an immense computational burden?  Here&rsquo;s how: SciPy&rsquo;s  <code>LinearNDInterpolator</code> works by first creating a <a href="https://en.wikipedia.org/wiki/Delaunay_triangulation" target="_blank" rel="noopener">Delaunay triangulation</a> structure, and then iterating over the <em>entire structure</em> for every evaluation.  Consequently, the lookup time scales poorly with the number of points: $\mathcal{O}(N~log(N))$ for construction, and $\mathcal{O}(N)$ per query.  Conversely, <code>NearestNDInterpolator</code> uses a <a href="https://en.wikipedia.org/wiki/K-d_tree" target="_blank" rel="noopener">k-d tree</a> to efficiently partition space for nearest-neighbor searches, reducing the lookup time to $\mathcal{O}(log(N))$ per query.</p>
 <h2 id="results">Results</h2>
 <p>Before I present my own solutions, I&rsquo;d like to show Casey&rsquo;s work.  His results aren&rsquo;t quite as polished as mine, but he probably cranked them out in about the same time I spent formatting one of my plots (that being said, I wholeheartedly believe that data visualization is important, beauty is important, and making <a href="https://www.datawrapper.de/blog/beautifulcolors#1" target="_blank" rel="noopener">good plots</a> is worth the time and effort; I will die on this hill).  Further, Casey&rsquo;s findings were compelling enough to inspire me to write my own MCMC code, and publish this blog.</p>
 <h3 id="caseys-solution">Casey&rsquo;s Solution</h3>
@@ -1997,9 +1998,10 @@ Hi Blake,
 </div>
 <p>I have a few thoughts on this.</p>
 <p>First, <em>nice</em>.</p>
-<p>I think the coolest part of Casey&rsquo;s work is actually hiding behind the figures: it is his  <em>Gaussian bump</em> feature.  Extremely clever.  I initially tried to run my optimization algorithm without it, and the results were nightmarish: the heading vector was perturbed every which way, yielding a chaotic, jagged swim trajectory.  Casey realized that such drastic changes in sequential headings were counterproductive, and developed a <em>representation</em> that encoded this knowledge.  The result?  Gorgeously smooth solutions, and much faster convergence.  Bravo!</p>
+<p>I think the coolest part of Casey&rsquo;s work is actually hiding behind the figures: it is his <a href="https://www.blakecole.com/post/2-mcmc-mv-swim/#gaussian-bump">Gaussian bump</a> feature.  Extremely clever.  I initially tried to run my optimization algorithm without it, and the results were nightmarish: the heading vector was perturbed every which way, yielding a chaotic, jagged swim trajectory.  Casey realized that such drastic changes in sequential headings were counterproductive, and developed a <em>representation</em> that encoded this knowledge.  The result?  Gorgeously smooth solutions, and much faster convergence.  Bravo!</p>
 <p>Casey&rsquo;s results are <em>quick-and-dirty</em> but credible.  It makes sense that earlier departures &ndash; which subject the swimmer to stronger westward currents &ndash; would necessitate a course adjustment to the east.  Plus, given that my <a href="https://www.blakecole.com/post/1-adcirc-mv-swim/#600a-departure--140100yd-pace">initial analysis</a> suggested that a constant $140^{\circ}$ heading was a reasonably efficient solution (i.e., the dot product of current velocity and swimmer velocity is nonnegative at nearly every timestep), we wouldn&rsquo;t expect the optimal solution to be dramatically different.</p>
-<p>I also thought it was cool that he was able to modify the cost function to penalize solutions that spent too much time in the ferry channel, and arrived too far from Lake Tashmoo.  Tinkering with the cost function sometimes leads to bizarre behavior.  Early on, I was using a cost function that combined <code>swim_time</code> and <code>distance_from_shore</code> as a weighted sum, hoping this would permit sufficient solution flexibility (i.e., the simulated swimmer can make landfall at any point along the shoreline), while guiding the optimization routine toward solutions that were both fast <em>and</em> valid.  However, I found that the routine frequently opted for solutions that never made it to shore &ndash; it was prioritizing a smaller value of <code>swim_time</code> over the necessary condition that <code>distance_from_shore = 0</code>.  I initially rectified this solution by tuning the cost function weights, but I hated this solution; it felt flimsy.  So, I eventually figured out a way to reject invalid solutions, and remove <code>distance_from_shore</code> from the cost function.</p>
+<p>I also thought it was cool that he was able to modify the cost function to penalize solutions that spent too much time in the ferry channel, and arrived too far from Lake Tashmoo.</p>
+<p>Tinkering with the cost function sometimes leads to unexpected behavior.  Early on, I was using a composite cost function that combined <code>swim_time</code> and <code>distance_from_shore</code> as a weighted sum, hoping this would guide the optimization routine toward solutions that were both fast <em>and</em> reached the shoreline.  However, I soon found that the routine often prioritized a smaller value of <code>swim_time</code> over the necessary (but as-of-yet unenforced) condition that <code>distance_from_shore = 0</code>.  I initially rectified this issue by tuning the cost function weights, but I hated this solution &ndash; it felt flimsy.  So, I eventually figured out a way to reject invalid solutions, and remove <code>distance_from_shore</code> from the cost function.</p>
 <p>I think Casey would be the first to admit that there is room for improvement here (from the horse&rsquo;s mouth: &ldquo;This optimization effort was very hacky&rdquo;).</p>
 <p>He didn&rsquo;t digitize the shoreline of Martha&rsquo;s Vineyard, so I&rsquo;m guessing his arrival detection function might have introduced errors on the order of a few minutes.  Practically speaking, this isn&rsquo;t a big deal; however, I found that optimization generally only improves the initial guess by a few minutes, so an error of this magnitude is problematic.</p>
 <p>Finally, I think a good chunk of the &ldquo;20-30 minute improvement&rdquo; Casey referenced could be explained by the fact that we took a 10-minute break in the middle of Vineyard Sound to chat, hydrate, and eat snacks.  But, I don&rsquo;t think he knew about this, and thus cannot be blamed for pointing his hypotheses elsewhere.  I agree with his general contention that swimming south into stronger currents before crossing the ferry channel may have reduced our total swim time &ndash; but not by 30 minutes.</p>
@@ -2180,7 +2182,25 @@ Hi Blake,
 </div>
 </p>
 <p>Assuming a constant swim pace of 1:40/100yd, and no concerns about getting maimed by a ferry&hellip;</p>
-<p><em><strong>On July 30th, 2022, it would have been possible to depart Nobska Beach between 7:30a and 8:00a, and cross Vineyard Sound in 1 hour, 32 minutes</strong></em>.</p>
+
+
+
+
+
+
+
+
+  
+
+
+<div class="px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900">
+  
+    
+    <div class="dark:text-neutral-300"><em><strong>On July 30th, 2022, it would have been possible to depart Nobska Beach between 7:30a and 8:00a, and cross Vineyard Sound in 1 hour, 32 minutes</strong></em>.</div>
+  
+</div>
+
+
 <p>These plots reveal another interesting fact: <em>constant-heading solutions are actually pretty good</em>.  Most of the time, the optimal trajectory sticks pretty close to at least one <em>constant-heading</em> trajectory.  So, unless you&rsquo;re really determined to shave a few minutes off your swim, using a <em>constant-heading</em> strategy is totally fine.</p>
 <h4 id="optimal-heading-sequences">Optimal Heading Sequences</h4>
 
