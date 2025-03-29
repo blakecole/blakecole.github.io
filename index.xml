@@ -280,14 +280,11 @@ where $\beta$ is a positive (&lt;em&gt;inverse cooling&lt;/em&gt;) parameter con
 document.addEventListener(&#34;DOMContentLoaded&#34;, function() {
   
   function initMermaidDiagrams(theme) {
-    mermaid.initialize({
-      theme: theme,
-      startOnLoad: false,
-      logLevel: &#39;fatal&#39;
-    });
+    mermaid.initialize({ theme: theme, startOnLoad: false, logLevel: &#39;fatal&#39; });
     mermaid.init(undefined, document.querySelectorAll(&#39;.mermaid&#39;));
   }
 
+  
   
   let currentTheme = document.documentElement.classList.contains(&#39;dark&#39;) ? &#39;dark&#39; : &#39;default&#39;;
   initMermaidDiagrams(currentTheme);
@@ -305,32 +302,8 @@ document.addEventListener(&#34;DOMContentLoaded&#34;, function() {
       }
     }
   });
+
   observer.observe(document.documentElement, { attributes: true, attributeFilter: [&#39;class&#39;] });
-
-  
-  
-  setTimeout(() =&gt; {
-    const mermaidContainers = document.querySelectorAll(&#39;.mermaid&#39;);
-    mermaidContainers.forEach(container =&gt; {
-      container.style.display = &#39;none&#39;;
-      
-      void container.offsetHeight;
-      container.style.display = &#39;block&#39;;
-    });
-    mermaid.init(undefined, document.querySelectorAll(&#39;.mermaid&#39;));
-  }, 500);
-
-  
-  window.addEventListener(&#34;resize&#34;, function() {
-    mermaid.init(undefined, document.querySelectorAll(&#39;.mermaid&#39;));
-  });
-
-  
-  if (window.MathJax &amp;&amp; MathJax.startup &amp;&amp; MathJax.startup.promise) {
-    MathJax.startup.promise.then(function() {
-      mermaid.init(undefined, document.querySelectorAll(&#39;.mermaid&#39;));
-    });
-  }
 });
 &lt;/script&gt;
 

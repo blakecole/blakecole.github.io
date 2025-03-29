@@ -1642,14 +1642,11 @@ where $\beta$ is a positive (<em>inverse cooling</em>) parameter controlling the
 document.addEventListener("DOMContentLoaded", function() {
   
   function initMermaidDiagrams(theme) {
-    mermaid.initialize({
-      theme: theme,
-      startOnLoad: false,
-      logLevel: 'fatal'
-    });
+    mermaid.initialize({ theme: theme, startOnLoad: false, logLevel: 'fatal' });
     mermaid.init(undefined, document.querySelectorAll('.mermaid'));
   }
 
+  
   
   let currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'default';
   initMermaidDiagrams(currentTheme);
@@ -1667,32 +1664,8 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
   });
+
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-
-  
-  
-  setTimeout(() => {
-    const mermaidContainers = document.querySelectorAll('.mermaid');
-    mermaidContainers.forEach(container => {
-      container.style.display = 'none';
-      
-      void container.offsetHeight;
-      container.style.display = 'block';
-    });
-    mermaid.init(undefined, document.querySelectorAll('.mermaid'));
-  }, 500);
-
-  
-  window.addEventListener("resize", function() {
-    mermaid.init(undefined, document.querySelectorAll('.mermaid'));
-  });
-
-  
-  if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
-    MathJax.startup.promise.then(function() {
-      mermaid.init(undefined, document.querySelectorAll('.mermaid'));
-    });
-  }
 });
 </script>
 
