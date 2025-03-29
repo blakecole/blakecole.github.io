@@ -256,8 +256,8 @@ where $\beta$ is a positive (&lt;em&gt;inverse cooling&lt;/em&gt;) parameter con
 document.addEventListener(&#34;DOMContentLoaded&#34;, function() {
   
   function initMermaidDiagrams(theme) {
-      mermaid.initialize({ theme: theme, startOnLoad: false, logLevel: &#39;fatal&#39;, flowchart: { htmlLabels: false } });
-    mermaid.init(undefined, document.querySelectorAll(&#39;.mermaid&#39;));
+    mermaid.initialize({ theme: theme, startOnLoad: false, logLevel: &#39;fatal&#39; });
+    setTimeout(() =&gt; {     mermaid.init(undefined, document.querySelectorAll(&#39;.mermaid&#39;));   }, 100);
   }
 
   
