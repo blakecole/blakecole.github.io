@@ -68,7 +68,7 @@
 
   
     
-    <link href="/css/custom.min.7915624c6fa09d3db385e95f78355e6072c5745a23acad607a7f300f3bdd9e5f.css" rel="stylesheet" />
+    <link href="/css/custom.min.972317b34d7ad62ecfcd5802fd6a7152bb47aa9f36b91dee5e9881ed4bb6b27b.css" rel="stylesheet" />
   
 
   <script>
@@ -1642,14 +1642,11 @@ where $\beta$ is a positive (<em>inverse cooling</em>) parameter controlling the
 document.addEventListener("DOMContentLoaded", function() {
   
   function initMermaidDiagrams(theme) {
-    mermaid.initialize({
-      theme: theme,
-      startOnLoad: false,
-      logLevel: 'fatal'
-    });
+    mermaid.initialize({ theme: theme, startOnLoad: false, logLevel: 'fatal' });
     mermaid.init(undefined, document.querySelectorAll('.mermaid'));
   }
 
+  
   
   let currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'default';
   initMermaidDiagrams(currentTheme);
@@ -1667,30 +1664,8 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
   });
+
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-
-  
-  setTimeout(() => {
-    mermaid.init(undefined, document.querySelectorAll('.mermaid'));
-
-    
-    const svgs = document.querySelectorAll('.mermaid svg');
-    svgs.forEach(svg => {
-      svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-    });
-  }, 300);
-
-  
-  window.addEventListener("resize", function() {
-    mermaid.init(undefined, document.querySelectorAll('.mermaid'));
-  });
-
-  
-  if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
-    MathJax.startup.promise.then(function() {
-      mermaid.init(undefined, document.querySelectorAll('.mermaid'));
-    });
-  }
 });
 </script>
 
