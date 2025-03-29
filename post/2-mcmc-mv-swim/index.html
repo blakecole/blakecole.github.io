@@ -1670,6 +1670,17 @@ document.addEventListener("DOMContentLoaded", function() {
   observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
   
+  setTimeout(() => {
+    mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+
+    
+    const svgs = document.querySelectorAll('.mermaid svg');
+    svgs.forEach(svg => {
+      svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    });
+  }, 300);
+
+  
   window.addEventListener("resize", function() {
     mermaid.init(undefined, document.querySelectorAll('.mermaid'));
   });
