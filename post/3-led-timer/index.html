@@ -1950,7 +1950,11 @@ flowchart BT
 <p>Nothing happend.  This made sense.  The display box was unplugged. <em>Sigh</em>.</p>
 <p>With my microcontroller dutifully sending serial signals to the shift registers (I hoped), I took a deep breath, grabbed the display box power cable, and plugged it in.</p>
 <p>It worked.  It f**king worked!</p>
-<iframe width="650" height="600" src="https://www.youtube.com/embed/7D-akG85p3o" title="LED Display - Independent Channel Control Verification" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/7D-akG85p3o?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
 <p>I can&rsquo;t really express the excitement I felt in this moment.  When I saw intelligible numeric digits dancing across each panel, I knew I had basically  won the game &ndash; I had independent control of the LED channels.  I was going to beat this thing.  Everything else &ndash; writing the timer logic, enabling wireless communication, adding external interrupts &ndash; all these tasks would take time and effort, but I knew I could do them.</p>
 <p>As it turned out, I wasn&rsquo;t out of the woods, not even close &ndash; many painful setbacks were yet to come.  But I got used to them.  I&rsquo;d throw a temper tantrum (sorry Mom and Dad), settle down, and figure out what to do next.</p>
 <p>At some point two of the LED channels on one of the panels inexplicably went dark, making the afflicted digit unreadable.  This was infuriating &ndash; I had come so far!  Nevertheless, there was no way I could deliver the display to the South Bay Boardriders Club in this condition.  This was sort of an <em>all-or-nothing</em> game.  So, I started tinkering.</p>
@@ -2119,7 +2123,11 @@ flowchart BT
 </span></span><span class="line"><span class="cl">    
 </span></span><span class="line"><span class="cl">    <span class="n">pause</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="k">end</span>
-</span></span></code></pre></div><iframe width="650" height="400" src="https://www.youtube.com/embed/usOYB9nmdMs" title="MATLAB Timer Logic Validation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</span></span></code></pre></div>
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/usOYB9nmdMs?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
 <p>The logic for <code>stopwatch mode</code> was mostly the same, with a few sign changes.</p>
 <h3 id="numeric-digits">Numeric Digits</h3>
 <p>In order to display digits on each of the four panels of the LED display, I needed to figure out what sequences of bits corresponded to the numbers <code>0</code> through <code>9</code>.  This wasn&rsquo;t particularly challenging once I realized that the LED channels were arranged in a counter-clockwise fashion around each digit.  The following table shows how to express each digit using either binary or hexidecimal serial commands.</p>
@@ -2216,15 +2224,23 @@ flowchart BT
 
 </figure>
 
-<p>The external controller itself was nothing fancy &ndash; I ordered a waterproof enclosure big enough to hold a microcontroller, a LiPo battery, and the inevitable tangled mess of wires connecting the buttons to the microcontroller.  I drilled nine holes into the enclosure lid for the buttons, and one in the side wall of the base for a USB-C charging port.  I soldered 3.5mm bullet connectors to the button wires to facilitate connections, wired everything up, slapped the lid on, and bada bing bada boom we had a controller.</p>
+<p>The external controller itself was nothing fancy &ndash; I ordered a waterproof enclosure big enough to hold a microcontroller, a LiPo battery, and the inevitable tangled mess of wires connecting the buttons to the microcontroller.  I drilled nine holes in the enclosure lid for the buttons, and one in the side wall of the base for a USB-C charging port.  I soldered 3.5mm bullet connectors to the button wires to facilitate connections, wired everything up, slapped the lid on, and bada bing bada boom we had a controller.</p>
 <h3 id="stress-testing">Stress Testing</h3>
 <p>When you are building a device that will eventually be used by someone else, you have to think very carefully about all the ways in which things could go wrong.  Or, you can simply go nuts and subject your device to unadulterated chaos.  I took the latter approach.</p>
 <p>I slammed my fingers on the controller buttons in the most absurd sequences; I pressed and held multiple buttons at the same time, while simultaneously clicking others &ndash; <em>what would happen if the user attempted to increment and decrement a digit simultaneously?</em>  I needed to make sure it wasn&rsquo;t possible to accidentally push the state machine into some unforseen and irrecoverable corner.  Once I was satisfied that no combination of button presses would result in catastrophe, I gave the controller a gentle pat and a knowing nod of respect.</p>
-<iframe width="650" height="600" src="https://www.youtube.com/embed/_EQp3Tdwu8k" title="LED Display - Controller Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/_EQp3Tdwu8k?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
 <p>I subjected the display box to some abuse as well:</p>
-<iframe width="650" height="500" src="https://www.youtube.com/embed/QYc6ZZx7gSI" title="LED Display - External Antenna Impact Testing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/QYc6ZZx7gSI?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
 <p>Sometimes, it is both useful and appropriate to be a bit of a menace!</p>
-<p>Six months have passed since I delivered this LED display and wireless controller to the South Bay Boardriders, and apparently it is still working.  I am stoked to have had the opportunity to leverage my engineering skills to help out, and learn some new skills in the process.</p>
+<p>Six months have passed since I delivered this LED display and wireless controller to the South Bay Boardriders, and apparently it is still working.  I am stoked to have had the opportunity to leverage my engineering skills to help out, and learn some new tricks in the process.</p>
 <p>Thanks for reading.</p>
 
       </div>

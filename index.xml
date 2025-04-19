@@ -594,7 +594,11 @@ flowchart BT
 &lt;p&gt;Nothing happend.  This made sense.  The display box was unplugged. &lt;em&gt;Sigh&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;With my microcontroller dutifully sending serial signals to the shift registers (I hoped), I took a deep breath, grabbed the display box power cable, and plugged it in.&lt;/p&gt;
 &lt;p&gt;It worked.  It f**king worked!&lt;/p&gt;
-&lt;iframe width=&#34;650&#34; height=&#34;600&#34; src=&#34;https://www.youtube.com/embed/7D-akG85p3o&#34; title=&#34;LED Display - Independent Channel Control Verification&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/7D-akG85p3o?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
 &lt;p&gt;I can&amp;rsquo;t really express the excitement I felt in this moment.  When I saw intelligible numeric digits dancing across each panel, I knew I had basically  won the game &amp;ndash; I had independent control of the LED channels.  I was going to beat this thing.  Everything else &amp;ndash; writing the timer logic, enabling wireless communication, adding external interrupts &amp;ndash; all these tasks would take time and effort, but I knew I could do them.&lt;/p&gt;
 &lt;p&gt;As it turned out, I wasn&amp;rsquo;t out of the woods, not even close &amp;ndash; many painful setbacks were yet to come.  But I got used to them.  I&amp;rsquo;d throw a temper tantrum (sorry Mom and Dad), settle down, and figure out what to do next.&lt;/p&gt;
 &lt;p&gt;At some point two of the LED channels on one of the panels inexplicably went dark, making the afflicted digit unreadable.  This was infuriating &amp;ndash; I had come so far!  Nevertheless, there was no way I could deliver the display to the South Bay Boardriders Club in this condition.  This was sort of an &lt;em&gt;all-or-nothing&lt;/em&gt; game.  So, I started tinkering.&lt;/p&gt;
@@ -763,7 +767,11 @@ flowchart BT
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;pause&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;iframe width=&#34;650&#34; height=&#34;400&#34; src=&#34;https://www.youtube.com/embed/usOYB9nmdMs&#34; title=&#34;MATLAB Timer Logic Validation&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/usOYB9nmdMs?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
 &lt;p&gt;The logic for &lt;code&gt;stopwatch mode&lt;/code&gt; was mostly the same, with a few sign changes.&lt;/p&gt;
 &lt;h3 id=&#34;numeric-digits&#34;&gt;Numeric Digits&lt;/h3&gt;
 &lt;p&gt;In order to display digits on each of the four panels of the LED display, I needed to figure out what sequences of bits corresponded to the numbers &lt;code&gt;0&lt;/code&gt; through &lt;code&gt;9&lt;/code&gt;.  This wasn&amp;rsquo;t particularly challenging once I realized that the LED channels were arranged in a counter-clockwise fashion around each digit.  The following table shows how to express each digit using either binary or hexidecimal serial commands.&lt;/p&gt;
@@ -860,15 +868,23 @@ flowchart BT
 
 &lt;/figure&gt;
 
-&lt;p&gt;The external controller itself was nothing fancy &amp;ndash; I ordered a waterproof enclosure big enough to hold a microcontroller, a LiPo battery, and the inevitable tangled mess of wires connecting the buttons to the microcontroller.  I drilled nine holes into the enclosure lid for the buttons, and one in the side wall of the base for a USB-C charging port.  I soldered 3.5mm bullet connectors to the button wires to facilitate connections, wired everything up, slapped the lid on, and bada bing bada boom we had a controller.&lt;/p&gt;
+&lt;p&gt;The external controller itself was nothing fancy &amp;ndash; I ordered a waterproof enclosure big enough to hold a microcontroller, a LiPo battery, and the inevitable tangled mess of wires connecting the buttons to the microcontroller.  I drilled nine holes in the enclosure lid for the buttons, and one in the side wall of the base for a USB-C charging port.  I soldered 3.5mm bullet connectors to the button wires to facilitate connections, wired everything up, slapped the lid on, and bada bing bada boom we had a controller.&lt;/p&gt;
 &lt;h3 id=&#34;stress-testing&#34;&gt;Stress Testing&lt;/h3&gt;
 &lt;p&gt;When you are building a device that will eventually be used by someone else, you have to think very carefully about all the ways in which things could go wrong.  Or, you can simply go nuts and subject your device to unadulterated chaos.  I took the latter approach.&lt;/p&gt;
 &lt;p&gt;I slammed my fingers on the controller buttons in the most absurd sequences; I pressed and held multiple buttons at the same time, while simultaneously clicking others &amp;ndash; &lt;em&gt;what would happen if the user attempted to increment and decrement a digit simultaneously?&lt;/em&gt;  I needed to make sure it wasn&amp;rsquo;t possible to accidentally push the state machine into some unforseen and irrecoverable corner.  Once I was satisfied that no combination of button presses would result in catastrophe, I gave the controller a gentle pat and a knowing nod of respect.&lt;/p&gt;
-&lt;iframe width=&#34;650&#34; height=&#34;600&#34; src=&#34;https://www.youtube.com/embed/_EQp3Tdwu8k&#34; title=&#34;LED Display - Controller Demo&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/_EQp3Tdwu8k?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
 &lt;p&gt;I subjected the display box to some abuse as well:&lt;/p&gt;
-&lt;iframe width=&#34;650&#34; height=&#34;500&#34; src=&#34;https://www.youtube.com/embed/QYc6ZZx7gSI&#34; title=&#34;LED Display - External Antenna Impact Testing&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/QYc6ZZx7gSI?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
 &lt;p&gt;Sometimes, it is both useful and appropriate to be a bit of a menace!&lt;/p&gt;
-&lt;p&gt;Six months have passed since I delivered this LED display and wireless controller to the South Bay Boardriders, and apparently it is still working.  I am stoked to have had the opportunity to leverage my engineering skills to help out, and learn some new skills in the process.&lt;/p&gt;
+&lt;p&gt;Six months have passed since I delivered this LED display and wireless controller to the South Bay Boardriders, and apparently it is still working.  I am stoked to have had the opportunity to leverage my engineering skills to help out, and learn some new tricks in the process.&lt;/p&gt;
 &lt;p&gt;Thanks for reading.&lt;/p&gt;
 </description>
     </item>
