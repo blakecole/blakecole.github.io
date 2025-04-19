@@ -27,16 +27,16 @@
 
 &lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;sbbc.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;LED timer in action.&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;sbbc.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;LED timer in action at a surf competition in Manhattan Beach, CA.&#34;&gt;
 
-&lt;img src=&#34;sbbc.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;LED timer in action.&#34; &gt;
+&lt;img src=&#34;sbbc.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;LED timer in action at a surf competition in Manhattan Beach, CA.&#34; &gt;
 &lt;/a&gt;
 
 
 &lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
   
   &lt;p&gt;
-    LED timer in action.
+    LED timer in action at a surf competition in Manhattan Beach, CA.
     
     
     
@@ -360,7 +360,7 @@ flowchart BT
 
 &lt;/figure&gt;
 
-&lt;p&gt;I knew I needed to identify the GPIO pins that were being used to control the LEDs.  Once I figured this out, I could either:&lt;/p&gt;
+&lt;p&gt;After I had located the microcontroller on the PCB, I knew I would need to identify the pins that were being used to control the LEDs.  Once I figured this out, I could either:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Leave the OEM microcontroller in place, overwrite the firmware, and send commands to these pins.&lt;/li&gt;
 &lt;li&gt;Yank out the OEM microcontroller, replace it with one of my own, and inject my own signals (the specific nature of these signals was still TBD).&lt;/li&gt;
@@ -479,7 +479,7 @@ flowchart BT
 &lt;/figure&gt;
 
 &lt;p&gt;What if you wanted to control more than 8 LEDs?  Perhaps many more?  One of the awesome things about shift registers is that they can be connected in series; in this configuration, the oldest bit in the leading register spills over and becomes the newest bit in the following register.&lt;/p&gt;
-&lt;p&gt;I was starting to suspect that this was probably how the LEDs on my display were being controlled: the microcontroller sends 32 bits of serial data to the first of four 8-bit shift registers connected in series.  Once the first shift register is full, it begins passing bits to the second, and so on, like a beautiful cascading waterfall.  This would explain the small number of active GPIO pins on the microcontroller.&lt;/p&gt;
+&lt;p&gt;I was starting to suspect that this was probably how the LEDs on my display were being controlled: the microcontroller sends 32 bits of serial data to the first of four 8-bit shift registers connected in series; once the first shift register is full, it begins passing bits to the second, and so on, like a beautiful cascading waterfall.  This would explain the small number of active GPIO pins on the microcontroller.&lt;/p&gt;
 
 
 
