@@ -69,7 +69,7 @@
 
 &lt;/figure&gt;
 
-&lt;p&gt;I told them I couldn&amp;rsquo;t make any promises, but I&amp;rsquo;d have a look.  I proceeded to take apart the LED display box and inspect the copper leads on the manufacturer&amp;rsquo;s printed circuit board (PCB) using my backpacking headlamp.  I identified the power source, microcontroller, and an array of shift registers.  I realized that if I could carefully remove the manufacturer&amp;rsquo;s microcontroller, and replace it with one of my own, I could inject serial data into the shift registers to control each of the 30 LED channels.&lt;/p&gt;
+&lt;p&gt;I told them I couldn&amp;rsquo;t make any promises, but I&amp;rsquo;d have a look.  I proceeded to take apart the LED display box and inspect the copper traces on the manufacturer&amp;rsquo;s printed circuit board (PCB) using my backpacking headlamp.  I identified the power source, microcontroller, and an array of shift registers.  I realized that if I could carefully remove the manufacturer&amp;rsquo;s microcontroller, and replace it with one of my own, I could inject serial data into the shift registers to control each of the 30 LED channels.&lt;/p&gt;
 &lt;p&gt;I didn&amp;rsquo;t want to replicate the prior controller architecture, I wanted to make it better.  So, I made it wireless and waterproof.  I also added custom toggle buttons to improve the end-user&amp;rsquo;s experience.  I soldered the requisite wires into through holes on the manufacturer&amp;rsquo;s PCB, covered the joints with conformal coating, and ran a sequence of tests to identify any bugs in my software.  The controller worked flawlessly, and my total bill of materials was an order of magnitude less than the manufacturer&amp;rsquo;s quote &amp;ndash; about $135.&lt;/p&gt;
 
 
@@ -188,7 +188,7 @@ flowchart BT
 &lt;/div&gt;
 
 
-&lt;p&gt;I knew I wanted to build a wireless controller with an array of buttons that would allow an end-user to set, start, stop, and reset the LED timer; but, before fussing over wireless capabilities, I needed to make sure I could build a wired controller; in order to build a wired controller, I&amp;rsquo;d need to make sure that I could reliably determine the state (i.e., on/off) of an array of buttons; before that, I needed to make sure I could write a simple, non-interactive countdown timer program; before that, I needed figure out a way to illuminate each of the 30 LED channels independently; before that, I needed to figure out how the LEDs were being controlled; and before that, I needed to figure out how the LEDs were being powered.&lt;/p&gt;
+&lt;p&gt;I knew I wanted to build a wireless controller with an array of buttons that would allow an end-user to set, start, stop, and reset the LED timer; but, before fussing over wireless capabilities, I needed to make sure I could build a wired controller, and write a simple countdown timer program; before I could do that, I needed figure out a way to illuminate each of the 30 LED channels independently; before that, I needed to figure out how the LEDs were being controlled; and before that, I needed to figure out how the LEDs were being powered.&lt;/p&gt;
 &lt;p&gt;Soon, a mental map of the problem began to take shape:&lt;/p&gt;
 &lt;div class=&#34;markmap&#34; style=&#34;height: 500px;&#34;&gt;
 
@@ -503,7 +503,7 @@ flowchart BT
 &lt;/figure&gt;
 
 &lt;p&gt;What if you wanted to control more than 8 LEDs?  Perhaps many more?  One of the awesome things about shift registers is that they can be connected in series; in this configuration, the oldest bit in the leading register spills over and becomes the newest bit in the following register.&lt;/p&gt;
-&lt;p&gt;I started to suspect that this was precisely how each of the 30 channels on the LED display was being controlled: the microcontroller sends 32 bits of serial data to the first of four 8-bit shift registers connected in series.  Once the first shift register is full, it begins passing bits to the second, and so on, like a beautiful cascading waterfall.  This would explain the exceedingly small number of active GPIO pins on the microcontroller.&lt;/p&gt;
+&lt;p&gt;I was starting to suspect that this was probably how the LEDs on my display were being controlled: the microcontroller sends 32 bits of serial data to the first of four 8-bit shift registers connected in series.  Once the first shift register is full, it begins passing bits to the second, and so on, like a beautiful cascading waterfall.  This would explain the small number of active GPIO pins on the microcontroller.&lt;/p&gt;
 
 
 
@@ -530,7 +530,7 @@ flowchart BT
 
 &lt;/figure&gt;
 
-&lt;p&gt;However, this still didn&amp;rsquo;t explain the lack of relays: you can&amp;rsquo;t illuminate high-power LEDs using weak digital signals like these.&lt;/p&gt;
+&lt;p&gt;However, I still couldn&amp;rsquo;t explain the lack of relays: you can&amp;rsquo;t illuminate high-power LEDs using weak digital signals like these.&lt;/p&gt;
 &lt;p&gt;Well, it turns out the shift registers used in this particular application are somewhat special &amp;ndash; they are so-called &lt;em&gt;sinking current&lt;/em&gt; shift registers.  According to the &lt;a href=&#34;https://www.ti.com/lit/ds/symlink/tpic6a595.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TPIC6A595 data sheet&lt;/a&gt;, &amp;ldquo;Outputs are low-side, open-drain DMOS transistors with output ratings of 50V and a 350mA continuous sink-current capability.  When data in the output buffers is low, the DMOS-transistor outputs are off.  When data is high, the DMOS-transistor outputs have sink current capability.&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;This effectively means that the shift registers are able to act like relays, dictating the flow of high-voltage current to each LED channel.  When the shift register output is &lt;code&gt;low&lt;/code&gt;, the corresponding LED channel is allowed to float at 27 VDC (0 V differential voltage), and will not illuminate; when the shift register output goes &lt;code&gt;high&lt;/code&gt;, the channel is grounded, and the LEDs illuminate.&lt;/p&gt;
 
@@ -541,16 +541,16 @@ flowchart BT
 
 &lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;shift_reg_pinout.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;More handwritten notes.  At this point, I had mostly figured out which GPIO pins the microcontroller was using to drive the shift registers; however, just to make sure, I used my backpacking headlamp to trace the copper leads from the first shift register&amp;rsquo;s inputs (SER IN, RCK, and SRCK) back to their respective sources at the microcontroller.  Each of the digital output pins D0 through D7 are connected to a single LED channel.&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;shift_reg_pinout.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;More handwritten notes.  At this point, I had mostly figured out which GPIO pins the microcontroller was using to drive the shift registers; however, just to make sure, I used my backpacking headlamp to follow the copper traces from the first shift register&amp;rsquo;s inputs (SER IN, RCK, and SRCK) back to their respective sources at the microcontroller.  The digital output pins D0 - D7 are each connected to a single LED channel.&#34;&gt;
 
-&lt;img src=&#34;shift_reg_pinout.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;More handwritten notes.  At this point, I had mostly figured out which GPIO pins the microcontroller was using to drive the shift registers; however, just to make sure, I used my backpacking headlamp to trace the copper leads from the first shift register&amp;#39;s inputs (```SER IN```, ```RCK```, and ```SRCK```) back to their respective sources at the microcontroller.  Each of the digital output pins ```D0``` through ```D7``` are connected to a single LED channel.&#34; &gt;
+&lt;img src=&#34;shift_reg_pinout.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;More handwritten notes.  At this point, I had mostly figured out which GPIO pins the microcontroller was using to drive the shift registers; however, just to make sure, I used my backpacking headlamp to follow the copper traces from the first shift register&amp;#39;s inputs (```SER IN```, ```RCK```, and ```SRCK```) back to their respective sources at the microcontroller.  The digital output pins ```D0``` - ```D7``` are each connected to a single LED channel.&#34; &gt;
 &lt;/a&gt;
 
 
 &lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
   
   &lt;p&gt;
-    More handwritten notes.  At this point, I had mostly figured out which GPIO pins the microcontroller was using to drive the shift registers; however, just to make sure, I used my backpacking headlamp to trace the copper leads from the first shift register&amp;rsquo;s inputs (&lt;code&gt;SER IN&lt;/code&gt;, &lt;code&gt;RCK&lt;/code&gt;, and &lt;code&gt;SRCK&lt;/code&gt;) back to their respective sources at the microcontroller.  Each of the digital output pins &lt;code&gt;D0&lt;/code&gt; through &lt;code&gt;D7&lt;/code&gt; are connected to a single LED channel.
+    More handwritten notes.  At this point, I had mostly figured out which GPIO pins the microcontroller was using to drive the shift registers; however, just to make sure, I used my backpacking headlamp to follow the copper traces from the first shift register&amp;rsquo;s inputs (&lt;code&gt;SER IN&lt;/code&gt;, &lt;code&gt;RCK&lt;/code&gt;, and &lt;code&gt;SRCK&lt;/code&gt;) back to their respective sources at the microcontroller.  The digital output pins &lt;code&gt;D0&lt;/code&gt; - &lt;code&gt;D7&lt;/code&gt; are each connected to a single LED channel.
     
     
     
@@ -668,8 +668,8 @@ flowchart BT
   
 &lt;/div&gt;
 
-&lt;p&gt;Having overcome the first hurdle &amp;ndash; and the biggest hurdle &amp;ndash; I went to work on all the little flourishes.  I cleaned up the wiring, and found better, more permanent places on the PCB to inject my serial signals; I wrote code to handle the &lt;a href=&#34;https://www.blakecole.com/post/3-led-timer/#timer-logic&#34;&gt;countdown timer logic&lt;/a&gt;; I wrote code to enable non-blocking external interrupts, and designed a state machine that could be controlled using toggle buttons; I wrote code to enable wireless communication between the internal microcontroller installed inside the LED display box, and another external microcontroller that would be used to control it.&lt;/p&gt;
-&lt;p&gt;The external microcontroller &amp;ndash; the one which would be placed inside a waterproof enclosure and operated by the end-user &amp;ndash; would be battery powered, so I enabled &lt;code&gt;deep-sleep mode&lt;/code&gt; to conserve power when it was not in use.  The end-user could wake the microcontroller by pressing a button.&lt;/p&gt;
+&lt;p&gt;Having overcome the first hurdle &amp;ndash; and the biggest hurdle &amp;ndash; I went to work on all the little flourishes.  I cleaned up the wiring and found better, more permanent places on the PCB to inject my signals; I wrote code to handle the &lt;a href=&#34;https://www.blakecole.com/post/3-led-timer/#timer-logic&#34;&gt;countdown timer logic&lt;/a&gt;; I designed a state machine that could be controlled using toggle buttons, and wrote code that would recognize each button press as a non-blocking external interrupt; finally, I enabled wireless communication between the microcontroller I had installed inside the LED display box and a secondary external microcontroller outfitted with a series of toggle buttons.&lt;/p&gt;
+&lt;p&gt;The external microcontroller &amp;ndash; which would be housed inside a waterproof enclosure and handle user commands &amp;ndash; would be battery powered, so I enabled &lt;a href=&#34;https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/sleep_modes.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;deep-sleep mode&lt;/a&gt; to conserve power when it was not in use.  The end-user could wake the microcontroller by pressing a button.&lt;/p&gt;
 
 
 
@@ -734,7 +734,7 @@ flowchart BT
 &lt;p&gt;If you answered &lt;em&gt;yes&lt;/em&gt; to that, I am both impressed and a little concerned.&lt;/p&gt;
 &lt;p&gt;I certainly hadn&amp;rsquo;t given it much thought before embarking on this project; but, once I started working out the algorithm, I became increasingly absorbed.  It was really fun to break down the basic behavior of a timer &amp;ndash; something we have all used a million times &amp;ndash; and describe it programmatically: &lt;em&gt;Okay, so we decrement the one&amp;rsquo;s place of the seconds digit until we get to zero, but then what happens?  We add nine to it, and decrement the ten&amp;rsquo;s place of the seconds digit&amp;hellip;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;And so on and so forth.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;m sure there&amp;rsquo;s probably a fancier way to implement this logic, but these nested if-statements got the job done:&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m sure there&amp;rsquo;s probably a fancier way to implement this logic, but there was no premium on computational efficiency for this particular task; these nested if-statements are interpretable, and they got the job done:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-matlab&#34; data-lang=&#34;matlab&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;%% Set initial timer digit values&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;c&#34;&gt;% digit 1: minute (10)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;m2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;c&#34;&gt;% digit 2: minute (1)&lt;/span&gt;
@@ -802,9 +802,9 @@ flowchart BT
 &lt;/figure&gt;
 
 &lt;h2 id=&#34;build-controller&#34;&gt;Build Controller&lt;/h2&gt;
-&lt;p&gt;This stage of the project was notably less exciting for me.  I knew I had already overcome the biggest challenges, and the ones that remained were all fairly pedestrian: wire cutting, soldering, and repurposing code I had already written for other projects.  At this point, I had been working on this project for a few weeks, and I was pretty eager to wrap things up.&lt;/p&gt;
+&lt;p&gt;This stage of the project was notably less exciting for me.  I knew I had already overcome the biggest challenges, and the ones that remained were all fairly pedestrian: wire cutting, soldering, and repurposing code I had already written for other projects.  At this point, I had been working on this project off-and-on for a few weeks, and I was pretty eager to wrap things up.&lt;/p&gt;
 &lt;p&gt;I think most engineering projects follow an arc like this.  At first you&amp;rsquo;re really excited, eager to tackle a new and interesting problem.  Gradually, you realize how much work will be involved.  You wonder whether you can even solve the problem.  You experience a setback or two.  You spiral into disillusionment.  But, eventually, you experience a breakthrough!  You become momentarily reinvigorated, only to realize that there is still an absurd amount of work left to do.  You have already invested far too much time to quit now, so you grind out the remainder of the project.&lt;/p&gt;
-&lt;p&gt;One of my favorite engineering content creators, &lt;a href=&#34;https://www.youtube.com/@rctestflight&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rctestflight&lt;/a&gt;, illustrated a similar narrative arc which he called &lt;em&gt;The Project Curve.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;One of my favorite engineering content creators, &lt;a href=&#34;https://www.youtube.com/@rctestflight&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Daniel Riley (@rctestflight)&lt;/a&gt;, illustrated a similar narrative arc which he called &lt;em&gt;The Project Curve.&lt;/em&gt;&lt;/p&gt;
 
 
 
@@ -833,14 +833,13 @@ flowchart BT
 
 &lt;p&gt;In any case, I still had a fair bit of work to do.  This was my basic sequence of tasks:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Verify independent control of LED channels.&lt;/li&gt;
-&lt;li&gt;Implement timer logic locally on internal microcontroller.&lt;/li&gt;
 &lt;li&gt;Permanently install internal microcontroller, solder connectors.&lt;/li&gt;
 &lt;li&gt;Apply conformal coating to any soldered joints.&lt;/li&gt;
 &lt;li&gt;Implement timer logic wirelessly on external microcontroller.&lt;/li&gt;
 &lt;li&gt;Handle button presses using external interrupts (non-blocking).&lt;/li&gt;
-&lt;li&gt;Formulate state machine (i.e. &lt;em&gt;if Button_A pressed, then&amp;hellip;&lt;/em&gt;).&lt;/li&gt;
+&lt;li&gt;Design state machine (i.e. &lt;em&gt;if Button_A pressed, then&amp;hellip;&lt;/em&gt;).&lt;/li&gt;
 &lt;li&gt;Test all buttons.&lt;/li&gt;
+&lt;li&gt;Cut holes in enclosure, install buttons and pass-throughs.&lt;/li&gt;
 &lt;/ol&gt;
 
 
@@ -871,7 +870,7 @@ flowchart BT
 &lt;p&gt;The external controller itself was nothing fancy &amp;ndash; I ordered a waterproof enclosure big enough to hold a microcontroller, a LiPo battery, and the inevitable tangled mess of wires connecting the buttons to the microcontroller.  I drilled nine holes in the enclosure lid for the buttons, and one in the side wall of the base for a USB-C charging port.  I soldered 3.5mm bullet connectors to the button wires to facilitate connections, wired everything up, slapped the lid on, and bada bing bada boom we had a controller.&lt;/p&gt;
 &lt;h3 id=&#34;stress-testing&#34;&gt;Stress Testing&lt;/h3&gt;
 &lt;p&gt;When you are building a device that will eventually be used by someone else, you have to think very carefully about all the ways in which things could go wrong.  Or, you can simply go nuts and subject your device to unadulterated chaos.  I took the latter approach.&lt;/p&gt;
-&lt;p&gt;I slammed my fingers on the controller buttons in the most absurd sequences; I pressed and held multiple buttons at the same time, while simultaneously clicking others &amp;ndash; &lt;em&gt;what would happen if the user attempted to increment and decrement a digit simultaneously?&lt;/em&gt;  I needed to make sure it wasn&amp;rsquo;t possible to accidentally push the state machine into some unforseen and irrecoverable corner.  Once I was satisfied that no combination of button presses would result in catastrophe, I gave the controller a gentle pat and a knowing nod of respect.&lt;/p&gt;
+&lt;p&gt;I slammed my fingers on the controller buttons in the most absurd sequences; I pressed and held multiple buttons at the same time, while simultaneously clicking others &amp;ndash; &lt;em&gt;what would happen if the user attempted to increment and decrement a digit simultaneously while holding down the start button?&lt;/em&gt;  I needed to make sure it wasn&amp;rsquo;t possible to accidentally push the state machine into some unforseen and irrecoverable corner.  Once I was satisfied that no combination of button presses would result in catastrophe, I gave the controller a gentle pat and a knowing nod of respect.&lt;/p&gt;
 
     &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
       &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/_EQp3Tdwu8k?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
