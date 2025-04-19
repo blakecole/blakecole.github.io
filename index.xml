@@ -37,6 +37,843 @@
     </item>
     
     <item>
+      <title>Reverse Engineering an LED Display</title>
+      <link>https://www.blakecole.com/post/3-led-timer/</link>
+      <pubDate>Wed, 16 Apr 2025 08:18:13 -0400</pubDate>
+      <guid>https://www.blakecole.com/post/3-led-timer/</guid>
+      <description>&lt;h2 id=&#34;backstory&#34;&gt;Backstory&lt;/h2&gt;
+&lt;p&gt;Last September, my brother came to me with a conundrum: the controller for a high-power LED timer he had been using to run our local community surfing competitions had been stolen.  To make matters worse, the original manufacturer wanted more than $1,000 to replace it &amp;ndash; a sum which far exceeded the modest budget of the nonprofit organization for which he volunteers, the &lt;a href=&#34;https://southbayboardriders.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;South Bay Boardriders Club (SBBC)&lt;/a&gt;.  With competitions scheduled to resume in just a few months, they were at a loss for what to do.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;sbbc.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;LED timer in action.&#34;&gt;
+
+&lt;img src=&#34;sbbc.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;LED timer in action.&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    LED timer in action.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;I told them I couldn&amp;rsquo;t make any promises, but I&amp;rsquo;d have a look.  I proceeded to take apart the LED display box and inspect the copper leads on the manufacturer&amp;rsquo;s printed circuit board (PCB) using my backpacking headlamp.  I identified the power source, microcontroller, and an array of shift registers.  I realized that if I could carefully remove the manufacturer&amp;rsquo;s microcontroller, and replace it with one of my own, I could inject serial data into the shift registers to control each of the 30 LED channels.&lt;/p&gt;
+&lt;p&gt;I didn&amp;rsquo;t want to replicate the prior controller architecture, I wanted to make it better.  So, I made it wireless and waterproof.  I also added custom toggle buttons to improve the end-user&amp;rsquo;s experience.  I soldered the requisite wires into through holes on the manufacturer&amp;rsquo;s PCB, covered the joints with conformal coating, and ran a sequence of tests to identify any bugs in my software.  The controller worked flawlessly, and my total bill of materials was an order of magnitude less than the manufacturer&amp;rsquo;s quote &amp;ndash; about $135.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;finished_product.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;The finished product.&#34;&gt;
+
+&lt;img src=&#34;finished_product.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;&amp;lt;center&amp;gt;The finished product.&amp;lt;/center&amp;gt;&#34; width=&#34;450&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    &lt;center&gt;The finished product.&lt;/center&gt;
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;topics-not-covered&#34;&gt;Topics Not Covered&lt;/h2&gt;
+&lt;p&gt;This project involved a few microcontroller flourishes that I chose not to cover:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Wireless communication using the &lt;a href=&#34;https://www.espressif.com/en/solutions/low-power-solutions/esp-now&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ESP-NOW&lt;/a&gt; protocol&lt;/li&gt;
+&lt;li&gt;Reducing power consumption using &lt;a href=&#34;https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/sleep_modes.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;deep-sleep&lt;/a&gt; mode&lt;/li&gt;
+&lt;li&gt;External hardware interrupts&lt;/li&gt;
+&lt;li&gt;Shift register control&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I decided not to cover these topics in detail because fantastic resources already exist online.  Instead, I decided to focus mostly on the narrative journey, and provide some insight into my thought process as I worked through the problem.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re interested in learning more about microcontrollers and hobby electronics, I&amp;rsquo;d highly recommend checking out the &lt;a href=&#34;https://www.youtube.com/@Dronebotworkshop&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DroneBot Workshop&lt;/a&gt; channel on YouTube.  Bill is a fantastic educator, and one of my favorite engineering content creators.&lt;/p&gt;
+&lt;p&gt;If you are curious about my specific implementation, feel free to &lt;a href=&#34;../../#contact&#34;&gt;reach out&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;methodology&#34;&gt;Methodology&lt;/h2&gt;
+&lt;p&gt;One of the most important lessons I learned in graduate school was the value of breaking large, complex problems into a sequence of simpler ones with measurable outcomes.  This framework permits incremental progress, and reduces the likelihood that you&amp;rsquo;ll waste a bunch of time on a problem you can&amp;rsquo;t actually solve.  This was my first guiding principle:&lt;/p&gt;
+
+
+
+
+
+
+
+
+  
+
+
+&lt;div class=&#34;px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+  
+    
+      &lt;div class=&#34;mb-2 font-bold text-primary-600 dark:text-primary-300&#34;&gt;
+        Guiding Principle #1: Incremental Progress
+      &lt;/div&gt;
+    
+    &lt;div class=&#34;dark:text-neutral-300&#34;&gt;Break problems into a series of sequential hurdles with measurable outcomes.&lt;/div&gt;
+  
+&lt;/div&gt;
+
+
+&lt;p&gt;When I first got my hands on the LED timer, I had no idea whether I&amp;rsquo;d actually be able to fix it.  There were so many uncertainties:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;What is the power and control architecture inside the box?&lt;/li&gt;
+&lt;li&gt;Will I be able to make sense of the manufacturer&amp;rsquo;s PCB?&lt;/li&gt;
+&lt;li&gt;Could I modify the manufacturer&amp;rsquo;s PCB without destroying it?&lt;/li&gt;
+&lt;li&gt;Is the power system functional?&lt;/li&gt;
+&lt;li&gt;Could I write a software program that mimics countdown timer logic?&lt;/li&gt;
+&lt;li&gt;How might I allow the end-user to control the timer in an intuitive manner?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I took a deep breath, and started breaking down the problem, working backwards from my desired endpoint.&lt;/p&gt;
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js&#34;&gt;&lt;/script&gt;
+&lt;script&gt;
+document.addEventListener(&#34;DOMContentLoaded&#34;, function() {
+  
+  function initMermaidDiagrams(theme) {
+    mermaid.initialize({ theme: theme, startOnLoad: false, logLevel: &#39;fatal&#39; });
+    mermaid.init(undefined, document.querySelectorAll(&#39;.mermaid&#39;));
+  }
+
+  
+  
+  let currentTheme = document.documentElement.classList.contains(&#39;dark&#39;) ? &#39;dark&#39; : &#39;default&#39;;
+  initMermaidDiagrams(currentTheme);
+
+  
+  const observer = new MutationObserver(function(mutationsList) {
+    for (let mutation of mutationsList) {
+      if (mutation.attributeName === &#39;class&#39;) {
+        let newTheme = document.documentElement.classList.contains(&#39;dark&#39;) ? &#39;dark&#39; : &#39;default&#39;;
+        
+        if (newTheme !== currentTheme) {
+          currentTheme = newTheme;
+          initMermaidDiagrams(newTheme);
+        }
+      }
+    }
+  });
+
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: [&#39;class&#39;] });
+});
+&lt;/script&gt;
+
+&lt;div class=&#34;mermaid&#34;&gt;
+  
+flowchart BT
+    A[LED Power] --&gt; B[LED Control]
+    B --&gt; C[Timer Logic]
+    C --&gt; D[Interactivity]
+    D --&gt; E[Wired Control]
+    E --&gt; F[Wireless Control]
+
+
+&lt;/div&gt;
+
+
+&lt;p&gt;I knew I wanted to build a wireless controller with an array of buttons that would allow an end-user to set, start, stop, and reset the LED timer; but, before fussing over wireless capabilities, I needed to make sure I could build a wired controller; in order to build a wired controller, I&amp;rsquo;d need to make sure that I could reliably determine the state (i.e., on/off) of an array of buttons; before that, I needed to make sure I could write a simple, non-interactive countdown timer program; before that, I needed figure out a way to illuminate each of the 30 LED channels independently; before that, I needed to figure out how the LEDs were being controlled; and before that, I needed to figure out how the LEDs were being powered.&lt;/p&gt;
+&lt;p&gt;Soon, a mental map of the problem began to take shape:&lt;/p&gt;
+&lt;div class=&#34;markmap&#34; style=&#34;height: 500px;&#34;&gt;
+
+&lt;pre&gt;- Fix Display
+  - Inspect Hardware
+    - Power Supply
+    - Shift Registers
+    - Microcontroller
+    - PCB Traces
+  - Modify Hardware
+    - ?
+  - Write Software
+    - Timer Logic
+    - Button Logic
+    - Sleep Mode
+    - Wireless
+  - Build Controller
+    - Enclosure
+    - Microcontroller
+    - Battery
+    - Buttons
+    - Charging Port&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;inspect-hardware&#34;&gt;Inspect Hardware&lt;/h2&gt;
+&lt;p&gt;I knew needed to make sense of the electronic architecture of the display box &amp;ndash; if I couldn&amp;rsquo;t figure out how the display was &lt;em&gt;supposed&lt;/em&gt; to work, well then I obviously wouldn&amp;rsquo;t be able to modify it without wrecking it.  So, I opened the four access panels on the box, and started poking around.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;blank_timer.jpeg&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;My first look inside the display box; after nearly going blind, I draped a towel over the front of the box to attenuate the LED intensity.&#34;&gt;
+
+&lt;img src=&#34;blank_timer.jpeg&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;My first look inside the display box; after nearly going blind, I draped a towel over the front of the box to attenuate the LED intensity.&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    My first look inside the display box; after nearly going blind, I draped a towel over the front of the box to attenuate the LED intensity.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;My high-level goal at this point was to figure out where I might be able to break into the usual chain of command in a minimally-invasive manner.  This was another one of my guiding principles:&lt;/p&gt;
+
+
+
+
+
+
+
+
+  
+
+
+&lt;div class=&#34;px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+  
+    
+      &lt;div class=&#34;mb-2 font-bold text-primary-600 dark:text-primary-300&#34;&gt;
+        Guiding Principle #2: Do No (Unnecessary) Harm
+      &lt;/div&gt;
+    
+    &lt;div class=&#34;dark:text-neutral-300&#34;&gt;If you can&amp;rsquo;t avoid making hardware modifications, be judicious.&lt;/div&gt;
+  
+&lt;/div&gt;
+
+
+&lt;p&gt;The manufacturer&amp;rsquo;s PCB was gorgeous: they included capacitors and diodes in the power circuits to ensure clean, unidirectional current flow; all of the soldered joints were covered in conformal coating; and the wire harnessess were all professional-grade.  Somebody clearly put a lot of thought into the layout, and I really didn&amp;rsquo;t want to mess with it.  Instead, I was hoping I might be able to overwrite the manufacturer&amp;rsquo;s firmware, and leave the PCB completely intact.  Turns out, that wasn&amp;rsquo;t going to be possible, but more on that &lt;a href=&#34;https://www.blakecole.com/post/3-led-timer/#modify-hardware&#34;&gt;later&lt;/a&gt;.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;first_look_pcb.jpeg&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Initial inspection of the manufacturer&amp;rsquo;s printed circuit board (PCB), with annonymous finger pointing at the microcontroller.&#34;&gt;
+
+&lt;img src=&#34;first_look_pcb.jpeg&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Initial inspection of the manufacturer&amp;#39;s printed circuit board (PCB), with annonymous finger pointing at the microcontroller.&#34; width=&#34;500&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    Initial inspection of the manufacturer&amp;rsquo;s printed circuit board (PCB), with annonymous finger pointing at the microcontroller.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;Before anything else, I wanted to make sure that the display box was still capable of delivering power to the LEDs.&lt;/p&gt;
+&lt;h3 id=&#34;power-supply&#34;&gt;Power Supply&lt;/h3&gt;
+&lt;p&gt;When inspecting a new piece of hardware, I generally like to start with the power system &amp;ndash; it is the least ambiguous and easiest to identify.  The external power cable is typically connected to a &lt;em&gt;power supply&lt;/em&gt;, which contains a &lt;a href=&#34;https://en.wikipedia.org/wiki/Rectifier&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rectifier&lt;/a&gt; that converts alternating current (AC) to direct current (DC).  Once I found the power supply, I identified positive voltage and ground wires, and traced them to the PCB.  The output voltage is almost always specified on the power supply, but it is nevertheless good practice to verify it with a multimeter.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;power_supply.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;A 27V power supply.&#34;&gt;
+
+&lt;img src=&#34;power_supply.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;A 27V power supply.&#34; width=&#34;400&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    A 27V power supply.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;I plugged in the display box, and immediately heard the power supply fan roar to life.  A default pattern of LEDs illuminated.  So far so good.  The power supply was outputting 27 VDC, which I found somewhat curious &amp;ndash; most devices run on 5V, 12V, or 24V.  Turns out, there was a very good reason for this.  I noticed that each LED channel was composed of 13 individual LEDs, connected in series.  All LEDs are designed to operate within a nominal voltage range, and a quick search on &lt;a href=&#34;https://www.digikey.com/en/products/detail/cree-led/C5SMF-RJF-CT0W0BB2/4794052&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DigiKey&lt;/a&gt; indicated that these LEDs preferred to run at 2.1V.&lt;/p&gt;
+&lt;p&gt;What is 27 Volts, divided by 13 LEDs?  &lt;strong&gt;2.08 Volts per LED&lt;/strong&gt;.  Not a coincidence.&lt;/p&gt;
+&lt;p&gt;I also noticed a secondary pair of power wires which were routed from the main power supply to the PCB via a 5V &lt;a href=&#34;https://en.wikipedia.org/wiki/Battery_eliminator_circuit&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;battery eliminator circuit&lt;/a&gt;, or BEC.  A BEC is a small onboard voltage regulator that draws power from a device’s main power source, and steps it down to a stable, lower voltage to safely run sensitive electronics like microcontrollers.  I made a mental note of the 5V input on the PCB &amp;ndash; eventually, I would probably need to find a place to tap into this voltage source to power my own microcontroller.&lt;/p&gt;
+&lt;h3 id=&#34;microcontrollers&#34;&gt;Microcontrollers&lt;/h3&gt;
+&lt;p&gt;Have you ever wondered how modern consumer applicances work?&lt;/p&gt;
+&lt;p&gt;What actually happens when you push the buttons on your microwave oven, or turn the dial on your washing machine?  How do these actions actually control the device?   If you aren&amp;rsquo;t an electrical engineer, you might assume that whatever is going on behind the scenes is far beyond your understanding.  Well, I can assure you, it isn&amp;rsquo;t!&lt;/p&gt;
+&lt;p&gt;Hiding behind almost every electronic device is a single key component: a &lt;em&gt;&lt;strong&gt;microcontroller&lt;/strong&gt;&lt;/em&gt;.  A microcontroller is essentially a simple computer that continuously measures electrical signals (inputs) to sense its environment, makes decisions based on those inputs, and generates electrical signals (outputs) to control actuators or communicate with other devices.  If an electronic device is a football team, the microcontroller is the quarterback: it coordinates all the peripherals (i.e., sensors, actuators, displays) using predefined communication protocols.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;arduino.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;An ATmega328P microcontroller (outlined in red) on an Arduino UNO printed circuit board.&#34;&gt;
+
+&lt;img src=&#34;arduino.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;An [ATmega328P](https://www.digikey.com.au/en/products/detail/microchip-technology/ATMEGA328P-PU/1914589) microcontroller (outlined in red) on an [Arduino UNO](https://store-usa.arduino.cc/products/arduino-uno-rev3?queryID=f87920403a6ad2e9dba7b0fe935fd940) printed circuit board.&#34; width=&#34;400&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    An &lt;a href=&#34;https://www.digikey.com.au/en/products/detail/microchip-technology/ATMEGA328P-PU/1914589&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ATmega328P&lt;/a&gt; microcontroller (outlined in red) on an &lt;a href=&#34;https://store-usa.arduino.cc/products/arduino-uno-rev3?queryID=f87920403a6ad2e9dba7b0fe935fd940&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Arduino UNO&lt;/a&gt; printed circuit board.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;It really is as simple as that!  Once you start looking, you&amp;rsquo;ll see these everwhere &amp;ndash; in your kitchen, in your car, and even on your body.  Indeed, smartwatches contain &lt;em&gt;very&lt;/em&gt; small microcontrollers that read data from embedded sensors and specify which pixels to illuminate on the watch face.  Basically any time you see a device with buttons, switches, or LED indicators, you can be reasonably sure that there is a microcontroller nearby.&lt;/p&gt;
+&lt;p&gt;This fact has an exciting corollary: &lt;em&gt;&lt;strong&gt;if you know how to program microcontrollers, you can control almost any electronic system&lt;/strong&gt;&lt;/em&gt;.  This is honestly insane.  Microcontrollers allow you to build everything from home security networks to automated drip-irrigation systems for your houseplants.  You can design party costumes with embedded LEDs that react to light, sound, and heat signatures.  You can build custom weather stations.  You could design a remote-controlled actuator to open and close a window, or deploy a retractable sun shade.  The possibilities are functionally infinite.&lt;/p&gt;
+&lt;p&gt;If you want to learn how to do this, there is no shortage of tutorials online (check out &lt;a href=&#34;https://www.youtube.com/@Dronebotworkshop&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DroneBot Workshop&lt;/a&gt;).  If you like working on little personal projects, I promise it is worth your time.&lt;/p&gt;
+&lt;p&gt;Without an understanding of microcontrollers, there is no chance I would have been able to build a controller for this LED display.  Again, this would be like trying to run a play in football without a quarterback &amp;ndash; the center would hike the ball into the clear blue sky, and the play would be over.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;first_look_mcu.jpeg&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Computer, enhance!  A close-up image of the OEM microcontroller.  The alphanumeric code on this chip helped me identify the microcontroller, and find its corresponding data sheet.  The chip pinout diagram allowed me to zero in on a subset of ports that could be used for LED control.&#34;&gt;
+
+&lt;img src=&#34;first_look_mcu.jpeg&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Computer, enhance!  A close-up image of the OEM microcontroller.  The alphanumeric code on this chip helped me identify the microcontroller, and find its corresponding [data sheet](https://www.digikey.ch/htmldatasheets/production/33029/0/0/1/mc68h-s-c705c8a.html).  The chip pinout diagram allowed me to zero in on a subset of ports that could be used for LED control.&#34; width=&#34;500&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    Computer, enhance!  A close-up image of the OEM microcontroller.  The alphanumeric code on this chip helped me identify the microcontroller, and find its corresponding &lt;a href=&#34;https://www.digikey.ch/htmldatasheets/production/33029/0/0/1/mc68h-s-c705c8a.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;data sheet&lt;/a&gt;.  The chip pinout diagram allowed me to zero in on a subset of ports that could be used for LED control.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;I knew I needed to identify the GPIO pins that were being used to control the LEDs.  Once I figured this out, I could either:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Leave the OEM microcontroller in place, overwrite the firmware, and send commands to these pins.&lt;/li&gt;
+&lt;li&gt;Yank out the OEM microcontroller, replace it with one of my own, and inject my own signals (the specific nature of these signals was still TBD).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There were a few ways of going about this.  The easiest was probably to connect each pin to an oscilloscope and look for a digital signal, but I didn&amp;rsquo;t have an oscilloscope.  Back to the drawing board.  The alphanumeric code printed on the microcontroller indicated that it was a &lt;a href=&#34;https://www.digikey.ch/htmldatasheets/production/33029/0/0/1/mc68h-s-c705c8a.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MC68HSC705C8A&lt;/a&gt;, manufactured by NXP Semiconductors.  I pulled up the pinout diagram, and began a process of elimination.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;mcu_pinout.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Using this pinout diagram, I was able to eliminate a number of pins from consideration; moreover, it revealed the location of the microcontroller&amp;rsquo;s designated serial output ports &amp;ndash; these became my prime suspects.&#34;&gt;
+
+&lt;img src=&#34;mcu_pinout.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Using this pinout diagram, I was able to eliminate a number of pins from consideration; moreover, it revealed the location of the microcontroller&amp;#39;s designated serial output ports -- these became my prime suspects.&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    Using this pinout diagram, I was able to eliminate a number of pins from consideration; moreover, it revealed the location of the microcontroller&amp;rsquo;s designated serial output ports &amp;ndash; these became my prime suspects.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;Once I had narrowed my search to five or six pins, I used my multimeter to check if any of them exhibited any electrical activity &amp;ndash; I wouldn&amp;rsquo;t be able to resolve the shape of digital signals, but I&amp;rsquo;d at least be able to see the voltage jumping around.  After a few rounds of this, I had a fairly good sense of which GPIO pins were being used for LED control.&lt;/p&gt;
+&lt;p&gt;The precise means by which the LEDs were being controlled was still somewhat unclear to me, but I was making progress.  I knew the command signals originated from the microcontroller, and I knew which ports were being used to issue those commands.  I knew that a high-power LED display like this one couldn&amp;rsquo;t be powered directly by a microcontroller, so I expected to see an array of &lt;a href=&#34;https://en.wikipedia.org/wiki/Relay&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;relays&lt;/a&gt; or other electronic switches further downstream.  But, confusingly, I didn&amp;rsquo;t see anything on the PCB that looked like a relay &amp;ndash; much less 30 of them.  Something else was going on.&lt;/p&gt;
+&lt;h3 id=&#34;shift-registers&#34;&gt;Shift Registers&lt;/h3&gt;
+&lt;p&gt;Microcontrollers have a limited number of so-called general purpose input-output (GPIO) pins.  These GPIO pins are the physical ports where the microcontroller interfaces with sensors, actuators, and displays.  For most simple projects, the handful of GPIO ports built into the microcontroller are more than sufficient; however, some electronic devices require hundreds (e.g., automotive control), thousands, or even millions (e.g., 4K LED display) of outputs.&lt;/p&gt;
+&lt;p&gt;When the number of required outputs exceeds the number of GPIO pins on the microcontroller, a device called a &lt;a href=&#34;https://en.wikipedia.org/wiki/Shift_register&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;shift register&lt;/a&gt; can come in handy.  From a functional perspective, shift registers are incredibly simple: they have a sequence of memory slots that can hold a single binary bit (i.e., either a &lt;code&gt;0&lt;/code&gt; or a &lt;code&gt;1&lt;/code&gt;); when a new bit is introduced at the &amp;ldquo;front end&amp;rdquo;, all the other values shift over by one slot, and the oldest value gets bumped out.  Importantly, the state of each memory slot can be read simultaneously.  You can think of a shift register as a marquee billboard, wherein new tiles can only be added from the lefthand side: each time a new tile is added, all the other tiles shift to the right, and the oldest tile is knocked off the end.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;spyder_marquee.jpeg&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;A shift register can be thought of as a simple marquee billboard, wherein new tiles can only be added from the left, and each tile can only display a 0 or 1 [photo: Spyder Surf].&#34;&gt;
+
+&lt;img src=&#34;spyder_marquee.jpeg&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;A shift register can be thought of as a simple marquee billboard, wherein new tiles can only be added from the left, and each tile can only display a ```0``` or ```1``` [photo: [Spyder Surf](https://spydersurf.com/)].&#34; width=&#34;500&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    A shift register can be thought of as a simple marquee billboard, wherein new tiles can only be added from the left, and each tile can only display a &lt;code&gt;0&lt;/code&gt; or &lt;code&gt;1&lt;/code&gt; [photo: &lt;a href=&#34;https://spydersurf.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Spyder Surf&lt;/a&gt;].
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;So what&amp;rsquo;s the big deal?&lt;/p&gt;
+&lt;p&gt;A Serial-In, Parallel-Out (SIPO) shift register effectively transforms a single GPIO pin into many.  How is this possible?  A microcontroller can transmit individual bits (i.e., &lt;code&gt;0&lt;/code&gt;s and &lt;code&gt;1&lt;/code&gt;s) to a shift register hundreds of thousands of times per second; the shift register then makes the data contained in those bits available in parallel, effectively instantaneously.  A &lt;code&gt;clock&lt;/code&gt; signal (generally a square wave) determines when the shift register reads a new value, and a &lt;code&gt;latch&lt;/code&gt; signal determines when the data will be sent to the output channels.  The following animation, created by &lt;a href=&#34;https://lastminuteengineers.com/74hc595-shift-register-arduino-tutorial/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Last Minute Engineers&lt;/a&gt;, is an absolutely brilliant demonstration of how shift registers work.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;shift_register.gif&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Animation showing the inner workings of a shift register.  Every time the clock signal goes from high (1) to low (0), a new bit is read into the shift register; every time the latch signal goes from high to low, the full set of stored bits is transfered to the storage register, where they can be read simultaneously on each output channel  [source: Last Minute Engineers].&#34;&gt;
+
+&lt;img src=&#34;shift_register.gif&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Animation showing the inner workings of a shift register.  Every time the ```clock``` signal goes from high (```1```) to low (```0```), a new bit is read into the ```shift register```; every time the ```latch``` signal goes from high to low, the full set of stored bits is transfered to the ```storage register```, where they can be read simultaneously on each ```output``` channel  [source: [Last Minute Engineers](https://lastminuteengineers.com/74hc595-shift-register-arduino-tutorial/)].&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    Animation showing the inner workings of a shift register.  Every time the &lt;code&gt;clock&lt;/code&gt; signal goes from high (&lt;code&gt;1&lt;/code&gt;) to low (&lt;code&gt;0&lt;/code&gt;), a new bit is read into the &lt;code&gt;shift register&lt;/code&gt;; every time the &lt;code&gt;latch&lt;/code&gt; signal goes from high to low, the full set of stored bits is transfered to the &lt;code&gt;storage register&lt;/code&gt;, where they can be read simultaneously on each &lt;code&gt;output&lt;/code&gt; channel  [source: &lt;a href=&#34;https://lastminuteengineers.com/74hc595-shift-register-arduino-tutorial/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Last Minute Engineers&lt;/a&gt;].
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;So, if you wanted to control the &lt;code&gt;ON/OFF&lt;/code&gt; state of 8 LEDs, rather than wiring each LED to its own GPIO pin, you could connect the LEDs to an 8-bit shift register.  If you wanted to turn on the first three LEDs, you would send the following serial signal to the shift register: &lt;code&gt;1 1 1 0 0 0 0 0&lt;/code&gt;.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;sipo_shift_register.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Diagram of a 4-bit shift register [source: Wikimedia Commons].&#34;&gt;
+
+&lt;img src=&#34;sipo_shift_register.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Diagram of a 4-bit shift register [source: [Wikimedia Commons](https://en.wikipedia.org/wiki/File:4-Bit_SIPO_Shift_Register.svg)].&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    Diagram of a 4-bit shift register [source: &lt;a href=&#34;https://en.wikipedia.org/wiki/File:4-Bit_SIPO_Shift_Register.svg&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikimedia Commons&lt;/a&gt;].
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;What if you wanted to control more than 8 LEDs?  Perhaps many more?  One of the awesome things about shift registers is that they can be connected in series; in this configuration, the oldest bit in the leading register spills over and becomes the newest bit in the following register.&lt;/p&gt;
+&lt;p&gt;I started to suspect that this was precisely how each of the 30 channels on the LED display was being controlled: the microcontroller sends 32 bits of serial data to the first of four 8-bit shift registers connected in series.  Once the first shift register is full, it begins passing bits to the second, and so on, like a beautiful cascading waterfall.  This would explain the exceedingly small number of active GPIO pins on the microcontroller.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;waterfall.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Shift registers connected in series allow data to cascade from one to another [Source: DALL-E 3].&#34;&gt;
+
+&lt;img src=&#34;waterfall.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Shift registers connected in series allow data to cascade from one to another [Source: DALL-E 3].&#34; width=&#34;400&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    Shift registers connected in series allow data to cascade from one to another [Source: DALL-E 3].
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;However, this still didn&amp;rsquo;t explain the lack of relays: you can&amp;rsquo;t illuminate high-power LEDs using weak digital signals like these.&lt;/p&gt;
+&lt;p&gt;Well, it turns out the shift registers used in this particular application are somewhat special &amp;ndash; they are so-called &lt;em&gt;sinking current&lt;/em&gt; shift registers.  According to the &lt;a href=&#34;https://www.ti.com/lit/ds/symlink/tpic6a595.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TPIC6A595 data sheet&lt;/a&gt;, &amp;ldquo;Outputs are low-side, open-drain DMOS transistors with output ratings of 50V and a 350mA continuous sink-current capability.  When data in the output buffers is low, the DMOS-transistor outputs are off.  When data is high, the DMOS-transistor outputs have sink current capability.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;This effectively means that the shift registers are able to act like relays, dictating the flow of high-voltage current to each LED channel.  When the shift register output is &lt;code&gt;low&lt;/code&gt;, the corresponding LED channel is allowed to float at 27 VDC (0 V differential voltage), and will not illuminate; when the shift register output goes &lt;code&gt;high&lt;/code&gt;, the channel is grounded, and the LEDs illuminate.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;shift_reg_pinout.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;More handwritten notes.  At this point, I had mostly figured out which GPIO pins the microcontroller was using to drive the shift registers; however, just to make sure, I used my backpacking headlamp to trace the copper leads from the first shift register&amp;rsquo;s inputs (SER IN, RCK, and SRCK) back to their respective sources at the microcontroller.  Each of the digital output pins D0 through D7 are connected to a single LED channel.&#34;&gt;
+
+&lt;img src=&#34;shift_reg_pinout.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;More handwritten notes.  At this point, I had mostly figured out which GPIO pins the microcontroller was using to drive the shift registers; however, just to make sure, I used my backpacking headlamp to trace the copper leads from the first shift register&amp;#39;s inputs (```SER IN```, ```RCK```, and ```SRCK```) back to their respective sources at the microcontroller.  Each of the digital output pins ```D0``` through ```D7``` are connected to a single LED channel.&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    More handwritten notes.  At this point, I had mostly figured out which GPIO pins the microcontroller was using to drive the shift registers; however, just to make sure, I used my backpacking headlamp to trace the copper leads from the first shift register&amp;rsquo;s inputs (&lt;code&gt;SER IN&lt;/code&gt;, &lt;code&gt;RCK&lt;/code&gt;, and &lt;code&gt;SRCK&lt;/code&gt;) back to their respective sources at the microcontroller.  Each of the digital output pins &lt;code&gt;D0&lt;/code&gt; through &lt;code&gt;D7&lt;/code&gt; are connected to a single LED channel.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;Gradually, a more complete picture was coming into focus: the main power supply provides 27 VDC to illuminate the LEDs, while the BEC provides 5 VDC to power the microcontroller and shift registers.  Each of the four white connectors beneath the microcontroller are responsible for delivering power to a single LED panel; each panel has either 7 or 8 channels, and each channel has 13 discrete LEDs.  There is a copper trace connecting each of the four shift registers in series, allowing bits to cascade from one to the next.  The microcontroller sends serial commands to the shift registers, and the shift registers dictate which LED channels are illuminated.&lt;/p&gt;
+&lt;p&gt;Knowing this, I began to formulate a plan to control each LED channel independently.&lt;/p&gt;
+&lt;h2 id=&#34;modify-hardware&#34;&gt;Modify Hardware&lt;/h2&gt;
+&lt;p&gt;I soon realized that I wouldn&amp;rsquo;t be able to repurpose the existing microcontroller.  For one, there was no obvious means of communicating with it &amp;ndash; no USB port, no exposed UART serial pins.  Further, I didn&amp;rsquo;t have any experience with this specific microcontroller, so I didn&amp;rsquo;t know which application programming interfaces (APIs) I could utilize.  So, I figured, if I was going to write my own firmware anyway, I might as well remove the existing microcontroller and use one I was already familiar with.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;inject_serial.jpeg&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Having removed the OEM microcontroller, I was able to use jumper wires to inject serial signals from my microcontroller.  Eventually, I would develop a more robust wiring scheme, but this approach worked for proof of concept purposes.&#34;&gt;
+
+&lt;img src=&#34;inject_serial.jpeg&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Having removed the OEM microcontroller, I was able to use jumper wires to inject serial signals from my microcontroller.  Eventually, I would develop a more robust wiring scheme, but this approach worked for *proof of concept* purposes.&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    Having removed the OEM microcontroller, I was able to use jumper wires to inject serial signals from my microcontroller.  Eventually, I would develop a more robust wiring scheme, but this approach worked for &lt;em&gt;proof of concept&lt;/em&gt; purposes.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;Using a small flathead screwdriver, I gently removed the microcontroller from its 40-pin DIP IC socket adaptor.  Admittedly, this was a little freaky; once the microcontroller was removed, we had a football team with no quarterback.  When I plugged in the display, a completely random sequence of LED channels was illuminated.  This was disheartening, but not altogether surprising.  I pressed on.&lt;/p&gt;
+&lt;p&gt;I took a quick break from hardware hacking to figure out how to control shift registers using a microcontroller; a few Google searches and tutorials later, I felt like I was ready to give it a crack.  I used jumper wires to connect my microcontroller to the appropriate pins on the socket adaptor, and deployed my code.&lt;/p&gt;
+&lt;p&gt;Nothing happend.  This made sense.  The display box was unplugged. &lt;em&gt;Sigh&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;With my microcontroller dutifully sending serial signals to the shift registers (I hoped), I took a deep breath, grabbed the display box power cable, and plugged it in.&lt;/p&gt;
+&lt;p&gt;It worked.  It f**king worked!&lt;/p&gt;
+&lt;iframe width=&#34;650&#34; height=&#34;600&#34; src=&#34;https://www.youtube.com/embed/7D-akG85p3o&#34; title=&#34;LED Display - Independent Channel Control Verification&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;I can&amp;rsquo;t really express the excitement I felt in this moment.  When I saw intelligible numeric digits dancing across each panel, I knew I had basically  won the game &amp;ndash; I had independent control of the LED channels.  I was going to beat this thing.  Everything else &amp;ndash; writing the timer logic, enabling wireless communication, adding external interrupts &amp;ndash; all these tasks would take time and effort, but I knew I could do them.&lt;/p&gt;
+&lt;p&gt;As it turned out, I wasn&amp;rsquo;t out of the woods, not even close &amp;ndash; many painful setbacks were yet to come.  But I got used to them.  I&amp;rsquo;d throw a temper tantrum (sorry Mom and Dad), settle down, and figure out what to do next.&lt;/p&gt;
+&lt;p&gt;At some point two of the LED channels on one of the panels inexplicably went dark, making the afflicted digit unreadable.  This was infuriating &amp;ndash; I had come so far!  Nevertheless, there was no way I could deliver the display to the South Bay Boardriders Club in this condition.  This was sort of an &lt;em&gt;all-or-nothing&lt;/em&gt; game.  So, I started tinkering.&lt;/p&gt;
+&lt;p&gt;First, I used a small flathead screwdriver to gently scrape the conformal coating off the LED solder joints on the broken panel.  I then powered up the display, and used my microcontroller to send the digit &lt;code&gt;8&lt;/code&gt; to this panel (or, in serial speak, &lt;code&gt;11111111&lt;/code&gt;) to ensure that all 7 LED channels were receiving power.  The two broken channels remained dark.  Using a 3V power supply, I applied voltage across each LED in the broken channels to identify the duds; this was a little sketchy, as the max rated voltage for each LED was 2.6V.  I was effectively risking destroying good LEDs in order to find the bad ones, but I figured they could probably handle a momentary hit of excess voltage.  LEDs are pretty sturdy.  Next, I used desoldering braid to remove the solder from the anode and cathode of each broken LED, and popped them out of the board.  I ordered a few replacement LEDs from DigiKey, and waited a few days.  Sometimes it is good to take a little break!&lt;/p&gt;
+
+
+
+
+
+
+
+
+  
+
+
+&lt;div class=&#34;px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900&#34;&gt;
+  
+    
+      &lt;div class=&#34;mb-2 font-bold text-primary-600 dark:text-primary-300&#34;&gt;
+        Guiding Principle #3: Prioritize Sanity
+      &lt;/div&gt;
+    
+    &lt;div class=&#34;dark:text-neutral-300&#34;&gt;Take a break, avoid a headache!&lt;/div&gt;
+  
+&lt;/div&gt;
+
+
+&lt;p&gt;This principle was flagrantly violated many times over the course of this project, but so it goes.&lt;/p&gt;
+&lt;p&gt;Anyway, when my replacement LEDs arrived, I soldered them in place, applied conformal coating, and tested the panel &amp;ndash; good as new.  Another sigh of relief.&lt;/p&gt;
+
+
+
+
+
+
+
+
+  
+  
+
+
+&lt;div class=&#34;gallery&#34;&gt;
+
+  
+  
+  
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-led-panel&#34; href=&#34;https://www.blakecole.com/post/3-led-timer/led-panel/IMG_5712.jpeg&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/3-led-timer/led-panel/IMG_5712_hu17002878301467713175.jpeg&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+    
+    
+    
+    
+    
+  &lt;a data-fancybox=&#34;gallery-led-panel&#34; href=&#34;https://www.blakecole.com/post/3-led-timer/led-panel/IMG_5807.jpeg&#34; &gt;
+  &lt;img src=&#34;https://www.blakecole.com/post/3-led-timer/led-panel/IMG_5807_hu1487689399782247760.jpeg&#34; alt=&#34;&#34;&gt;
+  &lt;/a&gt;
+  
+
+  
+&lt;/div&gt;
+
+&lt;p&gt;Having overcome the first hurdle &amp;ndash; and the biggest hurdle &amp;ndash; I went to work on all the little flourishes.  I cleaned up the wiring, and found better, more permanent places on the PCB to inject my serial signals; I wrote code to handle the &lt;a href=&#34;https://www.blakecole.com/post/3-led-timer/#timer-logic&#34;&gt;countdown timer logic&lt;/a&gt;; I wrote code to enable non-blocking external interrupts, and designed a state machine that could be controlled using toggle buttons; I wrote code to enable wireless communication between the internal microcontroller installed inside the LED display box, and another external microcontroller that would be used to control it.&lt;/p&gt;
+&lt;p&gt;The external microcontroller &amp;ndash; the one which would be placed inside a waterproof enclosure and operated by the end-user &amp;ndash; would be battery powered, so I enabled &lt;code&gt;deep-sleep mode&lt;/code&gt; to conserve power when it was not in use.  The end-user could wake the microcontroller by pressing a button.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;esp32.jpeg&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Somewhat inconveniently, my favorite microcontroller uses 3.3V logic, but the TPIC6A595 shift register requires 5V logic.  So, I soldered a logic-level converter onto a breadboard alongside my microcontroller to clean up the wiring a bit.  The green and yellow wires carry the clock and latch signals, while the blue wire carries the serial input signal.  The microcontroller is powered by a USB-C cable, which taps into the 5V source provided by the BEC.&#34;&gt;
+
+&lt;img src=&#34;esp32.jpeg&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Somewhat inconveniently, my favorite microcontroller uses 3.3V logic, but the TPIC6A595 shift register requires 5V logic.  So, I soldered a logic-level converter onto a breadboard alongside my microcontroller to clean up the wiring a bit.  The green and yellow wires carry the ```clock``` and ```latch``` signals, while the blue wire carries the ```serial input``` signal.  The microcontroller is powered by a USB-C cable, which taps into the 5V source provided by the BEC.&#34; width=&#34;500&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    Somewhat inconveniently, my favorite microcontroller uses 3.3V logic, but the TPIC6A595 shift register requires 5V logic.  So, I soldered a logic-level converter onto a breadboard alongside my microcontroller to clean up the wiring a bit.  The green and yellow wires carry the &lt;code&gt;clock&lt;/code&gt; and &lt;code&gt;latch&lt;/code&gt; signals, while the blue wire carries the &lt;code&gt;serial input&lt;/code&gt; signal.  The microcontroller is powered by a USB-C cable, which taps into the 5V source provided by the BEC.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;The frame of the LED display box is made entirely of sheet metal; very sturdy, but also completely unamenable to radio wave transmission.  I needed a way to get my wireless commands into this stubborn &lt;a href=&#34;https://en.wikipedia.org/wiki/Faraday_cage&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Faraday Cage&lt;/a&gt;, so I added an external antenna.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;ext_antenna.jpeg&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;The display box itself is made of galvanized steel sheet metal, and thus constitutes a Faraday Cage; accordingly, I installed an external antenna to permit wireless communication.&#34;&gt;
+
+&lt;img src=&#34;ext_antenna.jpeg&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;The display box itself is made of galvanized steel sheet metal, and thus constitutes a [Faraday Cage](https://en.wikipedia.org/wiki/Faraday_cage); accordingly, I installed an external antenna to permit wireless communication.&#34; width=&#34;500&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    The display box itself is made of galvanized steel sheet metal, and thus constitutes a &lt;a href=&#34;https://en.wikipedia.org/wiki/Faraday_cage&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Faraday Cage&lt;/a&gt;; accordingly, I installed an external antenna to permit wireless communication.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+
+    &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/DhhVJPRAjXo?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
+    &lt;/div&gt;
+
+&lt;h2 id=&#34;write-software&#34;&gt;Write Software&lt;/h2&gt;
+&lt;h3 id=&#34;timer-logic&#34;&gt;Timer Logic&lt;/h3&gt;
+&lt;p&gt;Have you ever wondered how a digital clock works?&lt;/p&gt;
+&lt;p&gt;If you answered &lt;em&gt;yes&lt;/em&gt; to that, I am both impressed and a little concerned.&lt;/p&gt;
+&lt;p&gt;I certainly hadn&amp;rsquo;t given it much thought before embarking on this project; but, once I started working out the algorithm, I became increasingly absorbed.  It was really fun to break down the basic behavior of a timer &amp;ndash; something we have all used a million times &amp;ndash; and describe it programmatically: &lt;em&gt;Okay, so we decrement the one&amp;rsquo;s place of the seconds digit until we get to zero, but then what happens?  We add nine to it, and decrement the ten&amp;rsquo;s place of the seconds digit&amp;hellip;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;And so on and so forth.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m sure there&amp;rsquo;s probably a fancier way to implement this logic, but these nested if-statements got the job done:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-matlab&#34; data-lang=&#34;matlab&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;%% Set initial timer digit values&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;c&#34;&gt;% digit 1: minute (10)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;m2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;c&#34;&gt;% digit 2: minute (1)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;s1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;c&#34;&gt;% digit 3: second (10)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;s2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;c&#34;&gt;% digit 4: second (1)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;%% Timer Active (decrement once per second)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;s2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;n&#34;&gt;s2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;s1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;s1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;n&#34;&gt;s1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;m2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;n&#34;&gt;m2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                    &lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;fprintf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;%i%i:%i%i\n&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;m2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;pause&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;iframe width=&#34;650&#34; height=&#34;400&#34; src=&#34;https://www.youtube.com/embed/usOYB9nmdMs&#34; title=&#34;MATLAB Timer Logic Validation&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;The logic for &lt;code&gt;stopwatch mode&lt;/code&gt; was mostly the same, with a few sign changes.&lt;/p&gt;
+&lt;h3 id=&#34;numeric-digits&#34;&gt;Numeric Digits&lt;/h3&gt;
+&lt;p&gt;In order to display digits on each of the four panels of the LED display, I needed to figure out what sequences of bits corresponded to the numbers &lt;code&gt;0&lt;/code&gt; through &lt;code&gt;9&lt;/code&gt;.  This wasn&amp;rsquo;t particularly challenging once I realized that the LED channels were arranged in a counter-clockwise fashion around each digit.  The following table shows how to express each digit using either binary or hexidecimal serial commands.&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;digit_binary_hex.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;A useful cheat sheet that illustrates how to create numeric digits on a 7-segment display, using either binary or hex serial commands.&#34;&gt;
+
+&lt;img src=&#34;digit_binary_hex.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;A useful cheat sheet that illustrates how to create numeric digits on a 7-segment display, using either binary or hex serial commands.&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    A useful cheat sheet that illustrates how to create numeric digits on a 7-segment display, using either binary or hex serial commands.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;build-controller&#34;&gt;Build Controller&lt;/h2&gt;
+&lt;p&gt;This stage of the project was notably less exciting for me.  I knew I had already overcome the biggest challenges, and the ones that remained were all fairly pedestrian: wire cutting, soldering, and repurposing code I had already written for other projects.  At this point, I had been working on this project for a few weeks, and I was pretty eager to wrap things up.&lt;/p&gt;
+&lt;p&gt;I think most engineering projects follow an arc like this.  At first you&amp;rsquo;re really excited, eager to tackle a new and interesting problem.  Gradually, you realize how much work will be involved.  You wonder whether you can even solve the problem.  You experience a setback or two.  You spiral into disillusionment.  But, eventually, you experience a breakthrough!  You become momentarily reinvigorated, only to realize that there is still an absurd amount of work left to do.  You have already invested far too much time to quit now, so you grind out the remainder of the project.&lt;/p&gt;
+&lt;p&gt;One of my favorite engineering content creators, &lt;a href=&#34;https://www.youtube.com/@rctestflight&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rctestflight&lt;/a&gt;, illustrated a similar narrative arc which he called &lt;em&gt;The Project Curve.&lt;/em&gt;&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;project_curve.png&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;The Project Curve, featuring the Trough of Despair [source: rctestflight].&#34;&gt;
+
+&lt;img src=&#34;project_curve.png&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;The Project Curve, featuring the Trough of Despair [source: [rctestflight](https://www.youtube.com/@rctestflight)].&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    The Project Curve, featuring the Trough of Despair [source: &lt;a href=&#34;https://www.youtube.com/@rctestflight&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rctestflight&lt;/a&gt;].
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;In any case, I still had a fair bit of work to do.  This was my basic sequence of tasks:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Verify independent control of LED channels.&lt;/li&gt;
+&lt;li&gt;Implement timer logic locally on internal microcontroller.&lt;/li&gt;
+&lt;li&gt;Permanently install internal microcontroller, solder connectors.&lt;/li&gt;
+&lt;li&gt;Apply conformal coating to any soldered joints.&lt;/li&gt;
+&lt;li&gt;Implement timer logic wirelessly on external microcontroller.&lt;/li&gt;
+&lt;li&gt;Handle button presses using external interrupts (non-blocking).&lt;/li&gt;
+&lt;li&gt;Formulate state machine (i.e. &lt;em&gt;if Button_A pressed, then&amp;hellip;&lt;/em&gt;).&lt;/li&gt;
+&lt;li&gt;Test all buttons.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+
+&lt;figure style=&#34;text-align: center; margin-top: 50px; margin-bottom: 50px;&#34;&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;button_chaos.jpeg&#34; style=&#34;display:inline-block; margin:0; padding:0; line-height:0;&#34; data-caption=&#34;Before you solder your buttons into a fancy waterproof enclosure, it is good to make sure they work!  This is what the chaotic prototyping stage looks like.&#34;&gt;
+
+&lt;img src=&#34;button_chaos.jpeg&#34; style=&#34;display:block; margin:0; padding:0;&#34; alt=&#34;Before you solder your buttons into a fancy waterproof enclosure, it is good to make sure they work!  This is what the chaotic prototyping stage looks like.&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption style=&#34;text-align: left;&#34; data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  
+  &lt;p&gt;
+    Before you solder your buttons into a fancy waterproof enclosure, it is good to make sure they work!  This is what the chaotic prototyping stage looks like.
+    
+    
+    
+  &lt;/p&gt; 
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
+&lt;p&gt;The external controller itself was nothing fancy &amp;ndash; I ordered a waterproof enclosure big enough to hold a microcontroller, a LiPo battery, and the inevitable tangled mess of wires connecting the buttons to the microcontroller.  I drilled nine holes into the enclosure lid for the buttons, and one in the side wall of the base for a USB-C charging port.  I soldered 3.5mm bullet connectors to the button wires to facilitate connections, wired everything up, slapped the lid on, and bada bing bada boom we had a controller.&lt;/p&gt;
+&lt;h3 id=&#34;stress-testing&#34;&gt;Stress Testing&lt;/h3&gt;
+&lt;p&gt;When you are building a device that will eventually be used by someone else, you have to think very carefully about all the ways in which things could go wrong.  Or, you can simply go nuts and subject your device to unadulterated chaos.  I took the latter approach.&lt;/p&gt;
+&lt;p&gt;I slammed my fingers on the controller buttons in the most absurd sequences; I pressed and held multiple buttons at the same time, while simultaneously clicking others &amp;ndash; &lt;em&gt;what would happen if the user attempted to increment and decrement a digit simultaneously?&lt;/em&gt;  I needed to make sure it wasn&amp;rsquo;t possible to accidentally push the state machine into some unforseen and irrecoverable corner.  Once I was satisfied that no combination of button presses would result in catastrophe, I gave the controller a gentle pat and a knowing nod of respect.&lt;/p&gt;
+&lt;iframe width=&#34;650&#34; height=&#34;600&#34; src=&#34;https://www.youtube.com/embed/_EQp3Tdwu8k&#34; title=&#34;LED Display - Controller Demo&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;I subjected the display box to some abuse as well:&lt;/p&gt;
+&lt;iframe width=&#34;650&#34; height=&#34;500&#34; src=&#34;https://www.youtube.com/embed/QYc6ZZx7gSI&#34; title=&#34;LED Display - External Antenna Impact Testing&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;Sometimes, it is both useful and appropriate to be a bit of a menace!&lt;/p&gt;
+&lt;p&gt;Six months have passed since I delivered this LED display and wireless controller to the South Bay Boardriders, and apparently it is still working.  I am stoked to have had the opportunity to leverage my engineering skills to help out, and learn some new skills in the process.&lt;/p&gt;
+&lt;p&gt;Thanks for reading.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Open Water Swim Route Optimization Using Reversible Jump Markov Chain Monte Carlo (RJ-MCMC)</title>
       <link>https://www.blakecole.com/post/2-mcmc-mv-swim/</link>
       <pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>

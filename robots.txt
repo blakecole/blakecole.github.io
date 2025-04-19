@@ -10,6 +10,8 @@ Disallow: /event/
 
 Disallow: /post/
 
+Disallow: /post/3-led-timer/
+
 Disallow: /post/2-mcmc-mv-swim/
 
 Disallow: /projects/

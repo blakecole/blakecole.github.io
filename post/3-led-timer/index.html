@@ -1,0 +1,2661 @@
+<!doctype html>
+<!-- This site was created with Hugo Blox. https://hugoblox.com -->
+<!-- Last Published: April 19, 2025 --><html lang="en-us" dir="ltr"
+      data-wc-theme-default="dark">
+  
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="Hugo Blox Builder 0.3.2" />
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Blake Cole" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="I designed a wireless controller for a commercial-grade LED timer." />
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://www.blakecole.com/post/3-led-timer/" />
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="/css/themes/blue.min.css" />
+  
+
+  
+  
+    
+    <link href="/dist/wc.min.05570f1deda629d4e2d77f73534a63aa04471f012db6735c59424372f467db85.css" rel="stylesheet" />
+  
+
+  
+  
+  
+    <link href="/css/community-hugo-blox.min.4859612ff25db84453d3edef0eb29acbfae9f3fcb50a4286cf05609e8102c3b0.css" rel="stylesheet" />
+  
+
+  
+    
+    <link href="/css/custom.min.7915624c6fa09d3db385e95f78355e6072c5745a23acad607a7f300f3bdd9e5f.css" rel="stylesheet" />
+  
+
+  <script>
+     
+    window.hbb = {
+       defaultTheme: document.documentElement.dataset.wcThemeDefault,
+       setDarkTheme: () => {
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = "dark";
+      },
+       setLightTheme: () => {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.colorScheme = "light";
+      }
+    }
+
+    console.debug(`Default Hugo Blox Builder theme is ${window.hbb.defaultTheme}`);
+
+    if ("wc-color-theme" in localStorage) {
+      localStorage.getItem("wc-color-theme") === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+    } else {
+      window.hbb.defaultTheme === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      if (window.hbb.defaultTheme === "system") {
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      }
+    }
+  </script>
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      
+      let checkboxes = document.querySelectorAll('li input[type=\'checkbox\'][disabled]');
+      checkboxes.forEach(e => {
+        e.parentElement.parentElement.classList.add('task-list');
+      });
+
+      
+      const liNodes = document.querySelectorAll('.task-list li');
+      liNodes.forEach(nodes => {
+        let textNodes = Array.from(nodes.childNodes).filter(node => node.nodeType === 3 && node.textContent.trim().length > 1);
+        if (textNodes.length > 0) {
+          const span = document.createElement('label');
+          textNodes[0].after(span);  
+          span.appendChild(nodes.querySelector('input[type=\'checkbox\']'));
+          span.appendChild(textNodes[0]);
+        }
+      });
+    });
+  </script>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script defer src="https://api.pirsch.io/pirsch.js" id="pirschjs" data-code="Vhky1sCyjJeUstzl3OIOWpkbqkV0urfF"></script>
+
+
+
+
+
+  
+  
+
+  
+  <link rel="icon" type="image/png" href="/media/icon_hu14732858049342914994.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu14233579803890805510.png" />
+
+  <link rel="canonical" href="https://www.blakecole.com/post/3-led-timer/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+    <meta property="twitter:site" content="@blerkk" />
+    <meta property="twitter:creator" content="@blerkk" />
+  
+  <meta property="og:site_name" content="Blake Cole" />
+  <meta property="og:url" content="https://www.blakecole.com/post/3-led-timer/" />
+  <meta property="og:title" content="Reverse Engineering an LED Display | Blake Cole" />
+  <meta property="og:description" content="I designed a wireless controller for a commercial-grade LED timer." /><meta property="og:image" content="https://www.blakecole.com/post/3-led-timer/featured.jpeg" />
+    <meta property="twitter:image" content="https://www.blakecole.com/post/3-led-timer/featured.jpeg" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2025-04-16T08:18:13-04:00"
+      />
+    
+    <meta property="article:modified_time" content="2025-04-19T08:18:13-04:00">
+  
+
+  
+
+
+
+  
+
+
+  <title>Reverse Engineering an LED Display | Blake Cole</title>
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <style>
+    @font-face {
+      font-family: 'Inter var';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(/dist/font/Inter.var.woff2) format(woff2);
+    }
+  </style>
+
+  
+
+  
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/dist/pagefind/pagefind-ui.be766eb419317a14ec769d216e9779bfe8f3737c80e780f4ba0dafb57a41a482.css" integrity="sha256-vnZutBkxehTsdp0hbpd5v&#43;jzc3yA54D0ug2vtXpBpII=" />
+
+
+<script src="/dist/pagefind/pagefind-ui.87693d7c6f2b3b347ce359d0ede762c033419f0a32b22ce508c335a81d841f1b.js" integrity="sha256-h2k9fG8rOzR841nQ7ediwDNBnwoysizlCMM1qB2EHxs="></script>
+
+
+<script>window.hbb.pagefind = {"baseUrl":"/"};</script>
+
+<style>
+  html.dark {
+    --pagefind-ui-primary: #eeeeee;
+    --pagefind-ui-text: #eeeeee;
+    --pagefind-ui-background: #152028;
+    --pagefind-ui-border: #152028;
+    --pagefind-ui-tag: #152028;
+  }
+
+   
+  .search-close > svg {
+    height: calc(64px * var(--pagefind-ui-scale));
+    width: calc(64px * var(--pagefind-ui-scale));
+  }
+</style>
+
+<script>
+  
+  let searchWrapper = null;
+
+  window.addEventListener('DOMContentLoaded', (event) => {
+    
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      baseUrl: window.hbb.pagefind.baseUrl,
+      bundlePath: window.hbb.pagefind.baseUrl + "pagefind/",
+    });
+
+    
+    searchWrapper = document.getElementById('search-wrapper');
+
+    
+    let triggers = document.querySelectorAll('[data-search-toggle]');
+    triggers.forEach(trigger =>
+      trigger.addEventListener('click', handleSearchToggle)
+    );
+  });
+
+  function handleSearchToggle(event) {
+    if (!searchWrapper) return;
+
+    const isHidden = searchWrapper.classList.contains('hidden');
+    searchWrapper.classList.toggle('hidden');
+    document.body.style.overflow = isHidden ? 'hidden' : '';
+
+    const searchInput = searchWrapper.querySelector("input");
+    if (searchInput) {
+      searchInput.value = "";
+      searchInput.focus();
+    }
+
+    if (!searchWrapper.classList.contains('hidden')) {
+      let clearTrigger = document.querySelector('.pagefind-ui__search-clear');
+
+      if (clearTrigger && !clearTrigger.hasAttribute('listenerOnClick')) {
+        clearTrigger.setAttribute('listenerOnClick', 'true');
+
+        clearTrigger.addEventListener('click', () => {
+          searchInput.focus();
+        });
+      }
+    }
+  }
+
+  
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && searchWrapper && !searchWrapper.classList.contains('hidden')) {
+      searchWrapper.classList.add('hidden');
+    }
+  });
+</script>
+
+
+
+
+
+
+
+<style>
+  .markmap > svg {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+<script>
+  window.markmap = {
+    autoLoader: {
+      manual: false,
+      onReady() {
+        const { autoLoader, builtInPlugins } = window.markmap;
+        
+        autoLoader.transformPlugins = builtInPlugins.filter(plugin => plugin.name !== 'prism');
+      },
+    },
+  };
+</script>
+
+
+<script defer src="/dist/lib/markmap/index.min.c9d7aae44c6040009be2304689eae39673e6614f1a92d8f4a69f581bed004b9b.js" integrity="sha256-ydeq5ExgQACb4jBGierjlnPmYU8aktj0pp9YG&#43;0AS5s="></script>
+
+
+
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="/dist/lib/katex/katex.min.505d5f829022bb7b4f24dfee0aa1141cd7bba67afe411d1240335f820960b5c3.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr&#43;QR0SQDNfgglgtcM=" />
+  
+  
+  <script defer src="/dist/lib/katex/katex.min.dc84b296ec3e884de093158f760fd9d45b6c7abe58b5381557f4e138f46a58ae.js" integrity="sha256-3ISyluw&#43;iE3gkxWPdg/Z1Ftser5YtTgVV/ThOPRqWK4="></script>
+  
+  
+  
+  
+  <script defer src="/js/katex-renderer.6579ec9683211cfb952064aedf3a3baea5eeb17a061775b32b70917474637c80.js" integrity="sha256-ZXnsloMhHPuVIGSu3zo7rqXusXoGF3WzK3CRdHRjfIA="></script>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  <script
+    defer
+    src="/js/hugo-blox-en.min.47736f84e20cae1bb2224dc4605239689e913811575e32b5f86a700ee9d6529d.js"
+    integrity="sha256-R3NvhOIMrhuyIk3EYFI5aJ6ROBFXXjK1&#43;GpwDunWUp0="
+  ></script>
+
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+      
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+      
+    
+  
+
+
+
+
+</head>
+
+  <body class="dark:bg-hb-dark dark:text-white page-wrapper" id="top">
+    <div id="page-bg"></div>
+    <div class="page-header sticky top-0 z-30">
+      
+      
+      
+        
+        
+        
+          <header id="site-header" class="header">
+  <nav class="navbar px-3 flex justify-left">
+    <div class="order-0 h-100">
+      
+      <a class="navbar-brand" href="/" title="Blake Cole">
+        Blake Cole
+      </a>
+    </div>
+    
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-3 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1">
+      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+        <title>Open Menu</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+        <title>Close Menu</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    
+
+    
+    
+    <ul
+      id="nav-menu"
+      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8 justify-left
+      ">
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/"
+        >About</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#experience"
+        >Experience</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#publications"
+        >Publications</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#post"
+        >Blog</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/#contact"
+        >Contact</a
+        >
+      </li>
+      
+      
+      
+    </ul>
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+
+      
+      
+      
+      <button
+        aria-label="toggle search"
+        class="text-black hover:text-primary  inline-block px-3 text-xl dark:text-white"
+        data-search-toggle>
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512" fill="currentColor"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+      </button>
+      
+
+      
+      
+      <div class="px-3 text-black hover:text-primary-700 dark:text-white dark:hover:text-primary-300
+            [&.active]:font-bold [&.active]:text-black/90 dark:[&.active]:text-white">
+        <button class="theme-toggle mt-1" accesskey="t" title="appearance">
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class="dark:hidden">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class=" dark:block [&:not(dark)]:hidden">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+      
+
+      
+      
+
+      
+      
+    </div>
+  </nav>
+</header>
+
+<div
+  id="search-wrapper"
+  class="hidden fixed inset-0 z-50 bg-white dark:bg-gray-900 flex flex-col overflow-hidden"
+>
+  <div class="flex justify-end p-3">
+    <button
+      aria-label="search"
+      class="search-close text-black hover:text-primary dark:text-white"
+      data-search-toggle
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="search" class="flex-1 overflow-y-auto p-3">
+    
+  </div>
+</div>
+
+
+        
+      
+    </div>
+    <div class="page-body  my-10">
+      
+
+
+
+
+
+<div class="mx-auto flex max-w-screen-xl">
+  
+
+
+
+<aside class="hb-sidebar-container max-lg:[transform:translate3d(0,-100%,0)] lg:hidden xl:block">
+  
+  <div class="px-4 pt-4 lg:hidden">
+    
+    
+  </div>
+  <div class="hb-scrollbar lg:h-[calc(100vh-var(--navbar-height))]">
+    <ul class="flex flex-col gap-1 lg:hidden">
+      
+      
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/"
+    
+  >Recent &amp; Upcoming Talks
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/example/"
+    
+  >Example Talk
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class="open"><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/"
+    
+  >Blog
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col open"><a
+    class="hb-sidebar-custom-link
+      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
+    href="/post/3-led-timer/"
+    
+  >Reverse Engineering an LED Display
+    </a>
+  
+    <ul class="hb-sidebar-mobile-toc"><li>
+              <a
+                href="#backstory"
+                class="hb-docs-link"
+              >Backstory</a>
+            </li>
+          <li>
+              <a
+                href="#topics-not-covered"
+                class="hb-docs-link"
+              >Topics Not Covered</a>
+            </li>
+          <li>
+              <a
+                href="#methodology"
+                class="hb-docs-link"
+              >Methodology</a>
+            </li>
+          <li>
+              <a
+                href="#inspect-hardware"
+                class="hb-docs-link"
+              >Inspect Hardware</a>
+            </li>
+          <li>
+              <a
+                href="#modify-hardware"
+                class="hb-docs-link"
+              >Modify Hardware</a>
+            </li>
+          <li>
+              <a
+                href="#write-software"
+                class="hb-docs-link"
+              >Write Software</a>
+            </li>
+          <li>
+              <a
+                href="#build-controller"
+                class="hb-docs-link"
+              >Build Controller</a>
+            </li>
+          </ul>
+  
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/2-mcmc-mv-swim/"
+    
+  >Open Water Swim Route Optimization Using Reversible Jump Markov Chain Monte Carlo (RJ-MCMC)
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/1-adcirc-mv-swim/"
+    
+  >Leveraging the ADCIRC Model to Plan an Open-Water Swim from Woods Hole to Martha&#39;s Vineyard
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/0-hello-world/"
+    
+  >Hello World &#43; Bio
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/projects/"
+    
+  >Blog
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/"
+    
+  >Projects
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/pandas/"
+    
+  >Pandas
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/pytorch/"
+    
+  >PyTorch
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/scikit/"
+    
+  >scikit-learn
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/experience/"
+    
+  >Experience
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/"
+    
+  >Teaching
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/js/"
+    
+  >Learn JavaScript
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/python/"
+    
+  >Learn Python
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/"
+    
+  >Publications
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/jrnl-aor-2022/"
+    
+  >Unscented Kalman filter for long-distance vessel tracking in geodetic coordinates
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/conf-ieee-oceans-2021/"
+    
+  >Surface vessel collision avoidance in MOOS-IvP using a geodetic unscented Kalman filter
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/jrnl-jgr-earth-surface-2017/"
+    
+  >A model integrating longshore and cross-shore processes for predicting long-term shoreline response to climate change
+    </a>
+              
+            </li></ul>
+      </div></li>
+    </ul>
+
+    <div class="max-xl:hidden h-0 w-64 shrink-0"></div></div>
+
+</aside>
+  
+
+<nav class="hb-toc order-last hidden w-64 shrink-0 xl:block print:hidden px-4" aria-label="table of contents">
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div class="hb-scrollbar text-sm [hyphens:auto] sticky top-16 overflow-y-auto pr-4 pt-6 max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] -mr-4 rtl:-ml-4"><p class="mb-4 font-semibold tracking-tight">On this page</p><ul>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#backstory">Backstory</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#topics-not-covered">Topics Not Covered</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#methodology">Methodology</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#inspect-hardware">Inspect Hardware</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#power-supply">Power Supply</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#microcontrollers">Microcontrollers</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#shift-registers">Shift Registers</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#modify-hardware">Modify Hardware</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#write-software">Write Software</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#timer-logic">Timer Logic</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#numeric-digits">Numeric Digits</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#build-controller">Build Controller</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#stress-testing">Stress Testing</a>
+      </li></ul>
+
+  
+  
+    
+    
+  
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  </nav>
+
+
+  <article class="w-full break-words flex min-h-[calc(100vh-var(--navbar-height))] min-w-0 justify-center pb-8 pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+    <main class="w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
+
+      
+
+      <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Reverse Engineering an LED Display</h1>
+
+      <div class="mt-4 mb-16">
+      <div class="text-gray-500 dark:text-gray-300 text-sm flex items-center flex-wrap gap-y-2"><span class="mr-1">Apr 16, 2025</span><span class="mx-1">·</span>
+        
+          
+          
+          <div class="group inline-flex items-center text-current gap-x-1.5 mx-1">
+            
+            
+            <img src="/author/blake-cole/avatar_hu2599833077708766737.webp" alt="Blake Cole" class="inline-block h-4 w-4 rounded-full border border-current" loading="lazy" />
+            
+            <div >Blake Cole</div>
+          </div>
+          
+        
+
+        
+        <span class="mx-1">·</span>
+        <span class="mx-1">
+          24 min read
+        </span>
+        
+        </div>
+
+        <div class="mt-3">
+          
+
+
+
+
+
+        </div>
+      </div>
+
+
+
+      
+      
+      
+      
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="article-header article-container featured-image-wrapper mt-4 mb-16" style="max-width: 720px; max-height: 540px;">
+        <div style="position: relative">
+          <img src="/post/3-led-timer/featured_hu8804834077901801051.webp" width="720" height="540" alt="" class="featured-image">
+          <span class="article-header-caption">Feeling sassy.</span>
+        </div>
+      </div>
+      
+
+      
+      
+
+      <div class="prose prose-slate lg:prose-md dark:prose-invert">
+        <h2 id="backstory">Backstory</h2>
+<p>Last September, my brother came to me with a conundrum: the controller for a high-power LED timer he had been using to run our local community surfing competitions had been stolen.  To make matters worse, the original manufacturer wanted more than $1,000 to replace it &ndash; a sum which far exceeded the modest budget of the nonprofit organization for which he volunteers, the <a href="https://southbayboardriders.org/" target="_blank" rel="noopener">South Bay Boardriders Club (SBBC)</a>.  With competitions scheduled to resume in just a few months, they were at a loss for what to do.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="sbbc.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="LED timer in action.">
+
+<img src="sbbc.png" style="display:block; margin:0; padding:0;" alt="LED timer in action." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    LED timer in action.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>I told them I couldn&rsquo;t make any promises, but I&rsquo;d have a look.  I proceeded to take apart the LED display box and inspect the copper leads on the manufacturer&rsquo;s printed circuit board (PCB) using my backpacking headlamp.  I identified the power source, microcontroller, and an array of shift registers.  I realized that if I could carefully remove the manufacturer&rsquo;s microcontroller, and replace it with one of my own, I could inject serial data into the shift registers to control each of the 30 LED channels.</p>
+<p>I didn&rsquo;t want to replicate the prior controller architecture, I wanted to make it better.  So, I made it wireless and waterproof.  I also added custom toggle buttons to improve the end-user&rsquo;s experience.  I soldered the requisite wires into through holes on the manufacturer&rsquo;s PCB, covered the joints with conformal coating, and ran a sequence of tests to identify any bugs in my software.  The controller worked flawlessly, and my total bill of materials was an order of magnitude less than the manufacturer&rsquo;s quote &ndash; about $135.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="finished_product.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="The finished product.">
+
+<img src="finished_product.png" style="display:block; margin:0; padding:0;" alt="&lt;center&gt;The finished product.&lt;/center&gt;" width="450" >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    <center>The finished product.</center>
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<h2 id="topics-not-covered">Topics Not Covered</h2>
+<p>This project involved a few microcontroller flourishes that I chose not to cover:</p>
+<ul>
+<li>Wireless communication using the <a href="https://www.espressif.com/en/solutions/low-power-solutions/esp-now" target="_blank" rel="noopener">ESP-NOW</a> protocol</li>
+<li>Reducing power consumption using <a href="https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/sleep_modes.html" target="_blank" rel="noopener">deep-sleep</a> mode</li>
+<li>External hardware interrupts</li>
+<li>Shift register control</li>
+</ul>
+<p>I decided not to cover these topics in detail because fantastic resources already exist online.  Instead, I decided to focus mostly on the narrative journey, and provide some insight into my thought process as I worked through the problem.</p>
+<p>If you&rsquo;re interested in learning more about microcontrollers and hobby electronics, I&rsquo;d highly recommend checking out the <a href="https://www.youtube.com/@Dronebotworkshop" target="_blank" rel="noopener">DroneBot Workshop</a> channel on YouTube.  Bill is a fantastic educator, and one of my favorite engineering content creators.</p>
+<p>If you are curious about my specific implementation, feel free to <a href="../../#contact">reach out</a>.</p>
+<h2 id="methodology">Methodology</h2>
+<p>One of the most important lessons I learned in graduate school was the value of breaking large, complex problems into a sequence of simpler ones with measurable outcomes.  This framework permits incremental progress, and reduces the likelihood that you&rsquo;ll waste a bunch of time on a problem you can&rsquo;t actually solve.  This was my first guiding principle:</p>
+
+
+
+
+
+
+
+
+  
+
+
+<div class="px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900">
+  
+    
+      <div class="mb-2 font-bold text-primary-600 dark:text-primary-300">
+        Guiding Principle #1: Incremental Progress
+      </div>
+    
+    <div class="dark:text-neutral-300">Break problems into a series of sequential hurdles with measurable outcomes.</div>
+  
+</div>
+
+
+<p>When I first got my hands on the LED timer, I had no idea whether I&rsquo;d actually be able to fix it.  There were so many uncertainties:</p>
+<ul>
+<li>What is the power and control architecture inside the box?</li>
+<li>Will I be able to make sense of the manufacturer&rsquo;s PCB?</li>
+<li>Could I modify the manufacturer&rsquo;s PCB without destroying it?</li>
+<li>Is the power system functional?</li>
+<li>Could I write a software program that mimics countdown timer logic?</li>
+<li>How might I allow the end-user to control the timer in an intuitive manner?</li>
+</ul>
+<p>I took a deep breath, and started breaking down the problem, working backwards from my desired endpoint.</p>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  
+  function initMermaidDiagrams(theme) {
+    mermaid.initialize({ theme: theme, startOnLoad: false, logLevel: 'fatal' });
+    mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+  }
+
+  
+  
+  let currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'default';
+  initMermaidDiagrams(currentTheme);
+
+  
+  const observer = new MutationObserver(function(mutationsList) {
+    for (let mutation of mutationsList) {
+      if (mutation.attributeName === 'class') {
+        let newTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'default';
+        
+        if (newTheme !== currentTheme) {
+          currentTheme = newTheme;
+          initMermaidDiagrams(newTheme);
+        }
+      }
+    }
+  });
+
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+});
+</script>
+
+<div class="mermaid">
+  
+flowchart BT
+    A[LED Power] --> B[LED Control]
+    B --> C[Timer Logic]
+    C --> D[Interactivity]
+    D --> E[Wired Control]
+    E --> F[Wireless Control]
+
+
+</div>
+
+
+<p>I knew I wanted to build a wireless controller with an array of buttons that would allow an end-user to set, start, stop, and reset the LED timer; but, before fussing over wireless capabilities, I needed to make sure I could build a wired controller; in order to build a wired controller, I&rsquo;d need to make sure that I could reliably determine the state (i.e., on/off) of an array of buttons; before that, I needed to make sure I could write a simple, non-interactive countdown timer program; before that, I needed figure out a way to illuminate each of the 30 LED channels independently; before that, I needed to figure out how the LEDs were being controlled; and before that, I needed to figure out how the LEDs were being powered.</p>
+<p>Soon, a mental map of the problem began to take shape:</p>
+<div class="markmap" style="height: 500px;">
+
+<pre>- Fix Display
+  - Inspect Hardware
+    - Power Supply
+    - Shift Registers
+    - Microcontroller
+    - PCB Traces
+  - Modify Hardware
+    - ?
+  - Write Software
+    - Timer Logic
+    - Button Logic
+    - Sleep Mode
+    - Wireless
+  - Build Controller
+    - Enclosure
+    - Microcontroller
+    - Battery
+    - Buttons
+    - Charging Port</pre>
+</div>
+
+<h2 id="inspect-hardware">Inspect Hardware</h2>
+<p>I knew needed to make sense of the electronic architecture of the display box &ndash; if I couldn&rsquo;t figure out how the display was <em>supposed</em> to work, well then I obviously wouldn&rsquo;t be able to modify it without wrecking it.  So, I opened the four access panels on the box, and started poking around.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="blank_timer.jpeg" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="My first look inside the display box; after nearly going blind, I draped a towel over the front of the box to attenuate the LED intensity.">
+
+<img src="blank_timer.jpeg" style="display:block; margin:0; padding:0;" alt="My first look inside the display box; after nearly going blind, I draped a towel over the front of the box to attenuate the LED intensity." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    My first look inside the display box; after nearly going blind, I draped a towel over the front of the box to attenuate the LED intensity.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>My high-level goal at this point was to figure out where I might be able to break into the usual chain of command in a minimally-invasive manner.  This was another one of my guiding principles:</p>
+
+
+
+
+
+
+
+
+  
+
+
+<div class="px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900">
+  
+    
+      <div class="mb-2 font-bold text-primary-600 dark:text-primary-300">
+        Guiding Principle #2: Do No (Unnecessary) Harm
+      </div>
+    
+    <div class="dark:text-neutral-300">If you can&rsquo;t avoid making hardware modifications, be judicious.</div>
+  
+</div>
+
+
+<p>The manufacturer&rsquo;s PCB was gorgeous: they included capacitors and diodes in the power circuits to ensure clean, unidirectional current flow; all of the soldered joints were covered in conformal coating; and the wire harnessess were all professional-grade.  Somebody clearly put a lot of thought into the layout, and I really didn&rsquo;t want to mess with it.  Instead, I was hoping I might be able to overwrite the manufacturer&rsquo;s firmware, and leave the PCB completely intact.  Turns out, that wasn&rsquo;t going to be possible, but more on that <a href="https://www.blakecole.com/post/3-led-timer/#modify-hardware">later</a>.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="first_look_pcb.jpeg" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Initial inspection of the manufacturer&rsquo;s printed circuit board (PCB), with annonymous finger pointing at the microcontroller.">
+
+<img src="first_look_pcb.jpeg" style="display:block; margin:0; padding:0;" alt="Initial inspection of the manufacturer&#39;s printed circuit board (PCB), with annonymous finger pointing at the microcontroller." width="500" >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    Initial inspection of the manufacturer&rsquo;s printed circuit board (PCB), with annonymous finger pointing at the microcontroller.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>Before anything else, I wanted to make sure that the display box was still capable of delivering power to the LEDs.</p>
+<h3 id="power-supply">Power Supply</h3>
+<p>When inspecting a new piece of hardware, I generally like to start with the power system &ndash; it is the least ambiguous and easiest to identify.  The external power cable is typically connected to a <em>power supply</em>, which contains a <a href="https://en.wikipedia.org/wiki/Rectifier" target="_blank" rel="noopener">rectifier</a> that converts alternating current (AC) to direct current (DC).  Once I found the power supply, I identified positive voltage and ground wires, and traced them to the PCB.  The output voltage is almost always specified on the power supply, but it is nevertheless good practice to verify it with a multimeter.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="power_supply.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="A 27V power supply.">
+
+<img src="power_supply.png" style="display:block; margin:0; padding:0;" alt="A 27V power supply." width="400" >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    A 27V power supply.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>I plugged in the display box, and immediately heard the power supply fan roar to life.  A default pattern of LEDs illuminated.  So far so good.  The power supply was outputting 27 VDC, which I found somewhat curious &ndash; most devices run on 5V, 12V, or 24V.  Turns out, there was a very good reason for this.  I noticed that each LED channel was composed of 13 individual LEDs, connected in series.  All LEDs are designed to operate within a nominal voltage range, and a quick search on <a href="https://www.digikey.com/en/products/detail/cree-led/C5SMF-RJF-CT0W0BB2/4794052" target="_blank" rel="noopener">DigiKey</a> indicated that these LEDs preferred to run at 2.1V.</p>
+<p>What is 27 Volts, divided by 13 LEDs?  <strong>2.08 Volts per LED</strong>.  Not a coincidence.</p>
+<p>I also noticed a secondary pair of power wires which were routed from the main power supply to the PCB via a 5V <a href="https://en.wikipedia.org/wiki/Battery_eliminator_circuit" target="_blank" rel="noopener">battery eliminator circuit</a>, or BEC.  A BEC is a small onboard voltage regulator that draws power from a device’s main power source, and steps it down to a stable, lower voltage to safely run sensitive electronics like microcontrollers.  I made a mental note of the 5V input on the PCB &ndash; eventually, I would probably need to find a place to tap into this voltage source to power my own microcontroller.</p>
+<h3 id="microcontrollers">Microcontrollers</h3>
+<p>Have you ever wondered how modern consumer applicances work?</p>
+<p>What actually happens when you push the buttons on your microwave oven, or turn the dial on your washing machine?  How do these actions actually control the device?   If you aren&rsquo;t an electrical engineer, you might assume that whatever is going on behind the scenes is far beyond your understanding.  Well, I can assure you, it isn&rsquo;t!</p>
+<p>Hiding behind almost every electronic device is a single key component: a <em><strong>microcontroller</strong></em>.  A microcontroller is essentially a simple computer that continuously measures electrical signals (inputs) to sense its environment, makes decisions based on those inputs, and generates electrical signals (outputs) to control actuators or communicate with other devices.  If an electronic device is a football team, the microcontroller is the quarterback: it coordinates all the peripherals (i.e., sensors, actuators, displays) using predefined communication protocols.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="arduino.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="An ATmega328P microcontroller (outlined in red) on an Arduino UNO printed circuit board.">
+
+<img src="arduino.png" style="display:block; margin:0; padding:0;" alt="An [ATmega328P](https://www.digikey.com.au/en/products/detail/microchip-technology/ATMEGA328P-PU/1914589) microcontroller (outlined in red) on an [Arduino UNO](https://store-usa.arduino.cc/products/arduino-uno-rev3?queryID=f87920403a6ad2e9dba7b0fe935fd940) printed circuit board." width="400" >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    An <a href="https://www.digikey.com.au/en/products/detail/microchip-technology/ATMEGA328P-PU/1914589" target="_blank" rel="noopener">ATmega328P</a> microcontroller (outlined in red) on an <a href="https://store-usa.arduino.cc/products/arduino-uno-rev3?queryID=f87920403a6ad2e9dba7b0fe935fd940" target="_blank" rel="noopener">Arduino UNO</a> printed circuit board.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>It really is as simple as that!  Once you start looking, you&rsquo;ll see these everwhere &ndash; in your kitchen, in your car, and even on your body.  Indeed, smartwatches contain <em>very</em> small microcontrollers that read data from embedded sensors and specify which pixels to illuminate on the watch face.  Basically any time you see a device with buttons, switches, or LED indicators, you can be reasonably sure that there is a microcontroller nearby.</p>
+<p>This fact has an exciting corollary: <em><strong>if you know how to program microcontrollers, you can control almost any electronic system</strong></em>.  This is honestly insane.  Microcontrollers allow you to build everything from home security networks to automated drip-irrigation systems for your houseplants.  You can design party costumes with embedded LEDs that react to light, sound, and heat signatures.  You can build custom weather stations.  You could design a remote-controlled actuator to open and close a window, or deploy a retractable sun shade.  The possibilities are functionally infinite.</p>
+<p>If you want to learn how to do this, there is no shortage of tutorials online (check out <a href="https://www.youtube.com/@Dronebotworkshop" target="_blank" rel="noopener">DroneBot Workshop</a>).  If you like working on little personal projects, I promise it is worth your time.</p>
+<p>Without an understanding of microcontrollers, there is no chance I would have been able to build a controller for this LED display.  Again, this would be like trying to run a play in football without a quarterback &ndash; the center would hike the ball into the clear blue sky, and the play would be over.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="first_look_mcu.jpeg" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Computer, enhance!  A close-up image of the OEM microcontroller.  The alphanumeric code on this chip helped me identify the microcontroller, and find its corresponding data sheet.  The chip pinout diagram allowed me to zero in on a subset of ports that could be used for LED control.">
+
+<img src="first_look_mcu.jpeg" style="display:block; margin:0; padding:0;" alt="Computer, enhance!  A close-up image of the OEM microcontroller.  The alphanumeric code on this chip helped me identify the microcontroller, and find its corresponding [data sheet](https://www.digikey.ch/htmldatasheets/production/33029/0/0/1/mc68h-s-c705c8a.html).  The chip pinout diagram allowed me to zero in on a subset of ports that could be used for LED control." width="500" >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    Computer, enhance!  A close-up image of the OEM microcontroller.  The alphanumeric code on this chip helped me identify the microcontroller, and find its corresponding <a href="https://www.digikey.ch/htmldatasheets/production/33029/0/0/1/mc68h-s-c705c8a.html" target="_blank" rel="noopener">data sheet</a>.  The chip pinout diagram allowed me to zero in on a subset of ports that could be used for LED control.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>I knew I needed to identify the GPIO pins that were being used to control the LEDs.  Once I figured this out, I could either:</p>
+<ul>
+<li>Leave the OEM microcontroller in place, overwrite the firmware, and send commands to these pins.</li>
+<li>Yank out the OEM microcontroller, replace it with one of my own, and inject my own signals (the specific nature of these signals was still TBD).</li>
+</ul>
+<p>There were a few ways of going about this.  The easiest was probably to connect each pin to an oscilloscope and look for a digital signal, but I didn&rsquo;t have an oscilloscope.  Back to the drawing board.  The alphanumeric code printed on the microcontroller indicated that it was a <a href="https://www.digikey.ch/htmldatasheets/production/33029/0/0/1/mc68h-s-c705c8a.html" target="_blank" rel="noopener">MC68HSC705C8A</a>, manufactured by NXP Semiconductors.  I pulled up the pinout diagram, and began a process of elimination.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="mcu_pinout.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Using this pinout diagram, I was able to eliminate a number of pins from consideration; moreover, it revealed the location of the microcontroller&rsquo;s designated serial output ports &ndash; these became my prime suspects.">
+
+<img src="mcu_pinout.png" style="display:block; margin:0; padding:0;" alt="Using this pinout diagram, I was able to eliminate a number of pins from consideration; moreover, it revealed the location of the microcontroller&#39;s designated serial output ports -- these became my prime suspects." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    Using this pinout diagram, I was able to eliminate a number of pins from consideration; moreover, it revealed the location of the microcontroller&rsquo;s designated serial output ports &ndash; these became my prime suspects.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>Once I had narrowed my search to five or six pins, I used my multimeter to check if any of them exhibited any electrical activity &ndash; I wouldn&rsquo;t be able to resolve the shape of digital signals, but I&rsquo;d at least be able to see the voltage jumping around.  After a few rounds of this, I had a fairly good sense of which GPIO pins were being used for LED control.</p>
+<p>The precise means by which the LEDs were being controlled was still somewhat unclear to me, but I was making progress.  I knew the command signals originated from the microcontroller, and I knew which ports were being used to issue those commands.  I knew that a high-power LED display like this one couldn&rsquo;t be powered directly by a microcontroller, so I expected to see an array of <a href="https://en.wikipedia.org/wiki/Relay" target="_blank" rel="noopener">relays</a> or other electronic switches further downstream.  But, confusingly, I didn&rsquo;t see anything on the PCB that looked like a relay &ndash; much less 30 of them.  Something else was going on.</p>
+<h3 id="shift-registers">Shift Registers</h3>
+<p>Microcontrollers have a limited number of so-called general purpose input-output (GPIO) pins.  These GPIO pins are the physical ports where the microcontroller interfaces with sensors, actuators, and displays.  For most simple projects, the handful of GPIO ports built into the microcontroller are more than sufficient; however, some electronic devices require hundreds (e.g., automotive control), thousands, or even millions (e.g., 4K LED display) of outputs.</p>
+<p>When the number of required outputs exceeds the number of GPIO pins on the microcontroller, a device called a <a href="https://en.wikipedia.org/wiki/Shift_register" target="_blank" rel="noopener">shift register</a> can come in handy.  From a functional perspective, shift registers are incredibly simple: they have a sequence of memory slots that can hold a single binary bit (i.e., either a <code>0</code> or a <code>1</code>); when a new bit is introduced at the &ldquo;front end&rdquo;, all the other values shift over by one slot, and the oldest value gets bumped out.  Importantly, the state of each memory slot can be read simultaneously.  You can think of a shift register as a marquee billboard, wherein new tiles can only be added from the lefthand side: each time a new tile is added, all the other tiles shift to the right, and the oldest tile is knocked off the end.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="spyder_marquee.jpeg" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="A shift register can be thought of as a simple marquee billboard, wherein new tiles can only be added from the left, and each tile can only display a 0 or 1 [photo: Spyder Surf].">
+
+<img src="spyder_marquee.jpeg" style="display:block; margin:0; padding:0;" alt="A shift register can be thought of as a simple marquee billboard, wherein new tiles can only be added from the left, and each tile can only display a ```0``` or ```1``` [photo: [Spyder Surf](https://spydersurf.com/)]." width="500" >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    A shift register can be thought of as a simple marquee billboard, wherein new tiles can only be added from the left, and each tile can only display a <code>0</code> or <code>1</code> [photo: <a href="https://spydersurf.com/" target="_blank" rel="noopener">Spyder Surf</a>].
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>So what&rsquo;s the big deal?</p>
+<p>A Serial-In, Parallel-Out (SIPO) shift register effectively transforms a single GPIO pin into many.  How is this possible?  A microcontroller can transmit individual bits (i.e., <code>0</code>s and <code>1</code>s) to a shift register hundreds of thousands of times per second; the shift register then makes the data contained in those bits available in parallel, effectively instantaneously.  A <code>clock</code> signal (generally a square wave) determines when the shift register reads a new value, and a <code>latch</code> signal determines when the data will be sent to the output channels.  The following animation, created by <a href="https://lastminuteengineers.com/74hc595-shift-register-arduino-tutorial/" target="_blank" rel="noopener">Last Minute Engineers</a>, is an absolutely brilliant demonstration of how shift registers work.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="shift_register.gif" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Animation showing the inner workings of a shift register.  Every time the clock signal goes from high (1) to low (0), a new bit is read into the shift register; every time the latch signal goes from high to low, the full set of stored bits is transfered to the storage register, where they can be read simultaneously on each output channel  [source: Last Minute Engineers].">
+
+<img src="shift_register.gif" style="display:block; margin:0; padding:0;" alt="Animation showing the inner workings of a shift register.  Every time the ```clock``` signal goes from high (```1```) to low (```0```), a new bit is read into the ```shift register```; every time the ```latch``` signal goes from high to low, the full set of stored bits is transfered to the ```storage register```, where they can be read simultaneously on each ```output``` channel  [source: [Last Minute Engineers](https://lastminuteengineers.com/74hc595-shift-register-arduino-tutorial/)]." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    Animation showing the inner workings of a shift register.  Every time the <code>clock</code> signal goes from high (<code>1</code>) to low (<code>0</code>), a new bit is read into the <code>shift register</code>; every time the <code>latch</code> signal goes from high to low, the full set of stored bits is transfered to the <code>storage register</code>, where they can be read simultaneously on each <code>output</code> channel  [source: <a href="https://lastminuteengineers.com/74hc595-shift-register-arduino-tutorial/" target="_blank" rel="noopener">Last Minute Engineers</a>].
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>So, if you wanted to control the <code>ON/OFF</code> state of 8 LEDs, rather than wiring each LED to its own GPIO pin, you could connect the LEDs to an 8-bit shift register.  If you wanted to turn on the first three LEDs, you would send the following serial signal to the shift register: <code>1 1 1 0 0 0 0 0</code>.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="sipo_shift_register.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Diagram of a 4-bit shift register [source: Wikimedia Commons].">
+
+<img src="sipo_shift_register.png" style="display:block; margin:0; padding:0;" alt="Diagram of a 4-bit shift register [source: [Wikimedia Commons](https://en.wikipedia.org/wiki/File:4-Bit_SIPO_Shift_Register.svg)]." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    Diagram of a 4-bit shift register [source: <a href="https://en.wikipedia.org/wiki/File:4-Bit_SIPO_Shift_Register.svg" target="_blank" rel="noopener">Wikimedia Commons</a>].
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>What if you wanted to control more than 8 LEDs?  Perhaps many more?  One of the awesome things about shift registers is that they can be connected in series; in this configuration, the oldest bit in the leading register spills over and becomes the newest bit in the following register.</p>
+<p>I started to suspect that this was precisely how each of the 30 channels on the LED display was being controlled: the microcontroller sends 32 bits of serial data to the first of four 8-bit shift registers connected in series.  Once the first shift register is full, it begins passing bits to the second, and so on, like a beautiful cascading waterfall.  This would explain the exceedingly small number of active GPIO pins on the microcontroller.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="waterfall.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Shift registers connected in series allow data to cascade from one to another [Source: DALL-E 3].">
+
+<img src="waterfall.png" style="display:block; margin:0; padding:0;" alt="Shift registers connected in series allow data to cascade from one to another [Source: DALL-E 3]." width="400" >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    Shift registers connected in series allow data to cascade from one to another [Source: DALL-E 3].
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>However, this still didn&rsquo;t explain the lack of relays: you can&rsquo;t illuminate high-power LEDs using weak digital signals like these.</p>
+<p>Well, it turns out the shift registers used in this particular application are somewhat special &ndash; they are so-called <em>sinking current</em> shift registers.  According to the <a href="https://www.ti.com/lit/ds/symlink/tpic6a595.pdf" target="_blank" rel="noopener">TPIC6A595 data sheet</a>, &ldquo;Outputs are low-side, open-drain DMOS transistors with output ratings of 50V and a 350mA continuous sink-current capability.  When data in the output buffers is low, the DMOS-transistor outputs are off.  When data is high, the DMOS-transistor outputs have sink current capability.&rdquo;</p>
+<p>This effectively means that the shift registers are able to act like relays, dictating the flow of high-voltage current to each LED channel.  When the shift register output is <code>low</code>, the corresponding LED channel is allowed to float at 27 VDC (0 V differential voltage), and will not illuminate; when the shift register output goes <code>high</code>, the channel is grounded, and the LEDs illuminate.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="shift_reg_pinout.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="More handwritten notes.  At this point, I had mostly figured out which GPIO pins the microcontroller was using to drive the shift registers; however, just to make sure, I used my backpacking headlamp to trace the copper leads from the first shift register&rsquo;s inputs (SER IN, RCK, and SRCK) back to their respective sources at the microcontroller.  Each of the digital output pins D0 through D7 are connected to a single LED channel.">
+
+<img src="shift_reg_pinout.png" style="display:block; margin:0; padding:0;" alt="More handwritten notes.  At this point, I had mostly figured out which GPIO pins the microcontroller was using to drive the shift registers; however, just to make sure, I used my backpacking headlamp to trace the copper leads from the first shift register&#39;s inputs (```SER IN```, ```RCK```, and ```SRCK```) back to their respective sources at the microcontroller.  Each of the digital output pins ```D0``` through ```D7``` are connected to a single LED channel." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    More handwritten notes.  At this point, I had mostly figured out which GPIO pins the microcontroller was using to drive the shift registers; however, just to make sure, I used my backpacking headlamp to trace the copper leads from the first shift register&rsquo;s inputs (<code>SER IN</code>, <code>RCK</code>, and <code>SRCK</code>) back to their respective sources at the microcontroller.  Each of the digital output pins <code>D0</code> through <code>D7</code> are connected to a single LED channel.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>Gradually, a more complete picture was coming into focus: the main power supply provides 27 VDC to illuminate the LEDs, while the BEC provides 5 VDC to power the microcontroller and shift registers.  Each of the four white connectors beneath the microcontroller are responsible for delivering power to a single LED panel; each panel has either 7 or 8 channels, and each channel has 13 discrete LEDs.  There is a copper trace connecting each of the four shift registers in series, allowing bits to cascade from one to the next.  The microcontroller sends serial commands to the shift registers, and the shift registers dictate which LED channels are illuminated.</p>
+<p>Knowing this, I began to formulate a plan to control each LED channel independently.</p>
+<h2 id="modify-hardware">Modify Hardware</h2>
+<p>I soon realized that I wouldn&rsquo;t be able to repurpose the existing microcontroller.  For one, there was no obvious means of communicating with it &ndash; no USB port, no exposed UART serial pins.  Further, I didn&rsquo;t have any experience with this specific microcontroller, so I didn&rsquo;t know which application programming interfaces (APIs) I could utilize.  So, I figured, if I was going to write my own firmware anyway, I might as well remove the existing microcontroller and use one I was already familiar with.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="inject_serial.jpeg" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Having removed the OEM microcontroller, I was able to use jumper wires to inject serial signals from my microcontroller.  Eventually, I would develop a more robust wiring scheme, but this approach worked for proof of concept purposes.">
+
+<img src="inject_serial.jpeg" style="display:block; margin:0; padding:0;" alt="Having removed the OEM microcontroller, I was able to use jumper wires to inject serial signals from my microcontroller.  Eventually, I would develop a more robust wiring scheme, but this approach worked for *proof of concept* purposes." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    Having removed the OEM microcontroller, I was able to use jumper wires to inject serial signals from my microcontroller.  Eventually, I would develop a more robust wiring scheme, but this approach worked for <em>proof of concept</em> purposes.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>Using a small flathead screwdriver, I gently removed the microcontroller from its 40-pin DIP IC socket adaptor.  Admittedly, this was a little freaky; once the microcontroller was removed, we had a football team with no quarterback.  When I plugged in the display, a completely random sequence of LED channels was illuminated.  This was disheartening, but not altogether surprising.  I pressed on.</p>
+<p>I took a quick break from hardware hacking to figure out how to control shift registers using a microcontroller; a few Google searches and tutorials later, I felt like I was ready to give it a crack.  I used jumper wires to connect my microcontroller to the appropriate pins on the socket adaptor, and deployed my code.</p>
+<p>Nothing happend.  This made sense.  The display box was unplugged. <em>Sigh</em>.</p>
+<p>With my microcontroller dutifully sending serial signals to the shift registers (I hoped), I took a deep breath, grabbed the display box power cable, and plugged it in.</p>
+<p>It worked.  It f**king worked!</p>
+<iframe width="650" height="600" src="https://www.youtube.com/embed/7D-akG85p3o" title="LED Display - Independent Channel Control Verification" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>I can&rsquo;t really express the excitement I felt in this moment.  When I saw intelligible numeric digits dancing across each panel, I knew I had basically  won the game &ndash; I had independent control of the LED channels.  I was going to beat this thing.  Everything else &ndash; writing the timer logic, enabling wireless communication, adding external interrupts &ndash; all these tasks would take time and effort, but I knew I could do them.</p>
+<p>As it turned out, I wasn&rsquo;t out of the woods, not even close &ndash; many painful setbacks were yet to come.  But I got used to them.  I&rsquo;d throw a temper tantrum (sorry Mom and Dad), settle down, and figure out what to do next.</p>
+<p>At some point two of the LED channels on one of the panels inexplicably went dark, making the afflicted digit unreadable.  This was infuriating &ndash; I had come so far!  Nevertheless, there was no way I could deliver the display to the South Bay Boardriders Club in this condition.  This was sort of an <em>all-or-nothing</em> game.  So, I started tinkering.</p>
+<p>First, I used a small flathead screwdriver to gently scrape the conformal coating off the LED solder joints on the broken panel.  I then powered up the display, and used my microcontroller to send the digit <code>8</code> to this panel (or, in serial speak, <code>11111111</code>) to ensure that all 7 LED channels were receiving power.  The two broken channels remained dark.  Using a 3V power supply, I applied voltage across each LED in the broken channels to identify the duds; this was a little sketchy, as the max rated voltage for each LED was 2.6V.  I was effectively risking destroying good LEDs in order to find the bad ones, but I figured they could probably handle a momentary hit of excess voltage.  LEDs are pretty sturdy.  Next, I used desoldering braid to remove the solder from the anode and cathode of each broken LED, and popped them out of the board.  I ordered a few replacement LEDs from DigiKey, and waited a few days.  Sometimes it is good to take a little break!</p>
+
+
+
+
+
+
+
+
+  
+
+
+<div class="px-4 py-3 mb-6 rounded-md bg-primary-100 dark:bg-primary-900">
+  
+    
+      <div class="mb-2 font-bold text-primary-600 dark:text-primary-300">
+        Guiding Principle #3: Prioritize Sanity
+      </div>
+    
+    <div class="dark:text-neutral-300">Take a break, avoid a headache!</div>
+  
+</div>
+
+
+<p>This principle was flagrantly violated many times over the course of this project, but so it goes.</p>
+<p>Anyway, when my replacement LEDs arrived, I soldered them in place, applied conformal coating, and tested the panel &ndash; good as new.  Another sigh of relief.</p>
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="gallery">
+
+  
+  
+  
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-led-panel" href="/post/3-led-timer/led-panel/IMG_5712.jpeg" >
+  <img src="/post/3-led-timer/led-panel/IMG_5712_hu17002878301467713175.jpeg" alt="">
+  </a>
+  
+    
+    
+    
+    
+    
+  <a data-fancybox="gallery-led-panel" href="/post/3-led-timer/led-panel/IMG_5807.jpeg" >
+  <img src="/post/3-led-timer/led-panel/IMG_5807_hu1487689399782247760.jpeg" alt="">
+  </a>
+  
+
+  
+</div>
+
+<p>Having overcome the first hurdle &ndash; and the biggest hurdle &ndash; I went to work on all the little flourishes.  I cleaned up the wiring, and found better, more permanent places on the PCB to inject my serial signals; I wrote code to handle the <a href="https://www.blakecole.com/post/3-led-timer/#timer-logic">countdown timer logic</a>; I wrote code to enable non-blocking external interrupts, and designed a state machine that could be controlled using toggle buttons; I wrote code to enable wireless communication between the internal microcontroller installed inside the LED display box, and another external microcontroller that would be used to control it.</p>
+<p>The external microcontroller &ndash; the one which would be placed inside a waterproof enclosure and operated by the end-user &ndash; would be battery powered, so I enabled <code>deep-sleep mode</code> to conserve power when it was not in use.  The end-user could wake the microcontroller by pressing a button.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="esp32.jpeg" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Somewhat inconveniently, my favorite microcontroller uses 3.3V logic, but the TPIC6A595 shift register requires 5V logic.  So, I soldered a logic-level converter onto a breadboard alongside my microcontroller to clean up the wiring a bit.  The green and yellow wires carry the clock and latch signals, while the blue wire carries the serial input signal.  The microcontroller is powered by a USB-C cable, which taps into the 5V source provided by the BEC.">
+
+<img src="esp32.jpeg" style="display:block; margin:0; padding:0;" alt="Somewhat inconveniently, my favorite microcontroller uses 3.3V logic, but the TPIC6A595 shift register requires 5V logic.  So, I soldered a logic-level converter onto a breadboard alongside my microcontroller to clean up the wiring a bit.  The green and yellow wires carry the ```clock``` and ```latch``` signals, while the blue wire carries the ```serial input``` signal.  The microcontroller is powered by a USB-C cable, which taps into the 5V source provided by the BEC." width="500" >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    Somewhat inconveniently, my favorite microcontroller uses 3.3V logic, but the TPIC6A595 shift register requires 5V logic.  So, I soldered a logic-level converter onto a breadboard alongside my microcontroller to clean up the wiring a bit.  The green and yellow wires carry the <code>clock</code> and <code>latch</code> signals, while the blue wire carries the <code>serial input</code> signal.  The microcontroller is powered by a USB-C cable, which taps into the 5V source provided by the BEC.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>The frame of the LED display box is made entirely of sheet metal; very sturdy, but also completely unamenable to radio wave transmission.  I needed a way to get my wireless commands into this stubborn <a href="https://en.wikipedia.org/wiki/Faraday_cage" target="_blank" rel="noopener">Faraday Cage</a>, so I added an external antenna.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="ext_antenna.jpeg" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="The display box itself is made of galvanized steel sheet metal, and thus constitutes a Faraday Cage; accordingly, I installed an external antenna to permit wireless communication.">
+
+<img src="ext_antenna.jpeg" style="display:block; margin:0; padding:0;" alt="The display box itself is made of galvanized steel sheet metal, and thus constitutes a [Faraday Cage](https://en.wikipedia.org/wiki/Faraday_cage); accordingly, I installed an external antenna to permit wireless communication." width="500" >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    The display box itself is made of galvanized steel sheet metal, and thus constitutes a <a href="https://en.wikipedia.org/wiki/Faraday_cage" target="_blank" rel="noopener">Faraday Cage</a>; accordingly, I installed an external antenna to permit wireless communication.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/DhhVJPRAjXo?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<h2 id="write-software">Write Software</h2>
+<h3 id="timer-logic">Timer Logic</h3>
+<p>Have you ever wondered how a digital clock works?</p>
+<p>If you answered <em>yes</em> to that, I am both impressed and a little concerned.</p>
+<p>I certainly hadn&rsquo;t given it much thought before embarking on this project; but, once I started working out the algorithm, I became increasingly absorbed.  It was really fun to break down the basic behavior of a timer &ndash; something we have all used a million times &ndash; and describe it programmatically: <em>Okay, so we decrement the one&rsquo;s place of the seconds digit until we get to zero, but then what happens?  We add nine to it, and decrement the ten&rsquo;s place of the seconds digit&hellip;</em></p>
+<p>And so on and so forth.</p>
+<p>I&rsquo;m sure there&rsquo;s probably a fancier way to implement this logic, but these nested if-statements got the job done:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="c">%% Set initial timer digit values</span>
+</span></span><span class="line"><span class="cl"><span class="n">m1</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>     <span class="c">% digit 1: minute (10)</span>
+</span></span><span class="line"><span class="cl"><span class="n">m2</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>     <span class="c">% digit 2: minute (1)</span>
+</span></span><span class="line"><span class="cl"><span class="n">s1</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>     <span class="c">% digit 3: second (10)</span>
+</span></span><span class="line"><span class="cl"><span class="n">s2</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>     <span class="c">% digit 4: second (1)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">%% Timer Active (decrement once per second)</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="o">~</span><span class="p">(</span><span class="n">m1</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">m2</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">s1</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">s2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">s2</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">s2</span> <span class="p">=</span> <span class="n">s2</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="n">s2</span> <span class="p">=</span> <span class="n">s2</span><span class="o">+</span><span class="mi">9</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">s1</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">s1</span> <span class="p">=</span> <span class="n">s1</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="n">s1</span> <span class="p">=</span> <span class="n">s1</span><span class="o">+</span><span class="mi">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">m2</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">m2</span> <span class="p">=</span> <span class="n">m2</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span>
+</span></span><span class="line"><span class="cl">                <span class="n">m2</span> <span class="p">=</span> <span class="n">m2</span><span class="o">+</span><span class="mi">9</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="p">(</span><span class="n">m1</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">m1</span> <span class="p">=</span> <span class="n">m1</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">else</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">m1</span> <span class="p">=</span> <span class="n">m1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">end</span>
+</span></span><span class="line"><span class="cl">            <span class="k">end</span>
+</span></span><span class="line"><span class="cl">        <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fprintf</span><span class="p">(</span><span class="s">&#39;%i%i:%i%i\n&#39;</span><span class="p">,</span> <span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">pause</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></div><iframe width="650" height="400" src="https://www.youtube.com/embed/usOYB9nmdMs" title="MATLAB Timer Logic Validation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>The logic for <code>stopwatch mode</code> was mostly the same, with a few sign changes.</p>
+<h3 id="numeric-digits">Numeric Digits</h3>
+<p>In order to display digits on each of the four panels of the LED display, I needed to figure out what sequences of bits corresponded to the numbers <code>0</code> through <code>9</code>.  This wasn&rsquo;t particularly challenging once I realized that the LED channels were arranged in a counter-clockwise fashion around each digit.  The following table shows how to express each digit using either binary or hexidecimal serial commands.</p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="digit_binary_hex.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="A useful cheat sheet that illustrates how to create numeric digits on a 7-segment display, using either binary or hex serial commands.">
+
+<img src="digit_binary_hex.png" style="display:block; margin:0; padding:0;" alt="A useful cheat sheet that illustrates how to create numeric digits on a 7-segment display, using either binary or hex serial commands." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    A useful cheat sheet that illustrates how to create numeric digits on a 7-segment display, using either binary or hex serial commands.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<h2 id="build-controller">Build Controller</h2>
+<p>This stage of the project was notably less exciting for me.  I knew I had already overcome the biggest challenges, and the ones that remained were all fairly pedestrian: wire cutting, soldering, and repurposing code I had already written for other projects.  At this point, I had been working on this project for a few weeks, and I was pretty eager to wrap things up.</p>
+<p>I think most engineering projects follow an arc like this.  At first you&rsquo;re really excited, eager to tackle a new and interesting problem.  Gradually, you realize how much work will be involved.  You wonder whether you can even solve the problem.  You experience a setback or two.  You spiral into disillusionment.  But, eventually, you experience a breakthrough!  You become momentarily reinvigorated, only to realize that there is still an absurd amount of work left to do.  You have already invested far too much time to quit now, so you grind out the remainder of the project.</p>
+<p>One of my favorite engineering content creators, <a href="https://www.youtube.com/@rctestflight" target="_blank" rel="noopener">rctestflight</a>, illustrated a similar narrative arc which he called <em>The Project Curve.</em></p>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="project_curve.png" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="The Project Curve, featuring the Trough of Despair [source: rctestflight].">
+
+<img src="project_curve.png" style="display:block; margin:0; padding:0;" alt="The Project Curve, featuring the Trough of Despair [source: [rctestflight](https://www.youtube.com/@rctestflight)]." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    The Project Curve, featuring the Trough of Despair [source: <a href="https://www.youtube.com/@rctestflight" target="_blank" rel="noopener">rctestflight</a>].
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>In any case, I still had a fair bit of work to do.  This was my basic sequence of tasks:</p>
+<ol>
+<li>Verify independent control of LED channels.</li>
+<li>Implement timer logic locally on internal microcontroller.</li>
+<li>Permanently install internal microcontroller, solder connectors.</li>
+<li>Apply conformal coating to any soldered joints.</li>
+<li>Implement timer logic wirelessly on external microcontroller.</li>
+<li>Handle button presses using external interrupts (non-blocking).</li>
+<li>Formulate state machine (i.e. <em>if Button_A pressed, then&hellip;</em>).</li>
+<li>Test all buttons.</li>
+</ol>
+
+
+
+
+
+
+<figure style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
+
+  <a data-fancybox="" href="button_chaos.jpeg" style="display:inline-block; margin:0; padding:0; line-height:0;" data-caption="Before you solder your buttons into a fancy waterproof enclosure, it is good to make sure they work!  This is what the chaotic prototyping stage looks like.">
+
+<img src="button_chaos.jpeg" style="display:block; margin:0; padding:0;" alt="Before you solder your buttons into a fancy waterproof enclosure, it is good to make sure they work!  This is what the chaotic prototyping stage looks like." >
+</a>
+
+
+<figcaption style="text-align: left;" data-pre="Figure " data-post=":" >
+  
+  <p>
+    Before you solder your buttons into a fancy waterproof enclosure, it is good to make sure they work!  This is what the chaotic prototyping stage looks like.
+    
+    
+    
+  </p> 
+</figcaption>
+
+</figure>
+
+<p>The external controller itself was nothing fancy &ndash; I ordered a waterproof enclosure big enough to hold a microcontroller, a LiPo battery, and the inevitable tangled mess of wires connecting the buttons to the microcontroller.  I drilled nine holes into the enclosure lid for the buttons, and one in the side wall of the base for a USB-C charging port.  I soldered 3.5mm bullet connectors to the button wires to facilitate connections, wired everything up, slapped the lid on, and bada bing bada boom we had a controller.</p>
+<h3 id="stress-testing">Stress Testing</h3>
+<p>When you are building a device that will eventually be used by someone else, you have to think very carefully about all the ways in which things could go wrong.  Or, you can simply go nuts and subject your device to unadulterated chaos.  I took the latter approach.</p>
+<p>I slammed my fingers on the controller buttons in the most absurd sequences; I pressed and held multiple buttons at the same time, while simultaneously clicking others &ndash; <em>what would happen if the user attempted to increment and decrement a digit simultaneously?</em>  I needed to make sure it wasn&rsquo;t possible to accidentally push the state machine into some unforseen and irrecoverable corner.  Once I was satisfied that no combination of button presses would result in catastrophe, I gave the controller a gentle pat and a knowing nod of respect.</p>
+<iframe width="650" height="600" src="https://www.youtube.com/embed/_EQp3Tdwu8k" title="LED Display - Controller Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>I subjected the display box to some abuse as well:</p>
+<iframe width="650" height="500" src="https://www.youtube.com/embed/QYc6ZZx7gSI" title="LED Display - External Antenna Impact Testing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<p>Sometimes, it is both useful and appropriate to be a bit of a menace!</p>
+<p>Six months have passed since I delivered this LED display and wireless controller to the South Bay Boardriders, and apparently it is still working.  I am stoked to have had the opportunity to leverage my engineering skills to help out, and learn some new skills in the process.</p>
+<p>Thanks for reading.</p>
+
+      </div>
+
+      
+  <time class="mt-12 mb-8 block text-xs text-gray-500 ltr:text-right rtl:text-left dark:text-gray-400" datetime="2025-04-19T08:18:13.000Z">
+    <span>Last updated on</span>
+    Apr 19, 2025</time>
+
+      <div class="container mx-auto prose prose-slate lg:prose-xl dark:prose-invert mt-5">
+        
+        <div class="max-w-prose print:hidden">
+  
+  
+
+  
+
+
+  
+<section class="flex flex-row flex-wrap justify-center pt-4 text-xl">
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F3-led-timer%2F&amp;text=Reverse&#43;Engineering&#43;an&#43;LED&#43;Display"
+    title="X"
+    aria-label="X"
+    id="share-link-x"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F3-led-timer%2F&amp;t=Reverse&#43;Engineering&#43;an&#43;LED&#43;Display"
+    title="Facebook"
+    aria-label="Facebook"
+    id="share-link-facebook"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+    
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="mailto:?subject=Reverse%20Engineering%20an%20LED%20Display&amp;body=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F3-led-timer%2F"
+    title="Email"
+    aria-label="Email"
+    id="share-link-email"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M16.5 12a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fwww.blakecole.com%2Fpost%2F3-led-timer%2F&amp;title=Reverse&#43;Engineering&#43;an&#43;LED&#43;Display"
+    title="LinkedIn"
+    aria-label="LinkedIn"
+    id="share-link-linkedin"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="whatsapp://send?text=Reverse&#43;Engineering&#43;an&#43;LED&#43;Display%20https%3A%2F%2Fwww.blakecole.com%2Fpost%2F3-led-timer%2F"
+    title="WhatsApp"
+    aria-label="WhatsApp"
+    id="share-link-whatsapp"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="m187.58 144.84-32-16a8 8 0 0 0-8 .5l-14.69 9.8a40.55 40.55 0 0 1-16-16l9.8-14.69a8 8 0 0 0 .5-8l-16-32A8 8 0 0 0 104 64a40 40 0 0 0-40 40 88.1 88.1 0 0 0 88 88 40 40 0 0 0 40-40 8 8 0 0 0-4.42-7.16ZM152 176a72.08 72.08 0 0 1-72-72 24 24 0 0 1 19.29-23.54l11.48 23L101 118a8 8 0 0 0-.73 7.51 56.47 56.47 0 0 0 30.15 30.15A8 8 0 0 0 138 155l14.61-9.74 23 11.48A24 24 0 0 1 152 176ZM128 24a104 104 0 0 0-91.82 152.88l-11.35 34.05a16 16 0 0 0 20.24 20.24l34.05-11.35A104 104 0 1 0 128 24Zm0 192a87.87 87.87 0 0 1-44.06-11.81 8 8 0 0 0-6.54-.67L40 216l12.47-37.4a8 8 0 0 0-.66-6.54A88 88 0 1 1 128 216Z"/></svg>
+  </a>
+  
+</section>
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+
+<div class="flex pt-12 pb-4">
+  
+  
+  <img
+    class="mr-4 h-24 w-24 rounded-full"
+    width="96"
+    height="96"
+    alt="Blake Cole"
+  src="/author/blake-cole/avatar_hu14049081479133909916.jpg"
+  loading="lazy"
+  />
+  
+  <div class="place-self-center">
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Authors
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      <a href="https://www.blakecole.com/" class="no-underline">
+      Blake Cole
+      </a>
+    </div>
+
+    
+    <div class="text-sm font-bold text-neutral-700 dark:text-neutral-300">
+    Mechanical Engineer
+    </div>
+    
+
+
+    
+    <div class="text-sm text-neutral-700 dark:text-neutral-300">Problem Solver. Ocean Creature.</div>
+    
+
+    <div class="text-2xl sm:text-lg pt-1">
+
+      
+<div class="flex flex-wrap text-neutral-500 dark:text-neutral-300">
+  
+    
+    
+    
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="mailto:blake@seawing.io"
+      
+      aria-label="At-Symbol"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M16.5 12a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://x.com/blerkk"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/X"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://github.com/blakecole"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/Github"
+    ><svg style="height: 1em;" fill="currentColor" viewBox="3 3 18 18"><path d="M12 3C7.0275 3 3 7.12937 3 12.2276C3 16.3109 5.57625 19.7597 9.15374 20.9824C9.60374 21.0631 9.77249 20.7863 9.77249 20.5441C9.77249 20.3249 9.76125 19.5982 9.76125 18.8254C7.5 19.2522 6.915 18.2602 6.735 17.7412C6.63375 17.4759 6.19499 16.6569 5.8125 16.4378C5.4975 16.2647 5.0475 15.838 5.80124 15.8264C6.51 15.8149 7.01625 16.4954 7.18499 16.7723C7.99499 18.1679 9.28875 17.7758 9.80625 17.5335C9.885 16.9337 10.1212 16.53 10.38 16.2993C8.3775 16.0687 6.285 15.2728 6.285 11.7432C6.285 10.7397 6.63375 9.9092 7.20749 9.26326C7.1175 9.03257 6.8025 8.08674 7.2975 6.81794C7.2975 6.81794 8.05125 6.57571 9.77249 7.76377C10.4925 7.55615 11.2575 7.45234 12.0225 7.45234C12.7875 7.45234 13.5525 7.55615 14.2725 7.76377C15.9937 6.56418 16.7475 6.81794 16.7475 6.81794C17.2424 8.08674 16.9275 9.03257 16.8375 9.26326C17.4113 9.9092 17.76 10.7281 17.76 11.7432C17.76 15.2843 15.6563 16.0687 13.6537 16.2993C13.98 16.5877 14.2613 17.1414 14.2613 18.0065C14.2613 19.2407 14.25 20.2326 14.25 20.5441C14.25 20.7863 14.4188 21.0746 14.8688 20.9824C16.6554 20.364 18.2079 19.1866 19.3078 17.6162C20.4077 16.0457 20.9995 14.1611 21 12.2276C21 7.12937 16.9725 3 12 3Z"></path></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://www.linkedin.com/in/coleblake/"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/Linkedin"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://scholar.google.com/citations?user=waW_BnYAAAAJ"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Academicons/Google-Scholar"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M343.759 106.662V79.43L363.524 64h-213.89L20.476 176.274h85.656a82.339 82.339 0 0 0-.219 6.225c0 20.845 7.22 38.087 21.672 51.861c14.453 13.797 32.252 20.648 53.327 20.648c4.923 0 9.75-.368 14.438-1.024c-2.907 6.5-4.374 12.523-4.374 18.142c0 9.875 4.499 20.43 13.467 31.642c-39.234 2.67-68.061 9.732-86.437 21.163c-10.531 6.5-19 14.704-25.39 24.531c-6.391 9.9-9.578 20.515-9.578 31.962c0 9.648 2.062 18.336 6.219 26.062c4.156 7.726 9.578 14.07 16.312 18.984c6.718 4.968 14.469 9.101 23.219 12.469c8.734 3.344 17.406 5.718 26.061 7.062A167.052 167.052 0 0 0 180.555 448c13.469 0 26.953-1.734 40.547-5.187c13.562-3.485 26.28-8.642 38.171-15.493c11.86-6.805 21.515-16.086 28.922-27.718c7.39-11.68 11.094-24.805 11.094-39.336c0-11.016-2.25-21.039-6.75-30.14c-4.468-9.073-9.938-16.542-16.452-22.345c-6.501-5.813-13-11.155-19.516-15.968c-6.5-4.845-12-9.75-16.468-14.813c-4.485-5.046-6.735-10.054-6.735-14.984c0-4.921 1.734-9.672 5.216-14.265c3.455-4.61 7.674-9.048 12.61-13.306c4.937-4.25 9.875-8.968 14.796-14.133c4.922-5.147 9.141-11.827 12.61-20.008c3.485-8.18 5.203-17.445 5.203-27.757c0-13.453-2.547-24.46-7.547-33.314c-.594-1.022-1.218-1.803-1.875-3.022l56.907-46.672v17.119c-7.393.93-6.624 5.345-6.624 10.635V245.96c0 5.958 4.875 10.834 10.834 10.834h3.989c5.958 0 10.833-4.875 10.833-10.834V117.293c0-5.277.778-9.688-6.561-10.63zm-107.36 222.48c1.14.75 3.704 2.78 7.718 6.038c4.05 3.243 6.797 5.695 8.266 7.414a443.553 443.553 0 0 1 6.376 7.547c2.813 3.375 4.718 6.304 5.718 8.734c1 2.477 2.016 5.461 3.047 8.946a38.27 38.27 0 0 1 1.485 10.562c0 17.048-6.564 29.68-19.656 37.859c-13.125 8.18-28.767 12.274-46.938 12.274c-9.187 0-18.203-1.093-27.063-3.196c-8.843-2.116-17.311-5.336-25.39-9.601c-8.078-4.258-14.577-10.204-19.5-17.797c-4.938-7.64-7.407-16.415-7.407-26.25c0-10.32 2.797-19.29 8.422-26.906c5.594-7.625 12.938-13.391 22.032-17.315c9.063-3.946 18.25-6.742 27.562-8.398a157.865 157.865 0 0 1 28.438-2.555c4.47 0 7.936.25 10.405.696c.455.219 3.032 2.07 7.735 5.563c4.704 3.462 7.625 5.595 8.75 6.384zm-3.359-100.579c-7.406 8.86-17.734 13.288-30.953 13.288c-11.86 0-22.298-4.764-31.266-14.312c-9-9.523-15.422-20.328-19.344-32.43c-3.937-12.109-5.906-23.984-5.906-35.648c0-13.694 3.596-25.352 10.781-34.976c7.187-9.65 17.5-14.485 30.938-14.485c11.875 0 22.374 5.038 31.437 15.157c9.094 10.085 15.61 21.413 19.517 33.968c3.922 12.54 5.873 24.53 5.873 35.984c0 13.446-3.702 24.61-11.076 33.454z"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://orcid.org/0000-0002-4957-6903"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Academicons/Orcid"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M336.62 194.538c-7.13-3.328-13.866-5.56-20.253-6.614c-6.365-1.095-16.574-1.612-30.71-1.612h-36.704v152.747h37.634c14.673 0 26.081-1.013 34.224-3.017c8.142-2.004 14.921-4.526 20.356-7.626a69.448 69.448 0 0 0 14.942-11.388c14.488-14.714 21.742-33.273 21.742-55.717c0-22.052-7.44-40.052-22.341-53.982c-5.498-5.166-11.822-9.444-18.89-12.793zM256 8C119.022 8 8 119.042 8 256s111.022 248 248 248s248-111.042 248-248S392.978 8 256 8Zm-82.336 357.513h-29.389V160.148h29.389zM158.95 138.696c-11.14 0-20.213-9.01-20.213-20.212c0-11.118 9.052-20.191 20.213-20.191c11.18 0 20.232 9.052 20.232 20.191a20.194 20.194 0 0 1-20.232 20.212zm241.386 163.597c-5.29 12.545-12.834 23.581-22.65 33.088c-9.982 9.837-21.597 17.194-34.844 22.196c-7.75 3.017-14.839 5.063-21.307 6.117c-6.49 1.013-18.828 1.509-37.076 1.509h-64.956V160.148h69.233c27.962 0 50.034 4.154 66.32 12.545c16.265 8.37 29.181 20.728 38.792 36.972c9.61 16.265 14.425 34.018 14.425 53.196c.023 13.765-2.666 26.908-7.936 39.432z"/></svg></a>
+  
+</div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+
+
+
+  
+  
+    
+    
+    
+      
+      
+    
+<div class="pt-1 no-prose w-full">
+  <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+  <div class="flex flex-col md:flex-row flex-nowrap justify-between gap-5 pt-2">
+    <div class="">
+      
+    </div>
+    <div class="">
+      
+        <a class="group flex text-right no-underline" href="/post/2-mcmc-mv-swim/">
+          <span class="flex flex-col">
+            <span
+              class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+            >Open Water Swim Route Optimization Using Reversible Jump Markov Chain Monte Carlo (RJ-MCMC)</span
+            >
+            <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+              
+                Mar 23, 2025
+              
+            </span>
+          </span>
+          <span
+            class="mt-[-0.3rem] ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+          ><span class="ltr:inline">&rarr;</span></span>
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+
+  
+
+
+
+</div>
+
+      </div>
+
+    </main>
+  </article>
+</div>
+
+    </div>
+    <div class="page-footer">
+      <footer class="container mx-auto flex flex-col justify-items-center text-sm leading-6 mt-24 mb-4 text-slate-700 dark:text-slate-200">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by text-center">
+    © 2025 Blake Cole. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by text-center">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Hugo Blox Builder</a> — the free, <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+
+</footer>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
