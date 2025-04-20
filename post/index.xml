@@ -17,7 +17,43 @@
       <link>https://www.blakecole.com/post/3-led-timer/</link>
       <pubDate>Wed, 16 Apr 2025 08:18:13 -0400</pubDate>
       <guid>https://www.blakecole.com/post/3-led-timer/</guid>
-      <description>&lt;h2 id=&#34;backstory&#34;&gt;Backstory&lt;/h2&gt;
+      <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
+&lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#backstory&#34;&gt;Backstory&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#topics-not-covered&#34;&gt;Topics Not Covered&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#methodology&#34;&gt;Methodology&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#inspect-hardware&#34;&gt;Inspect Hardware&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#power-supply&#34;&gt;Power Supply&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#microcontrollers&#34;&gt;Microcontrollers&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#shift-registers&#34;&gt;Shift Registers&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#modify-hardware&#34;&gt;Modify Hardware&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#signal-injection&#34;&gt;Signal Injection&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#a-small-setback&#34;&gt;A Small Setback&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#adding-garnishes&#34;&gt;Adding Garnishes&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#write-software&#34;&gt;Write Software&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#timer-logic&#34;&gt;Timer Logic&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#numeric-digits&#34;&gt;Numeric Digits&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#build-controller&#34;&gt;Build Controller&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#final-stretch&#34;&gt;Final Stretch&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#stress-testing&#34;&gt;Stress Testing&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#reflection&#34;&gt;Reflection&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;h2 id=&#34;backstory&#34;&gt;Backstory&lt;/h2&gt;
 &lt;p&gt;Last September, my brother came to me with a conundrum: the controller for a high-power LED timer he had been using to run our local community surfing competitions had been stolen.  To make matters worse, the original manufacturer wanted more than $1,000 to replace it &amp;ndash; a sum which far exceeded the modest budget of the nonprofit organization for which he volunteers, the &lt;a href=&#34;https://southbayboardriders.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;South Bay Boardriders Club (SBBC)&lt;/a&gt;.  With competitions scheduled to resume in just a few months, they were at a loss for what to do.&lt;/p&gt;
 
 
@@ -878,7 +914,45 @@ flowchart BT
       <link>https://www.blakecole.com/post/2-mcmc-mv-swim/</link>
       <pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>
       <guid>https://www.blakecole.com/post/2-mcmc-mv-swim/</guid>
-      <description>&lt;h2 id=&#34;should-you-read-this&#34;&gt;Should You Read This?&lt;/h2&gt;
+      <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
+&lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#should-you-read-this&#34;&gt;Should You Read This?&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#recapitulation&#34;&gt;Recapitulation&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#need-for-speed&#34;&gt;Need for Speed&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#markov-chain-monte-carlo&#34;&gt;Markov Chain Monte Carlo&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#history&#34;&gt;History&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#algorithm&#34;&gt;Algorithm&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#python-demo&#34;&gt;Python Demo&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#problem-setup&#34;&gt;Problem Setup&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#goal&#34;&gt;Goal&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#constraints&#34;&gt;Constraints&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#assumptions&#34;&gt;Assumptions&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#parameters&#34;&gt;Parameters&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#methodology&#34;&gt;Methodology&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#useful-functions&#34;&gt;Useful Functions&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#results&#34;&gt;Results&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#caseys-solution&#34;&gt;Casey&amp;rsquo;s Solution&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#my-solution&#34;&gt;My Solution&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#flourishes&#34;&gt;Flourishes&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#gaussian-bump&#34;&gt;Gaussian Bump&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#simulated-annealing&#34;&gt;Simulated Annealing&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;h2 id=&#34;should-you-read-this&#34;&gt;Should You Read This?&lt;/h2&gt;
 &lt;p&gt;Life is short &amp;ndash; there are mountains to climb, oceans to explore, TikTok reels to enjoy and forget about mere seconds later.&lt;/p&gt;
 &lt;p&gt;Continue reading if:&lt;/p&gt;
 &lt;ul&gt;
@@ -1864,7 +1938,33 @@ This method is arguably simpler to implement, but less flexible since it require
       <link>https://www.blakecole.com/post/1-adcirc-mv-swim/</link>
       <pubDate>Mon, 08 Aug 2022 13:09:10 -0400</pubDate>
       <guid>https://www.blakecole.com/post/1-adcirc-mv-swim/</guid>
-      <description>&lt;h2 id=&#34;preamble&#34;&gt;Preamble&lt;/h2&gt;
+      <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
+&lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#preamble&#34;&gt;Preamble&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#the-chappy-swimmers&#34;&gt;The Chappy Swimmers&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#the-plan&#34;&gt;The Plan&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#the-adcirc-hydrodynamic-model&#34;&gt;The ADCIRC Hydrodynamic Model&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#background&#34;&gt;Background&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#tidal-constituent-corrections&#34;&gt;Tidal Constituent Corrections&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#swimmer-simulation&#34;&gt;Swimmer Simulation&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#assumptions--caveats&#34;&gt;Assumptions &amp;amp; Caveats&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#results&#34;&gt;Results:&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#key-findings&#34;&gt;Key Findings&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#the-swim&#34;&gt;The Swim&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#conclusion&#34;&gt;Conclusion&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#conclusion-ii&#34;&gt;Conclusion II&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;h2 id=&#34;preamble&#34;&gt;Preamble&lt;/h2&gt;
 &lt;p&gt;At 5:58am on the morning of July 30th 2022, a small group of swimmers dove into the shallow waters off Woods Hole, Massachusetts, and began swimming steadily southwest toward Martha&amp;rsquo;s Vineyard.  The island was already visible in the early dawn light, though its features were obscured by mist and atmospheric scattering.  Lacking terrestrial landmarks, the swimmers would need to orient themselves relative to nearby guide boats in order to make it safely to their intended destination near Lake Tashmoo.&lt;/p&gt;
 &lt;p&gt;As the crow flies, Martha&amp;rsquo;s Vineyard and Woods Hole are separated by only 3.3 miles; however, the sea separating these two landmasses is infamously tempestuous, with currents routinely exceeding 5 knots.  These strong currents are driven in large part by tidal resonance in the Gulf of Maine, which produces an isotropic pressure gradient between Cape Cod Bay and Buzzards Bay.&lt;/p&gt;
 &lt;p&gt;A strong ocean swimmer can maintain a speed of 1.4-1.8 knots in ideal conditions, and sprint at 3 knots for a brief time.  Thus, it is vitally important that one seeking to swim across Vineyard Sound make a careful accounting of its powerful tidal currents.&lt;/p&gt;
@@ -2404,7 +2504,15 @@ But, as time drew on, the folks on the beach became increasingly concerned: thre
       <link>https://www.blakecole.com/post/0-hello-world/</link>
       <pubDate>Sun, 07 Aug 2022 08:18:13 -0400</pubDate>
       <guid>https://www.blakecole.com/post/0-hello-world/</guid>
-      <description>&lt;h2 id=&#34;hi-everyone&#34;&gt;Hi everyone!&lt;/h2&gt;
+      <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
+&lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#hi-everyone&#34;&gt;Hi everyone!&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#autobiographical-miscellany&#34;&gt;Autobiographical Miscellany&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;h2 id=&#34;hi-everyone&#34;&gt;Hi everyone!&lt;/h2&gt;
 &lt;p&gt;Welcome to my blog.  In case you skipped over the &lt;a href=&#34;https://www.blakecole.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;About&lt;/a&gt; section, my name is Blake, and I am currently a doctoral candidate in the &lt;a href=&#34;https://mit.whoi.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MIT-WHOI Joint Program&lt;/a&gt;.  My high-level research objective is to &lt;strong&gt;&lt;em&gt;improve the performance, reliability, and useability of autonomous sailing vessels&lt;/em&gt;&lt;/strong&gt;.  I am incredibly excited about this project, and will try to post incremental updates over the course of the next year.&lt;/p&gt;
 &lt;p&gt;However, the primary purpose of this blog is not to disseminate my thesis research; rather, I hope it will serve as a repository for discussions about my non-academic interests and side-projects.  I will focus mostly on the projects and experiences I think other people might find useful or illuminating.  Though I will do my best to make sure the information contained herein is as accurate as possible, I might make mistakes, and am counting on you (yes, &lt;em&gt;you!&lt;/em&gt;) to bring them to my attention.  I will also try to keep these posts consise, but basically anyone who has ever emailed or texted me knows that brevity is not exactly my strong suit.  There&amp;rsquo;s a lot of words out there, and I intend to use them all.&lt;/p&gt;
 &lt;h2 id=&#34;autobiographical-miscellany&#34;&gt;Autobiographical Miscellany&lt;/h2&gt;
