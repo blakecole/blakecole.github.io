@@ -589,11 +589,13 @@ flowchart BT
 
 &lt;/figure&gt;
 
+&lt;h3 id=&#34;signal-injection&#34;&gt;Signal Injection&lt;/h3&gt;
 &lt;p&gt;Using a small flathead screwdriver, I gently removed the microcontroller from its 40-pin DIP IC socket adaptor.  Admittedly, this was a little freaky; once the microcontroller was removed, we had a football team with no quarterback.  When I plugged in the display, a completely random sequence of LED channels was illuminated.  This was disheartening, but not altogether surprising.  I pressed on.&lt;/p&gt;
 &lt;p&gt;I took a quick break from hardware hacking to figure out how to control shift registers using a microcontroller; a few Google searches and tutorials later, I felt like I was ready to give it a crack.  I used jumper wires to connect my microcontroller to the appropriate pins on the socket adaptor, and deployed my code.&lt;/p&gt;
 &lt;p&gt;Nothing happend.  This made sense.  The display box was unplugged. &lt;em&gt;Sigh&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;With my microcontroller dutifully sending serial signals to the shift registers (I hoped), I took a deep breath, grabbed the display box power cable, and plugged it in.&lt;/p&gt;
-&lt;p&gt;It worked.  It f**king worked!&lt;/p&gt;
+&lt;p&gt;It worked.&lt;/p&gt;
+&lt;p&gt;It f**king worked!&lt;/p&gt;
 
     &lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
       &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&#34; allowfullscreen=&#34;allowfullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/7D-akG85p3o?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;
@@ -601,6 +603,7 @@ flowchart BT
 
 &lt;p&gt;I can&amp;rsquo;t really express the excitement I felt in this moment.  When I saw intelligible numeric digits dancing across each panel, I knew I had basically  won the game &amp;ndash; I had independent control of the LED channels.  I was going to beat this thing.  Everything else &amp;ndash; writing the timer logic, enabling wireless communication, adding external interrupts &amp;ndash; all these tasks would take time and effort, but I knew I could do them.&lt;/p&gt;
 &lt;p&gt;As it turned out, I wasn&amp;rsquo;t out of the woods, not even close &amp;ndash; many painful setbacks were yet to come.  But I got used to them.  I&amp;rsquo;d throw a temper tantrum (sorry Mom and Dad), settle down, and figure out what to do next.&lt;/p&gt;
+&lt;h3 id=&#34;a-small-setback&#34;&gt;A Small Setback&lt;/h3&gt;
 &lt;p&gt;At some point two of the LED channels on one of the panels inexplicably went dark, making the afflicted digit unreadable.  This was infuriating &amp;ndash; I had come so far!  Nevertheless, there was no way I could deliver the display to the South Bay Boardriders Club in this condition.  This was sort of an &lt;em&gt;all-or-nothing&lt;/em&gt; game.  So, I started tinkering.&lt;/p&gt;
 &lt;p&gt;First, I used a small flathead screwdriver to gently scrape the conformal coating off the LED solder joints on the broken panel.  I then powered up the display, and used my microcontroller to send the digit &lt;code&gt;8&lt;/code&gt; to this panel (or, in serial speak, &lt;code&gt;11111111&lt;/code&gt;) to ensure that all 7 LED channels were receiving power.  The two broken channels remained dark.  Using a 3V power supply, I applied voltage across each LED in the broken channels to identify the duds; this was a little sketchy, as the max rated voltage for each LED was 2.6V.  I was effectively risking destroying good LEDs in order to find the bad ones, but I figured they could probably handle a momentary hit of excess voltage.  LEDs are pretty sturdy.  Next, I used desoldering braid to remove the solder from the anode and cathode of each broken LED, and popped them out of the board.  I ordered a few replacement LEDs from DigiKey, and waited a few days.  Sometimes it is good to take a little break!&lt;/p&gt;
 
@@ -668,6 +671,7 @@ flowchart BT
   
 &lt;/div&gt;
 
+&lt;h3 id=&#34;adding-garnishes&#34;&gt;Adding Garnishes&lt;/h3&gt;
 &lt;p&gt;Having overcome the first hurdle &amp;ndash; and the biggest hurdle &amp;ndash; I went to work on all the little flourishes.  I cleaned up the wiring and found better, more permanent places on the PCB to inject my signals; I wrote code to handle the &lt;a href=&#34;https://www.blakecole.com/post/3-led-timer/#timer-logic&#34;&gt;countdown timer logic&lt;/a&gt;; I designed a state machine that could be controlled using toggle buttons, and wrote code that would recognize each button press as a non-blocking external interrupt; finally, I enabled wireless communication between the microcontroller I had installed inside the LED display box and a secondary external microcontroller outfitted with a series of toggle buttons.&lt;/p&gt;
 &lt;p&gt;The external microcontroller &amp;ndash; which would be housed inside a waterproof enclosure and handle user commands &amp;ndash; would be battery powered, so I enabled &lt;a href=&#34;https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/sleep_modes.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;deep-sleep mode&lt;/a&gt; to conserve power when it was not in use.  The end-user could wake the microcontroller by pressing a button.&lt;/p&gt;
 
@@ -729,6 +733,7 @@ flowchart BT
     &lt;/div&gt;
 
 &lt;h2 id=&#34;write-software&#34;&gt;Write Software&lt;/h2&gt;
+&lt;p&gt;Most of the code I used for this project was adapted from similar stuff I wrote in grad school.  This is one of the really cool things about software: you can gradually build up a quiver of increasingly advanced capabilities over time, and deploy them as needed in your future projects.  Consequently, each successive project gets easier: the effort required to finish your $n^{th}$ project is approximately $\mathcal{O}(e^{-n})$.&lt;/p&gt;
 &lt;h3 id=&#34;timer-logic&#34;&gt;Timer Logic&lt;/h3&gt;
 &lt;p&gt;Have you ever wondered how a digital clock works?&lt;/p&gt;
 &lt;p&gt;If you answered &lt;em&gt;yes&lt;/em&gt; to that, I am both impressed and a little concerned.&lt;/p&gt;
@@ -831,6 +836,7 @@ flowchart BT
 
 &lt;/figure&gt;
 
+&lt;h3 id=&#34;final-stretch&#34;&gt;Final Stretch&lt;/h3&gt;
 &lt;p&gt;In any case, I still had a fair bit of work to do.  This was my basic sequence of tasks:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Permanently install internal microcontroller, solder connectors.&lt;/li&gt;
@@ -883,7 +889,10 @@ flowchart BT
     &lt;/div&gt;
 
 &lt;p&gt;Sometimes, it is both useful and appropriate to be a bit of a menace!&lt;/p&gt;
-&lt;p&gt;Six months have passed since I delivered this LED display and wireless controller to the South Bay Boardriders, and apparently it is still working.  I am stoked to have had the opportunity to leverage my engineering skills to help out, and learn some new tricks in the process.&lt;/p&gt;
+&lt;h2 id=&#34;reflection&#34;&gt;Reflection&lt;/h2&gt;
+&lt;p&gt;This project took me about 40 hours over four weeks to complete &amp;ndash; not a strictly optimal use of my time, but illustrative of the commitment required to reverse engineer a modern device if you have a sufficiently sophisticated technical background.&lt;/p&gt;
+&lt;p&gt;Plus, it felt good to do something nice for my brother &amp;ndash; he always looks out for me, so I was happy to be in a position to reciprocate.&lt;/p&gt;
+&lt;p&gt;Six months have passed since I delivered this LED display and wireless controller to the &lt;a href=&#34;https://southbayboardriders.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;South Bay Boardriders Club&lt;/a&gt;, and apparently it is still working.  I am stoked to have had the opportunity to leverage my engineering skills to help out, and learn some new tricks in the process.&lt;/p&gt;
 &lt;p&gt;Thanks for reading.&lt;/p&gt;
 </description>
     </item>
