@@ -17,8 +17,13 @@
       <link>https://www.blakecole.com/post/3-led-timer/</link>
       <pubDate>Wed, 16 Apr 2025 08:18:13 -0400</pubDate>
       <guid>https://www.blakecole.com/post/3-led-timer/</guid>
-      <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
-&lt;nav id=&#34;TableOfContents&#34;&gt;
+      <description>
+
+
+&lt;details class=&#34;print:hidden xl:hidden&#34; open&gt;
+  &lt;summary&gt;Table of Contents&lt;/summary&gt;
+  &lt;div class=&#34;text-sm&#34;&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
   &lt;ul&gt;
     &lt;li&gt;&lt;a href=&#34;#backstory&#34;&gt;Backstory&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#topics-not-covered&#34;&gt;Topics Not Covered&lt;/a&gt;&lt;/li&gt;
@@ -52,6 +57,8 @@
     &lt;li&gt;&lt;a href=&#34;#reflection&#34;&gt;Reflection&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
 
 &lt;h2 id=&#34;backstory&#34;&gt;Backstory&lt;/h2&gt;
 &lt;p&gt;Last September, my brother came to me with a conundrum: the controller for a high-power LED timer he had been using to run our local community surfing competitions had been stolen.  To make matters worse, the original manufacturer wanted more than $1,000 to replace it &amp;ndash; a sum which far exceeded the modest budget of the nonprofit organization for which he volunteers, the &lt;a href=&#34;https://southbayboardriders.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;South Bay Boardriders Club (SBBC)&lt;/a&gt;.  With competitions scheduled to resume in just a few months, they were at a loss for what to do.&lt;/p&gt;
@@ -914,8 +921,13 @@ flowchart BT
       <link>https://www.blakecole.com/post/2-mcmc-mv-swim/</link>
       <pubDate>Sun, 23 Mar 2025 00:00:00 +0000</pubDate>
       <guid>https://www.blakecole.com/post/2-mcmc-mv-swim/</guid>
-      <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
-&lt;nav id=&#34;TableOfContents&#34;&gt;
+      <description>
+
+
+&lt;details class=&#34;print:hidden xl:hidden&#34; open&gt;
+  &lt;summary&gt;Table of Contents&lt;/summary&gt;
+  &lt;div class=&#34;text-sm&#34;&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
   &lt;ul&gt;
     &lt;li&gt;&lt;a href=&#34;#should-you-read-this&#34;&gt;Should You Read This?&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#recapitulation&#34;&gt;Recapitulation&lt;/a&gt;&lt;/li&gt;
@@ -951,6 +963,8 @@ flowchart BT
     &lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
 
 &lt;h2 id=&#34;should-you-read-this&#34;&gt;Should You Read This?&lt;/h2&gt;
 &lt;p&gt;Life is short &amp;ndash; there are mountains to climb, oceans to explore, TikTok reels to enjoy and forget about mere seconds later.&lt;/p&gt;
@@ -1938,8 +1952,13 @@ This method is arguably simpler to implement, but less flexible since it require
       <link>https://www.blakecole.com/post/1-adcirc-mv-swim/</link>
       <pubDate>Mon, 08 Aug 2022 13:09:10 -0400</pubDate>
       <guid>https://www.blakecole.com/post/1-adcirc-mv-swim/</guid>
-      <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
-&lt;nav id=&#34;TableOfContents&#34;&gt;
+      <description>
+
+
+&lt;details class=&#34;print:hidden xl:hidden&#34; open&gt;
+  &lt;summary&gt;Table of Contents&lt;/summary&gt;
+  &lt;div class=&#34;text-sm&#34;&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
   &lt;ul&gt;
     &lt;li&gt;&lt;a href=&#34;#preamble&#34;&gt;Preamble&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#the-chappy-swimmers&#34;&gt;The Chappy Swimmers&lt;/a&gt;&lt;/li&gt;
@@ -1963,6 +1982,8 @@ This method is arguably simpler to implement, but less flexible since it require
     &lt;li&gt;&lt;a href=&#34;#conclusion-ii&#34;&gt;Conclusion II&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
 
 &lt;h2 id=&#34;preamble&#34;&gt;Preamble&lt;/h2&gt;
 &lt;p&gt;At 5:58am on the morning of July 30th 2022, a small group of swimmers dove into the shallow waters off Woods Hole, Massachusetts, and began swimming steadily southwest toward Martha&amp;rsquo;s Vineyard.  The island was already visible in the early dawn light, though its features were obscured by mist and atmospheric scattering.  Lacking terrestrial landmarks, the swimmers would need to orient themselves relative to nearby guide boats in order to make it safely to their intended destination near Lake Tashmoo.&lt;/p&gt;
@@ -2504,13 +2525,20 @@ But, as time drew on, the folks on the beach became increasingly concerned: thre
       <link>https://www.blakecole.com/post/0-hello-world/</link>
       <pubDate>Sun, 07 Aug 2022 08:18:13 -0400</pubDate>
       <guid>https://www.blakecole.com/post/0-hello-world/</guid>
-      <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
-&lt;nav id=&#34;TableOfContents&#34;&gt;
+      <description>
+
+
+&lt;details class=&#34;print:hidden xl:hidden&#34; open&gt;
+  &lt;summary&gt;Table of Contents&lt;/summary&gt;
+  &lt;div class=&#34;text-sm&#34;&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
   &lt;ul&gt;
     &lt;li&gt;&lt;a href=&#34;#hi-everyone&#34;&gt;Hi everyone!&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#autobiographical-miscellany&#34;&gt;Autobiographical Miscellany&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
 
 &lt;h2 id=&#34;hi-everyone&#34;&gt;Hi everyone!&lt;/h2&gt;
 &lt;p&gt;Welcome to my blog.  In case you skipped over the &lt;a href=&#34;https://www.blakecole.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;About&lt;/a&gt; section, my name is Blake, and I am currently a doctoral candidate in the &lt;a href=&#34;https://mit.whoi.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MIT-WHOI Joint Program&lt;/a&gt;.  My high-level research objective is to &lt;strong&gt;&lt;em&gt;improve the performance, reliability, and useability of autonomous sailing vessels&lt;/em&gt;&lt;/strong&gt;.  I am incredibly excited about this project, and will try to post incremental updates over the course of the next year.&lt;/p&gt;
