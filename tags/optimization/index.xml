@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Optimization | Blake Cole</title>
+    <link>http://localhost:1313/tags/optimization/</link>
+      <atom:link href="http://localhost:1313/tags/optimization/index.xml" rel="self" type="application/rss+xml" />
+    <description>Optimization</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Sat, 26 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu1996601983673389572.png</url>
+      <title>Optimization</title>
+      <link>http://localhost:1313/tags/optimization/</link>
+    </image>
+    
+    <item>
+      <title>Geometric programming for aerodynamically-actuated wingsail design optimization</title>
+      <link>http://localhost:1313/publication/jrnl-ieee-joe-2025/</link>
+      <pubDate>Sat, 26 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publication/jrnl-ieee-joe-2025/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

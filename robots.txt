@@ -8,6 +8,26 @@ Disallow: /event/example/
 
 Disallow: /event/
 
+Disallow: /publication_types/article-journal/
+
+Disallow: /tags/design-optimization-mdo/
+
+Disallow: /tags/geometric-programming/
+
+Disallow: /publication/jrnl-ieee-joe-2025/
+
+Disallow: 
+
+Disallow: /publication_types/
+
+Disallow: /publication/
+
+Disallow: /tags/sailing/
+
+Disallow: /tags/
+
+Disallow: /tags/wingsail/
+
 Disallow: /post/
 
 Disallow: /post/3-led-timer/
@@ -27,8 +47,6 @@ Disallow: /project/
 Disallow: /project/pytorch/
 
 Disallow: /project/scikit/
-
-Disallow: /tags/
 
 Disallow: /tags/wowchemy/
 
@@ -50,15 +68,9 @@ Disallow: /post/1-adcirc-mv-swim/
 
 Disallow: /post/0-hello-world/
 
-Disallow: /publication_types/article-journal/
-
 Disallow: 
 
 Disallow: /tags/geodetic/
-
-Disallow: /publication_types/
-
-Disallow: /publication/
 
 Disallow: /tags/target-tracking/
 
